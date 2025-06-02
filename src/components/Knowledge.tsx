@@ -33,7 +33,7 @@ const Knowledge = () => {
 
   const knowledgeItems = [
     {
-      title: "Desarrollo web Full Stack",
+      title: "Desarrollo web Frontend",
       description: "Experiencia en el desarrollo de aplicaciones web completas, desde el frontend hasta el backend."
     },
     {
@@ -71,7 +71,7 @@ const Knowledge = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-white">Conocimientos</h2>
           <p className="text-white/70 max-w-2xl mx-auto">
-            Áreas en las que me he especializado a lo largo de mi carrera como desarrollador.
+            Áreas en las que he trabajado a lo largo de mi carrera como desarrollador.
           </p>
         </div>
 

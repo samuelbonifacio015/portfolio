@@ -35,7 +35,7 @@ const Projects = () => {
     {
       title: "Libreria JSR",
       description: "Una plataforma de comercio electrónico con carrito de compras, y sistema de gestión de inventario.",
-      image: "utils/LibreriaJSR.png",
+      image: "/utils/LibreriaJSR.png",
       technologies: ["HTML", "CSS", "JavaScript"],
       githubUrl: "https://github.com/samuelbonifacio015/JSR-Libreria",
       liveUrl: "https://jsr-libreria.vercel.app",
@@ -43,7 +43,7 @@ const Projects = () => {
     {
       title: "Finovate",
       description: "Aplicación web diseñada para gestión de finanzas personales.",
-      image: "utils/Finovate.png",
+      image: "/utils/Finovate.png",
       technologies: ["React", "TypeScript", "Tailwind", "Vite"],
       githubUrl: "https://github.com/samuelbonifacio015/Finovate",
       liveUrl: "https://finovate-six.vercel.app",
@@ -51,7 +51,7 @@ const Projects = () => {
     {
       title: "AguaConnect",
       description: "Ejemplo de Landing Page para una empresa de servicios de agua potable.",
-      image: "utils/AguaConnect.png",
+      image: "/utils/AguaConnect.png",
       technologies: ["HTML", "CSS", "JavaScript"],
       githubUrl: "https://github.com/samuelbonifacio015/AguaConnect",
     },

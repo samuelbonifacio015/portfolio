@@ -49,19 +49,21 @@ const Projects = () => {
       liveUrl: "https://finovate-six.vercel.app",
     },
     {
+      title: "PasoPerfecto",
+      description: "Aplicación web diseñada para llevar un seguimiento eficiente de tus pasos y actividad física diaria",
+      image: "/utils/PasoPerfecto.png",
+      technologies: ["React", "TypeScript", "Tailwind", "Vite"],
+      githubUrl: "https://github.com/samuelbonifacio015/PasoPerfecto",
+      liveUrl: "https://paso-perfecto.vercel.app/",
+    },
+    {
       title: "AguaConnect",
       description: "Ejemplo de Landing Page para una empresa de servicios de agua potable.",
       image: "/utils/AguaConnect.png",
       technologies: ["HTML", "CSS", "JavaScript"],
       githubUrl: "https://github.com/samuelbonifacio015/AguaConnect",
     },
-    {
-      title: "API de Microservicios",
-      description: "Sistema de microservicios para procesamiento de datos en tiempo real con alta disponibilidad.",
-      image: "https://images.unsplash.com/photo-1633412802994-5c058f151b66?q=80&w=2670&auto=format&fit=crop",
-      technologies: ["Node.js", "Express", "Docker", "AWS"],
-      githubUrl: "https://github.com",
-    },
+    
   ];
 
   return (

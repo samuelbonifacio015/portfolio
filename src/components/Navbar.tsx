@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -61,23 +60,26 @@ const Navbar = () => {
           </button>
         </div>
 
+        {/* Mobile Menu Dropdown */}
         <div
           className={cn(
-            'md:hidden fixed inset-0 top-16 bg-black/95 backdrop-blur-xl transform transition-transform duration-300 ease-in-out z-40',
-            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+            'md:hidden overflow-hidden transition-all duration-300 ease-in-out',
+            isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           )}
         >
-          <nav className="flex flex-col items-center justify-center space-y-8 pt-10">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-xl font-medium text-white/90 hover:text-white transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
+          <nav className="bg-black/95 backdrop-blur-xl rounded-lg mt-4 py-4 px-2 shadow-lg border border-white/10">
+            <div className="flex flex-col space-y-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-sm font-medium text-white/90 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-3 rounded-md"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
           </nav>
         </div>
       </div>

@@ -1,0 +1,40 @@
+import React from "react";
+
+const AboutMe = () => (
+  <section className="w-full flex justify-center mt-12 px-4">
+    <div className="glass-card rounded-2xl max-w-5xl w-full p-8 md:p-12 flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 text-center md:text-left shadow-xl">
+      {/* Texto a la izquierda */}
+      <div className="flex-1 flex flex-col justify-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6 border-b-4 border-primary/60 pb-2 md:pb-4 w-fit self-start lowercase tracking-tight">
+          sobre mí
+        </h2>
+        <p className="text-white/80 text-lg md:text-xl mb-4 max-w-2xl">
+          Me llamo Samuel Bonifacio, soy estudiante de Ingeniería de Software y desarrollador web enfocado en crear experiencias digitales elegantes y funcionales. Mi formación se ha centrado en el diseño y desarrollo de proyectos de alta calidad, desde landing pages hasta aplicaciones web modernas. Mi objetivo es crear software eficiente y escalable que brinde la mejor experiencia de usuario. Actualmente, me especializo en frontend y frameworks ágiles.
+        </p>
+        <p className="text-white/80 text-lg md:text-xl max-w-2xl">
+          Busco oportunidades que me permitan adquirir nuevas experiencias y seguir perfilándome como profesional.
+        </p>
+      </div>
+      {/* Imagen y botón a la derecha */}
+      <div className="flex flex-col items-center gap-4 w-full md:w-auto max-w-xs mx-auto">
+        <div className="overflow-hidden rounded-2xl shadow-lg border-4 border-primary/60 bg-black/30 w-48 h-56 flex items-center justify-center mb-2">
+          <img
+            src="/utils/Samuel Bonifacio.jpeg"
+            alt="Samuel Bonifacio"
+            className="object-cover w-full h-full"
+          />
+        </div>
+        <a
+          href="/utils/samuelbonifaciocv"
+          download
+          className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary hover:bg-primary/90 text-white font-medium transition-all duration-300 shadow-lg shadow-primary/20 w-full"
+        >
+          <svg xmlns='http://www.w3.org/2000/svg' className='h-5 w-5 mr-2' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4' /></svg>
+          Descargar CV
+        </a>
+      </div>
+    </div>
+  </section>
+);
+
+export default AboutMe; 

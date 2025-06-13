@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -7,6 +6,7 @@ import Technologies from '@/components/Technologies';
 import Knowledge from '@/components/Knowledge';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import AboutMe from '@/components/AboutMe';
 
 const Index = () => {
   useEffect(() => {
@@ -18,6 +18,7 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-black to-[#121212] text-white">
       <Navbar />
       <Hero />
+      <AboutMe />
       <Projects />
       <Technologies />
       <Knowledge />

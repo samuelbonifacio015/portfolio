@@ -1,4 +1,3 @@
-
 import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
@@ -115,31 +114,38 @@ const Contact = () => {
           </div>
 
           <div 
-            className={`glass-card rounded-xl p-6 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
+            className={`glass-card rounded-xl p-6 flex flex-col items-center text-center transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
             style={{ transitionDelay: '300ms' }}
           >
             <h3 className="text-xl font-semibold text-white mb-6">Información de contacto</h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <Mail className="h-5 w-5 text-primary shrink-0 mt-1" />
-                <div>
-                  <p className="text-sm text-white/70">Email</p>
-                  <a href="mailto:tu@email.com" className="text-white hover:text-primary transition-colors">
-                    samuelbonifacio015@gmail.com
-                  </a>
+            <div className="space-y-4 w-full">
+              <div className="flex flex-col items-center gap-2 w-full">
+                <div className="flex items-center gap-3">
+                  <Mail className="h-5 w-5 text-primary shrink-0" />
+                  <div className="text-left md:text-left">
+                    <p className="text-sm text-white/70">Email</p>
+                    <a 
+                      href="mailto:samuelbonifacio015@gmail.com" 
+                      className="text-white hover:text-primary transition-colors break-all"
+                    >
+                      samuelbonifacio015@gmail.com
+                    </a>
+                  </div>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-primary shrink-0 mt-1" />
-                <div>
-                  <p className="text-sm text-white/70">Ubicación</p>
-                  <p className="text-white">Lima, Perú</p>
+              <div className="flex flex-col items-start gap-2 w-full">
+                <div className="flex items-center gap-3">
+                  <MapPin className="h-5 w-5 text-primary shrink-0" />
+                  <div className="text-left">
+                    <p className="text-sm text-white/70">Ubicación</p>
+                    <p className="text-white">Lima, Perú</p>
+                  </div>
                 </div>
               </div>
               
-              <div className="pt-4 mt-6 border-t border-white/10">
+              <div className="pt-4 mt-6 border-t border-white/10 w-full">
                 <p className="text-sm text-white/70 mb-3">Sígueme en</p>
-                <div className="flex space-x-4">
+                <div className="flex justify-center space-x-4">
                   <a
                     href="https://github.com/samuelbonifacio015"
                     target="_blank"

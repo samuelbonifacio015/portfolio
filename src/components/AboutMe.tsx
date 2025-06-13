@@ -20,12 +20,12 @@ const AboutMe = () => {
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <div className="glass-card rounded-2xl max-w-5xl w-full p-8 md:p-12 flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 text-center md:text-left shadow-xl">
+      <div className="glass-card rounded-2xl max-w-5xl w-full p-8 md:p-12 flex flex-col md:flex-row items-center md:items-stretch gap-8 md:gap-16 text-center md:text-left shadow-xl">
         <div className="flex-1 flex flex-col justify-center">
-          <span className="inline-block w-fit px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary/90 mb-4 animate-fade-in">
+          <span className="inline-block w-fit px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary/90 mb-4 animate-fade-in mx-auto md:mx-0">
             Información Personal
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6 border-b-4 border-primary/60 pb-2 md:pb-4 w-fit self-start tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6 border-b-4 border-primary/60 pb-2 md:pb-4 w-fit self-center md:self-start tracking-tight text-center md:text-left">
             Sobre Mi
           </h2>
           <p className="text-white/80 text-sm md:text-xl mb-4 max-w-2xl">
@@ -44,7 +44,7 @@ const AboutMe = () => {
             experiencias y seguir perfilándome como profesional.
           </p>
         </div>
-        <div className="flex flex-col items-center gap-4 w-full md:w-auto max-w-xs mx-auto">
+        <div className="flex flex-col items-center justify-center gap-4 w-full md:w-auto max-w-xs mx-auto">
           <div className="overflow-hidden rounded-2xl shadow-lg border-4 border-primary/60 bg-black/30 w-48 h-56 flex items-center justify-center mb-2">
             <img
               src="/utils/Samuel Bonifacio.jpeg"

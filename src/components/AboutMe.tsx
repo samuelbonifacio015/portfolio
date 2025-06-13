@@ -3,10 +3,12 @@ import React from "react";
 const AboutMe = () => (
   <section className="w-full flex justify-center mt-12 px-4">
     <div className="glass-card rounded-2xl max-w-5xl w-full p-8 md:p-12 flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-16 text-center md:text-left shadow-xl">
-      {/* Texto a la izquierda */}
       <div className="flex-1 flex flex-col justify-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6 border-b-4 border-primary/60 pb-2 md:pb-4 w-fit self-start lowercase tracking-tight">
-          sobre mí
+        <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary/90 mb-4 animate-fade-in">
+          Información Personal
+        </span>
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6 border-b-4 border-primary/60 pb-2 md:pb-4 w-fit self-start tracking-tight">
+          Sobre Mi
         </h2>
         <p className="text-white/80 text-lg md:text-xl mb-4 max-w-2xl">
           Me llamo Samuel Bonifacio, soy estudiante de Ingeniería de Software y desarrollador web enfocado en crear experiencias digitales elegantes y funcionales. Mi formación se ha centrado en el diseño y desarrollo de proyectos de alta calidad, desde landing pages hasta aplicaciones web modernas. Mi objetivo es crear software eficiente y escalable que brinde la mejor experiencia de usuario. Actualmente, me especializo en frontend y frameworks ágiles.
@@ -15,7 +17,6 @@ const AboutMe = () => (
           Busco oportunidades que me permitan adquirir nuevas experiencias y seguir perfilándome como profesional.
         </p>
       </div>
-      {/* Imagen y botón a la derecha */}
       <div className="flex flex-col items-center gap-4 w-full md:w-auto max-w-xs mx-auto">
         <div className="overflow-hidden rounded-2xl shadow-lg border-4 border-primary/60 bg-black/30 w-48 h-56 flex items-center justify-center mb-2">
           <img

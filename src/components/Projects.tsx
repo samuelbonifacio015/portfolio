@@ -37,8 +37,8 @@ const Projects = () => {
       description: "Una plataforma de comercio electrónico con carrito de compras, y sistema de gestión de inventario.",
       image: "/utils/LibreriaJSR.png",
       technologies: ["HTML", "CSS", "JavaScript"],
-      githubUrl: "https://github.com/samuelbonifacio015/JSR-Libreria",
-      liveUrl: "https://jsr-libreria.vercel.app",
+      githubUrl: "https://github.com/samuelbonifacio015/Libreria-JSR",
+      liveUrl: "https://libreria-jsr.vercel.app",
     },
     {
       title: "Finovate",

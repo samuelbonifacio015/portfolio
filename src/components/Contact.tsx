@@ -156,7 +156,7 @@ const Contact = () => {
                     <Github className="h-5 w-5" />
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/samuel-bonifacio-208a37364/"
+                    href="www.linkedin.com/in/samuelbonifacio015"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300"

@@ -34,7 +34,7 @@ const Technologies = () => {
   const techCategories = [
     {
       name: "Frontend",
-      technologies: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind"],
+      technologies: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Angular", "Vue", "Next.js", "Tailwind"],
     },
     {
       name: "Backend",
@@ -46,7 +46,7 @@ const Technologies = () => {
     },
     {
       name: "Herramientas",
-      technologies: ["VSCode", "Figma", "Postman", "Redux"],
+      technologies: ["VSCode", "Figma", "Postman"],
     }
   ];
 

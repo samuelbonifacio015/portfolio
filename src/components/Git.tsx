@@ -61,7 +61,7 @@ const GithubChart: React.FC<GithubChartProps> = ({
       </div>
 
       {/*Contribution Chart*/}
-      <div className="flex justify-center items-center cursor-pointer w-screen" onClick={() => window.open(`https://  github.com/${username}`, '_blank')}>
+      <div className="flex justify-center items-center cursor-pointer w-full" onClick={() => window.open(`https://  github.com/${username}`, '_blank')}>
         <img 
           src={chartUrl}
           alt={alt}

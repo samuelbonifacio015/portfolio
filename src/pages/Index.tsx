@@ -7,6 +7,7 @@ import Knowledge from '@/components/Knowledge';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import AboutMe from '@/components/AboutMe';
+import Currently from '@/components/Currently';
 
 import GitHubChart from "../components/Git";
 const currentProjectIds = [
@@ -26,6 +27,7 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-black to-[#121212] text-white">
       <Navbar />
       <Hero />
+      <Currently />
       <GitHubChart username="samuelbonifacio015" />
       <AboutMe />
       <Projects />

@@ -25,6 +25,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-[#121212] text-white">
+      <div className="max-w-[75%] mx-auto">
       <Navbar />
       <Hero />
       <Currently />
@@ -35,6 +36,7 @@ const Index = () => {
       <Knowledge />
       <Contact />
       <Footer />
+      </div>
     </div>
   );
 };

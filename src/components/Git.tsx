@@ -22,7 +22,7 @@ const GithubChart: React.FC<GithubChartProps> = ({
   const chartUrl = color ? `${baseUrl}/${color}/${username}` : `${baseUrl}/${username}`;
 
   return (
-    <div className="github-chart-container">
+    <div className="github-chart-container max-w-[75%] mx-auto">
       {/*Header*/}
       <div className="flex items-center justify-between mb-4 px-2">
         <div className="flex items-center gap-3">

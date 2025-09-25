@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,12 +28,14 @@ const Navbar = () => {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4',
-        isScrolled ? 'bg-black/50 backdrop-blur-lg shadow-md' : 'bg-transparent'
+        isScrolled
+          ? 'backdrop-blur-lg shadow-md bg-white/70 dark:bg-black/50'
+          : 'bg-transparent'
       )}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          <a href="#home" className="text-xl font-display font-bold tracking-tight text-white">
+          <a href="#home" className="text-xl font-display font-bold tracking-tight text-foreground">
             <span className="text-primary">samuel</span>.dev
           </a>
 
@@ -42,22 +45,26 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-white/80 hover:text-white transition-colors duration-200 relative group"
+                className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors duration-200 relative group"
               >
                 {link.name}
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
+            <ThemeToggle />
           </nav>
 
           {/* Menu Nav Mobile */}
-          <button
-            className="md:hidden text-white focus:outline-none"
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              className="md:hidden text-foreground focus:outline-none"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu Dropdown */}
@@ -67,13 +74,13 @@ const Navbar = () => {
             isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           )}
         >
-          <nav className="bg-black/95 backdrop-blur-xl rounded-lg mt-4 py-4 px-2 shadow-lg border border-white/10">
+          <nav className="backdrop-blur-xl rounded-lg mt-4 py-4 px-2 shadow-lg border border-border bg-card/95">
             <div className="flex flex-col space-y-1">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-sm font-medium text-white/90 hover:text-white hover:bg-white/10 transition-all duration-200 px-4 py-3 rounded-md"
+                  className="text-sm font-medium text-foreground/90 hover:text-foreground hover:bg-foreground/5 transition-all duration-200 px-4 py-3 rounded-md"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}

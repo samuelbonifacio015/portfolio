@@ -10,7 +10,7 @@ import AboutMe from '@/components/AboutMe';
 import Currently from '@/components/Currently';
 
 import GitHubChart from "../components/Git";
-const currentProjectIds = [
+const _currentProjectIds = [
   "voxed",
   "illini-plan",
   "manim-video-agent",
@@ -19,12 +19,11 @@ const currentProjectIds = [
 
 const Index = () => {
   useEffect(() => {
-    // Set de Modo Oscuro
-    document.documentElement.classList.add('dark');
+    // No forzar tema aquí; el tema se controla vía ThemeToggle y script inicial
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-[#121212] text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <div className="max-w-[75%] mx-auto">
       <Navbar />
       <Hero />

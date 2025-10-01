@@ -33,37 +33,52 @@ const Projects = () => {
 
   const projects: ProjectProps[] = [
     {
+      id: "libreria-jsr",
       title: "Libreria JSR",
-      description: "Una plataforma de comercio electrónico con carrito de compras, y sistema de gestión de inventario.",
+      subtitle: "Plataforma E-commerce",
+      description: "Una plataforma de comercio electrónico con carrito de compras y sistema de gestión de inventario.",
+      logo: "/utils/LibreriaJSR.png",
       image: "/utils/LibreriaJSR.png",
+      date: "Diciembre 2024 - Agosto 2025",
       technologies: ["HTML", "CSS", "JavaScript"],
       githubUrl: "https://github.com/samuelbonifacio015/Libreria-JSR",
       liveUrl: "https://libreria-jsr.vercel.app",
     },
     {
+      id: "finovate",
       title: "Finovate",
-      description: "Aplicación web diseñada para gestión de finanzas personales.",
+      subtitle: "Gestión de Finanzas Personales",
+      description: "Aplicación web diseñada para gestión de finanzas personales con herramientas de seguimiento y análisis financiero.",
+      logo: "/utils/Finovate.png",
       image: "/utils/Finovate.png",
+      date: "Mayo 2025",
       technologies: ["React", "TypeScript", "Tailwind", "Vite"],
       githubUrl: "https://github.com/samuelbonifacio015/Finovate",
       liveUrl: "https://finovate-six.vercel.app",
     },
     {
+      id: "paso-perfecto",
       title: "PasoPerfecto",
-      description: "Aplicación web diseñada para llevar un seguimiento eficiente de tus pasos y actividad física diaria",
+      subtitle: "Aplicación de Seguimiento de Actividad",
+      description: "Aplicación web diseñada para llevar un seguimiento eficiente de tus pasos y actividad física diaria.",
+      logo: "/utils/PasoPerfecto.png",
       image: "/utils/PasoPerfecto.png",
+      date: "Mayo - Junio 2025",
       technologies: ["React", "TypeScript", "Tailwind", "Vite"],
       githubUrl: "https://github.com/samuelbonifacio015/PasoPerfecto",
       liveUrl: "https://paso-perfecto.vercel.app/",
     },
     {
+      id: "agua-connect",
       title: "AguaConnect",
+      subtitle: "Landing Page Corporativa",
       description: "Ejemplo de Landing Page para una empresa de servicios de agua potable.",
+      logo: "/utils/AguaConnect.png",
       image: "/utils/AguaConnect.png",
+      date: "Marzo - Julio 2025",
       technologies: ["HTML", "CSS", "JavaScript"],
       githubUrl: "https://github.com/samuelbonifacio015/AguaConnect",
     },
-    
   ];
 
   return (
@@ -84,10 +99,10 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 lg:gap-8 transition-all duration-700 delay-200 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>
+        <div className="space-y-6">
           {projects.map((project, index) => (
             <div
-              key={index}
+              key={project.id || index}
               className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
               style={{ transitionDelay: `${200 + index * 100}ms` }}
             >

@@ -1,62 +1,114 @@
-
-import { ExternalLink, Github } from 'lucide-react';
-import TechBadge from './TechBadge';
-
 export interface ProjectProps {
+  id?: string;
   title: string;
+  subtitle: string;
   description: string;
-  image: string;
-  technologies: string[];
+  logo: string;
+  image?: string; // Screenshot del proyecto
+  date: string;
+  technologies?: string[];
   githubUrl?: string;
   liveUrl?: string;
+  links?: Array<{
+    label: string;
+    url: string;
+  }>;
 }
 
-const ProjectCard = ({ title, description, image, technologies, githubUrl, liveUrl }: ProjectProps) => {
+const ProjectCard = ({ 
+  id,
+  title, 
+  subtitle, 
+  description, 
+  logo, 
+  image,
+  date, 
+  technologies,
+  githubUrl, 
+  liveUrl,
+  links 
+}: ProjectProps) => {
   return (
-    <div className="group glass-card rounded-xl overflow-hidden transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 relative">
-      <div className="relative overflow-hidden h-48 md:h-56">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10"></div>
-        <img 
-          src={image} 
-          alt={title} 
-          className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
-        />
-      </div>
-      
-      <div className="p-6 relative transform transition-all duration-500">
-        <div className="space-y-4">
-          <h3 className="text-xl font-bold text-white tracking-tight">{title}</h3>
-          <p className="text-white/70 text-sm line-clamp-3">{description}</p>
-          
-          <div className="flex flex-wrap gap-2 my-3">
-            {technologies.map((tech) => (
-              <TechBadge key={tech} name={tech} />
-            ))}
+    <div
+      id={id}
+      className="max-w-7xl p-4 sm:p-6 rounded-xl border border-transparent hover:border hover:border-primary/45 hover:shadow-lg transition-all duration-300"
+    >
+      <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+        {/* Image/Screenshot Section */}
+        <div className="w-full md:w-1/3 flex flex-col gap-3">
+          {image && (
+            <div className="w-full aspect-video bg-primary/5 rounded-lg overflow-hidden border border-primary/10">
+              <img
+                src={image}
+                alt={`${title} Screenshot`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
+          <p className="text-xs sm:text-sm opacity-75 text-center md:text-left font-semibold">{date}</p>
+        </div>
+
+        {/* Content Section */}
+        <div className="w-full md:w-2/3 space-y-3">
+          <div>
+            <h3 className="text-lg sm:text-xl font-semibold text-white">{title}</h3>
+            <p className="text-sm sm:text-base font-medium text-primary">
+              {subtitle}
+            </p>
           </div>
-          
-          <div className="flex items-center space-x-4 pt-2">
+
+          <div 
+            className="text-xs sm:text-sm leading-relaxed text-white/80"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
+
+          {/* Technologies */}
+          {technologies && technologies.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              {technologies.map((tech, index) => (
+                <span 
+                  key={index} 
+                  className="px-2 sm:px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs font-medium"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* Links */}
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
             {githubUrl && (
-              <a 
-                href={githubUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-white/70 hover:text-primary transition-colors duration-300"
-                aria-label={`Ver código de ${title} en GitHub`}
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full bg-primary/10 hover:bg-primary/15 transition-colors"
               >
-                <Github size={20} />
+                <span>GitHub</span>
               </a>
             )}
             {liveUrl && (
-              <a 
-                href={liveUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-white/70 hover:text-primary transition-colors duration-300"
-                aria-label={`Ver demo de ${title}`}
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full bg-primary/10 hover:bg-primary/15 transition-colors"
               >
-                <ExternalLink size={20} />
+                <span>Ver Demo →</span>
               </a>
             )}
+            {links && links.map((link, index) => (
+              <a
+                key={index}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full bg-primary/10 hover:bg-primary/15 transition-colors"
+              >
+                <span>{link.label}</span>
+              </a>
+            ))}
           </div>
         </div>
       </div>

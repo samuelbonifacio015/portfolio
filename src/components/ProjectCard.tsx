@@ -1,10 +1,13 @@
+import { Github } from 'lucide-react';
+import TechBadge from './TechBadge';
+
 export interface ProjectProps {
   id?: string;
   title: string;
   subtitle: string;
   description: string;
   logo: string;
-  image?: string; // Screenshot del proyecto
+  image?: string; 
   date: string;
   technologies?: string[];
   githubUrl?: string;
@@ -66,12 +69,10 @@ const ProjectCard = ({
           {technologies && technologies.length > 0 && (
             <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {technologies.map((tech, index) => (
-                <span 
+                <TechBadge 
                   key={index} 
-                  className="px-2 sm:px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] sm:text-xs font-medium"
-                >
-                  {tech}
-                </span>
+                  name={tech}
+                />
               ))}
             </div>
           )}
@@ -83,9 +84,11 @@ const ProjectCard = ({
                 href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full bg-primary/10 hover:bg-primary/15 transition-colors"
+                className="inline-flex items-center text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full bg-primary/10 hover:bg-primary/15 transition-colors gap-1.5"
+                aria-label="GitHub"
               >
-                <span>GitHub</span>
+                <Github className="h-4 w-4" />
+                <span className="sr-only">GitHub</span>
               </a>
             )}
             {liveUrl && (

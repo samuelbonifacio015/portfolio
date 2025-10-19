@@ -1,6 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import ProjectCard, { ProjectProps } from './ProjectCard';
+import TechBadge from './TechBadge';
 
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -32,6 +33,18 @@ const Projects = () => {
   }, []);
 
   const projects: ProjectProps[] = [
+    {
+      id: "we-ride",
+      title: "WeRide",
+      subtitle: "Aplicación de Alquiler de Vehhículos",
+      description: "Plataforma web para alquilar vehículos. Desarrollado con Angular y REST API con json-server.",
+      logo: "/utils/WeRide.png",
+      image: "/utils/WeRide.png",
+      date: "Setiembre - En desarrollo",
+      technologies: ["Angular", "TypeScript", "json-server"],
+      githubUrl: "https://github.com/OpenSource-Grupo-4/Frontend-WeRide",
+      liveUrl: "https://frontend-we-ride-lake.vercel.app",
+    },
     {
       id: "libreria-jsr",
       title: "Libreria JSR",

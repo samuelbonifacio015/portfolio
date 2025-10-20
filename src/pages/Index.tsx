@@ -30,8 +30,8 @@ const Index = () => {
       <Currently />
       <GitHubChart username="samuelbonifacio015" />
       <AboutMe />
-      <Projects />
       <Technologies />
+      <Projects />
       <Knowledge />
       <Contact />
       <Footer />

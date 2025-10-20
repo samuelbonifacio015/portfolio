@@ -40,7 +40,7 @@ const ProjectCard = ({
         {/* Image/Screenshot Section */}
         <div className="w-full md:w-1/3 flex flex-col gap-3">
           {image && (
-            <div className="w-full aspect-video bg-primary/5 rounded-lg overflow-hidden border border-primary/10">
+            <div className="w-full aspect-video bg-primary/5 rounded-lg overflow-hidden border border-primary/10 hover:scale-105 transition-transform duration-500 ease-in-out">
               <img
                 src={image}
                 alt={`${title} Screenshot`}
@@ -84,7 +84,7 @@ const ProjectCard = ({
                 href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full bg-primary/10 hover:bg-primary/15 transition-colors gap-1.5"
+                className="inline-flex items-center text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full bg-primary/10 hover:bg-primary/15 border border-transparent hover:border-primary transition-all duration-300 gap-1.5"
                 aria-label="GitHub"
               >
                 <Github className="h-4 w-4" />
@@ -96,9 +96,9 @@ const ProjectCard = ({
                 href={liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full bg-primary/10 hover:bg-primary/15 transition-colors"
+                className="inline-flex items-center text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full bg-primary/10 hover:bg-primary/15 border border-transparent hover:border-primary transition-all duration-600"
               >
-                <span>Ver Demo →</span>
+                <span>Demo →</span>
               </a>
             )}
             {links && links.map((link, index) => (
@@ -107,7 +107,7 @@ const ProjectCard = ({
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full bg-primary/10 hover:bg-primary/15 transition-colors"
+                className="inline-flex items-center text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full bg-primary/10 hover:bg-primary/15 border border-transparent hover:border-primary transition-all duration-600"
               >
                 <span>{link.label}</span>
               </a>

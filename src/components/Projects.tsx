@@ -36,7 +36,7 @@ const Projects = () => {
     {
       id: "we-ride",
       title: "WeRide",
-      subtitle: "Aplicación de Alquiler de Vehhículos",
+      subtitle: "Aplicación de Alquiler de Vehículos",
       description: "Plataforma web para alquilar vehículos. Desarrollado con Angular y REST API con json-server.",
       logo: "/utils/WeRide.png",
       image: "/utils/WeRide.png",
@@ -44,6 +44,18 @@ const Projects = () => {
       technologies: ["Angular", "TypeScript", "json-server"],
       githubUrl: "https://github.com/OpenSource-Grupo-4/Frontend-WeRide",
       liveUrl: "https://frontend-we-ride-lake.vercel.app",
+    },
+    {
+      id: "cultivapp",
+      title: "CultivApp",
+      subtitle: "Aplicación de Gestión de Cultivos",
+      description: "Plataforma web para gestión de cultivos agrícolas. Desarrollado con Vue y REST API con json-server.",
+      logo: "/utils/CultivApp.png",
+      image: "/utils/CultivApp.png",
+      date: "Setiembre - En desarrollo",
+      technologies: ["Vue", "JavaScript", "json-server"],
+      githubUrl: "https://github.com/Apps-Web-Grupo-4-FruTech/Frontend-FruTech",
+      liveUrl: "https://frontend-frutech-static.onrender.com",
     },
     {
       id: "libreria-jsr",
@@ -107,8 +119,7 @@ const Projects = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-white">Mis Proyectos</h2>
           <p className="text-white/70 max-w-2xl mx-auto">
-            Una colección de trabajos en los que he aplicado diferentes tecnologías
-            y soluciones a problemas reales.
+            Mi colección personal de proyectos que he desarrollado a través del tiempo.
           </p>
         </div>
 

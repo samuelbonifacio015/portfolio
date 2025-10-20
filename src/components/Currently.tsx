@@ -19,7 +19,7 @@ export default function Currently() {
           <li>
             <span className="font-semibold text-white/80">Estudiando en:</span>{" "}
             <button
-              onClick={() => scrollToSection("education")}
+              onClick={() => scrollToSection("#")}
               className="text-primary hover:underline font-medium transition-colors"
             >
               Universidad Peruana de Ciencias Aplicadas
@@ -28,7 +28,7 @@ export default function Currently() {
           <li>
             <span className="font-semibold text-white/80">Investigando:</span>{" "}
             <button
-              onClick={() => scrollToSection("ai")}
+              onClick={() => scrollToSection("#")}
               className="text-primary hover:underline font-medium transition-colors"
             >
               AI/ML (por mi cuenta)
@@ -37,7 +37,7 @@ export default function Currently() {
           <li>
             <span className="font-semibold text-white/80">Trabajando en:</span>{" "}
             <button
-              onClick={() => scrollToSection("aifarms")}
+              onClick={() => scrollToSection("#")}
               className="text-primary hover:underline font-medium transition-colors"
             >
               Libreria JSR
@@ -46,10 +46,10 @@ export default function Currently() {
           <li>
             <span className="font-semibold text-white/80">Construyendo:</span>{" "}
             <button
-              onClick={() => scrollToSection("aganswers")}
+              onClick={() => scrollToSection("projects")}
               className="text-primary hover:underline font-medium transition-colors"
             >
-              Listalico
+              WeRide
             </button>
           </li>
           <li>

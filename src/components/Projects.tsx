@@ -36,7 +36,7 @@ const Projects = () => {
     {
       id: "we-ride",
       title: "WeRide",
-      subtitle: "Aplicación de Alquiler de Vehículos",
+      subtitle: "Alquiler de Vehículos",
       description: "Plataforma web para alquilar vehículos. Desarrollado con Angular y REST API con json-server.",
       logo: "/utils/WeRide.png",
       image: "/utils/WeRide.png",
@@ -48,7 +48,7 @@ const Projects = () => {
     {
       id: "cultivapp",
       title: "CultivApp",
-      subtitle: "Aplicación de Gestión de Cultivos",
+      subtitle: "Gestión de Cultivos",
       description: "Plataforma web para gestión de cultivos agrícolas. Desarrollado con Vue y REST API con json-server.",
       logo: "/utils/CultivApp.png",
       image: "/utils/CultivApp.png",
@@ -61,7 +61,7 @@ const Projects = () => {
       id: "libreria-jsr",
       title: "Libreria JSR",
       subtitle: "Plataforma E-commerce",
-      description: "Una plataforma de comercio electrónico con carrito de compras y sistema de gestión de inventario.",
+      description: "Una plataforma de e-commerce con carrito de compras y sistema de gestión de inventario.",
       logo: "/utils/LibreriaJSR.png",
       image: "/utils/LibreriaJSR.png",
       date: "Diciembre 2024 - Agosto 2025",
@@ -72,7 +72,7 @@ const Projects = () => {
     {
       id: "finovate",
       title: "Finovate",
-      subtitle: "Gestión de Finanzas Personales",
+      subtitle: "Gestión de Finanzas",
       description: "Aplicación web diseñada para gestión de finanzas personales con herramientas de seguimiento y análisis financiero.",
       logo: "/utils/Finovate.png",
       image: "/utils/Finovate.png",
@@ -84,8 +84,8 @@ const Projects = () => {
     {
       id: "paso-perfecto",
       title: "PasoPerfecto",
-      subtitle: "Aplicación de Seguimiento de Actividad",
-      description: "Aplicación web diseñada para llevar un seguimiento eficiente de tus pasos y actividad física diaria.",
+      subtitle: "Actividad Física",
+      description: "Aplicación web diseñada para llevar un seguimiento eficiente de tu actividad física diaria.",
       logo: "/utils/PasoPerfecto.png",
       image: "/utils/PasoPerfecto.png",
       date: "Mayo - Junio 2025",
@@ -96,13 +96,14 @@ const Projects = () => {
     {
       id: "agua-connect",
       title: "AguaConnect",
-      subtitle: "Landing Page Corporativa",
+      subtitle: "Landing Page",
       description: "Ejemplo de Landing Page para una empresa de servicios de agua potable.",
       logo: "/utils/AguaConnect.png",
       image: "/utils/AguaConnect.png",
       date: "Marzo - Julio 2025",
       technologies: ["HTML", "CSS", "JavaScript"],
       githubUrl: "https://github.com/samuelbonifacio015/AguaConnect",
+      liveUrl: "https://agua-connect-nu.vercel.app/"
     },
   ];
 

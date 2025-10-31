@@ -98,7 +98,7 @@ const ProjectCard = ({
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full bg-primary/10 hover:bg-primary/15 border border-transparent hover:border-primary transition-all duration-600"
               >
-                <span>Demo →</span>
+                <span>Demo</span>
               </a>
             )}
             {links && links.map((link, index) => (

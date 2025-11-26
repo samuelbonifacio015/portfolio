@@ -1,9 +1,14 @@
-import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, X, Check } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,6 +35,32 @@ const Contact = () => {
     };
   }, []);
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const result = await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current!,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      if (result.text === 'OK') {
+        setShowModal(true);
+        formRef.current?.reset();
+        setTimeout(() => setShowModal(false), 3000);
+      }
+    } catch (err) {
+      console.error('Error:', err);
+      setError('Error al enviar el mensaje. Intenta nuevamente.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -53,7 +84,7 @@ const Contact = () => {
             style={{ transitionDelay: '200ms' }}
           >
             <h3 className="text-xl font-semibold text-white mb-6">Envíame un mensaje</h3>
-            <form className="space-y-4">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-white/70 mb-1">
@@ -62,7 +93,8 @@ const Contact = () => {
                   <input
                     type="text"
                     id="name"
-                    name="name"
+                    name="user_name"
+                    required
                     className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-white"
                     placeholder="Tu nombre"
                   />
@@ -74,7 +106,8 @@ const Contact = () => {
                   <input
                     type="email"
                     id="email"
-                    name="email"
+                    name="user_email"
+                    required
                     className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-white"
                     placeholder="tu@email.com"
                   />
@@ -88,6 +121,7 @@ const Contact = () => {
                   type="text"
                   id="subject"
                   name="subject"
+                  required
                   className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-white"
                   placeholder="Asunto de tu mensaje"
                 />
@@ -100,15 +134,20 @@ const Contact = () => {
                   id="message"
                   name="message"
                   rows={4}
+                  required
                   className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-white resize-none"
                   placeholder="Tu mensaje..."
                 />
               </div>
+              {error && (
+                <p className="text-red-400 text-sm">{error}</p>
+              )}
               <button
                 type="submit"
-                className="w-full md:w-auto px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-all duration-300 transform hover:translate-y-[-2px] shadow-md shadow-primary/20"
+                disabled={isLoading}
+                className="w-full md:w-auto px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-all duration-300 transform hover:translate-y-[-2px] shadow-md shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Enviar mensaje
+                {isLoading ? 'Enviando...' : 'Enviar mensaje'}
               </button>
             </form>
           </div>
@@ -170,6 +209,30 @@ const Contact = () => {
           </div>
         </div>
       </div>
+
+      {showModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 px-4">
+          <div className="glass-card rounded-xl p-6 max-w-md w-full animate-fade-in">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                  <Check className="h-6 w-6 text-green-500" />
+                </div>
+                <h3 className="text-xl font-semibold text-white">¡Mensaje enviado!</h3>
+              </div>
+              <button
+                onClick={() => setShowModal(false)}
+                className="text-white/50 hover:text-white transition-colors"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <p className="text-white/70">
+              Tu mensaje ha sido enviado correctamente. Te responderé lo antes posible.
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

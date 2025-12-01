@@ -27,7 +27,9 @@ const colorMap: Record<string, string> = {
   "GraphQL": "bg-pink-600/10 text-pink-400 border-pink-600/30",
   "Figma": "bg-purple-600/10 text-purple-400 border-purple-600/60",
   "Python" : "bg-yellow-500/10 text-yellow-300 border-yellow-500/30",
-  "C++" : "bg-blue-500/10 text-blue-400 border-blue-500/70"
+  "C++" : "bg-blue-500/10 text-blue-400 border-blue-500/70",
+  "C#" : "bg-purple-500/10 text-purple-400 border-purple-500/30",
+  "Java" : "bg-orange-500/10 text-orange-400 border-orange-500/30"
 };
 
 const TechBadge = ({ name, className }: TechBadgeProps) => {

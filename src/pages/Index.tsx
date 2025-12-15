@@ -8,14 +8,9 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import AboutMe from '@/components/AboutMe';
 import Currently from '@/components/Currently';
+import Inspiration from '@/components/Inspiration';
 
 import GitHubChart from "../components/Git";
-const _currentProjectIds = [
-  "voxed",
-  "illini-plan",
-  "manim-video-agent",
-  "illini-spots",
-];
 
 const Index = () => {
   useEffect(() => {
@@ -33,6 +28,7 @@ const Index = () => {
       <Technologies />
       <Projects />
       <Knowledge />
+      <Inspiration />
       <Contact />
       <Footer />
       </div>

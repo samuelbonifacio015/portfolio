@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 
+//AboutMe
+
 const AboutMe = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -34,20 +36,17 @@ const AboutMe = () => {
             Aplicadas.
           </p>
           <p className="text-white/80 text-sm md:text-xl mb-4 max-w-2xl">
-            Mi formación académica se ha centrado en el diseño y desarrollo de
-            proyectos de alta calidad. Mi objetivo es diseñar software eficiente y
-            escalable que brinde la mejor experiencia de usuario. Actualmente,
-            estoy especializándome en diseño UX/UI.
+            Múltiples veces perteneciendo al tercio superior, mi curiosidad por la tecnología me ha llevado a incursionar en distintas tecnologías a lo largo de mi carrera.
           </p>
           <p className="text-white/80 text-sm md:text-xl max-w-2xl">
             Actualmente busco oportunidades que me permitan adquirir nuevas
-            experiencias y seguir perfilándome como profesional.
+            experiencias y seguir mejorando como desarrollador de software profesional.
           </p>
         </div>
         <div className="flex flex-col items-center justify-center gap-4 w-full md:w-auto max-w-xs mx-auto">
-          <div className="overflow-hidden rounded-2xl shadow-lg border-4 border-primary/60 bg-black/30 w-48 h-56 flex items-center justify-center mb-2">
+          <div className="overflow-hidden rounded-2xl shadow-lg border-4 border-primary/60 bg-black/30 w-80 h-80 flex items-center justify-center mb-2">
             <img
-              src="/utils/Samuel Bonifacio.jpeg"
+              src="/utils/SamuelUPC.jpg"
               alt="Samuel Bonifacio"
               className="object-cover w-full h-full"
             />

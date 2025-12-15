@@ -1,11 +1,13 @@
-
 import { useEffect, useRef, useState } from 'react';
-import ProjectCard, { ProjectProps } from './ProjectCard';
-import TechBadge from './TechBadge';
+import { ProjectProps } from './ProjectCard';
+import ProjectGridCard from './ProjectGridCard';
+import ProjectModal from './ProjectModal';
 
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<ProjectProps | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,6 +34,19 @@ const Projects = () => {
     };
   }, []);
 
+  // Modal funciones
+  const handleOpenModal = (project: ProjectProps) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => {
+      setSelectedProject(null);
+    }, 200);
+  };
+
   const projects: ProjectProps[] = [
     {
       id: "we-ride",
@@ -44,6 +59,10 @@ const Projects = () => {
       technologies: ["Angular", "TypeScript", "Java"],
       githubUrl: "https://github.com/OpenSource-Grupo-4/Frontend-WeRide",
       liveUrl: "https://frontend-we-ride-lake.vercel.app",
+      objective: "Desarrollar una plataforma web completa para facilitar el alquiler de vehículos, conectando propietarios con usuarios que necesitan transporte temporal de manera segura y eficiente.",
+      problem: "La falta de una plataforma centralizada y confiable para el alquiler de vehículos dificulta el proceso tanto para propietarios como para usuarios, generando desconfianza y procesos manuales ineficientes.",
+      technicalApproach: "Arquitectura frontend con Angular para una experiencia de usuario reactiva y moderna, combinada con una API REST robusta desarrollada en Java SpringBoot que garantiza seguridad, escalabilidad y manejo eficiente de transacciones y reservas.",
+      extendedDescription: "WeRide es una solución integral que incluye sistema de autenticación, gestión de reservas, pagos integrados, y un panel de administración completo. La aplicación prioriza la seguridad de los datos y la experiencia del usuario en cada interacción."
     },
     {
       id: "cultivapp",
@@ -56,6 +75,10 @@ const Projects = () => {
       technologies: ["Vue", "JavaScript", "C#"],
       githubUrl: "https://github.com/Apps-Web-Grupo-4-FruTech/Frontend-FruTech",
       liveUrl: "https://frontend-frutech-static.onrender.com",
+      objective: "Proporcionar a los agricultores una herramienta digital moderna para gestionar sus cultivos, optimizar recursos y mejorar la productividad mediante el seguimiento detallado de sus actividades agrícolas.",
+      problem: "Los agricultores enfrentan dificultades para llevar un registro organizado de sus cultivos, planificar rotaciones, gestionar recursos y tomar decisiones basadas en datos históricos, lo que limita su capacidad de optimización.",
+      technicalApproach: "Frontend desarrollado con Vue.js para una interfaz intuitiva y reactiva, mientras que el backend utiliza C# .NET para proporcionar una API robusta con capacidades de procesamiento de datos agrícolas, generación de reportes y análisis predictivo.",
+      extendedDescription: "CultivApp ofrece funcionalidades como registro de siembras, seguimiento de crecimiento, gestión de recursos (agua, fertilizantes), alertas de mantenimiento, y generación de reportes que ayudan a los agricultores a tomar decisiones informadas."
     },
     {
       id: "libreria-jsr",
@@ -68,6 +91,10 @@ const Projects = () => {
       technologies: ["HTML", "CSS", "JavaScript"],
       githubUrl: "https://github.com/samuelbonifacio015/Libreria-JSR",
       liveUrl: "https://libreria-jsr.vercel.app",
+      objective: "Crear una plataforma de e-commerce funcional y accesible para la venta de libros, demostrando habilidades en desarrollo web frontend con tecnologías fundamentales.",
+      problem: "La necesidad de una solución de e-commerce simple pero completa que permita gestionar productos, carrito de compras e inventario sin depender de frameworks complejos, ideal para proyectos educativos o pequeñas empresas.",
+      technicalApproach: "Desarrollo utilizando HTML5 semántico, CSS3 moderno con flexbox y grid para layouts responsivos, y JavaScript vanilla para la lógica de negocio, gestión de estado del carrito y manipulación del DOM, priorizando la simplicidad y el rendimiento.",
+      extendedDescription: "La plataforma incluye catálogo de productos con búsqueda y filtrado, carrito de compras persistente en localStorage, gestión de inventario, y una interfaz de usuario intuitiva diseñada para facilitar la experiencia de compra."
     },
     {
       id: "finovate",
@@ -80,6 +107,10 @@ const Projects = () => {
       technologies: ["React", "TypeScript", "Tailwind", "Vite"],
       githubUrl: "https://github.com/samuelbonifacio015/Finovate",
       liveUrl: "https://finovate-six.vercel.app",
+      objective: "Desarrollar una aplicación web moderna que ayude a los usuarios a gestionar sus finanzas personales de manera efectiva, proporcionando herramientas de seguimiento, análisis y planificación financiera.",
+      problem: "Muchas personas tienen dificultades para mantener un control adecuado de sus finanzas personales, careciendo de herramientas visuales e intuitivas que les permitan entender sus gastos, ingresos y tendencias financieras de manera clara.",
+      technicalApproach: "Stack moderno con React y TypeScript para type-safety y desarrollo escalable, Tailwind CSS para diseño rápido y consistente, y Vite como build tool para optimización de rendimiento. La aplicación utiliza estado local y componentes reutilizables para una arquitectura limpia.",
+      extendedDescription: "Finovate ofrece funcionalidades como registro de transacciones, categorización de gastos, visualización de gráficos y estadísticas, establecimiento de presupuestos, y análisis de tendencias financieras para ayudar a los usuarios a tomar mejores decisiones económicas."
     },
     {
       id: "paso-perfecto",
@@ -92,6 +123,10 @@ const Projects = () => {
       technologies: ["React", "TypeScript", "Tailwind", "Vite"],
       githubUrl: "https://github.com/samuelbonifacio015/PasoPerfecto",
       liveUrl: "https://paso-perfecto.vercel.app/",
+      objective: "Crear una aplicación web que motive y ayude a los usuarios a mantener un estilo de vida activo mediante el seguimiento detallado de su actividad física diaria y el establecimiento de metas personales.",
+      problem: "Las personas que buscan mejorar su condición física necesitan una herramienta simple y accesible para registrar y visualizar su progreso, sin la complejidad de aplicaciones móviles o dispositivos especializados.",
+      technicalApproach: "Desarrollo con React y TypeScript para una base sólida y mantenible, Tailwind CSS para un diseño moderno y responsive, y Vite para un desarrollo ágil. La aplicación utiliza componentes funcionales con hooks para gestión de estado y efectos secundarios.",
+      extendedDescription: "PasoPerfecto permite registrar pasos, distancia recorrida, tiempo de actividad y calorías quemadas. Incluye visualización de estadísticas diarias y semanales, establecimiento de metas personalizadas, y un sistema de logros para mantener la motivación del usuario."
     },
     {
       id: "agua-connect",
@@ -103,7 +138,11 @@ const Projects = () => {
       date: "Marzo - Julio 2025",
       technologies: ["HTML", "CSS", "JavaScript"],
       githubUrl: "https://github.com/samuelbonifacio015/AguaConnect",
-      liveUrl: "https://agua-connect-nu.vercel.app/"
+      liveUrl: "https://agua-connect-nu.vercel.app/",
+      objective: "Desarrollar una landing page atractiva y funcional para una empresa de servicios de agua potable, enfocada en convertir visitantes en clientes mediante un diseño persuasivo y una experiencia de usuario optimizada.",
+      problem: "Las empresas de servicios necesitan una presencia web profesional que comunique efectivamente sus servicios, genere confianza y facilite el contacto con clientes potenciales, sin requerir una inversión en desarrollo complejo.",
+      technicalApproach: "Landing page desarrollada con HTML5 semántico para SEO, CSS3 con animaciones suaves y diseño responsive, y JavaScript para interactividad como formularios de contacto, navegación suave y efectos visuales que mejoran la experiencia del usuario.",
+      extendedDescription: "AguaConnect presenta una landing page moderna con secciones de hero, servicios, beneficios, testimonios y formulario de contacto. El diseño prioriza la claridad del mensaje, la facilidad de navegación y la conversión de visitantes en leads."
     },
   ];
 
@@ -124,18 +163,27 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {projects.map((project, index) => (
             <div
               key={project.id || index}
               className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
               style={{ transitionDelay: `${200 + index * 100}ms` }}
             >
-              <ProjectCard {...project} />
+              <ProjectGridCard
+                {...project}
+                onClick={() => handleOpenModal(project)}
+              />
             </div>
           ))}
         </div>
       </div>
+
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </section>
   );
 };

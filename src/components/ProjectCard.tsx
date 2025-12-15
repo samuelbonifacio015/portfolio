@@ -16,6 +16,12 @@ export interface ProjectProps {
     label: string;
     url: string;
   }>;
+  // Nuevos campos para descripción extendida
+  extendedDescription?: string;
+  objective?: string;
+  problem?: string;
+  technicalApproach?: string;
+  images?: string[]; // Array de imágenes para el carrusel (preparado para futuro)
 }
 
 const ProjectCard = ({ 
@@ -23,7 +29,7 @@ const ProjectCard = ({
   title, 
   subtitle, 
   description, 
-  logo, 
+  logo: _logo, 
   image,
   date, 
   technologies,

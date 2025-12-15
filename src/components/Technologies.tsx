@@ -38,7 +38,7 @@ const Technologies = () => {
     },
     {
       name: "Backend",
-      technologies: ["Node.js", "Express", "MongoDB", "SQL", "C++", "Python", "Java", "C#"],
+      technologies: ["MongoDB", "SQL", "C++", "Python", "Java", "C#", "Spring Boot", ".NET"],
     },
     {
       name: "DevOps",

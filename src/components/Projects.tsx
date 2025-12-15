@@ -53,8 +53,8 @@ const Projects = () => {
       title: "WeRide",
       subtitle: "Alquiler de Vehículos",
       description: "Plataforma web para alquilar vehículos. Desarrollado con Angular y REST API con Java SpringBoot.",
-      logo: "/utils/WeRide.png",
-      image: "/utils/WeRide.png",
+      logo: "/projects/WeRide/WeRide.png",
+      image: "/projects/WeRide/WeRide.png",
       date: "Setiembre - En desarrollo",
       technologies: ["Angular", "TypeScript", "Java", "Spring Boot"],
       githubUrl: "https://github.com/OpenSource-Grupo-4/Frontend-WeRide",
@@ -62,7 +62,13 @@ const Projects = () => {
       objective: "Desarrollar una plataforma web completa para facilitar el alquiler de vehículos, conectando propietarios con usuarios que necesitan transporte temporal de manera segura y eficiente.",
       problem: "La falta de una plataforma centralizada y confiable para el alquiler de vehículos dificulta el proceso tanto para propietarios como para usuarios, generando desconfianza y procesos manuales ineficientes.",
       technicalApproach: "Arquitectura frontend con Angular para una experiencia de usuario reactiva y moderna, combinada con una API REST robusta desarrollada en Java SpringBoot que garantiza seguridad, escalabilidad y manejo eficiente de transacciones y reservas.",
-      extendedDescription: "WeRide es una solución integral que incluye sistema de autenticación, gestión de reservas, pagos integrados, y un panel de administración completo. La aplicación prioriza la seguridad de los datos y la experiencia del usuario en cada interacción."
+      extendedDescription: "WeRide es una solución integral que incluye sistema de autenticación, gestión de reservas, pagos integrados, y un panel de administración completo. La aplicación prioriza la seguridad de los datos y la experiencia del usuario en cada interacción.",
+      images: [
+        "/projects/WeRide/WeRide.png",
+        "/projects/WeRide/WeRide1.png",
+        "/projects/WeRide/WeRide2.png",
+        "/projects/WeRide/WeRide3.png"
+      ]
     },
     {
       id: "cultivapp",

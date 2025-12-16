@@ -53,10 +53,10 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
         <DialogHeader className="px-4 sm:px-6 pt-4 sm:pt-6 pb-3 sm:pb-4 border-b border-border">
           <div className="flex items-start justify-between gap-3 sm:gap-4">
             <div className="flex-1 space-y-1 min-w-0">
-              <DialogTitle className="text-xl sm:text-2xl font-bold text-foreground truncate">
+              <DialogTitle className="text-2xl sm:text-2xl font-bold text-foreground truncate text-center">
                 {project.title}
               </DialogTitle>
-              <p className="text-sm sm:text-base font-medium text-primary">
+              <p className="text-lg sm:text-base font-semibold text-primary text-center">
                 {project.subtitle}
               </p>
             </div>

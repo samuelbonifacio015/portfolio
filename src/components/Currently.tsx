@@ -26,24 +26,6 @@ export default function Currently() {
             </button>
           </li>
           <li>
-            <span className="font-semibold text-white/80">Investigando:</span>{" "}
-            <button
-              onClick={() => scrollToSection("#")}
-              className="text-primary hover:underline font-medium transition-colors"
-            >
-              AI/ML (por mi cuenta)
-            </button>
-          </li>
-          <li>
-            <span className="font-semibold text-white/80">Trabajando en:</span>{" "}
-            <button
-              onClick={() => scrollToSection("#")}
-              className="text-primary hover:underline font-medium transition-colors"
-            >
-              Libreria JSR
-            </button>
-          </li>
-          <li>
             <span className="font-semibold text-white/80">Construyendo:</span>{" "}
             <button
               onClick={() => scrollToSection("projects")}
@@ -51,17 +33,6 @@ export default function Currently() {
             >
               WeRide
             </button>
-          </li>
-          <li>
-            <span className="font-semibold text-white/80">Leyendo:</span>{" "}
-            <a
-              href="/reading-list?filter=Berkeley+Research"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline font-medium transition-colors"
-            >
-              Lista de lectura 
-            </a>
           </li>
         </ul>
       </div>

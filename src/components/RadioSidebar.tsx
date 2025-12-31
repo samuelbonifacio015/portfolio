@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { name: 'Inicio', href: '#home', id: 'user' },
+  { name: 'Inicio', href: '#home', id: 'home' },
   { name: 'Tecnologías', href: '#technologies', id: 'technologies' },
   { name: 'Proyectos', href: '#projects', id: 'projects' },
   { name: 'Conocimientos', href: '#knowledge', id: 'knowledge' },
@@ -14,10 +14,10 @@ interface RadioSidebarProps {
 }
 
 const RadioSidebar = ({ isMobile }: RadioSidebarProps) => {
-  const [activeSection, setActiveSection] = useState('user');
+  const [activeSection, setActiveSection] = useState('home');
 
   const icons = {
-    user: (
+    home: (
       <svg className="text-2xl" xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24">
         <path fill="currentColor" d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z" />
       </svg>
@@ -45,14 +45,29 @@ const RadioSidebar = ({ isMobile }: RadioSidebarProps) => {
     ),
   };
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, id: string) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(id);
-    }
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 100;
+
+      for (const item of navItems) {
+        const element = document.querySelector(item.href);
+        if (element) {
+          const offsetTop = (element as HTMLElement).offsetTop;
+          const offsetBottom = offsetTop + (element as HTMLElement).offsetHeight;
+
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(item.id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   if (isMobile) return null;
 
@@ -60,33 +75,17 @@ const RadioSidebar = ({ isMobile }: RadioSidebarProps) => {
     <div className="fixed left-2 sm:left-3 md:left-4 top-1/2 -translate-y-1/2 z-50 transition-all duration-500 ease-in-out">
       <article className="border border-border w-14 sm:w-16 ease-in-out duration-500 left-0 rounded-2xl inline-block shadow-lg shadow-black/15 bg-card/95 backdrop-blur-xl">
         {navItems.map((item) => (
-          <label
+          <a
             key={item.id}
-            htmlFor={item.id}
+            href={item.href}
             className={cn(
-              'has-[:checked]:shadow-lg relative w-full h-12 sm:h-16 p-3 sm:p-4 ease-in-out duration-300 border-solid border-border/10 has-[:checked]:border-primary/50 group flex flex-row gap-3 items-center justify-center text-foreground/80 rounded-xl cursor-pointer',
-              'hover:text-foreground hover:bg-foreground/5'
+              'has-[:checked]:shadow-lg relative w-full h-12 sm:h-16 p-3 sm:p-4 ease-in-out duration-300 border-solid border-border/10 has-[:checked]:border-primary/50 group flex flex-row gap-3 items-center justify-center text-foreground/80 rounded-xl cursor-pointer transition-all',
+              'hover:text-foreground hover:bg-foreground/5',
+              activeSection === item.id ? 'text-primary bg-foreground/5' : ''
             )}
           >
-            <input
-              className="hidden"
-              type="radio"
-              name="path"
-              id={item.id}
-              checked={activeSection === item.id}
-              onChange={() => setActiveSection(item.id)}
-            />
-            <a
-              href={item.href}
-              className={cn(
-                'peer-hover/expand:scale-125 peer-checked/expand:scale-125 peer-checked/expand:text-primary ease-in-out duration-300 text-xl sm:text-2xl',
-                activeSection === item.id ? 'text-primary scale-125' : ''
-              )}
-              onClick={(e) => handleNavClick(e, item.href, item.id)}
-            >
-              {icons[item.id as keyof typeof icons]}
-            </a>
-          </label>
+            {icons[item.id as keyof typeof icons]}
+          </a>
         ))}
       </article>
     </div>

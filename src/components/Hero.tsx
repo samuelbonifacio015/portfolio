@@ -11,7 +11,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col items-center justify-center relative px-4 py-20"
+      className="min-h-screen flex flex-col items-center justify-center relative px-4 py-20 scroll-mt-20"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-background to-background z-[-1]"></div>
       

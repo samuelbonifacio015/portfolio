@@ -156,7 +156,7 @@ const Projects = () => {
     <section
       id="projects"
       ref={sectionRef}
-      className="section-padding px-4 relative"
+      className="section-padding px-4 relative scroll-mt-20"
     >
       <div className="container mx-auto max-w-6xl">
         <div className={`space-y-4 text-center mb-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>

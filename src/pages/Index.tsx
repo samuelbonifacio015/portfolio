@@ -34,7 +34,7 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       <div className={cn(
         'mx-auto transition-all duration-300',
-        'max-w-[75%] px-4 py-20 md:px-6 md:py-20 lg:px-8 lg:py-24'
+        'max-w-[75%] px-4 py-20 md:px-6 md: max-w-[100%] md:py-20 lg:px-8 lg:py-24'
       )}>
       <Navbar isMobile={isMobile} />
       <RadioSidebar isMobile={isMobile} />

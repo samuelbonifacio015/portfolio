@@ -20,15 +20,15 @@ const Hero = () => {
       
       <div className="container mx-auto max-w-4xl">
         <div className={`transition-all duration-1000 ease-[cubic-bezier(0.4,0,0.2,1)] ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}> 
-          <div className="glass-card rounded-2xl p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-16 shadow-2xl">
+          <div className="glass-card rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center justify-between gap-8 sm:gap-10 md:gap-12 lg:gap-16 shadow-2xl">
             <div className="flex-1 flex flex-col items-center md:items-start justify-center">
-              <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary/90 mb-4 animate-fade-in">
+              <span className="inline-block px-3 py-1 text-xs sm:text-sm font-medium rounded-full bg-primary/10 text-primary/90 mb-4 sm:mb-6 animate-fade-in">
                 Desarrollador Web UX/UI
               </span>
-              <h1 className="text-5xl md:text-7xl font-bold mb-2 tracking-tight text-white font-display text-center md:text-left">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4 tracking-tight text-white font-display text-center md:text-left leading-tight">
                 Samuel Bonifacio<span className="text-primary">.</span>
               </h1>
-              <p className="text-lg md:text-xl text-white/80 mb-8 max-w-md animate-fade-in text-center md:text-left">
+              <p className="text-base sm:text-lg md:text-xl text-white/80 mb-6 sm:mb-8 max-w-md animate-fade-in text-center md:text-left">
                 Ingeniero de software especializado en frontend y frameworks ágiles.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full">
@@ -46,12 +46,11 @@ const Hero = () => {
                 </a>
               </div>
             </div>
-            <div className="flex-1 hidden md:flex justify-end mt-8 md:mt-0">
+            <div className="flex-1 flex justify-center md:justify-end mt-6 md:mt-0">
               <img
                 src="/utils/Samuel Bonifacio.jpeg"
                 alt="Samuel Bonifacio"
-                className="w-80 h-80 object-cover rounded-3xl border-4 border-primary shadow-2xl"
-                style={{ maxWidth: '340px', maxHeight: '340px' }}
+                className="w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-primary shadow-2xl max-w-[340px] max-h-[340px]"
               />
             </div>
           </div>

@@ -10,7 +10,7 @@ const colorMap: Record<string, string> = {
   "React": "bg-blue-500/10 text-blue-400 border-blue-500/70",
   "Angular": "bg-red-500/10 text-red-400 border-red-500/30",
   "Vue": "bg-green-500/10 text-green-400 border-green-500/30",
-  "Next.js": "bg-black/20 text-white/90 border-white/20",
+  "Next.js": "bg-black/20 text-foreground dark:text-white/90 border-border dark:border-white/20",
   "TypeScript": "bg-blue-700/10 text-blue-400 border-blue-700/70",
   "JavaScript": "bg-yellow-500/10 text-yellow-300 border-yellow-500/30",
   "MongoDB": "bg-green-600/10 text-green-400 border-green-600/30",

@@ -65,15 +65,15 @@ const Contact = () => {
     <section
       id="contact"
       ref={sectionRef}
-      className="section-padding px-4 relative bg-black/20 scroll-mt-20"
+      className="section-padding px-4 relative bg-muted/20 dark:bg-black/20 scroll-mt-20"
     >
       <div className="container mx-auto max-w-6xl">
         <div className={`space-y-4 text-center mb-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>
-          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary/90">
+          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary">
             Contacto
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-white">¿Hablamos?</h2>
-          <p className="text-white/70 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">¿Hablamos?</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Contacta conmigo para colaboraciones o si tienes alguna pregunta sobre mi trabajo.
           </p>
         </div>
@@ -83,11 +83,11 @@ const Contact = () => {
             className={`glass-card rounded-xl p-6 md:col-span-2 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
             style={{ transitionDelay: '200ms' }}
           >
-            <h3 className="text-xl font-semibold text-white mb-6">Envíame un mensaje</h3>
+            <h3 className="text-xl font-semibold text-foreground mb-6">Envíame un mensaje</h3>
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-white/70 mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-1">
                     Nombre
                   </label>
                   <input
@@ -95,12 +95,12 @@ const Contact = () => {
                     id="name"
                     name="user_name"
                     required
-                    className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-white"
+                    className="w-full px-4 py-2 bg-background dark:bg-white/5 border border-input dark:border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-foreground dark:text-white"
                     placeholder="Tu nombre"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-white/70 mb-1">
+                  <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-1">
                     Email
                   </label>
                   <input
@@ -108,13 +108,13 @@ const Contact = () => {
                     id="email"
                     name="user_email"
                     required
-                    className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-white"
+                    className="w-full px-4 py-2 bg-background dark:bg-white/5 border border-input dark:border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-foreground dark:text-white"
                     placeholder="tu@email.com"
                   />
                 </div>
               </div>
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-white/70 mb-1">
+                <label htmlFor="subject" className="block text-sm font-medium text-muted-foreground mb-1">
                   Asunto
                 </label>
                 <input
@@ -122,12 +122,12 @@ const Contact = () => {
                   id="subject"
                   name="subject"
                   required
-                  className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-white"
+                  className="w-full px-4 py-2 bg-background dark:bg-white/5 border border-input dark:border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-foreground dark:text-white"
                   placeholder="Asunto de tu mensaje"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-white/70 mb-1">
+                <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-1">
                   Mensaje
                 </label>
                 <textarea
@@ -135,7 +135,7 @@ const Contact = () => {
                   name="message"
                   rows={4}
                   required
-                  className="w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-white resize-none"
+                  className="w-full px-4 py-2 bg-background dark:bg-white/5 border border-input dark:border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-foreground dark:text-white resize-none"
                   placeholder="Tu mensaje..."
                 />
               </div>
@@ -156,16 +156,16 @@ const Contact = () => {
             className={`glass-card rounded-xl p-6 flex flex-col items-center text-center transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
             style={{ transitionDelay: '300ms' }}
           >
-            <h3 className="text-xl font-semibold text-white mb-6">Información de contacto</h3>
+            <h3 className="text-xl font-semibold text-foreground mb-6">Información de contacto</h3>
             <div className="space-y-4 w-full">
               <div className="flex flex-col items-center gap-2 w-full">
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-primary shrink-0" />
                   <div className="text-left md:text-left">
-                    <p className="text-sm text-white/70">Email</p>
+                    <p className="text-sm text-muted-foreground">Email</p>
                     <a 
                       href="mailto:samuelbonifacio015@gmail.com" 
-                      className="text-white hover:text-primary transition-colors break-all"
+                      className="text-foreground hover:text-primary transition-colors break-all"
                     >
                       samuelbonifacio015@gmail.com
                     </a>
@@ -176,20 +176,20 @@ const Contact = () => {
                 <div className="flex items-center gap-3">
                   <MapPin className="h-5 w-5 text-primary shrink-0" />
                   <div className="text-left">
-                    <p className="text-sm text-white/70">Ubicación</p>
-                    <p className="text-white">Lima, Perú</p>
+                    <p className="text-sm text-muted-foreground">Ubicación</p>
+                    <p className="text-foreground">Lima, Perú</p>
                   </div>
                 </div>
               </div>
               
-              <div className="pt-4 mt-6 border-t border-white/10 w-full">
-                <p className="text-sm text-white/70 mb-3">Sígueme en</p>
+              <div className="pt-4 mt-6 border-t border-border w-full">
+                <p className="text-sm text-muted-foreground mb-3">Sígueme en</p>
                 <div className="flex justify-center space-x-4">
                   <a
                     href="https://github.com/samuelbonifacio015"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300"
+                    className="h-10 w-10 rounded-full bg-muted/50 dark:bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300"
                     aria-label="GitHub"
                   >
                     <Github className="h-5 w-5" />
@@ -198,7 +198,7 @@ const Contact = () => {
                     href="https://www.linkedin.com/in/samuelbonifacio015"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300"
+                    className="h-10 w-10 rounded-full bg-muted/50 dark:bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300"
                     aria-label="LinkedIn"
                   >
                     <Linkedin className="h-5 w-5" />
@@ -218,16 +218,16 @@ const Contact = () => {
                 <div className="h-10 w-10 rounded-full bg-green-500/20 flex items-center justify-center">
                   <Check className="h-6 w-6 text-green-500" />
                 </div>
-                <h3 className="text-xl font-semibold text-white">¡Mensaje enviado!</h3>
+                <h3 className="text-xl font-semibold text-foreground">¡Mensaje enviado!</h3>
               </div>
               <button
                 onClick={() => setShowModal(false)}
-                className="text-white/50 hover:text-white transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <p className="text-white/70">
+            <p className="text-muted-foreground">
               Tu mensaje ha sido enviado correctamente. Te responderé lo antes posible.
             </p>
           </div>

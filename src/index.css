@@ -93,10 +93,18 @@
 
 @layer utilities {
   .glass {
+    @apply bg-white/60 backdrop-blur-md border border-border/60 shadow-sm;
+  }
+
+  .dark .glass {
     @apply bg-black/20 backdrop-blur-md border border-white/10 shadow-sm;
   }
 
   .glass-card {
+    @apply bg-card/95 backdrop-blur-sm border border-border shadow-sm;
+  }
+
+  .dark .glass-card {
     @apply bg-black/40 backdrop-blur-sm border border-white/10 shadow-md;
   }
 

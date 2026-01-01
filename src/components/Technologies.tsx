@@ -54,15 +54,15 @@ const Technologies = () => {
     <section
       id="technologies"
       ref={sectionRef}
-      className="section-padding px-4 relative bg-black/30 scroll-mt-20"
+      className="section-padding px-4 relative bg-muted/30 dark:bg-black/30 scroll-mt-20"
     >
       <div className="container mx-auto max-w-6xl">
         <div className={`space-y-4 text-center mb-8 sm:mb-10 md:mb-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>
-          <span className="inline-block px-3 py-1 text-xs sm:text-sm font-medium rounded-full bg-primary/10 text-primary/90">
+          <span className="inline-block px-3 py-1 text-xs sm:text-sm font-medium rounded-full bg-primary/20 text-primary">
             Stack Tecnológico
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Tecnologías</h2>
-          <p className="text-sm sm:text-base text-white/70 max-w-2xl mx-auto px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">Tecnologías</h2>
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">
             Herramientas y tecnologías con las que trabajo a diario para desarrollar soluciones modernas y escalables.
           </p>
         </div>
@@ -74,7 +74,7 @@ const Technologies = () => {
               className={`glass-card rounded-xl p-5 sm:p-6 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
               style={{ transitionDelay: `${200 + index * 100}ms` }}
             >
-              <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">{category.name}</h3>
+              <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-3 sm:mb-4">{category.name}</h3>
               <div className="flex flex-wrap gap-2 sm:gap-2.5">
                 {category.technologies.map((tech) => (
                   <TechBadge 

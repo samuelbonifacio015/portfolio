@@ -160,11 +160,11 @@ const Projects = () => {
     >
       <div className="container mx-auto max-w-6xl">
         <div className={`space-y-4 text-center mb-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>
-          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary/90">
+          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary">
             Portfolio
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-white">Mis Proyectos</h2>
-          <p className="text-white/70 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Mis Proyectos</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Mi colección personal de proyectos que he desarrollado a través del tiempo.
           </p>
         </div>

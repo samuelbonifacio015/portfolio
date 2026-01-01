@@ -15,9 +15,9 @@ export default function Currently() {
     <section className="max-w-2xl mx-auto my-12 px-4">
       <div className="glass-card rounded-2xl p-8 shadow-xl">
         <h2 className="text-3xl font-bold mb-6 text-primary">Actualmente estoy...</h2>
-        <ul className="text-white/90 text-lg">
+        <ul className="text-foreground text-lg">
           <li>
-            <span className="font-semibold text-white/80">Estudiando en:</span>{" "}
+            <span className="font-semibold text-muted-foreground">Estudiando en:</span>{" "}
             <button
               onClick={() => scrollToSection("#")}
               className="text-primary hover:underline font-medium transition-colors"
@@ -26,7 +26,7 @@ export default function Currently() {
             </button>
           </li>
           <li>
-            <span className="font-semibold text-white/80">Construyendo:</span>{" "}
+            <span className="font-semibold text-muted-foreground">Construyendo:</span>{" "}
             <button
               onClick={() => scrollToSection("projects")}
               className="text-primary hover:underline font-medium transition-colors"

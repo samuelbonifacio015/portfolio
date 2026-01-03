@@ -46,7 +46,7 @@ const Technologies = () => {
     },
     {
       name: "Herramientas",
-      technologies: ["VSCode", "Figma", "Postman"],
+      technologies: ["Cursor", "Figma", "Postman", "TestSprite MCP", "Claude Code"],
     }
   ];
 

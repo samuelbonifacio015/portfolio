@@ -13,7 +13,8 @@ interface NavbarProps {
 }
 
 const mobileNavLinks: NavLink[] = [
-  { name: 'Inicio', href: '#home' },
+  { name: 'Inicio', href: '/' },
+  { name: 'Blog', href: '/blog' },
   { name: 'Tecnologías', href: '#technologies' },
   { name: 'Proyectos', href: '#projects' },
   { name: 'Conocimientos', href: '#knowledge' },
@@ -21,7 +22,7 @@ const mobileNavLinks: NavLink[] = [
 ];
 
 const personalNavLinks: NavLink[] = [
-  { name: 'Blog', href: '#blog' },
+  { name: 'Blog', href: '/blog' },
 ];
 
 const Navbar = ({ isMobile }: NavbarProps) => {

@@ -3,9 +3,26 @@ import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ThemeToggle from '@/components/ThemeToggle';
 
+interface NavLink {
+  name: string;
+  href: string;
+}
+
 interface NavbarProps {
   isMobile: boolean;
 }
+
+const mobileNavLinks: NavLink[] = [
+  { name: 'Inicio', href: '#home' },
+  { name: 'Tecnologías', href: '#technologies' },
+  { name: 'Proyectos', href: '#projects' },
+  { name: 'Conocimientos', href: '#knowledge' },
+  { name: 'Contacto', href: '#contact' },
+];
+
+const personalNavLinks: NavLink[] = [
+  { name: 'Blog', href: '#blog' },
+];
 
 const Navbar = ({ isMobile }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,14 +37,6 @@ const Navbar = ({ isMobile }: NavbarProps) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Inicio', href: '#home' },
-    { name: 'Tecnologías', href: '#technologies' },
-    { name: 'Proyectos', href: '#projects' },
-    { name: 'Conocimientos', href: '#knowledge' },
-    { name: 'Contacto', href: '#contact' },
-  ];
-
   return (
     <header
       className={cn(
@@ -37,11 +46,25 @@ const Navbar = ({ isMobile }: NavbarProps) => {
           : 'bg-transparent'
       )}
     >
-      <div className="container mx-auto px-3 sm:px-4 md:px-6">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 relative">
         <div className="flex items-center justify-between">
           <a href="#home" className="text-lg sm:text-xl font-display font-bold tracking-tight text-foreground">
             <span className="text-primary">samuel</span>.dev
           </a>
+
+          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-2">
+            <nav className="flex items-center gap-1 sm:gap-2">
+              {personalNavLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-xs sm:text-sm font-medium text-primary/90 hover:text-primary hover:bg-primary/10 transition-all duration-200 px-3 py-2 rounded-lg"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+          </div>
 
           {isMobile ? (
             <div className="flex items-center gap-1 sm:gap-2">
@@ -55,14 +78,16 @@ const Navbar = ({ isMobile }: NavbarProps) => {
               </button>
             </div>
           ) : (
-            <ThemeToggle />
+            <div className="flex items-center gap-4">
+              <ThemeToggle />
+            </div>
           )}
         </div>
 
         {isMobile && isMobileMenuOpen && (
           <nav className="backdrop-blur-xl rounded-lg mt-3 sm:mt-4 py-3 sm:py-4 px-2 shadow-lg border border-border bg-card/95 animate-in fade-in slide-down-from-top-2 duration-300">
             <div className="flex flex-col space-y-0 sm:space-y-1">
-              {navLinks.map((link) => (
+              {mobileNavLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}

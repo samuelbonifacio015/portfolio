@@ -65,7 +65,7 @@ const Contact = () => {
     <section
       id="contact"
       ref={sectionRef}
-      className="section-padding px-4 relative bg-muted/20 dark:bg-black/20 scroll-mt-20"
+      className="section-padding px-4 relative bg-white dark:bg-black scroll-mt-20"
     >
       <div className="container mx-auto max-w-6xl">
         <div className={`space-y-4 text-center mb-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>

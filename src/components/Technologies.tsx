@@ -54,7 +54,7 @@ const Technologies = () => {
     <section
       id="technologies"
       ref={sectionRef}
-      className="section-padding px-4 relative bg-muted/30 dark:bg-black/30 scroll-mt-20"
+      className="section-padding px-4 relative bg-white dark:bg-black scroll-mt-20"
     >
       <div className="container mx-auto max-w-6xl">
         <div className={`space-y-4 text-center mb-8 sm:mb-10 md:mb-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>

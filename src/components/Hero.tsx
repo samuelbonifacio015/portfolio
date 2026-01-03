@@ -23,13 +23,13 @@ const Hero = () => {
           <div className="glass-card rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center justify-between gap-8 sm:gap-10 md:gap-12 lg:gap-16 shadow-2xl">
             <div className="flex-1 flex flex-col items-center md:items-start justify-center">
               <span className="inline-block px-3 py-1 text-xs sm:text-sm font-medium rounded-full bg-primary/20 text-primary mb-4 sm:mb-6 animate-fade-in">
-                Desarrollador Web UX/UI
+                Desarrollador Full-Stack
               </span>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4 tracking-tight text-foreground font-display text-center md:text-left leading-tight">
                 Samuel Bonifacio<span className="text-primary">.</span>
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-md animate-fade-in text-center md:text-left">
-                Ingeniero de software especializado en frontend y frameworks ágiles.
+                Ingeniero de software especializado en desarrollo Full-Stack e Inteligencia Artificial.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full">
                 <a

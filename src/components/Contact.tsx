@@ -157,39 +157,39 @@ const Contact = () => {
             style={{ transitionDelay: '300ms' }}
           >
             <h3 className="text-xl font-semibold text-foreground mb-6">Información de contacto</h3>
-            <div className="space-y-4 w-full">
-              <div className="flex flex-col items-center gap-2 w-full">
-                <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-primary shrink-0" />
-                  <div className="text-left md:text-left">
-                    <p className="text-sm text-muted-foreground">Email</p>
-                    <a 
-                      href="mailto:samuelbonifacio015@gmail.com" 
-                      className="text-foreground hover:text-primary transition-colors break-all"
-                    >
-                      samuelbonifacio015@gmail.com
-                    </a>
-                  </div>
+            <div className="space-y-5 w-full">
+              <div className="flex items-center gap-4">
+                <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Mail className="h-5 w-5 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-muted-foreground mb-1">Email</p>
+                  <a 
+                    href="mailto:samuelbonifacio019@gmail.com" 
+                    className="text-foreground hover:text-primary transition-colors break-all font-medium"
+                  >
+                    samuelbonifacio019@gmail.com
+                  </a>
                 </div>
               </div>
-              <div className="flex flex-col items-start gap-2 w-full">
-                <div className="flex items-center gap-3">
-                  <MapPin className="h-5 w-5 text-primary shrink-0" />
-                  <div className="text-left">
-                    <p className="text-sm text-muted-foreground">Ubicación</p>
-                    <p className="text-foreground">Lima, Perú</p>
-                  </div>
+              <div className="flex items-center gap-4">
+                <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <MapPin className="h-5 w-5 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-muted-foreground mb-1">Ubicación</p>
+                  <p className="text-foreground font-medium">Lima, Perú</p>
                 </div>
               </div>
               
-              <div className="pt-4 mt-6 border-t border-border w-full">
-                <p className="text-sm text-muted-foreground mb-3">Sígueme en</p>
+              <div className="pt-5 mt-6 border-t border-border w-full">
+                <p className="text-sm font-medium text-muted-foreground mb-4">Sígueme en</p>
                 <div className="flex justify-center space-x-4">
                   <a
                     href="https://github.com/samuelbonifacio015"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="h-10 w-10 rounded-full bg-muted/50 dark:bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300"
+                    className="h-12 w-12 rounded-xl bg-slate-100 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 border border-slate-200 dark:border-white/10"
                     aria-label="GitHub"
                   >
                     <Github className="h-5 w-5" />
@@ -198,7 +198,7 @@ const Contact = () => {
                     href="https://www.linkedin.com/in/samuelbonifacio015"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="h-10 w-10 rounded-full bg-muted/50 dark:bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300"
+                    className="h-12 w-12 rounded-xl bg-slate-100 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 border border-slate-200 dark:border-white/10"
                     aria-label="LinkedIn"
                   >
                     <Linkedin className="h-5 w-5" />

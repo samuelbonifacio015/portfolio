@@ -17,7 +17,8 @@ const BlogCard = ({ post, onTagClick, delay = 0 }: BlogCardProps) => {
         "hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10",
         "hover:scale-[1.02] hover:-translate-y-1",
         "transition-all duration-300",
-        "opacity-0 animate-fade-in"
+        "opacity-0 animate-fade-in",
+        "max-w-[70%] mx-auto"
       )}
       style={{ animationDelay: `${delay}ms` }}
     >

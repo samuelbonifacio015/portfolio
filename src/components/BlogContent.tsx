@@ -7,7 +7,7 @@ interface BlogContentProps {
 
 const BlogContent = ({ content }: BlogContentProps) => {
   return (
-    <article className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl prose-img:shadow-lg prose-blockquote:border-l-4 prose-blockquote:border-primary/30 prose-blockquote:bg-primary/5 prose-blockquote:pl-4 prose-blockquote:py-2 prose-blockquote:my-4">
+    <article className="prose prose-slate dark:prose-invert prose-headings:font-bold prose-a:text-primary hover:prose-a:text-primary/80 prose-img:rounded-xl prose-img:shadow-lg prose-blockquote:border-l-4 prose-blockquote:border-primary/30 prose-blockquote:bg-primary/5 prose-blockquote:pl-4 prose-blockquote:py-2 prose-blockquote:my-4 max-w-[70%] mx-auto">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{

@@ -69,14 +69,14 @@ const BlogPostPage = () => {
         <article className="mt-12 sm:mt-16 md:mt-20">
           <button
             onClick={() => navigate('/blog')}
-            className="mb-6 sm:mb-8 flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            className="m-auto sm:mb-8 flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             Volver al blog
           </button>
 
           {post.image && (
-            <div className="relative w-[75%] m-auto aspect-video overflow-hidden rounded-xl sm:rounded-2xl shadow-xl sm:mb-8">
+            <div className="relative w-[55%] m-auto aspect-video overflow-hidden rounded-xl sm:rounded-2xl shadow-xl sm:mb-8">
               <img
                 src={post.image}
                 alt={post.title}

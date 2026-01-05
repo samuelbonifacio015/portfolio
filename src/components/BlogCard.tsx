@@ -1,4 +1,4 @@
-import { Calendar, Clock } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import TechBadge from './TechBadge';
 import { BlogPost } from '@/lib/blogTypes';
@@ -37,7 +37,7 @@ const BlogCard = ({ post, onTagClick, delay = 0 }: BlogCardProps) => {
         <div className="flex items-center gap-2 flex-wrap">
           <TechBadge
             name={post.category}
-            className="text-xs py-1 px-2.5"
+            className="text-xs py-1 px-2.5 bg-gray-700 text-gray-50 border-gray-700 dark:bg-gray-700/10 dark:text-gray-400 dark:border-gray-200/50"
           />
           <div className="flex items-center gap-1 text-xs text-muted-foreground">
             <Calendar className="h-3.5 w-3.5" />
@@ -48,10 +48,6 @@ const BlogCard = ({ post, onTagClick, delay = 0 }: BlogCardProps) => {
                 year: 'numeric'
               })}
             </time>
-          </div>
-          <div className="flex items-center gap-1 text-xs text-muted-foreground">
-            <Clock className="h-3.5 w-3.5" />
-            <span>{post.readTime}</span>
           </div>
         </div>
 

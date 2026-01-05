@@ -83,8 +83,6 @@ function parseMarkdownPost(content: string, slug: string): BlogPost | null {
           .replace(/[\[\]]/g, '')
           .split(',')
           .map((t: string) => t.trim().replace(/['"]/g, ''));
-      } else if (key === 'readTime') {
-        parsedValue = parsedValue;
       } else {
         parsedValue = parsedValue.replace(/^["']|["']$/g, '');
       }
@@ -99,7 +97,6 @@ function parseMarkdownPost(content: string, slug: string): BlogPost | null {
     date: frontmatter.date || new Date().toISOString().split('T')[0],
     category: frontmatter.category || 'General',
     excerpt: frontmatter.excerpt || '',
-    readTime: frontmatter.readTime || '5 min',
     image: frontmatter.image || '',
     tags: frontmatter.tags || [],
     content: body,

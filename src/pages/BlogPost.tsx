@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Calendar, Clock } from 'lucide-react';
+import { ArrowLeft, Calendar } from 'lucide-react';
 import BlogContent from '@/components/BlogContent';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
@@ -76,11 +76,11 @@ const BlogPostPage = () => {
           </button>
 
           {post.image && (
-            <div className="relative w-full aspect-video overflow-hidden rounded-xl sm:rounded-2xl shadow-xl mb-6 sm:mb-8">
+            <div className="relative w-[75%] m-auto aspect-video overflow-hidden rounded-xl sm:rounded-2xl shadow-xl sm:mb-8">
               <img
                 src={post.image}
                 alt={post.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover "
               />
             </div>
           )}
@@ -105,10 +105,6 @@ const BlogPostPage = () => {
                     year: 'numeric'
                   })}
                 </time>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>{post.readTime}</span>
               </div>
             </div>
 

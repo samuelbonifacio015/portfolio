@@ -3,7 +3,6 @@ title: "El poder de la consistencia en el aprendizaje"
 date: "2025-01-03"
 category: "Reflexiones"
 excerpt: "Hablamos sobre cómo la consistencia diaria puede transformar tu aprendizaje y habilidades de programación más que las sesiones intensivas de estudio."
-readTime: "5 min"
 image: "/utils/SamuelUPC.jpg"
 tags: ["aprendizaje", "consistencia", "desarrollo"]
 ---

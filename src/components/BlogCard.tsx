@@ -27,7 +27,7 @@ const BlogCard = ({ post, onTagClick, delay = 0 }: BlogCardProps) => {
           <img
             src={post.image}
             alt={post.title}
-            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-11"
             loading="lazy"
           />
         </div>
@@ -37,7 +37,7 @@ const BlogCard = ({ post, onTagClick, delay = 0 }: BlogCardProps) => {
         <div className="flex items-center gap-2 flex-wrap">
           <TechBadge
             name={post.category}
-            className="text-xs py-1 px-2.5 bg-gray-700 text-gray-50 border-gray-700 dark:bg-gray-700/10 dark:text-gray-400 dark:border-gray-200/50"
+            className="text-xs py-1 px-2.5 bg-gray-700 text-gray-50 border-gray-700 border dark:bg-gray-700/10 dark:text-gray-400 dark:border-gray-200/50"
           />
           <div className="flex items-center gap-1 text-xs text-muted-foreground">
             <Calendar className="h-3.5 w-3.5" />

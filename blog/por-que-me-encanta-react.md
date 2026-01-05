@@ -3,7 +3,6 @@ title: "Por qué me encanta React"
 date: "2025-01-05"
 category: "Reflexiones"
 excerpt: "Reflexión personal sobre por qué React se convirtió en mi framework favorito y cómo ha transformado mi forma de pensar sobre el desarrollo frontend."
-readTime: "4 min"
 image: "/projects/WeRide/WeRide1.png"
 tags: ["react", "frontend", "javascript"]
 ---

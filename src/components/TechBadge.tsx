@@ -32,7 +32,7 @@ const colorMap: Record<string, string> = {
   "Postman": "bg-orange-500 text-orange-950 border-orange-500 dark:bg-orange-500/10 dark:text-orange-400 dark:border-orange-500/30",
   "Cursor": "bg-indigo-500 text-indigo-950 border-indigo-500 dark:bg-indigo-500/10 dark:text-indigo-400 dark:border-indigo-500/30",
   "TestSprite MCP": "bg-teal-500 text-teal-950 border-teal-500 dark:bg-teal-500/10 dark:text-teal-400 dark:border-teal-500/30",
-  "Claude Code": "bg-gray-700 text-gray-50 border-gray-700 dark:bg-gray-700/10 dark:text-gray-400 dark:border-gray-700/30",
+  "Claude Code": "bg-gray-700 text-gray-50 border-gray-700 dark:bg-gray-700/10 dark:text-gray-400 dark:border-gray-200/60",
 };
 
 const TechBadge = ({ name, className }: TechBadgeProps) => {

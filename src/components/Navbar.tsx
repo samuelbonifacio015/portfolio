@@ -49,7 +49,7 @@ const Navbar = ({ isMobile }: NavbarProps) => {
     >
       <div className="container mx-auto px-3 sm:px-4 md:px-6 relative">
         <div className="flex items-center justify-between">
-          <a href="#home" className="text-lg sm:text-xl font-display font-bold tracking-tight text-foreground">
+          <a href="/" className="text-lg sm:text-xl font-display font-bold tracking-tight text-foreground">
             <span className="text-primary">samuel</span>.dev
           </a>
 
@@ -59,7 +59,7 @@ const Navbar = ({ isMobile }: NavbarProps) => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-xs sm:text-sm font-medium text-primary/90 hover:text-primary hover:bg-primary/10 transition-all duration-200 px-3 py-2 rounded-lg"
+                  className="text-xs sm:text-sm font-bold text-primary/90 hover:text-primary hover:bg-primary/20 transition-all duration-200 px-3 py-2 rounded-lg"
                 >
                   {link.name}
                 </a>

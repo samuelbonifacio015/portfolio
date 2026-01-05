@@ -82,13 +82,13 @@ const Blog = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto transition-all duration-300 max-w-[75%] px-4 py-20 md:px-6 md:max-w-[100%] md:py-20 lg:px-8 lg:py-24">
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
+      <div className="mx-auto transition-all duration-300 max-w-7xl px-4 py-20 md:px-6 md:py-24 lg:px-8 lg:py-28">
         <Navbar isMobile={isMobile} />
 
         <div
           ref={sectionRef}
-          className="mt-12 sm:mt-16 md:mt-20"
+          className="mt-16 sm:mt-20 md:mt-24 space-y-12"
         >
           <BlogHeader
             currentFilter={currentFilter}
@@ -96,31 +96,39 @@ const Blog = () => {
           />
 
           {filteredPosts.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-muted-foreground text-lg">
-                No se encontraron posts con este filtro.
-              </p>
-              <button
-                onClick={() => handleFilterChange('Todos')}
-                className="mt-4 px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all"
-              >
-                Ver todos los posts
-              </button>
+            <div className="text-center py-32">
+              <div className="max-w-md mx-auto space-y-6">
+                <div className="w-20 h-20 mx-auto rounded-full bg-muted flex items-center justify-center">
+                  <span className="text-4xl">📝</span>
+                </div>
+                <p className="text-muted-foreground text-lg font-medium">
+                  No se encontraron posts con este filtro.
+                </p>
+                <button
+                  onClick={() => handleFilterChange('Todos')}
+                  className="mt-4 px-8 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:scale-105"
+                >
+                  Ver todos los posts
+                </button>
+              </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 pb-12">
-              {filteredPosts.map((post, index) => (
-                <div
-                  key={post.slug}
-                  onClick={() => handlePostClick(post.slug)}
-                >
-                  <BlogCard
-                    post={post}
-                    onTagClick={handleTagClick}
-                    delay={index * 100}
-                  />
-                </div>
-              ))}
+            <div className="mx-auto w-full max-w-7xl">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 pb-16">
+                {filteredPosts.map((post, index) => (
+                  <div
+                    key={post.slug}
+                    onClick={() => handlePostClick(post.slug)}
+                    className="transform transition-all duration-300 hover:scale-[1.02]"
+                  >
+                    <BlogCard
+                      post={post}
+                      onTagClick={handleTagClick}
+                      delay={index * 100}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>

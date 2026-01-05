@@ -1,13 +1,15 @@
 import { BlogPost } from './blogTypes';
 
-const postsModules = import.meta.glob('../../blog/*.md', { query: '?raw', import: 'default', eager: true });
+// Import all markdown files from the blog directory
+
+const postsModules = import.meta.glob('/blog/*.md', { as: 'raw', eager: true });
 
 export async function getAllPosts(): Promise<BlogPost[]> {
   const posts: BlogPost[] = [];
 
   for (const path in postsModules) {
     const content = postsModules[path] as string;
-    const slug = path.replace('../../blog/', '').replace('.md', '');
+    const slug = path.replace('/blog/', '').replace('.md', '');
     const post = parseMarkdownPost(content, slug);
     if (post) {
       posts.push(post);
@@ -18,7 +20,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 }
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
-  const path = `../../blog/${slug}.md`;
+  const path = `/blog/${slug}.md`;
   const content = postsModules[path] as string;
 
   if (!content) return null;
@@ -62,7 +64,6 @@ export function getPostsByTag(tag: string): Promise<BlogPost[]> {
 function parseMarkdownPost(content: string, slug: string): BlogPost | null {
   const frontmatterMatch = content.match(/^---\s*([\s\S]*?)\s*---/);
 
-  if (!frontmatterMatch) return null;
 
   const frontmatterText = frontmatterMatch[1];
   const body = content.replace(frontmatterMatch[0], '');
@@ -71,7 +72,8 @@ function parseMarkdownPost(content: string, slug: string): BlogPost | null {
   const lines = frontmatterText.split('\n');
 
   for (const line of lines) {
-    const match = line.match(/^(\w+):\s*(.*)$/);
+    const cleanLine = line.trim(); 
+    const match = cleanLine.match(/^(\w+):\s*(.*)$/);
     if (match) {
       const [, key, value] = match;
       let parsedValue: any = value.trim();
@@ -91,7 +93,7 @@ function parseMarkdownPost(content: string, slug: string): BlogPost | null {
     }
   }
 
-  return {
+  const finalPost = {
     slug,
     title: frontmatter.title || 'Sin título',
     date: frontmatter.date || new Date().toISOString().split('T')[0],
@@ -102,4 +104,6 @@ function parseMarkdownPost(content: string, slug: string): BlogPost | null {
     tags: frontmatter.tags || [],
     content: body,
   };
+
+  return finalPost;
 }

@@ -135,6 +135,27 @@ const Projects = () => {
       extendedDescription: "PasoPerfecto permite registrar pasos, distancia recorrida, tiempo de actividad y calorías quemadas. Incluye visualización de estadísticas diarias y semanales, establecimiento de metas personalizadas, y un sistema de logros para mantener la motivación del usuario."
     },
     {
+      id: "timex-js",
+      title: "Timex.js",
+      subtitle: "Reloj",
+      description: "Aplicación web de reloj con funcionalidades de tiempo real, cronómetro y pomodoro.",
+      logo: "/projects/TimexJS/TimexJS.png",
+      image: "/projects/TimexJS/TimexJS.png",
+      date: "Junio - Enero 2026",
+      technologies: ["React", "TypeScript", "Tailwind", "Vite"],
+      githubUrl: "https://github.com/samuelbonifacio015/Timex.js",
+      liveUrl: "https://timex-js.vercel.app/",
+      objective: "Desarrollar una aplicación web de reloj multifuncional que incluya funcionalidades de tiempo real, cronómetro y técnica pomodoro para mejorar la productividad de los usuarios.",
+      problem: "Los usuarios necesitan herramientas accesibles y fáciles de usar para gestionar su tiempo de manera efectiva, pero muchas aplicaciones existentes son complicadas o requieren instalaciones adicionales.",
+      technicalApproach: "Utilización de React y TypeScript para una estructura sólida y escalable, Tailwind CSS para un diseño atractivo y responsivo, y Vite para un entorno de desarrollo rápido. La aplicación hace uso de hooks para manejar el estado del tiempo y efectos secundarios.",
+      extendedDescription: "Timex.js ofrece un reloj en tiempo real con opciones personalizables, un cronómetro preciso con funciones de inicio, pausa y reinicio, y un temporizador pomodoro que ayuda a los usuarios a dividir su trabajo en intervalos manejables con descansos regulares.",
+      images: [
+        "/projects/TimexJS/TimexJS.png",
+        "/projects/TimexJS/TimexJS2.png",
+        "/projects/TimexJS/TimexJS3.png",
+      ]
+    },
+    {
       id: "agua-connect",
       title: "AguaConnect",
       subtitle: "Landing Page",

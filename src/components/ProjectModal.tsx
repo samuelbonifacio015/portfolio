@@ -187,79 +187,81 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
               )}
             </div>
 
-            {project.technologies && project.technologies.length > 0 && (
-              <div className="space-y-2 sm:space-y-3">
-                <h3 className="text-base sm:text-lg font-semibold text-foreground">Tecnologías</h3>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {project.technologies.map((tech, index) => (
-                    <TechBadge key={index} name={tech} />
-                  ))}
+            <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 pt-2 border-t border-border justify-center items-center">
+              {project.technologies && project.technologies.length > 0 && (
+                <div className="space-y-2 sm:space-y-3 flex-1 flex flex-col items-center">
+                  <h3 className="text-base sm:text-lg font-semibold text-foreground">Tecnologías</h3>
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 justify-center">
+                    {project.technologies.map((tech, index) => (
+                      <TechBadge key={index} name={tech} />
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
 
-            {(project.githubUrl || project.liveUrl || project.links) && (
-              <div className="space-y-2 sm:space-y-3 pt-2 border-t border-border">
-                <h3 className="text-base sm:text-lg font-semibold text-foreground">Enlaces</h3>
-                <div className="flex flex-wrap gap-2 sm:gap-3">
-                  {project.githubUrl && (
-                    <Button
-                      asChild
-                      variant="outline"
-                      size="sm"
-                      className="gap-2 text-xs sm:text-sm"
-                    >
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center"
+              {(project.githubUrl || project.liveUrl || project.links) && (
+                <div className="space-y-2 sm:space-y-3 flex-1 flex flex-col items-center">
+                  <h3 className="text-base sm:text-lg font-semibold text-foreground">Enlaces</h3>
+                  <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
+                    {project.githubUrl && (
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="gap-2 text-xs sm:text-sm"
                       >
-                        <Github className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                        <span>Repositorio</span>
-                      </a>
-                    </Button>
-                  )}
-                  {project.liveUrl && (
-                    <Button
-                      asChild
-                      variant="default"
-                      size="sm"
-                      className="gap-2 text-xs sm:text-sm"
-                    >
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center"
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center"
+                        >
+                          <Github className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                          <span>Repositorio</span>
+                        </a>
+                      </Button>
+                    )}
+                    {project.liveUrl && (
+                      <Button
+                        asChild
+                        variant="default"
+                        size="sm"
+                        className="gap-2 text-xs sm:text-sm"
                       >
-                        <ExternalLink className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                        <span>Demo en Vivo</span>
-                      </a>
-                    </Button>
-                  )}
-                  {project.links && project.links.map((link, index) => (
-                    <Button
-                      key={index}
-                      asChild
-                      variant="outline"
-                      size="sm"
-                      className="gap-2 text-xs sm:text-sm"
-                    >
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center"
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center"
+                        >
+                          <ExternalLink className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                          <span>Demo en Vivo</span>
+                        </a>
+                      </Button>
+                    )}
+                    {project.links && project.links.map((link, index) => (
+                      <Button
+                        key={index}
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="gap-2 text-xs sm:text-sm"
                       >
-                        <ExternalLink className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                        <span>{link.label}</span>
-                      </a>
-                    </Button>
-                  ))}
+                        <a
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center"
+                        >
+                          <ExternalLink className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                          <span>{link.label}</span>
+                        </a>
+                      </Button>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </DialogContent>

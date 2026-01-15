@@ -87,6 +87,42 @@ const Projects = () => {
       extendedDescription: "CultivApp ofrece funcionalidades como registro de siembras, seguimiento de crecimiento, gestión de recursos (agua, fertilizantes), alertas de mantenimiento, y generación de reportes que ayudan a los agricultores a tomar decisiones informadas."
     },
     {
+      id: "translator",
+      title: "Translator",
+      subtitle: "Traducción de Textos",
+      description: "Aplicación web para traducción de textos utilizando la API de Google Translate.",
+      logo: "/utils/Translator.png",
+      image: "/utils/Translator.png",
+      date: "Agosto 2025",
+      technologies: ["Electron", "React", "TypeScript", "JavaScript", "Tailwind", "Vite"],
+      githubUrl: "#",
+      liveUrl: "https://translator-phi.vercel.app/",
+      objective: "Desarrollar una aplicación web que facilite la traducción rápida y precisa de textos entre múltiples idiomas utilizando la API de Google Translate, mejorando la comunicación y accesibilidad para los usuarios.",
+      problem: "La barrera del idioma puede dificultar la comunicación efectiva en un mundo globalizado, y muchas herramientas de traducción existentes no son lo suficientemente accesibles o fáciles de usar para todos los usuarios.",
+      technicalApproach: "Construcción de una interfaz de usuario intuitiva con React y TypeScript para garantizar una experiencia fluida, junto con Tailwind CSS para un diseño atractivo y responsivo. La integración con la API de Google Translate permite traducciones rápidas y precisas.",
+      extendedDescription: "Translator ofrece una interfaz simple donde los usuarios pueden ingresar texto, seleccionar idiomas de origen y destino, y obtener traducciones instantáneas. La aplicación también incluye características como historial de traducciones y opciones de personalización para mejorar la experiencia del usuario."
+      ,
+      images: [
+        "/utils/Translator.png"
+      ]
+    },
+    {
+      id: "WePages",
+      title: "WePages",
+      subtitle: "Servicio de Web Apps",
+      description: "Servicio de creación de Landing Pages y Web Apps personalizadas para pequeñas empresas y emprendedores.",
+      logo: "/utils/WePages.png",
+      image: "/utils/WePages.png",
+      date: "En desarrollo",
+      technologies: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
+      githubUrl: "#",
+      liveUrl: "#",
+      objective: "Ofrecer un servicio accesible y personalizado de creación de Landing Pages y Web Apps para pequeñas empresas y emprendedores, ayudándoles a establecer una presencia en línea efectiva y profesional.",
+      problem: "Muchas pequeñas empresas y emprendedores carecen de los recursos o conocimientos técnicos para desarrollar una presencia web profesional, lo que limita su capacidad para atraer clientes y crecer en el mercado digital.",
+      technicalApproach: "Utilización de Next.js para construir aplicaciones web rápidas y optimizadas, combinadas con TypeScript para garantizar la calidad del código y Tailwind CSS para un diseño moderno y responsivo. El despliegue se realiza en Vercel para asegurar un rendimiento óptimo y escalabilidad.",
+      extendedDescription: "WePages ofrece servicios personalizados que incluyen diseño de Landing Pages atractivas, desarrollo de Web Apps funcionales, optimización SEO, y soporte continuo. El enfoque se centra en entender las necesidades del cliente y entregar soluciones que impulsen su éxito en línea."
+    },
+    {
       id: "libreria-jsr",
       title: "Libreria JSR",
       subtitle: "Plataforma E-commerce",

@@ -27,12 +27,47 @@ export default function Currently() {
           </li>
           <li>
             <span className="font-semibold text-muted-foreground">Construyendo:</span>{" "}
-            <button
-              onClick={() => scrollToSection("projects")}
+            <a
+              href="https://github.com/WeTechStudio"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-primary hover:underline font-medium transition-colors"
             >
-              WeRide
-            </button>
+              WeTech
+            </a>
+          </li>
+          <li>
+            <span className="font-semibold text-muted-foreground">Aprendiendo:</span>{" "}
+            <a
+              href="https://nextjs.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline font-medium transition-colors"
+            >
+              Next.js
+            </a>
+          </li>
+
+          <li>
+            <span className="font-semibold text-muted-foreground">Usando:</span>{" "}
+            <a
+              href="https://archlinux.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline font-medium transition-colors"
+            >
+              Arch Linux
+            </a>
+          </li>
+
+          <li>
+            <span className="font-semibold text-muted-foreground">Escribiendo:</span>{" "}
+            <a
+              href="/blog"
+              className="text-primary hover:underline font-medium transition-colors"
+            >
+              Visita mi blog :)
+            </a>
           </li>
         </ul>
       </div>

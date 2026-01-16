@@ -22,6 +22,7 @@ export interface ProjectProps {
   problem?: string;
   technicalApproach?: string;
   images?: string[]; // Array de imágenes para el carrusel (preparado para futuro)
+  demoVideo?: string; // URL del video de demostración (YouTube, Vimeo, o MP4)
 }
 
 const ProjectCard = ({ 
@@ -43,7 +44,6 @@ const ProjectCard = ({
       className="max-w-7xl p-4 sm:p-6 rounded-xl border border-transparent hover:border hover:border-primary/45 hover:shadow-lg transition-all duration-300"
     >
       <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
-        {/* Image/Screenshot Section */}
         <div className="w-full md:w-1/3 flex flex-col gap-3">
           {image && (
             <div className="w-full aspect-video bg-primary/5 rounded-lg overflow-hidden border border-primary/10 hover:scale-105 transition-transform duration-500 ease-in-out">
@@ -57,7 +57,6 @@ const ProjectCard = ({
           <p className="text-xs sm:text-sm opacity-75 text-center md:text-left font-semibold">{date}</p>
         </div>
 
-        {/* Content Section */}
         <div className="w-full md:w-2/3 space-y-3">
           <div>
             <h3 className="text-lg sm:text-xl font-semibold text-white">{title}</h3>
@@ -71,7 +70,6 @@ const ProjectCard = ({
             dangerouslySetInnerHTML={{ __html: description }}
           />
 
-          {/* Technologies */}
           {technologies && technologies.length > 0 && (
             <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {technologies.map((tech, index) => (
@@ -83,7 +81,6 @@ const ProjectCard = ({
             </div>
           )}
 
-          {/* Links */}
           <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
             {githubUrl && (
               <a

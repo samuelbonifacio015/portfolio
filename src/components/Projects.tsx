@@ -107,12 +107,12 @@ const Projects = () => {
       ]
     },
     {
-      id: "WePages",
+      id: "we-pages",
       title: "WePages",
       subtitle: "Servicio de Web Apps",
       description: "Servicio de creación de Landing Pages y Web Apps personalizadas para pequeñas empresas y emprendedores.",
-      logo: "/utils/WePages.png",
-      image: "/utils/WePages.png",
+      logo: "/projects/WePages/WePages.png",
+      image: "/projects/WePages/WePages.png",
       date: "En desarrollo",
       technologies: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
       githubUrl: "#",
@@ -121,6 +121,11 @@ const Projects = () => {
       problem: "Muchas pequeñas empresas y emprendedores carecen de los recursos o conocimientos técnicos para desarrollar una presencia web profesional, lo que limita su capacidad para atraer clientes y crecer en el mercado digital.",
       technicalApproach: "Utilización de Next.js para construir aplicaciones web rápidas y optimizadas, combinadas con TypeScript para garantizar la calidad del código y Tailwind CSS para un diseño moderno y responsivo. El despliegue se realiza en Vercel para asegurar un rendimiento óptimo y escalabilidad.",
       extendedDescription: "WePages ofrece servicios personalizados que incluyen diseño de Landing Pages atractivas, desarrollo de Web Apps funcionales, optimización SEO, y soporte continuo. El enfoque se centra en entender las necesidades del cliente y entregar soluciones que impulsen su éxito en línea."
+      ,
+      images: [
+        "/projects/WePages/WePages.png",
+        "/projects/WePages/WePages2.png",
+      ]
     },
     {
       id: "libreria-jsr",

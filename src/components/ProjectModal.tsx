@@ -28,12 +28,45 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
   const [api, setApi] = useState<any>(null);
   const [current, setCurrent] = useState(0);
 
+  // Función para detectar tipo de video
+  const getVideoType = (url: string): 'youtube' | 'vimeo' | 'mp4' | null => {
+    if (url.includes('youtube.com') || url.includes('youtu.be')) return 'youtube';
+    if (url.includes('vimeo.com')) return 'vimeo';
+    if (url.endsWith('.mp4') || url.endsWith('.webm')) return 'mp4';
+    return null;
+  };
+
+  // Función para obtener ID de video de YouTube
+  const getYouTubeId = (url: string): string => {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : '';
+  };
+
+  // Función para obtener ID de video de Vimeo
+  const getVimeoId = (url: string): string => {
+    const regExp = /vimeo.*\/([0-9]+)/i;
+    const match = url.match(regExp);
+    return match ? match[1] : '';
+  };
+
   // Preparar imágenes para el carrusel
   const images = project?.images && project.images.length > 0
     ? project.images
     : project?.image
     ? [project.image]
     : [];
+
+  // Preparar items del carrusel (video + imágenes)
+  const carouselItems: Array<{ type: 'video' | 'image', content: string }> = [];
+  
+  if (project?.demoVideo) {
+    carouselItems.push({ type: 'video', content: project.demoVideo });
+  }
+  
+  images.forEach(img => {
+    carouselItems.push({ type: 'image', content: img });
+  });
 
   useEffect(() => {
     if (!api) return;
@@ -73,31 +106,72 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
         </DialogHeader>
 
         <div className="overflow-y-auto max-h-[calc(90vh-100px)] sm:max-h-[calc(90vh-120px)]">
-          {images.length > 0 && (
+          {carouselItems.length > 0 && (
             <div className="relative w-full bg-muted/30">
               <Carousel
                 setApi={setApi}
                 className="w-full"
                 opts={{
                   align: 'start',
-                  loop: images.length > 1,
+                  loop: carouselItems.length > 1,
                 }}
               >
                 <CarouselContent>
-                  {images.map((img, index) => (
+                  {carouselItems.map((item, index) => (
                     <CarouselItem key={index}>
                       <div className="relative w-full aspect-video bg-primary/5 rounded-lg overflow-hidden">
-                        <img
-                          src={img}
-                          alt={`${project.title} - Imagen ${index + 1}`}
-                          className="w-full h-full object-contain"
-                          loading="lazy"
-                        />
+                        {item.type === 'video' ? (
+                          (() => {
+                            const videoType = getVideoType(item.content);
+                            if (videoType === 'youtube') {
+                              const videoId = getYouTubeId(item.content);
+                              return (
+                                <iframe
+                                  className="w-full h-full"
+                                  src={`https://www.youtube.com/embed/${videoId}`}
+                                  title={`${project.title} - Video de demostración`}
+                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                  allowFullScreen
+                                />
+                              );
+                            } else if (videoType === 'vimeo') {
+                              const videoId = getVimeoId(item.content);
+                              return (
+                                <iframe
+                                  className="w-full h-full"
+                                  src={`https://player.vimeo.com/video/${videoId}`}
+                                  title={`${project.title} - Video de demostración`}
+                                  allow="autoplay; fullscreen; picture-in-picture"
+                                  allowFullScreen
+                                />
+                              );
+                            } else if (videoType === 'mp4') {
+                              return (
+                                <video
+                                  className="w-full h-full object-cover"
+                                  controls
+                                  preload="metadata"
+                                >
+                                  <source src={item.content} type="video/mp4" />
+                                  Tu navegador no soporta el elemento de video.
+                                </video>
+                              );
+                            }
+                            return null;
+                          })()
+                        ) : (
+                          <img
+                            src={item.content}
+                            alt={`${project.title} - Imagen ${index + 1}`}
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        )}
                       </div>
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                {images.length > 1 && (
+                {carouselItems.length > 1 && (
                   <>
                     <CarouselPrevious className="left-1 sm:left-2 md:left-4 h-8 w-8 sm:h-10 sm:w-10" />
                     <CarouselNext className="right-1 sm:right-2 md:right-4 h-8 w-8 sm:h-10 sm:w-10" />
@@ -105,9 +179,9 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                 )}
               </Carousel>
               
-              {images.length > 1 && (
+              {carouselItems.length > 1 && (
                 <div className="flex justify-center gap-2 py-4">
-                  {images.map((_, index) => (
+                  {carouselItems.map((item, index) => (
                     <button
                       key={index}
                       onClick={() => api?.scrollTo(index)}
@@ -117,7 +191,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                           ? "w-8 bg-primary"
                           : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
                       )}
-                      aria-label={`Ir a imagen ${index + 1}`}
+                      aria-label={item.type === 'video' ? 'Ir al video' : `Ir a imagen ${index + 1}`}
                     />
                   ))}
                 </div>

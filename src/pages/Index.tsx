@@ -9,10 +9,10 @@ import Knowledge from '@/components/Knowledge';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import AboutMe from '@/components/AboutMe';
-import Currently from '@/components/Currently';
 import Inspiration from '@/components/Inspiration';
 
 import GitHubChart from "../components/Git";
+import Terminal from '@/components/Terminal';
 
 const Index = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -36,18 +36,18 @@ const Index = () => {
         'mx-auto transition-all duration-300',
         'max-w-[75%] px-4 py-20 md:px-6 md: max-w-[100%] md:py-20 lg:px-8 lg:py-24'
       )}>
-      <Navbar isMobile={isMobile} />
-      <RadioSidebar isMobile={isMobile} />
-      <Hero />
-      <Currently />
-      <GitHubChart username="samuelbonifacio015" />
-      <AboutMe />
-      <Technologies />
-      <Projects />
-      <Knowledge />
-      <Inspiration />
-      <Contact />
-      <Footer />
+        <Navbar isMobile={isMobile} />
+        <RadioSidebar isMobile={isMobile} />
+        <Hero />
+        <Terminal />
+        <GitHubChart username="samuelbonifacio015" />
+        <AboutMe />
+        <Technologies />
+        <Projects />
+        <Knowledge />
+        <Inspiration />
+        <Contact />
+        <Footer />
       </div>
     </div>
   );

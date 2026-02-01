@@ -77,7 +77,7 @@ const Projects = () => {
       description: "Plataforma web para gestión de cultivos agrícolas. Desarrollado con Vue y REST API con C# .NET.",
       logo: "/utils/CultivApp.png",
       image: "/utils/CultivApp.png",
-      date: "Setiembre - En desarrollo",
+      date: "Setiembre - Diciembre 2025",
       technologies: ["Vue", "JavaScript", "C#", ".NET"],
       githubUrl: "https://github.com/Apps-Web-Grupo-4-FruTech/Frontend-FruTech",
       liveUrl: "https://frontend-frutech-static.onrender.com",
@@ -90,20 +90,23 @@ const Projects = () => {
       id: "translator",
       title: "Translator",
       subtitle: "Traducción de Textos",
-      description: "Aplicación web para traducción de textos utilizando la API de Google Translate.",
-      logo: "/utils/Translator.png",
-      image: "/utils/Translator.png",
-      date: "Agosto 2025",
+      description: "Aplicación web para traducción de textos utilizando la API de TAS (Open Source).",
+      logo: "/projects/Translator/Translator.png",
+      image: "/projects/Translator/Translator.png",
+      date: "Enero 2026 - En desarrollo",
       technologies: ["Electron", "React", "TypeScript", "JavaScript", "Tailwind", "Vite"],
       githubUrl: "#",
       liveUrl: "https://translator-phi.vercel.app/",
-      objective: "Desarrollar una aplicación web que facilite la traducción rápida y precisa de textos entre múltiples idiomas utilizando la API de Google Translate, mejorando la comunicación y accesibilidad para los usuarios.",
-      problem: "La barrera del idioma puede dificultar la comunicación efectiva en un mundo globalizado, y muchas herramientas de traducción existentes no son lo suficientemente accesibles o fáciles de usar para todos los usuarios.",
-      technicalApproach: "Construcción de una interfaz de usuario intuitiva con React y TypeScript para garantizar una experiencia fluida, junto con Tailwind CSS para un diseño atractivo y responsivo. La integración con la API de Google Translate permite traducciones rápidas y precisas.",
-      extendedDescription: "Translator ofrece una interfaz simple donde los usuarios pueden ingresar texto, seleccionar idiomas de origen y destino, y obtener traducciones instantáneas. La aplicación también incluye características como historial de traducciones y opciones de personalización para mejorar la experiencia del usuario."
+      objective: "Desarrollar una aplicación de escritorio que facilite la traducción de textos entre múltiples idiomas utilizando la API de TAS (Open Source).",
+      problem: "Gran parte de los traductores residen en navegadores, no cuentan con funciones actualizadas o atajos para simplificar el proceso de conversión de idiomas, además de no ser fáciles de usar para todos los usuarios.",
+      technicalApproach: "Construcción de una interfaz de usuario intuitiva con Electron, React y TypeScript para garantizar una experiencia completa.",
+      extendedDescription: "Translator es una solución gratuita a los traductores de navegador, aplicaciones de pago, etc. Ya que cuenta con múltiples funciones que ayudan a simplificar la experiencia del usuario priorizando la rapidez y facilidad de uso."
       ,
       images: [
-        "/utils/Translator.png"
+        "/projects/Translator/Translator.png",
+        "/projects/Translator/Translator2.png",
+        "/projects/Translator/Translator3.png",
+        "/projects/Translator/Translator4.png"
       ]
     },
     {
@@ -117,9 +120,9 @@ const Projects = () => {
       technologies: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
       githubUrl: "#",
       liveUrl: "#",
-      objective: "Ofrecer un servicio accesible y personalizado de creación de Landing Pages y Web Apps para pequeñas empresas y emprendedores, ayudándoles a establecer una presencia en línea efectiva y profesional.",
+      objective: "Ofrecer un servicio accesible y personalizado de creación de Landing Pages y Web Apps para pequeñas empresas y emprendedores, ayudándoles a establecer una presencia en línea.",
       problem: "Muchas pequeñas empresas y emprendedores carecen de los recursos o conocimientos técnicos para desarrollar una presencia web profesional, lo que limita su capacidad para atraer clientes y crecer en el mercado digital.",
-      technicalApproach: "Utilización de Next.js para construir aplicaciones web rápidas y optimizadas, combinadas con TypeScript para garantizar la calidad del código y Tailwind CSS para un diseño moderno y responsivo. El despliegue se realiza en Vercel para asegurar un rendimiento óptimo y escalabilidad.",
+      technicalApproach: "Utilización de Next.js + TypeScript y Tailwind CSS para un diseño moderno y responsivo. El despliegue se realiza en Vercel para asegurar un rendimiento óptimo y escalabilidad.",
       extendedDescription: "WePages ofrece servicios personalizados que incluyen diseño de Landing Pages atractivas, desarrollo de Web Apps funcionales, optimización SEO, y soporte continuo. El enfoque se centra en entender las necesidades del cliente y entregar soluciones que impulsen su éxito en línea."
       ,
       images: [
@@ -182,7 +185,7 @@ const Projects = () => {
       description: "Aplicación web de reloj con funcionalidades de tiempo real, cronómetro y pomodoro.",
       logo: "/projects/TimexJS/TimexJS.png",
       image: "/projects/TimexJS/TimexJS.png",
-      date: "Junio - Enero 2026",
+      date: "Junio 2025 - Enero 2026",
       technologies: ["React", "TypeScript", "Tailwind", "Vite"],
       githubUrl: "https://github.com/samuelbonifacio015/Timex.js",
       liveUrl: "https://timex-js.vercel.app/",

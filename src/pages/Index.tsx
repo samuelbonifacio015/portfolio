@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import Navbar from '@/components/Navbar';
-import RadioSidebar from '@/components/RadioSidebar';
+import Sidebar from '@/components/Sidebar';
 import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
 import Technologies from '@/components/Technologies';
@@ -37,7 +37,7 @@ const Index = () => {
         'max-w-[75%] px-4 py-20 md:px-6 md: max-w-[100%] md:py-20 lg:px-8 lg:py-24'
       )}>
         <Navbar isMobile={isMobile} />
-        <RadioSidebar isMobile={isMobile} />
+        <Sidebar isMobile={isMobile} />
         <Hero />
         <Terminal />
         <GitHubChart username="samuelbonifacio015" />

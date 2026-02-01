@@ -10,8 +10,7 @@ const Terminal: React.FC<TerminalProps> = ({ className }) => {
     const [lines] = useState<string[]>([
         "samuel@admin:~$ neofetch",
         "Estudiando en: Universidad Peruana de Ciencias Aplicadas",
-        "Construyendo: WeTech",
-        "Aprendiendo: Next.js",
+        "Aprendiendo: Dart & React Native",
         "Usando: Arch Linux",
         "Escribiendo: Visita mi blog :)"
     ]);

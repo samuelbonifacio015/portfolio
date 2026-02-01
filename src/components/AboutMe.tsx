@@ -36,11 +36,11 @@ const AboutMe = () => {
             Aplicadas.
           </p>
           <p className="text-muted-foreground text-sm md:text-xl mb-4 max-w-2xl">
-            Múltiples veces perteneciendo al tercio superior, mi curiosidad por la tecnología me ha llevado a incursionar en distintas tecnologías a lo largo de mi carrera.
+            Múltiples veces perteneciendo al tercio superior, mi curiosidad por el área de la tecnología me ha llevado a incursionar en el desarollo de varios proyectos a lo largo de mi carrera.
           </p>
           <p className="text-muted-foreground text-sm md:text-xl max-w-2xl">
-            Actualmente busco oportunidades que me permitan adquirir nuevas
-            experiencias y seguir mejorando como desarrollador de software profesional.
+            Actualmente busco oportunidades que me permitan adquirir 
+            experiencias profesionales y seguir incursionando en el desarollo de software.
           </p>
         </div>
         <div className="flex flex-col items-center justify-center gap-4 w-full md:w-auto max-w-xs mx-auto">
@@ -52,7 +52,7 @@ const AboutMe = () => {
             />
           </div>
           <a
-            href="/utils/SamuelBonifacioCV.docx"
+            href="/utils/SamuelBonifacioCV.pdf"
             download
             className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg bg-primary hover:bg-primary/90 text-white text-sm sm:text-base font-medium transition-all duration-300 shadow-lg shadow-primary/20 w-full"
           >

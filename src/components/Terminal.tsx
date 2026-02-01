@@ -8,11 +8,12 @@ interface TerminalProps {
 
 const Terminal: React.FC<TerminalProps> = ({ className }) => {
     const [lines] = useState<string[]>([
-        "samuel@admin:~$",
-        "Loading user profile...",
-        "Access granted.",
-        "Welcome, visitor.",
-        "Type 'help' to see available commands."
+        "samuel@admin:~$ neofetch",
+        "Estudiando en: Universidad Peruana de Ciencias Aplicadas",
+        "Construyendo: WeTech",
+        "Aprendiendo: Next.js",
+        "Usando: Arch Linux",
+        "Escribiendo: Visita mi blog :)"
     ]);
     const containerRef = useRef<HTMLElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -38,6 +39,18 @@ const Terminal: React.FC<TerminalProps> = ({ className }) => {
         }
     }, [lines]);
 
+    const formatLine = (line: string) => {
+        const parts = line.split(':');
+        if (parts.length > 1) {
+            return (
+                <span>
+                    {parts[0]}:<span className="text-green-400/90 font-bold">{parts.slice(1).join(':')}</span>
+                </span>
+            );
+        }
+        return <span>{line}</span>;
+    };
+
     return (
         <section
             ref={containerRef}
@@ -47,7 +60,7 @@ const Terminal: React.FC<TerminalProps> = ({ className }) => {
                 className
             )}
         >
-            <div className="w-full max-w-3xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-border bg-black/95 backdrop-blur-md font-mono text-sm sm:text-base ring-1 ring-white/10">
+            <div className="mt-3 mb-12 w-full max-w-3xl mx-auto rounded-xl overflow-hidden shadow-2xl border border-border bg-black/95 backdrop-blur-md font-mono text-sm sm:text-base ring-1 ring-white/10">
                 {/* Terminal Header */}
                 <div className="flex items-center justify-between px-4 py-3 bg-white/5 border-b border-white/10 select-none">
                     <div className="flex items-center gap-2">
@@ -71,25 +84,21 @@ const Terminal: React.FC<TerminalProps> = ({ className }) => {
                     ref={scrollRef}
                     className="p-4 sm:p-6 space-y-2 h-[300px] sm:h-[400px] overflow-y-auto overflow-x-hidden bg-black/50 scroll-smooth [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-white/10 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-white/20"
                 >
-                    <div className="text-green-400/90 leading-relaxed font-normal">
+                    <div className="text-green-600/70 leading-relaxed font-normal">
                         {isVisible && lines.map((line, i) => (
                             <div
                                 key={i}
                                 className="flex gap-2 animate-fade-in"
                                 style={{ animationDelay: `${i * 150}ms`, animationFillMode: 'backwards' }}
                             >
-                                <span className="shrink-0 select-none opacity-50 text-blue-400">➜</span>
-                                <span className="shrink-0 select-none opacity-50 text-purple-400">~</span>
-                                <span className="break-all">{line}</span>
+                                <span className="break-all">{formatLine(line)}</span>
                             </div>
                         ))}
 
                         {isVisible && (
                             <div className="flex items-center gap-2 mt-2 animate-fade-in" style={{ animationDelay: `${lines.length * 150}ms`, animationFillMode: 'backwards' }}>
-                                <span className="shrink-0 text-blue-400">➜</span>
-                                <span className="shrink-0 text-purple-400">~</span>
                                 <div className="relative flex items-center">
-                                    <span className="w-2.5 h-5 bg-green-500/90 animate-pulse rounded-sm shadow-[0_0_8px_rgba(34,197,94,0.5)]" />
+                                    <span className="w-[2px] h-5 bg-green-400/90 animate-pulse " />
                                 </div>
                             </div>
                         )}

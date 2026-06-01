@@ -145,7 +145,12 @@ const Projects = () => {
       objective: "Proporcionar a los agricultores una herramienta digital moderna para gestionar sus cultivos, optimizar recursos y mejorar la productividad mediante el seguimiento detallado de sus actividades agrícolas.",
       problem: "Los agricultores enfrentan dificultades para llevar un registro organizado de sus cultivos, planificar rotaciones, gestionar recursos y tomar decisiones basadas en datos históricos, lo que limita su capacidad de optimización.",
       technicalApproach: "Frontend desarrollado con Vue.js para una interfaz intuitiva y reactiva, mientras que el backend utiliza C# .NET para proporcionar una API robusta con capacidades de procesamiento de datos agrícolas, generación de reportes y análisis predictivo.",
-      extendedDescription: "CultivApp ofrece funcionalidades como registro de siembras, seguimiento de crecimiento, gestión de recursos (agua, fertilizantes), alertas de mantenimiento, y generación de reportes que ayudan a los agricultores a tomar decisiones informadas."
+      extendedDescription: "CultivApp ofrece funcionalidades como registro de siembras, seguimiento de crecimiento, gestión de recursos (agua, fertilizantes), alertas de mantenimiento, y generación de reportes que ayudan a los agricultores a tomar decisiones informadas.",
+      images: [
+        "/projects/CultivApp/CultivApp.png",
+        "/projects/CultivApp/CultivApp2.png",
+        "/projects/CultivApp/CultivApp3.png"
+      ]
     },
     {
       id: "translator",
@@ -202,7 +207,12 @@ const Projects = () => {
       objective: "Crear una plataforma de e-commerce funcional y accesible para la venta de libros, demostrando habilidades en desarrollo web frontend con tecnologías fundamentales.",
       problem: "La necesidad de una solución de e-commerce simple pero completa que permita gestionar productos, carrito de compras e inventario sin depender de frameworks complejos, ideal para proyectos educativos o pequeñas empresas.",
       technicalApproach: "Desarrollo utilizando HTML5 semántico, CSS3 moderno con flexbox y grid para layouts responsivos, y JavaScript vanilla para la lógica de negocio, gestión de estado del carrito y manipulación del DOM, priorizando la simplicidad y el rendimiento.",
-      extendedDescription: "La plataforma incluye catálogo de productos con búsqueda y filtrado, carrito de compras persistente en localStorage, gestión de inventario, y una interfaz de usuario intuitiva diseñada para facilitar la experiencia de compra."
+      extendedDescription: "La plataforma incluye catálogo de productos con búsqueda y filtrado, carrito de compras persistente en localStorage, gestión de inventario, y una interfaz de usuario intuitiva diseñada para facilitar la experiencia de compra.",
+      images: [
+        "/projects/LibreriaJSR/LibreriaJSR.png",
+        "/projects/LibreriaJSR/LibreriaJSR2.png",
+        "/projects/LibreriaJSR/LibreriaJSR3.png"
+      ]
     },
     {
       id: "finovate",
@@ -218,7 +228,12 @@ const Projects = () => {
       objective: "Desarrollar una aplicación web moderna que ayude a los usuarios a gestionar sus finanzas personales de manera efectiva, proporcionando herramientas de seguimiento, análisis y planificación financiera.",
       problem: "Muchas personas tienen dificultades para mantener un control adecuado de sus finanzas personales, careciendo de herramientas visuales e intuitivas que les permitan entender sus gastos, ingresos y tendencias financieras de manera clara.",
       technicalApproach: "Stack moderno con React y TypeScript para type-safety y desarrollo escalable, Tailwind CSS para diseño rápido y consistente, y Vite como build tool para optimización de rendimiento. La aplicación utiliza estado local y componentes reutilizables para una arquitectura limpia.",
-      extendedDescription: "Finovate ofrece funcionalidades como registro de transacciones, categorización de gastos, visualización de gráficos y estadísticas, establecimiento de presupuestos, y análisis de tendencias financieras para ayudar a los usuarios a tomar mejores decisiones económicas."
+      extendedDescription: "Finovate ofrece funcionalidades como registro de transacciones, categorización de gastos, visualización de gráficos y estadísticas, establecimiento de presupuestos, y análisis de tendencias financieras para ayudar a los usuarios a tomar mejores decisiones económicas.",
+      images: [
+        "/projects/Finovate/Finovate.png",
+        "/projects/Finovate/Finovate2.png",
+        "/projects/Finovate/Finovate3.png"
+      ]
     },
     {
       id: "paso-perfecto",
@@ -234,7 +249,12 @@ const Projects = () => {
       objective: "Crear una aplicación web que motive y ayude a los usuarios a mantener un estilo de vida activo mediante el seguimiento detallado de su actividad física diaria y el establecimiento de metas personales.",
       problem: "Las personas que buscan mejorar su condición física necesitan una herramienta simple y accesible para registrar y visualizar su progreso, sin la complejidad de aplicaciones móviles o dispositivos especializados.",
       technicalApproach: "Desarrollo con React y TypeScript para una base sólida y mantenible, Tailwind CSS para un diseño moderno y responsive, y Vite para un desarrollo ágil. La aplicación utiliza componentes funcionales con hooks para gestión de estado y efectos secundarios.",
-      extendedDescription: "PasoPerfecto permite registrar pasos, distancia recorrida, tiempo de actividad y calorías quemadas. Incluye visualización de estadísticas diarias y semanales, establecimiento de metas personalizadas, y un sistema de logros para mantener la motivación del usuario."
+      extendedDescription: "PasoPerfecto permite registrar pasos, distancia recorrida, tiempo de actividad y calorías quemadas. Incluye visualización de estadísticas diarias y semanales, establecimiento de metas personalizadas, y un sistema de logros para mantener la motivación del usuario.",
+      images: [
+        "/projects/PasoPerfecto/PasoPerfecto.png",
+        "/projects/PasoPerfecto/PasoPerfecto2.png",
+        "/projects/PasoPerfecto/PasoPerfecto3.png"
+      ]
     },
     {
       id: "timex-js",
@@ -271,7 +291,12 @@ const Projects = () => {
       objective: "Desarrollar una landing page atractiva y funcional para una empresa de servicios de agua potable, enfocada en convertir visitantes en clientes mediante un diseño persuasivo y una experiencia de usuario optimizada.",
       problem: "Las empresas de servicios necesitan una presencia web profesional que comunique efectivamente sus servicios, genere confianza y facilite el contacto con clientes potenciales, sin requerir una inversión en desarrollo complejo.",
       technicalApproach: "Landing page desarrollada con HTML5 semántico para SEO, CSS3 con animaciones suaves y diseño responsive, y JavaScript para interactividad como formularios de contacto, navegación suave y efectos visuales que mejoran la experiencia del usuario.",
-      extendedDescription: "AguaConnect presenta una landing page moderna con secciones de hero, servicios, beneficios, testimonios y formulario de contacto. El diseño prioriza la claridad del mensaje, la facilidad de navegación y la conversión de visitantes en leads."
+      extendedDescription: "AguaConnect presenta una landing page moderna con secciones de hero, servicios, beneficios, testimonios y formulario de contacto. El diseño prioriza la claridad del mensaje, la facilidad de navegación y la conversión de visitantes en leads.",
+      images: [
+        "/projects/AguaConnect/AguaConnect.png",
+        "/projects/AguaConnect/AguaConnect2.png",
+        "/projects/AguaConnect/AguaConnect3.png"
+      ]
     },
   ];
 

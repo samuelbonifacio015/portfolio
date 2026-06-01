@@ -90,6 +90,26 @@ const Projects = () => {
       ]
     },
     {
+      id: "mjys",
+      title: "MaquinariasJyS",
+      subtitle: "Catálogo y Admin de Maquinarias",
+      description: "Plataforma de catálogo y administración para empresa de maquinarias. Panel admin con autenticación y gestión de productos.",
+      logo: "/projects/MJYS/MJYS.png",
+      image: "/projects/MJYS/MJYS.png",
+      date: "Mayo 2026",
+      technologies: ["Next.js", "Django", "Supabase", "Render"],
+      liveUrl: "https://mjys-frontend.vercel.app/home",
+      objective: "Proveer a una empresa de maquinarias un catálogo web público y un panel de administración para gestionar sus productos de forma autónoma.",
+      problem: "Las empresas de maquinarias suelen carecer de un catálogo digital actualizable y de un panel propio para administrar productos sin depender de terceros.",
+      technicalApproach: "Frontend en Next.js desplegado en Vercel, backend en Django con base de datos en Supabase desplegado en Render. Incluye autenticación para el panel administrativo y gestión CRUD de productos.",
+      extendedDescription: "MaquinariasJyS es una plataforma de catálogo y administración para una empresa de maquinarias. Ofrece un catálogo público de productos y un panel admin con autenticación para gestionarlos. Deploy completado en mayo de 2026.",
+      images: [
+        "/projects/MJYS/MJYS.png",
+        "/projects/MJYS/MJYS2.png",
+        "/projects/MJYS/MJYS3.png"
+      ]
+    },
+    {
       id: "we-ride",
       title: "WeRide",
       subtitle: "Alquiler de Vehículos",

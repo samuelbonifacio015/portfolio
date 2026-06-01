@@ -69,6 +69,27 @@ const Projects = () => {
       ]
     },
     {
+      id: "klippr",
+      title: "Klippr",
+      subtitle: "App Móvil Android",
+      description: "Aplicación móvil Android desarrollada con Kotlin y Jetpack Compose, con persistencia local mediante ROOM.",
+      logo: "/projects/Klippr/Klippr.png",
+      image: "/projects/Klippr/Klippr.png",
+      date: "2026 - En desarrollo",
+      technologies: ["Kotlin", "Jetpack Compose", "ROOM"],
+      githubUrl: "https://github.com/QRustOrg/Klippr-LandingPage",
+      liveUrl: "https://klippr-landing-page.vercel.app/",
+      objective: "Construir una aplicación móvil nativa de Android aplicando arquitectura moderna con Jetpack Compose y persistencia local con ROOM.",
+      problem: "Desarrollar una app móvil nativa que funcione con almacenamiento local persistente y una interfaz declarativa moderna, aplicando buenas prácticas del ecosistema Android.",
+      technicalApproach: "Desarrollo nativo en Kotlin con UI declarativa en Jetpack Compose y persistencia local mediante la librería ROOM. El producto cuenta con una landing page desplegada en Vercel.",
+      extendedDescription: "Klippr es una aplicación móvil Android desarrollada en el curso de Aplicaciones Móviles usando Kotlin, Jetpack Compose y ROOM. Incluye una landing page de presentación del producto.",
+      images: [
+        "/projects/Klippr/Klippr.png",
+        "/projects/Klippr/Klippr2.png",
+        "/projects/Klippr/Klippr3.png"
+      ]
+    },
+    {
       id: "we-ride",
       title: "WeRide",
       subtitle: "Alquiler de Vehículos",

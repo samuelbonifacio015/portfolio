@@ -49,6 +49,26 @@ const Projects = () => {
 
   const projects: ProjectProps[] = [
     {
+      id: "llamia",
+      title: "LlamIA",
+      subtitle: "Microcursos de IA para Medicina",
+      description: "Plataforma educativa de microcursos de IA para medicina. Generación de casos clínicos, quizzes y flashcards con IA.",
+      logo: "/projects/LlamIA/LlamIA.png",
+      image: "/projects/LlamIA/LlamIA.png",
+      date: "2026 - En desarrollo (V0.5)",
+      technologies: ["Next.js", "TypeScript", "Supabase", "Mercado Pago"],
+      liveUrl: "https://llamia.vercel.app/",
+      objective: "Hacer accesible la educación médica mediante microcursos de IA que generan casos clínicos, quizzes y flashcards personalizados para estudiantes y profesionales de la salud.",
+      problem: "El estudio de la medicina exige practicar con casos clínicos variados y material de repaso, pero generarlos manualmente es lento y costoso, y no existe una herramienta que produzca contenido clínico de calidad bajo demanda.",
+      technicalApproach: "Aplicación full-stack con Next.js y TypeScript, base de datos y autenticación en Supabase, y pasarela de pagos con Mercado Pago para suscripciones. La generación de contenido clínico (casos, quizzes, flashcards) se apoya en modelos de IA.",
+      extendedDescription: "LlamIA es una plataforma educativa de microcursos de IA enfocada en medicina. Permite generar casos clínicos interactivos, quizzes y flashcards con IA, con onboarding, dashboard de progreso y suscripciones de pago. Actualmente en desarrollo activo (V0.5).",
+      images: [
+        "/projects/LlamIA/LlamIA.png",
+        "/projects/LlamIA/LlamIA2.png",
+        "/projects/LlamIA/LlamIA3.png"
+      ]
+    },
+    {
       id: "we-ride",
       title: "WeRide",
       subtitle: "Alquiler de Vehículos",

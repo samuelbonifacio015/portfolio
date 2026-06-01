@@ -49,6 +49,67 @@ const Projects = () => {
 
   const projects: ProjectProps[] = [
     {
+      id: "llamia",
+      title: "LlamIA",
+      subtitle: "Microcursos de IA para Medicina",
+      description: "Plataforma educativa de microcursos de IA para medicina. Generación de casos clínicos, quizzes y flashcards con IA.",
+      logo: "/projects/LlamIA/LlamIA.png",
+      image: "/projects/LlamIA/LlamIA.png",
+      date: "2026 - En desarrollo (V0.5)",
+      technologies: ["Next.js", "TypeScript", "Supabase", "Mercado Pago"],
+      liveUrl: "https://llamia.vercel.app/",
+      objective: "Hacer accesible la educación médica mediante microcursos de IA que generan casos clínicos, quizzes y flashcards personalizados para estudiantes y profesionales de la salud.",
+      problem: "El estudio de la medicina exige practicar con casos clínicos variados y material de repaso, pero generarlos manualmente es lento y costoso, y no existe una herramienta que produzca contenido clínico de calidad bajo demanda.",
+      technicalApproach: "Aplicación full-stack con Next.js y TypeScript, base de datos y autenticación en Supabase, y pasarela de pagos con Mercado Pago para suscripciones. La generación de contenido clínico (casos, quizzes, flashcards) se apoya en modelos de IA.",
+      extendedDescription: "LlamIA es una plataforma educativa de microcursos de IA enfocada en medicina. Permite generar casos clínicos interactivos, quizzes y flashcards con IA, con onboarding, dashboard de progreso y suscripciones de pago. Actualmente en desarrollo activo (V0.5).",
+      images: [
+        "/projects/LlamIA/LlamIA.png",
+        "/projects/LlamIA/LlamIA2.png",
+        "/projects/LlamIA/LlamIA3.png"
+      ]
+    },
+    {
+      id: "klippr",
+      title: "Klippr",
+      subtitle: "App Móvil Android",
+      description: "Aplicación móvil Android desarrollada con Kotlin y Jetpack Compose, con persistencia local mediante ROOM.",
+      logo: "/projects/Klippr/Klippr.png",
+      image: "/projects/Klippr/Klippr.png",
+      date: "2026 - En desarrollo",
+      technologies: ["Kotlin", "Jetpack Compose", "ROOM"],
+      githubUrl: "https://github.com/QRustOrg/Klippr-LandingPage",
+      liveUrl: "https://klippr-landing-page.vercel.app/",
+      objective: "Construir una aplicación móvil nativa de Android aplicando arquitectura moderna con Jetpack Compose y persistencia local con ROOM.",
+      problem: "Desarrollar una app móvil nativa que funcione con almacenamiento local persistente y una interfaz declarativa moderna, aplicando buenas prácticas del ecosistema Android.",
+      technicalApproach: "Desarrollo nativo en Kotlin con UI declarativa en Jetpack Compose y persistencia local mediante la librería ROOM. El producto cuenta con una landing page desplegada en Vercel.",
+      extendedDescription: "Klippr es una aplicación móvil Android desarrollada en el curso de Aplicaciones Móviles usando Kotlin, Jetpack Compose y ROOM. Incluye una landing page de presentación del producto.",
+      images: [
+        "/projects/Klippr/Klippr.png",
+        "/projects/Klippr/Klippr2.png",
+        "/projects/Klippr/Klippr3.png"
+      ]
+    },
+    {
+      id: "mjys",
+      title: "MaquinariasJyS",
+      subtitle: "Catálogo y Admin de Maquinarias",
+      description: "Plataforma de catálogo y administración para empresa de maquinarias. Panel admin con autenticación y gestión de productos.",
+      logo: "/projects/MJYS/MJYS.png",
+      image: "/projects/MJYS/MJYS.png",
+      date: "Mayo 2026",
+      technologies: ["Next.js", "Django", "Supabase", "Render"],
+      liveUrl: "https://mjys-frontend.vercel.app/home",
+      objective: "Proveer a una empresa de maquinarias un catálogo web público y un panel de administración para gestionar sus productos de forma autónoma.",
+      problem: "Las empresas de maquinarias suelen carecer de un catálogo digital actualizable y de un panel propio para administrar productos sin depender de terceros.",
+      technicalApproach: "Frontend en Next.js desplegado en Vercel, backend en Django con base de datos en Supabase desplegado en Render. Incluye autenticación para el panel administrativo y gestión CRUD de productos.",
+      extendedDescription: "MaquinariasJyS es una plataforma de catálogo y administración para una empresa de maquinarias. Ofrece un catálogo público de productos y un panel admin con autenticación para gestionarlos. Deploy completado en mayo de 2026.",
+      images: [
+        "/projects/MJYS/MJYS.png",
+        "/projects/MJYS/MJYS2.png",
+        "/projects/MJYS/MJYS3.png"
+      ]
+    },
+    {
       id: "we-ride",
       title: "WeRide",
       subtitle: "Alquiler de Vehículos",
@@ -84,7 +145,12 @@ const Projects = () => {
       objective: "Proporcionar a los agricultores una herramienta digital moderna para gestionar sus cultivos, optimizar recursos y mejorar la productividad mediante el seguimiento detallado de sus actividades agrícolas.",
       problem: "Los agricultores enfrentan dificultades para llevar un registro organizado de sus cultivos, planificar rotaciones, gestionar recursos y tomar decisiones basadas en datos históricos, lo que limita su capacidad de optimización.",
       technicalApproach: "Frontend desarrollado con Vue.js para una interfaz intuitiva y reactiva, mientras que el backend utiliza C# .NET para proporcionar una API robusta con capacidades de procesamiento de datos agrícolas, generación de reportes y análisis predictivo.",
-      extendedDescription: "CultivApp ofrece funcionalidades como registro de siembras, seguimiento de crecimiento, gestión de recursos (agua, fertilizantes), alertas de mantenimiento, y generación de reportes que ayudan a los agricultores a tomar decisiones informadas."
+      extendedDescription: "CultivApp ofrece funcionalidades como registro de siembras, seguimiento de crecimiento, gestión de recursos (agua, fertilizantes), alertas de mantenimiento, y generación de reportes que ayudan a los agricultores a tomar decisiones informadas.",
+      images: [
+        "/projects/CultivApp/CultivApp.png",
+        "/projects/CultivApp/CultivApp2.png",
+        "/projects/CultivApp/CultivApp3.png"
+      ]
     },
     {
       id: "translator",
@@ -95,7 +161,6 @@ const Projects = () => {
       image: "/projects/Translator/Translator.png",
       date: "Enero 2026 - En desarrollo",
       technologies: ["Electron", "React", "TypeScript", "JavaScript", "Tailwind", "Vite"],
-      githubUrl: "#",
       liveUrl: "https://translator-phi.vercel.app/",
       objective: "Desarrollar una aplicación de escritorio que facilite la traducción de textos entre múltiples idiomas utilizando la API de TAS (Open Source).",
       problem: "Gran parte de los traductores residen en navegadores, no cuentan con funciones actualizadas o atajos para simplificar el proceso de conversión de idiomas, además de no ser fáciles de usar para todos los usuarios.",
@@ -118,8 +183,6 @@ const Projects = () => {
       image: "/projects/WePages/WePages.png",
       date: "En desarrollo",
       technologies: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
-      githubUrl: "#",
-      liveUrl: "#",
       objective: "Ofrecer un servicio accesible y personalizado de creación de Landing Pages y Web Apps para pequeñas empresas y emprendedores, ayudándoles a establecer una presencia en línea.",
       problem: "Muchas pequeñas empresas y emprendedores carecen de los recursos o conocimientos técnicos para desarrollar una presencia web profesional, lo que limita su capacidad para atraer clientes y crecer en el mercado digital.",
       technicalApproach: "Utilización de Next.js + TypeScript y Tailwind CSS para un diseño moderno y responsivo. El despliegue se realiza en Vercel para asegurar un rendimiento óptimo y escalabilidad.",
@@ -144,7 +207,12 @@ const Projects = () => {
       objective: "Crear una plataforma de e-commerce funcional y accesible para la venta de libros, demostrando habilidades en desarrollo web frontend con tecnologías fundamentales.",
       problem: "La necesidad de una solución de e-commerce simple pero completa que permita gestionar productos, carrito de compras e inventario sin depender de frameworks complejos, ideal para proyectos educativos o pequeñas empresas.",
       technicalApproach: "Desarrollo utilizando HTML5 semántico, CSS3 moderno con flexbox y grid para layouts responsivos, y JavaScript vanilla para la lógica de negocio, gestión de estado del carrito y manipulación del DOM, priorizando la simplicidad y el rendimiento.",
-      extendedDescription: "La plataforma incluye catálogo de productos con búsqueda y filtrado, carrito de compras persistente en localStorage, gestión de inventario, y una interfaz de usuario intuitiva diseñada para facilitar la experiencia de compra."
+      extendedDescription: "La plataforma incluye catálogo de productos con búsqueda y filtrado, carrito de compras persistente en localStorage, gestión de inventario, y una interfaz de usuario intuitiva diseñada para facilitar la experiencia de compra.",
+      images: [
+        "/projects/LibreriaJSR/LibreriaJSR.png",
+        "/projects/LibreriaJSR/LibreriaJSR2.png",
+        "/projects/LibreriaJSR/LibreriaJSR3.png"
+      ]
     },
     {
       id: "finovate",
@@ -160,7 +228,12 @@ const Projects = () => {
       objective: "Desarrollar una aplicación web moderna que ayude a los usuarios a gestionar sus finanzas personales de manera efectiva, proporcionando herramientas de seguimiento, análisis y planificación financiera.",
       problem: "Muchas personas tienen dificultades para mantener un control adecuado de sus finanzas personales, careciendo de herramientas visuales e intuitivas que les permitan entender sus gastos, ingresos y tendencias financieras de manera clara.",
       technicalApproach: "Stack moderno con React y TypeScript para type-safety y desarrollo escalable, Tailwind CSS para diseño rápido y consistente, y Vite como build tool para optimización de rendimiento. La aplicación utiliza estado local y componentes reutilizables para una arquitectura limpia.",
-      extendedDescription: "Finovate ofrece funcionalidades como registro de transacciones, categorización de gastos, visualización de gráficos y estadísticas, establecimiento de presupuestos, y análisis de tendencias financieras para ayudar a los usuarios a tomar mejores decisiones económicas."
+      extendedDescription: "Finovate ofrece funcionalidades como registro de transacciones, categorización de gastos, visualización de gráficos y estadísticas, establecimiento de presupuestos, y análisis de tendencias financieras para ayudar a los usuarios a tomar mejores decisiones económicas.",
+      images: [
+        "/projects/Finovate/Finovate.png",
+        "/projects/Finovate/Finovate2.png",
+        "/projects/Finovate/Finovate3.png"
+      ]
     },
     {
       id: "paso-perfecto",
@@ -176,7 +249,12 @@ const Projects = () => {
       objective: "Crear una aplicación web que motive y ayude a los usuarios a mantener un estilo de vida activo mediante el seguimiento detallado de su actividad física diaria y el establecimiento de metas personales.",
       problem: "Las personas que buscan mejorar su condición física necesitan una herramienta simple y accesible para registrar y visualizar su progreso, sin la complejidad de aplicaciones móviles o dispositivos especializados.",
       technicalApproach: "Desarrollo con React y TypeScript para una base sólida y mantenible, Tailwind CSS para un diseño moderno y responsive, y Vite para un desarrollo ágil. La aplicación utiliza componentes funcionales con hooks para gestión de estado y efectos secundarios.",
-      extendedDescription: "PasoPerfecto permite registrar pasos, distancia recorrida, tiempo de actividad y calorías quemadas. Incluye visualización de estadísticas diarias y semanales, establecimiento de metas personalizadas, y un sistema de logros para mantener la motivación del usuario."
+      extendedDescription: "PasoPerfecto permite registrar pasos, distancia recorrida, tiempo de actividad y calorías quemadas. Incluye visualización de estadísticas diarias y semanales, establecimiento de metas personalizadas, y un sistema de logros para mantener la motivación del usuario.",
+      images: [
+        "/projects/PasoPerfecto/PasoPerfecto.png",
+        "/projects/PasoPerfecto/PasoPerfecto2.png",
+        "/projects/PasoPerfecto/PasoPerfecto3.png"
+      ]
     },
     {
       id: "timex-js",
@@ -213,7 +291,12 @@ const Projects = () => {
       objective: "Desarrollar una landing page atractiva y funcional para una empresa de servicios de agua potable, enfocada en convertir visitantes en clientes mediante un diseño persuasivo y una experiencia de usuario optimizada.",
       problem: "Las empresas de servicios necesitan una presencia web profesional que comunique efectivamente sus servicios, genere confianza y facilite el contacto con clientes potenciales, sin requerir una inversión en desarrollo complejo.",
       technicalApproach: "Landing page desarrollada con HTML5 semántico para SEO, CSS3 con animaciones suaves y diseño responsive, y JavaScript para interactividad como formularios de contacto, navegación suave y efectos visuales que mejoran la experiencia del usuario.",
-      extendedDescription: "AguaConnect presenta una landing page moderna con secciones de hero, servicios, beneficios, testimonios y formulario de contacto. El diseño prioriza la claridad del mensaje, la facilidad de navegación y la conversión de visitantes en leads."
+      extendedDescription: "AguaConnect presenta una landing page moderna con secciones de hero, servicios, beneficios, testimonios y formulario de contacto. El diseño prioriza la claridad del mensaje, la facilidad de navegación y la conversión de visitantes en leads.",
+      images: [
+        "/projects/AguaConnect/AguaConnect.png",
+        "/projects/AguaConnect/AguaConnect2.png",
+        "/projects/AguaConnect/AguaConnect3.png"
+      ]
     },
   ];
 

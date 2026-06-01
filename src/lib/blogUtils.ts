@@ -64,6 +64,7 @@ export function getPostsByTag(tag: string): Promise<BlogPost[]> {
 function parseMarkdownPost(content: string, slug: string): BlogPost | null {
   const frontmatterMatch = content.match(/^---\s*([\s\S]*?)\s*---/);
 
+  if (!frontmatterMatch) return null;
 
   const frontmatterText = frontmatterMatch[1];
   const body = content.replace(frontmatterMatch[0], '');

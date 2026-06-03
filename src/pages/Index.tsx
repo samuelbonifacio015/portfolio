@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { cn } from '@/lib/utils';
 import Navbar from '@/components/Navbar';
 import Sidebar from '@/components/Sidebar';
 import Hero from '@/components/Hero';
@@ -32,10 +31,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className={cn(
-        'mx-auto transition-all duration-300',
-        'max-w-[75%] px-4 py-20 md:px-6 md: max-w-[100%] md:py-20 lg:px-8 lg:py-24'
-      )}>
+      <div className="w-full transition-all duration-300">
         <Navbar isMobile={isMobile} />
         <Sidebar isMobile={isMobile} />
         <Hero />

@@ -1,5 +1,6 @@
 import { ArrowDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import FadingVideo from '@/components/FadingVideo';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -11,55 +12,59 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col items-center justify-center relative px-4 py-20 scroll-mt-20"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-24 scroll-mt-20 sm:px-6 lg:px-10"
     >
-      <div className="absolute inset-0 dark:bg-gradient-to-b dark:from-black/90 dark:via-background dark:to-background z-[-1]"></div>
-      
-      <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
-      
-      <div className="container mx-auto max-w-4xl">
-        <div className={`transition-all duration-1000 ease-[cubic-bezier(0.4,0,0.2,1)] ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}> 
-          <div className="glass-card rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center justify-between gap-8 sm:gap-10 md:gap-12 lg:gap-16 shadow-2xl">
-            <div className="flex-1 flex flex-col items-center md:items-start justify-center">
-              <span className="inline-block px-3 py-1 text-xs sm:text-sm font-medium rounded-full bg-primary/20 text-primary mb-4 sm:mb-6 animate-fade-in">
-                Desarrollador Full-Stack
-              </span>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4 tracking-tight text-foreground font-display text-center md:text-left leading-tight">
-                Samuel Bonifacio<span className="text-primary">.</span>
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-md animate-fade-in text-center md:text-left">
-                Ingeniero de software especializado en desarrollo Full-Stack e Inteligencia Artificial.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full">
-                <a
-                  href="#projects"
-                  className="px-6 py-3 rounded-lg bg-primary hover:bg-primary/90 text-white font-medium transition-all duration-300 text-center transform hover:translate-y-[-2px] shadow-lg shadow-primary/20 w-full sm:w-auto"
-                >
-                  Ver Proyectos
-                </a>
-                <a
-                  href="#contact"
-                  className="px-6 py-3 rounded-lg bg-muted/50 hover:bg-muted/80 text-foreground font-medium border border-border transition-all duration-300 text-center backdrop-blur-sm transform hover:translate-y-[-2px] w-full sm:w-auto dark:bg-white/10 dark:hover:bg-white/15 dark:text-white dark:border-white/10"
-                >
-                  Contacto
-                </a>
-              </div>
+      <div className="absolute inset-0 z-[-2] bg-[linear-gradient(180deg,hsl(var(--background))_0%,hsl(var(--muted))_52%,hsl(var(--background))_100%)] dark:bg-[linear-gradient(180deg,#050505_0%,hsl(var(--background))_54%,#050505_100%)]" />
+      <div className="absolute inset-x-0 top-0 z-[-1] h-32 bg-white/80 blur-2xl dark:bg-white/[0.03]" />
+      <div className="absolute inset-x-0 bottom-0 z-[-1] h-40 bg-background/95 blur-2xl" />
+
+      <div className="mx-auto flex w-full max-w-[1500px] flex-1 items-center">
+        <div className={`grid w-full items-center gap-10 transition-all duration-1000 ease-out md:grid-cols-[minmax(0,0.9fr)_minmax(420px,1.1fr)] lg:gap-14 xl:gap-20 ${isVisible ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-8 scale-95 opacity-0'}`}>
+          <div className="flex flex-col items-center justify-center text-center md:items-start md:pl-20 md:text-left lg:pl-24">
+            <span className="liquid-glass mb-5 inline-flex rounded-full px-4 py-2 text-xs font-medium text-primary shadow-[0_8px_28px_rgba(15,23,42,0.08)] sm:mb-6 sm:text-sm dark:text-primary-foreground/90">
+              Desarrollador Full-Stack
+            </span>
+
+            <h1 className="mb-4 max-w-3xl text-4xl font-bold leading-[0.95] tracking-normal text-foreground sm:text-5xl md:text-7xl lg:text-8xl">
+              Samuel Bonifacio<span className="text-primary">.</span>
+            </h1>
+
+            <p className="mb-8 max-w-[22rem] text-base leading-7 text-muted-foreground sm:max-w-xl sm:text-lg md:text-xl md:leading-8">
+              Ingeniero de software especializado en desarrollo Full-Stack e Inteligencia Artificial.
+            </p>
+
+            <div className="flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row md:justify-start">
+              <a
+                href="#projects"
+                className="liquid-glass-strong inline-flex w-full items-center justify-center rounded-full bg-foreground px-7 py-3.5 text-sm font-semibold text-background shadow-[0_18px_45px_rgba(15,23,42,0.12)] transition-transform duration-300 hover:-translate-y-0.5 sm:w-auto dark:bg-white dark:text-black"
+              >
+                Ver Proyectos
+              </a>
+              <a
+                href="#contact"
+                className="liquid-glass inline-flex w-full items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold text-foreground shadow-[0_12px_32px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:-translate-y-0.5 sm:w-auto"
+              >
+                Contacto
+              </a>
             </div>
-            <div className="flex-1 flex justify-center md:justify-end mt-6 md:mt-0">
-              <img
-                src="/utils/Samuel Bonifacio.jpeg"
-                alt="Samuel Bonifacio"
-                className="w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 object-cover rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-primary shadow-2xl max-w-[340px] max-h-[340px]"
+          </div>
+
+          <div className="flex w-full justify-center md:justify-end">
+            <div className="liquid-glass w-full max-w-[760px] rounded-[2rem] p-2 shadow-[0_30px_90px_rgba(15,23,42,0.14)] sm:rounded-[2.5rem] sm:p-3 dark:shadow-black/40">
+              <FadingVideo
+                src="/hero/xml_version_encoding_.mp4"
+                poster="/hero/xml_version_encoding_poster.png"
+                className="aspect-[16/10] rounded-[1.5rem] bg-black/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.45)] sm:rounded-[2rem]"
+                videoClassName="rounded-[1.5rem] sm:rounded-[2rem]"
               />
             </div>
           </div>
         </div>
       </div>
-      
+
       <a
         href="#projects"
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-muted-foreground hover:text-foreground dark:text-white/50 dark:hover:text-white animate-bounce transition-colors duration-300"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground transition-colors duration-300 hover:text-foreground dark:text-white/50 dark:hover:text-white md:bottom-10"
         aria-label="Scroll to projects"
       >
         <ArrowDown size={24} />

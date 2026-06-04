@@ -1,12 +1,12 @@
 import { cn } from '@/lib/utils';
 import TechBadge from './TechBadge';
 import { ProjectProps } from './ProjectCard';
+import { LiquidGlass } from '@/components/ui/LiquidGlass';
 
 interface ProjectGridCardProps extends ProjectProps {
   onClick: () => void;
 }
 
-//Proyecto Grid Card + descripción 
 const ProjectGridCard = ({
   title,
   subtitle,
@@ -15,24 +15,23 @@ const ProjectGridCard = ({
   technologies,
   onClick,
 }: ProjectGridCardProps) => {
-  const truncatedDescription = description.length > 100 
-    ? `${description.substring(0, 100)}...` 
-    : description;
+  const truncatedDescription =
+    description.length > 100 ? `${description.substring(0, 100)}...` : description;
 
   return (
-    <div
+    <LiquidGlass
+      variant="card"
+      enableTilt
+      enableReflection
+      enableBreathing
+      enableMorphing
+      className="group cursor-pointer rounded-xl border border-border/50"
+      whileHover={{ scale: 1.02, y: -4 }}
+      whileTap={{ scale: 0.98 }}
       onClick={onClick}
-      className={cn(
-        "group relative cursor-pointer rounded-xl border border-border/50",
-        "bg-card/50 backdrop-blur-sm overflow-hidden",
-        "transition-all duration-300 ease-out",
-        "hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10",
-        "hover:scale-[1.02] hover:-translate-y-1",
-        "active:scale-[0.98]"
-      )}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => {
+      onKeyDown={(e: React.KeyboardEvent) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           onClick();
@@ -98,9 +97,8 @@ const ProjectGridCard = ({
           </svg>
         </div>
       </div>
-    </div>
+    </LiquidGlass>
   );
 };
 
 export default ProjectGridCard;
-

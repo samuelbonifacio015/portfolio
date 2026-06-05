@@ -118,6 +118,10 @@
     will-change: transform;
   }
 
+  .dark .lg-blob {
+    background: hsl(var(--primary) / 0.22);
+  }
+
   .lg-blob-1 {
     width: 55%;
     height: 55%;

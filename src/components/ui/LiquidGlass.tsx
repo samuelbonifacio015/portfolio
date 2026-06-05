@@ -26,6 +26,27 @@ const BLUR: Record<'light' | 'strong' | 'card', { light: number; dark: number }>
   card:   { light: 10, dark: 20 },
 };
 
+const BG: Record<'light' | 'strong' | 'card', { light: string; dark: string }> = {
+  light:  { light: 'rgba(255,255,255,0.55)', dark: 'rgba(255,255,255,0.05)' },
+  strong: { light: 'rgba(255,255,255,0.55)', dark: 'rgba(255,255,255,0.04)' },
+  card:   { light: 'rgba(255,255,255,0.55)', dark: 'rgba(255,255,255,0.07)' },
+};
+
+const SHADOW: Record<'light' | 'strong' | 'card', { light: string; dark: string }> = {
+  light: {
+    light: 'inset 0 1px 1px rgba(255,255,255,0.1)',
+    dark:  'inset 0 1px 1px rgba(255,255,255,0.08), 0 0 0 0.5px rgba(255,255,255,0.07)',
+  },
+  strong: {
+    light: '4px 4px 4px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.15)',
+    dark:  '4px 4px 4px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.1), 0 0 0 0.5px rgba(255,255,255,0.07)',
+  },
+  card: {
+    light: 'inset 0 1px 1px rgba(255,255,255,0.1)',
+    dark:  '0 4px 24px rgba(0,0,0,0.4), 0 0 0 0.5px rgba(255,255,255,0.08), inset 0 1px 1px rgba(255,255,255,0.06)',
+  },
+};
+
 const TILT_MAX = 4;
 
 export function LiquidGlass({
@@ -97,14 +118,13 @@ export function LiquidGlass({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const MotionEl = (motion as any)[as] as typeof motion.div;
 
+  const theme = isDark ? 'dark' : 'light';
+
   const glassStyle = disabled ? {} : {
     backdropFilter: `blur(${blur}px)`,
     WebkitBackdropFilter: `blur(${blur}px)`,
-    background: isDark ? 'rgba(255,255,255,0.01)' : 'rgba(255,255,255,0.5)',
-    boxShadow:
-      variant === 'strong'
-        ? '4px 4px 4px rgba(0,0,0,0.05), inset 0 1px 1px rgba(255,255,255,0.15)'
-        : 'inset 0 1px 1px rgba(255,255,255,0.1)',
+    background: BG[variant][theme],
+    boxShadow: SHADOW[variant][theme],
     willChange: 'transform' as const,
     ...(canTilt && { transformStyle: 'preserve-3d' as const, rotateX, rotateY }),
   };
@@ -137,8 +157,9 @@ export function LiquidGlass({
           className="lg-border-breathe pointer-events-none absolute inset-0 rounded-[inherit]"
           style={{
             padding: '1.4px',
-            background:
-              'linear-gradient(180deg, rgba(37,99,235,0.5) 0%, rgba(255,255,255,0) 50%, rgba(37,99,235,0.3) 100%)',
+            background: isDark
+              ? 'linear-gradient(180deg, rgba(37,99,235,0.7) 0%, rgba(37,99,235,0.1) 50%, rgba(37,99,235,0.5) 100%)'
+              : 'linear-gradient(180deg, rgba(37,99,235,0.5) 0%, rgba(255,255,255,0) 50%, rgba(37,99,235,0.3) 100%)',
             WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
             WebkitMaskComposite: 'xor',
             maskComposite: 'exclude',

@@ -16,11 +16,6 @@ interface NavbarProps {
 }
 
 const sectionNavLinks: NavLink[] = [
-  { name: 'Inicio', sectionId: 'home' },
-  { name: 'Tecnologías', sectionId: 'technologies' },
-  { name: 'Proyectos', sectionId: 'projects' },
-  { name: 'Conocimientos', sectionId: 'knowledge' },
-  { name: 'Contacto', sectionId: 'contact' },
   { name: 'Blog', href: '/blog' },
 ];
 

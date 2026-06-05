@@ -2,6 +2,7 @@ import { Calendar } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import TechBadge from './TechBadge';
 import { BlogPost } from '@/lib/blogTypes';
+import { LiquidGlass } from '@/components/ui/LiquidGlass';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -11,13 +12,18 @@ interface BlogCardProps {
 
 const BlogCard = ({ post, onTagClick, delay = 0 }: BlogCardProps) => {
   return (
-    <article
+    <LiquidGlass
+      as="article"
+      variant="card"
+      enableBreathing
+      enableTilt
+      whileHover={{ scale: 1.02, y: -4 }}
+      whileTap={{ scale: 0.98 }}
       className={cn(
-        "glass-card rounded-xl overflow-hidden group cursor-pointer",
-        "hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10",
-        "hover:scale-[1.02] hover:-translate-y-1",
-        "transition-all duration-300",
-        "opacity-0 animate-fade-in"
+        'rounded-xl overflow-hidden group cursor-pointer',
+        'hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10',
+        'transition-shadow duration-300',
+        'opacity-0 animate-fade-in'
       )}
       style={{ animationDelay: `${delay}ms` }}
     >
@@ -44,7 +50,7 @@ const BlogCard = ({ post, onTagClick, delay = 0 }: BlogCardProps) => {
               {new Date(post.date).toLocaleDateString('es-ES', {
                 day: 'numeric',
                 month: 'short',
-                year: 'numeric'
+                year: 'numeric',
               })}
             </time>
           </div>
@@ -81,7 +87,7 @@ const BlogCard = ({ post, onTagClick, delay = 0 }: BlogCardProps) => {
           </div>
         )}
       </div>
-    </article>
+    </LiquidGlass>
   );
 };
 

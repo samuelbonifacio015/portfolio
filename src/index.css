@@ -91,7 +91,60 @@
   }
 }
 
+@layer components {
+  /* ─── LiquidGlass component ───────────────────────────────────────── */
+  @keyframes lg-blob-drift-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%       { transform: translate(8px, -12px) scale(1.05); }
+    66%       { transform: translate(-4px, 8px) scale(0.97); }
+  }
+
+  @keyframes lg-blob-drift-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%       { transform: translate(-8px, 8px) scale(1.05); }
+    66%       { transform: translate(12px, -4px) scale(0.95); }
+  }
+
+  @keyframes lg-breathe {
+    0%, 100% { opacity: 0.55; }
+    50%       { opacity: 1; }
+  }
+
+  .lg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(24px);
+    background: hsl(var(--primary) / 0.12);
+    will-change: transform;
+  }
+
+  .dark .lg-blob {
+    background: hsl(var(--primary) / 0.22);
+  }
+
+  .lg-blob-1 {
+    width: 55%;
+    height: 55%;
+    top: -15%;
+    left: -10%;
+    animation: lg-blob-drift-1 9s ease-in-out infinite;
+  }
+
+  .lg-blob-2 {
+    width: 40%;
+    height: 40%;
+    bottom: -10%;
+    right: -5%;
+    animation: lg-blob-drift-2 11s ease-in-out infinite;
+  }
+
+  .lg-border-breathe {
+    animation: lg-breathe 5s ease-in-out infinite;
+  }
+}
+
 @layer utilities {
+  /* @deprecated — use <LiquidGlass variant="light"> instead. Kept as reduced-motion fallback. */
   .liquid-glass {
     background: rgba(255,255,255,0.01);
     background-blend-mode: luminosity;
@@ -122,6 +175,7 @@
     pointer-events: none;
   }
 
+  /* @deprecated — use <LiquidGlass variant="strong"> instead. Kept as reduced-motion fallback. */
   .liquid-glass-strong {
     background: rgba(255,255,255,0.01);
     background-blend-mode: luminosity;
@@ -152,6 +206,7 @@
     pointer-events: none;
   }
 
+  /* @deprecated — use <LiquidGlass variant="light"> instead. */
   .glass {
     @apply bg-white/60 backdrop-blur-md border border-border/60 shadow-sm;
   }
@@ -160,6 +215,7 @@
     @apply bg-black/20 backdrop-blur-md border border-white/10 shadow-sm;
   }
 
+  /* @deprecated — use <LiquidGlass variant="card"> instead. */
   .glass-card {
     @apply bg-white border border-border shadow-sm;
   }

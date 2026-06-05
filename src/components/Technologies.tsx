@@ -1,6 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import TechBadge from './TechBadge';
+import { LiquidGlass } from '@/components/ui/LiquidGlass';
 
 const Technologies = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -69,22 +70,24 @@ const Technologies = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
           {techCategories.map((category, index) => (
-            <div
+            <LiquidGlass
               key={category.name}
-              className={`glass-card rounded-xl p-5 sm:p-6 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
+              variant="card"
+              enableBreathing
+              className={`rounded-xl p-5 sm:p-6 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
               style={{ transitionDelay: `${200 + index * 100}ms` }}
             >
               <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-3 sm:mb-4">{category.name}</h3>
               <div className="flex flex-wrap gap-2 sm:gap-2.5">
                 {category.technologies.map((tech) => (
-                  <TechBadge 
-                    key={tech} 
-                    name={tech} 
+                  <TechBadge
+                    key={tech}
+                    name={tech}
                     className="text-sm py-1 px-3"
                   />
                 ))}
               </div>
-            </div>
+            </LiquidGlass>
           ))}
         </div>
       </div>

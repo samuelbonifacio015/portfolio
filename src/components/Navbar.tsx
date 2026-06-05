@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Github, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ThemeToggle from '@/components/ThemeToggle';
+import { LiquidGlass } from '@/components/ui/LiquidGlass';
 
 interface NavLink {
   name: string;
@@ -32,7 +33,6 @@ const Navbar = ({ isMobile }: NavbarProps) => {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
-
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -44,16 +44,8 @@ const Navbar = ({ isMobile }: NavbarProps) => {
   };
 
   const scrollToSection = (event: MouseEvent<HTMLAnchorElement>, sectionId?: string) => {
-    if (!sectionId) {
-      setIsMobileMenuOpen(false);
-      return;
-    }
-
-    if (!isHomeRoute) {
-      setIsMobileMenuOpen(false);
-      return;
-    }
-
+    if (!sectionId) { setIsMobileMenuOpen(false); return; }
+    if (!isHomeRoute) { setIsMobileMenuOpen(false); return; }
     event.preventDefault();
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     setIsMobileMenuOpen(false);
@@ -72,7 +64,6 @@ const Navbar = ({ isMobile }: NavbarProps) => {
         </Link>
       );
     }
-
     return (
       <a
         key={link.name}
@@ -87,11 +78,15 @@ const Navbar = ({ isMobile }: NavbarProps) => {
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50 w-full">
-      <div
+      <LiquidGlass
+        variant="strong"
+        enableReflection
+        enableBreathing
+        disabled={!isScrolled}
         className={cn(
-          'relative mx-auto flex items-center justify-between transition-[width,max-width,margin,padding,background-color,border-color,border-radius,box-shadow,backdrop-filter] duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]',
+          'relative mx-auto flex items-center justify-between overflow-visible transition-[width,max-width,margin,padding,background-color,border-color,border-radius,box-shadow,backdrop-filter] duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]',
           isScrolled
-            ? 'liquid-glass-strong mt-3 w-[95%] max-w-5xl rounded-full px-4 py-3 shadow-[0_18px_55px_rgba(15,23,42,0.10),inset_0_1px_1px_rgba(255,255,255,0.20)] dark:shadow-[0_18px_55px_rgba(0,0,0,0.35),inset_0_1px_1px_rgba(255,255,255,0.12)] md:w-[86%] md:px-6'
+            ? 'mt-3 w-[95%] max-w-5xl rounded-full px-4 py-3 shadow-[0_18px_55px_rgba(15,23,42,0.10),inset_0_1px_1px_rgba(255,255,255,0.20)] dark:shadow-[0_18px_55px_rgba(0,0,0,0.35),inset_0_1px_1px_rgba(255,255,255,0.12)] md:w-[86%] md:px-6'
             : 'w-full px-4 py-4 md:px-10'
         )}
       >
@@ -150,7 +145,13 @@ const Navbar = ({ isMobile }: NavbarProps) => {
         </div>
 
         {isMobileMenuOpen && (
-          <nav className="liquid-glass-strong fixed left-4 right-4 top-16 rounded-2xl px-2 py-3 shadow-xl animate-in fade-in slide-in-from-top-2 duration-300 lg:hidden">
+          <LiquidGlass
+            as="nav"
+            variant="strong"
+            enableBreathing
+            className="fixed left-4 right-4 top-16 rounded-2xl px-2 py-3 shadow-xl animate-in fade-in slide-in-from-top-2 duration-300 lg:hidden"
+            aria-label="Menú móvil"
+          >
             <div className="flex flex-col">
               {sectionNavLinks.map((link) =>
                 renderNavLink(
@@ -169,9 +170,9 @@ const Navbar = ({ isMobile }: NavbarProps) => {
                 GitHub
               </a>
             </div>
-          </nav>
+          </LiquidGlass>
         )}
-      </div>
+      </LiquidGlass>
     </header>
   );
 };

@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail, MapPin, X, Check } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { LiquidGlass } from '@/components/ui/LiquidGlass';
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -79,8 +80,10 @@ const Contact = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          <div 
-            className={`glass-card rounded-xl p-6 md:col-span-2 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
+          <LiquidGlass
+            variant="card"
+            enableBreathing
+            className={`rounded-xl p-6 md:col-span-2 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
             style={{ transitionDelay: '200ms' }}
           >
             <h3 className="text-xl font-semibold text-foreground mb-6">Envíame un mensaje</h3>
@@ -150,10 +153,12 @@ const Contact = () => {
                 {isLoading ? 'Enviando...' : 'Enviar mensaje'}
               </button>
             </form>
-          </div>
+          </LiquidGlass>
 
-          <div 
-            className={`glass-card rounded-xl p-6 flex flex-col items-center text-center transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
+          <LiquidGlass
+            variant="card"
+            enableBreathing
+            className={`rounded-xl p-6 flex flex-col items-center text-center transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
             style={{ transitionDelay: '300ms' }}
           >
             <h3 className="text-xl font-semibold text-foreground mb-6">Información de contacto</h3>
@@ -206,13 +211,13 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </LiquidGlass>
         </div>
       </div>
 
       {showModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 px-4">
-          <div className="glass-card rounded-xl p-6 max-w-md w-full animate-fade-in">
+          <LiquidGlass variant="card" enableBreathing className="rounded-xl p-6 max-w-md w-full animate-fade-in">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 <div className="h-10 w-10 rounded-full bg-green-500/20 flex items-center justify-center">
@@ -230,7 +235,7 @@ const Contact = () => {
             <p className="text-muted-foreground">
               Tu mensaje ha sido enviado correctamente. Te responderé lo antes posible.
             </p>
-          </div>
+          </LiquidGlass>
         </div>
       )}
     </section>

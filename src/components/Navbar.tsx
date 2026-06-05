@@ -84,7 +84,7 @@ const Navbar = ({ isMobile }: NavbarProps) => {
         enableBreathing
         disabled={!isScrolled}
         className={cn(
-          'relative mx-auto flex items-center justify-between transition-[width,max-width,margin,padding,background-color,border-color,border-radius,box-shadow,backdrop-filter] duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]',
+          'relative mx-auto flex items-center justify-between overflow-visible transition-[width,max-width,margin,padding,background-color,border-color,border-radius,box-shadow,backdrop-filter] duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]',
           isScrolled
             ? 'mt-3 w-[95%] max-w-5xl rounded-full px-4 py-3 shadow-[0_18px_55px_rgba(15,23,42,0.10),inset_0_1px_1px_rgba(255,255,255,0.20)] dark:shadow-[0_18px_55px_rgba(0,0,0,0.35),inset_0_1px_1px_rgba(255,255,255,0.12)] md:w-[86%] md:px-6'
             : 'w-full px-4 py-4 md:px-10'

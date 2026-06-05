@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { LiquidGlass } from '@/components/ui/LiquidGlass';
 
 //Inspiration
 
@@ -23,7 +24,7 @@ const Inspiration = () => {
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <div className="glass-card rounded-2xl max-w-5xl w-full p-8 md:p-12 flex flex-col md:flex-row items-center md:items-stretch gap-8 md:gap-16 text-center md:text-left shadow-xl">
+      <LiquidGlass variant="card" enableBreathing className="rounded-2xl max-w-5xl w-full p-8 md:p-12 flex flex-col md:flex-row items-center md:items-stretch gap-8 md:gap-16 text-center md:text-left shadow-xl">
         <div className="flex-1 flex flex-col justify-center order-2 md:order-1">
           <span className="inline-block w-fit px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary mb-4 animate-fade-in mx-auto md:mx-0">
             Valores
@@ -59,7 +60,7 @@ const Inspiration = () => {
             />
           </div>
         </div>
-      </div>
+      </LiquidGlass>
     </section>
   );
 };

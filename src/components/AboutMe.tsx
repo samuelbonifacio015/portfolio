@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { LiquidGlass } from '@/components/ui/LiquidGlass';
 
 //AboutMe
 
@@ -22,7 +23,7 @@ const AboutMe = () => {
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <div className="glass-card rounded-xl sm:rounded-2xl max-w-5xl w-full p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col md:flex-row items-center md:items-stretch gap-6 sm:gap-8 md:gap-12 lg:gap-16 text-center md:text-left shadow-xl">
+      <LiquidGlass variant="card" enableBreathing className="rounded-xl sm:rounded-2xl max-w-5xl w-full p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col md:flex-row items-center md:items-stretch gap-6 sm:gap-8 md:gap-12 lg:gap-16 text-center md:text-left shadow-xl">
         <div className="flex-1 flex flex-col justify-center">
           <span className="inline-block w-fit px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary mb-4 animate-fade-in mx-auto md:mx-0">
             Información Personal
@@ -73,7 +74,7 @@ const AboutMe = () => {
             Descargar CV
           </a>
         </div>
-      </div>
+      </LiquidGlass>
     </section>
   );
 };

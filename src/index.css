@@ -140,6 +140,7 @@
 }
 
 @layer utilities {
+  /* @deprecated — use <LiquidGlass variant="light"> instead. Kept as reduced-motion fallback. */
   .liquid-glass {
     background: rgba(255,255,255,0.01);
     background-blend-mode: luminosity;
@@ -170,6 +171,7 @@
     pointer-events: none;
   }
 
+  /* @deprecated — use <LiquidGlass variant="strong"> instead. Kept as reduced-motion fallback. */
   .liquid-glass-strong {
     background: rgba(255,255,255,0.01);
     background-blend-mode: luminosity;
@@ -200,6 +202,7 @@
     pointer-events: none;
   }
 
+  /* @deprecated — use <LiquidGlass variant="light"> instead. */
   .glass {
     @apply bg-white/60 backdrop-blur-md border border-border/60 shadow-sm;
   }
@@ -208,6 +211,7 @@
     @apply bg-black/20 backdrop-blur-md border border-white/10 shadow-sm;
   }
 
+  /* @deprecated — use <LiquidGlass variant="card"> instead. */
   .glass-card {
     @apply bg-white border border-border shadow-sm;
   }

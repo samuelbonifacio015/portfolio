@@ -14,9 +14,8 @@ const Blog = () => {
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
   const [currentFilter, setCurrentFilter] = useState<string>('Todos');
   const [isMobile, setIsMobile] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLDivElement>();
   const navigate = useNavigate();
-  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -34,28 +33,6 @@ const Blog = () => {
       setFilteredPosts(allPosts);
     };
     loadPosts();
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
   }, []);
 
   const handleFilterChange = async (filter: string) => {

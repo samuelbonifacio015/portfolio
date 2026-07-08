@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { useSectionReveal } from '@/hooks/use-section-reveal';
 import { Terminal as TerminalIcon } from 'lucide-react';
 
 interface TerminalProps {
@@ -14,23 +15,8 @@ const Terminal: React.FC<TerminalProps> = ({ className }) => {
         "Usando: Arch Linux",
         "Escribiendo: Visita mi blog :)"
     ]);
-    const containerRef = useRef<HTMLElement>(null);
+    const { ref: containerRef, isVisible } = useSectionReveal<HTMLElement>();
     const scrollRef = useRef<HTMLDivElement>(null);
-    const [isVisible, setIsVisible] = useState(true);
-
-    useEffect(() => {
-        const observer = new window.IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.1 }
-        );
-        if (containerRef.current) observer.observe(containerRef.current);
-        return () => observer.disconnect();
-    }, []);
 
     useEffect(() => {
         if (scrollRef.current) {

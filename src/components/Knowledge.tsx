@@ -1,35 +1,9 @@
 
-import { useEffect, useRef, useState } from 'react';
 import KnowledgeItem from './KnowledgeItem';
+import { useSectionReveal } from '@/hooks/use-section-reveal';
 
 const Knowledge = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        root: null,
-        threshold: 0.1,
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLElement>();
 
   const knowledgeItems = [
     {

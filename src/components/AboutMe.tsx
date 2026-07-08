@@ -1,20 +1,10 @@
-import React, { useRef, useEffect, useState } from "react";
 import { LiquidGlass } from '@/components/ui/LiquidGlass';
+import { useSectionReveal } from '@/hooks/use-section-reveal';
 
 //AboutMe
 
 const AboutMe = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new window.IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.2 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
+  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLElement>();
 
   return (
     <section

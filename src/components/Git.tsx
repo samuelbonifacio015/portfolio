@@ -1,4 +1,5 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
+import { useSectionReveal } from '@/hooks/use-section-reveal';
 
 /**
  * Github Contributions Chart Component
@@ -18,17 +19,7 @@ const GithubChart: React.FC<GithubChartProps> = ({
   className = "github-chart",
   alt = "GitHub Contributions Chart",
 }) => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new window.IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.2 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
+  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLElement>();
 
   const baseUrl = 'https://ghchart.rshah.org';
   const chartUrl = color ? `${baseUrl}/${color}/${username}` : `${baseUrl}/${username}`;

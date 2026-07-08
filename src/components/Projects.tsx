@@ -1,38 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { ProjectProps } from './ProjectCard';
 import ProjectGridCard from './ProjectGridCard';
 import ProjectModal from './ProjectModal';
+import { useSectionReveal } from '@/hooks/use-section-reveal';
 
 const Projects = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLElement>();
   const [selectedProject, setSelectedProject] = useState<ProjectProps | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        root: null,
-        threshold: 0.1,
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   // Modal funciones
   const handleOpenModal = (project: ProjectProps) => {

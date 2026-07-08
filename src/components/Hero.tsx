@@ -43,14 +43,12 @@ const Hero = () => {
             </p>
 
             <div className="flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row md:justify-start">
+              {/* CTA sólido: el fondo glass de LiquidGlass pisaría bg-foreground */}
               <LiquidGlass
                 as="a"
-                variant="strong"
-                enableReflection
-                enableBreathing
-                enableTilt
+                disabled
                 href="#projects"
-                className="inline-flex w-full items-center justify-center rounded-full bg-foreground px-7 py-3.5 text-sm font-semibold text-background shadow-[0_18px_45px_rgba(15,23,42,0.12)] sm:w-auto dark:bg-white dark:text-black"
+                className="inline-flex w-full items-center justify-center rounded-full bg-foreground px-7 py-3.5 text-sm font-semibold text-background shadow-[0_18px_45px_rgba(15,23,42,0.12)] transition-colors hover:bg-foreground/90 sm:w-auto dark:bg-white dark:text-black dark:hover:bg-white/90"
                 whileHover={{ y: -2 }}
               >
                 Ver Proyectos

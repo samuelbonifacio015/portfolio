@@ -1,13 +1,13 @@
-import { Github, Linkedin, Mail, MapPin, X, Check } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { toast } from 'sonner';
 import { LiquidGlass } from '@/components/ui/LiquidGlass';
 import { useSectionReveal } from '@/hooks/use-section-reveal';
 
 const Contact = () => {
   const { ref: sectionRef, isVisible } = useSectionReveal<HTMLElement>();
   const formRef = useRef<HTMLFormElement>(null);
-  const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -25,9 +25,10 @@ const Contact = () => {
       );
 
       if (result.text === 'OK') {
-        setShowModal(true);
+        toast.success('¡Mensaje enviado!', {
+          description: 'Tu mensaje ha sido enviado correctamente. Te responderé lo antes posible.',
+        });
         formRef.current?.reset();
-        setTimeout(() => setShowModal(false), 3000);
       }
     } catch (err) {
       console.error('Error:', err);
@@ -190,29 +191,6 @@ const Contact = () => {
         </div>
       </div>
 
-      {showModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 px-4">
-          <LiquidGlass variant="card" enableBreathing className="rounded-xl p-6 max-w-md w-full animate-fade-in">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                  <Check className="h-6 w-6 text-green-500" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">¡Mensaje enviado!</h3>
-              </div>
-              <button
-                onClick={() => setShowModal(false)}
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-            <p className="text-muted-foreground">
-              Tu mensaje ha sido enviado correctamente. Te responderé lo antes posible.
-            </p>
-          </LiquidGlass>
-        </div>
-      )}
     </section>
   );
 };

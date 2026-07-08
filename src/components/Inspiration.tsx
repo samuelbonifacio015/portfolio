@@ -1,20 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
 import { LiquidGlass } from '@/components/ui/LiquidGlass';
+import { useSectionReveal } from '@/hooks/use-section-reveal';
 
 //Inspiration
 
 const Inspiration = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new window.IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.2 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
+  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLElement>();
 
   return (
     <section
@@ -26,21 +16,13 @@ const Inspiration = () => {
     >
       <LiquidGlass variant="card" enableBreathing className="rounded-2xl max-w-5xl w-full p-8 md:p-12 flex flex-col md:flex-row items-center md:items-stretch gap-8 md:gap-16 text-center md:text-left shadow-xl">
         <div className="flex-1 flex flex-col justify-center order-2 md:order-1">
-          <span className="inline-block w-fit px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary mb-4 animate-fade-in mx-auto md:mx-0">
-            Valores
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 md:mb-6 border-b-4 border-primary/60 pb-2 md:pb-4 w-fit self-center md:self-start tracking-tight text-center md:text-left">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 md:mb-6 tracking-tight text-center md:text-left">
             Inspiración
           </h2>
-          
-          <div className="mb-6 md:mb-8">
-            <div className="flex items-start gap-3 mb-4">
-              <div className="w-1 h-16 bg-primary rounded-full flex-shrink-0 hidden sm:block"></div>
-              <p className="text-foreground text-base md:text-xl italic font-light leading-relaxed">
-                "La familia no es una cosa importante. Es todo."
-              </p>
-            </div>
-          </div>
+
+          <p className="mb-6 text-foreground text-base md:text-xl italic font-light leading-relaxed md:mb-8">
+            "La familia no es una cosa importante. Es todo."
+          </p>
 
           <p className="text-muted-foreground text-sm md:text-xl mb-4 max-w-2xl">
             Mi principal fuente de inspiración es mi familia. Su apoyo constante y la confianza que depositan en mí han sido fundamentales para mantenerme enfocado y perseverar en el desarrollo de mis proyectos, incluso en los momentos más exigentes.
@@ -51,9 +33,9 @@ const Inspiration = () => {
         </div>
 
         <div className="flex flex-col items-center justify-center gap-4 w-full md:w-auto max-w-xs mx-auto order-1 md:order-2">
-          <div className="overflow-hidden rounded-2xl shadow-lg border-4 border-primary/60 dark:bg-black/30 w-full max-w-xs md:w-80 md:h-80 aspect-square flex items-center justify-center">
+          <div className="overflow-hidden rounded-2xl shadow-lg w-full max-w-xs md:w-80 md:h-80 aspect-square flex items-center justify-center">
             <img
-              src="/utils/Familia.jpeg"
+              src="/utils/Familia.webp"
               alt="Mi familia - Mi mayor inspiración"
               className="object-cover w-full h-full"
               loading="lazy"

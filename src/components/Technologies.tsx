@@ -1,36 +1,10 @@
 
-import { useEffect, useRef, useState } from 'react';
 import TechBadge from './TechBadge';
 import { LiquidGlass } from '@/components/ui/LiquidGlass';
+import { useSectionReveal } from '@/hooks/use-section-reveal';
 
 const Technologies = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        root: null,
-        threshold: 0.1,
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLElement>();
 
   const techCategories = [
     {
@@ -55,13 +29,10 @@ const Technologies = () => {
     <section
       id="technologies"
       ref={sectionRef}
-      className="section-padding px-4 relative bg-white dark:bg-black scroll-mt-20"
+      className="section-padding px-4 relative bg-background scroll-mt-20"
     >
       <div className="container mx-auto max-w-6xl">
         <div className={`space-y-4 text-center mb-8 sm:mb-10 md:mb-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>
-          <span className="inline-block px-3 py-1 text-xs sm:text-sm font-medium rounded-full bg-primary/20 text-primary">
-            Stack Tecnológico
-          </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">Tecnologías</h2>
           <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">
             Herramientas y tecnologías con las que trabajo a diario para desarrollar soluciones modernas y escalables.

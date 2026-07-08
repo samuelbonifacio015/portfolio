@@ -1,60 +1,40 @@
 
-import { useEffect, useRef, useState } from 'react';
 import KnowledgeItem from './KnowledgeItem';
+import { useSectionReveal } from '@/hooks/use-section-reveal';
 
 const Knowledge = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        root: null,
-        threshold: 0.1,
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLElement>();
 
   const knowledgeItems = [
     {
+      icon: 'code' as const,
       title: "Desarrollo web Frontend",
-      description: "Experiencia en el desarrollo de aplicaciones web completas, desde el frontend hasta el backend."
+      description: "React, Angular, Vue y Next.js en producción: LlamIA, WeRide, MaquinariasJyS y este portfolio."
     },
     {
+      icon: 'palette' as const,
       title: "Diseño UI/UX",
-      description: "Creación de interfaces de usuario intuitivas y experiencias de usuario atractivas."
+      description: "Interfaces con Tailwind y shadcn/ui, responsive y con modo oscuro; este sitio es la demo."
     },
     {
+      icon: 'boxes' as const,
       title: "Arquitectura de software",
-      description: "Diseño e implementación de arquitecturas escalables y mantenibles."
+      description: "APIs REST con Spring Boot, Django y .NET conectadas a frontends desacoplados."
     },
     {
+      icon: 'database' as const,
       title: "Bases de datos",
-      description: "Conocimiento en bases de datos relacionales (SQL) y no relacionales (NoSQL)."
+      description: "PostgreSQL con Supabase, SQL, y persistencia local con ROOM en Android (Klippr)."
     },
     {
-      title: "DevOps",
-      description: "Implementación de pipelines CI/CD y despliegue de aplicaciones en la nube."
+      icon: 'rocket' as const,
+      title: "Despliegue",
+      description: "Deploys continuos en Vercel y Render integrados con GitHub."
     },
     {
+      icon: 'users' as const,
       title: "Metodologías ágiles",
-      description: "Experiencia trabajando con Scrum, Kanban y otras metodologías ágiles."
+      description: "Scrum en equipos universitarios de 4-6 personas (WeRide, CultivApp)."
     },
   ];
 
@@ -66,9 +46,6 @@ const Knowledge = () => {
     >
       <div className="container mx-auto max-w-6xl">
         <div className={`space-y-4 text-center mb-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>
-          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary">
-            Experiencia
-          </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">Conocimientos</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Áreas en las que he trabajado a lo largo de mi carrera como desarrollador.
@@ -83,6 +60,7 @@ const Knowledge = () => {
               style={{ transitionDelay: `${200 + index * 100}ms` }}
             >
               <KnowledgeItem
+                icon={item.icon}
                 title={item.title}
                 description={item.description}
               />

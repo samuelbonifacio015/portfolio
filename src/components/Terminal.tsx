@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { useSectionReveal } from '@/hooks/use-section-reveal';
 import { Terminal as TerminalIcon } from 'lucide-react';
 
 interface TerminalProps {
@@ -8,29 +9,14 @@ interface TerminalProps {
 
 const Terminal: React.FC<TerminalProps> = ({ className }) => {
     const [lines] = useState<string[]>([
-        "samuel@admin:~$ neofetch",
+        "samuel@portfolio:~$ neofetch",
         "Estudiando en: Universidad Peruana de Ciencias Aplicadas",
         "Aprendiendo: Dart & React Native",
         "Usando: Arch Linux",
         "Escribiendo: Visita mi blog :)"
     ]);
-    const containerRef = useRef<HTMLElement>(null);
+    const { ref: containerRef, isVisible } = useSectionReveal<HTMLElement>();
     const scrollRef = useRef<HTMLDivElement>(null);
-    const [isVisible, setIsVisible] = useState(true);
-
-    useEffect(() => {
-        const observer = new window.IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.1 }
-        );
-        if (containerRef.current) observer.observe(containerRef.current);
-        return () => observer.disconnect();
-    }, []);
 
     useEffect(() => {
         if (scrollRef.current) {
@@ -81,7 +67,7 @@ const Terminal: React.FC<TerminalProps> = ({ className }) => {
                 {/* Terminal Content */}
                 <div
                     ref={scrollRef}
-                    className="p-4 sm:p-6 space-y-2 h-[300px] sm:h-[400px] overflow-y-auto overflow-x-hidden bg-black/50 scroll-smooth [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-white/10 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-white/20"
+                    className="p-4 sm:p-6 space-y-2 max-h-[400px] overflow-y-auto overflow-x-hidden bg-black/50 scroll-smooth [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-white/10 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-white/20"
                 >
                     <div className="text-green-600/70 leading-relaxed font-normal">
                         {isVisible && lines.map((line, i) => (

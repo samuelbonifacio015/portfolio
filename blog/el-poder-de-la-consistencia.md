@@ -3,11 +3,10 @@ title: "El poder de la consistencia en el aprendizaje"
 date: "2025-01-03"
 category: "Reflexiones"
 excerpt: "Hablamos sobre cómo la consistencia diaria puede transformar tu aprendizaje y habilidades de programación más que las sesiones intensivas de estudio."
-image: "/utils/SamuelUPC.jpg"
+image: "/utils/SamuelUPC.webp"
 tags: ["aprendizaje", "consistencia", "desarrollo"]
 ---
 
-# El poder de la consistencia en el aprendizaje
 
 Últimamente he estado pensando mucho sobre cómo **aprendemos mejor**. ¿Es mejor estudiar 10 horas un solo día o 1 hora cada día durante dos semanas?
 

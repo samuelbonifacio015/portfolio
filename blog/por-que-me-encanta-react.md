@@ -3,11 +3,10 @@ title: "Por qué me encanta React"
 date: "2025-01-05"
 category: "Reflexiones"
 excerpt: "Reflexión personal sobre por qué React se convirtió en mi framework favorito y cómo ha transformado mi forma de pensar sobre el desarrollo frontend."
-image: "/projects/WeRide/WeRide1.png"
+image: "/projects/WeRide/WeRide1.webp"
 tags: ["react", "frontend", "javascript"]
 ---
 
-# Por qué me encanta React
 
 Cuando empecé a aprender desarrollo web, probé varios frameworks: **Angular, Vue, Svelte**, entre otros. Pero hubo algo especial en **React** que me capturó por completo.
 

@@ -1,20 +1,10 @@
-import React, { useRef, useEffect, useState } from "react";
 import { LiquidGlass } from '@/components/ui/LiquidGlass';
+import { useSectionReveal } from '@/hooks/use-section-reveal';
 
 //AboutMe
 
 const AboutMe = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new window.IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.2 }
-    );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
+  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLElement>();
 
   return (
     <section
@@ -25,10 +15,7 @@ const AboutMe = () => {
     >
       <LiquidGlass variant="card" enableBreathing className="rounded-xl sm:rounded-2xl max-w-5xl w-full p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col md:flex-row items-center md:items-stretch gap-6 sm:gap-8 md:gap-12 lg:gap-16 text-center md:text-left shadow-xl">
         <div className="flex-1 flex flex-col justify-center">
-          <span className="inline-block w-fit px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary mb-4 animate-fade-in mx-auto md:mx-0">
-            Información Personal
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 md:mb-6 border-b-4 border-primary/60 dark:border-primary/60 pb-2 md:pb-4 w-fit self-center md:self-start tracking-tight text-center md:text-left">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 md:mb-6 w-fit self-center md:self-start tracking-tight text-center md:text-left">
             Sobre Mi
           </h2>
           <p className="text-muted-foreground text-sm md:text-xl mb-4 max-w-2xl">
@@ -47,7 +34,7 @@ const AboutMe = () => {
         <div className="flex flex-col items-center justify-center gap-4 w-full md:w-auto max-w-xs mx-auto">
           <div className="overflow-hidden rounded-xl sm:rounded-2xl shadow-lg border-2 sm:border-4 border-primary/60 dark:bg-black/30 w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 flex items-center justify-center mb-2">
             <img
-              src="/utils/SamuelUPC.jpg"
+              src="/utils/SamuelUPC.webp"
               alt="Samuel Bonifacio"
               className="object-cover w-full h-full"
             />

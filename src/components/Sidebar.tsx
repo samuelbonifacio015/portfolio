@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { Home, Cpu, FolderGit2, BookOpen, Mail } from 'lucide-react';
+import { House, Layers3, Briefcase, GraduationCap, MessageCircle } from 'lucide-react';
+import { LiquidGlass } from '@/components/ui/LiquidGlass';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const navItems = [
-  { name: 'Inicio', href: '#home', id: 'home', icon: Home },
-  { name: 'Tecnologías', href: '#technologies', id: 'technologies', icon: Cpu },
-  { name: 'Proyectos', href: '#projects', id: 'projects', icon: FolderGit2 },
-  { name: 'Conocimientos', href: '#knowledge', id: 'knowledge', icon: BookOpen },
-  { name: 'Contacto', href: '#contact', id: 'contact', icon: Mail },
+  { name: 'Inicio', href: '#home', id: 'home', icon: House },
+  { name: 'Tecnologías', href: '#technologies', id: 'technologies', icon: Layers3 },
+  { name: 'Proyectos', href: '#projects', id: 'projects', icon: Briefcase },
+  { name: 'Conocimientos', href: '#knowledge', id: 'knowledge', icon: GraduationCap },
+  { name: 'Contacto', href: '#contact', id: 'contact', icon: MessageCircle },
 ];
 
-interface SidebarProps {
-  isMobile: boolean;
-}
-
-const Sidebar = ({ isMobile }: SidebarProps) => {
+const Sidebar = () => {
+  const isMobile = useIsMobile();
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const Sidebar = ({ isMobile }: SidebarProps) => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -45,21 +45,35 @@ const Sidebar = ({ isMobile }: SidebarProps) => {
 
   return (
     <div className="fixed left-2 sm:left-3 md:left-4 top-1/2 -translate-y-1/2 z-50 transition-all duration-500 ease-in-out">
-      <article className="border border-border w-14 sm:w-16 ease-in-out duration-500 left-0 rounded-2xl inline-block shadow-lg shadow-black/15 bg-card/95 backdrop-blur-xl">
+      <LiquidGlass
+        as="nav"
+        aria-label="Navegación de secciones"
+        variant="strong"
+        enableBreathing
+        className="w-14 sm:w-16 rounded-2xl"
+      >
         {navItems.map((item) => (
-          <a
-            key={item.id}
-            href={item.href}
-            className={cn(
-              'has-[:checked]:shadow-lg relative w-full h-12 sm:h-16 p-3 sm:p-4 ease-in-out duration-300 border-solid border-border/10 has-[:checked]:border-primary/50 group flex flex-row gap-3 items-center justify-center text-foreground/80 rounded-xl cursor-pointer transition-all',
-              'hover:text-foreground hover:bg-foreground/5',
-              activeSection === item.id ? 'text-primary bg-foreground/5' : ''
-            )}
-          >
-            <item.icon size={24} strokeWidth={1.5} />
-          </a>
+          <Tooltip key={item.id}>
+            <TooltipTrigger asChild>
+              <a
+                href={item.href}
+                aria-label={item.name}
+                aria-current={activeSection === item.id ? 'true' : undefined}
+                className={cn(
+                  'relative w-full h-12 sm:h-14 flex items-center justify-center rounded-xl transition-all duration-300 cursor-pointer',
+                  'text-muted-foreground hover:text-primary hover:bg-primary/10',
+                  activeSection === item.id
+                    ? 'text-primary bg-primary/15 shadow-sm'
+                    : ''
+                )}
+              >
+                <item.icon size={20} strokeWidth={activeSection === item.id ? 2 : 1.5} />
+              </a>
+            </TooltipTrigger>
+            <TooltipContent side="right">{item.name}</TooltipContent>
+          </Tooltip>
         ))}
-      </article>
+      </LiquidGlass>
     </div>
   );
 };

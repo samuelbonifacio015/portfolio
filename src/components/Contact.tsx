@@ -1,40 +1,15 @@
-import { Github, Linkedin, Mail, MapPin, X, Check } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
+import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { toast } from 'sonner';
 import { LiquidGlass } from '@/components/ui/LiquidGlass';
+import { useSectionReveal } from '@/hooks/use-section-reveal';
 
 const Contact = () => {
-  const sectionRef = useRef<HTMLElement>(null);
+  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLElement>();
   const formRef = useRef<HTMLFormElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        root: null,
-        threshold: 0.1,
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,9 +25,10 @@ const Contact = () => {
       );
 
       if (result.text === 'OK') {
-        setShowModal(true);
+        toast.success('¡Mensaje enviado!', {
+          description: 'Tu mensaje ha sido enviado correctamente. Te responderé lo antes posible.',
+        });
         formRef.current?.reset();
-        setTimeout(() => setShowModal(false), 3000);
       }
     } catch (err) {
       console.error('Error:', err);
@@ -66,13 +42,10 @@ const Contact = () => {
     <section
       id="contact"
       ref={sectionRef}
-      className="section-padding px-4 relative bg-white dark:bg-black scroll-mt-20"
+      className="section-padding px-4 relative bg-background scroll-mt-20"
     >
       <div className="container mx-auto max-w-6xl">
         <div className={`space-y-4 text-center mb-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>
-          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary">
-            Contacto
-          </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">¿Hablamos?</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Contacta conmigo para colaboraciones o si tienes alguna pregunta sobre mi trabajo.
@@ -215,29 +188,6 @@ const Contact = () => {
         </div>
       </div>
 
-      {showModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 px-4">
-          <LiquidGlass variant="card" enableBreathing className="rounded-xl p-6 max-w-md w-full animate-fade-in">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                  <Check className="h-6 w-6 text-green-500" />
-                </div>
-                <h3 className="text-xl font-semibold text-foreground">¡Mensaje enviado!</h3>
-              </div>
-              <button
-                onClick={() => setShowModal(false)}
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-            <p className="text-muted-foreground">
-              Tu mensaje ha sido enviado correctamente. Te responderé lo antes posible.
-            </p>
-          </LiquidGlass>
-        </div>
-      )}
     </section>
   );
 };

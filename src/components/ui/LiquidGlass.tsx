@@ -28,7 +28,8 @@ const BLUR: Record<'light' | 'strong' | 'card', { light: number; dark: number }>
 
 const BG: Record<'light' | 'strong' | 'card', { light: string; dark: string }> = {
   light:  { light: 'rgba(255,255,255,0.55)', dark: 'rgba(255,255,255,0.05)' },
-  strong: { light: 'rgba(255,255,255,0.55)', dark: 'rgba(255,255,255,0.04)' },
+  // light 0.75: con 0.55 el blur arrastraba manchas oscuras al pasar sobre secciones negras (navbar)
+  strong: { light: 'rgba(255,255,255,0.75)', dark: 'rgba(255,255,255,0.04)' },
   card:   { light: 'rgba(255,255,255,0.55)', dark: 'rgba(255,255,255,0.07)' },
 };
 
@@ -71,10 +72,11 @@ export function LiquidGlass({
   const [isWide, setIsWide] = useState(false);
 
   useEffect(() => {
-    const check = () => setIsWide(window.innerWidth >= 1024);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
+    const mql = window.matchMedia('(min-width: 1024px)');
+    const onChange = () => setIsWide(mql.matches);
+    onChange();
+    mql.addEventListener('change', onChange);
+    return () => mql.removeEventListener('change', onChange);
   }, []);
 
   const mouseX = useMotionValue(0);
@@ -158,8 +160,8 @@ export function LiquidGlass({
           style={{
             padding: '1.4px',
             background: isDark
-              ? 'linear-gradient(180deg, rgba(37,99,235,0.7) 0%, rgba(37,99,235,0.1) 50%, rgba(37,99,235,0.5) 100%)'
-              : 'linear-gradient(180deg, rgba(37,99,235,0.5) 0%, rgba(255,255,255,0) 50%, rgba(37,99,235,0.3) 100%)',
+              ? 'linear-gradient(180deg, hsl(var(--primary) / 0.7) 0%, hsl(var(--primary) / 0.1) 50%, hsl(var(--primary) / 0.5) 100%)'
+              : 'linear-gradient(180deg, hsl(var(--primary) / 0.5) 0%, rgba(255,255,255,0) 50%, hsl(var(--primary) / 0.3) 100%)',
             WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
             WebkitMaskComposite: 'xor',
             maskComposite: 'exclude',

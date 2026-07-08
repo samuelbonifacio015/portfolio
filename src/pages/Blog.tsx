@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import BlogCard from '@/components/BlogCard';
@@ -13,19 +13,7 @@ const Blog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
   const [currentFilter, setCurrentFilter] = useState<string>('Todos');
-  const [isMobile, setIsMobile] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate();
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -34,28 +22,6 @@ const Blog = () => {
       setFilteredPosts(allPosts);
     };
     loadPosts();
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
   }, []);
 
   const handleFilterChange = async (filter: string) => {
@@ -84,12 +50,9 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
       <div className="mx-auto transition-all duration-300 max-w-7xl px-4 py-20 md:px-6 md:py-24 lg:px-8 lg:py-28">
-        <Navbar isMobile={isMobile} />
+        <Navbar />
 
-        <div
-          ref={sectionRef}
-          className="mt-16 sm:mt-20 md:mt-24 space-y-12"
-        >
+        <div className="mt-16 sm:mt-20 md:mt-24 space-y-12">
           <BlogHeader
             currentFilter={currentFilter}
             onFilterChange={handleFilterChange}

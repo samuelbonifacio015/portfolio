@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Sidebar from '@/components/Sidebar';
 import Hero from '@/components/Hero';
@@ -14,26 +13,11 @@ import GitHubChart from "../components/Git";
 import Terminal from '@/components/Terminal';
 
 const Index = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="w-full transition-all duration-300">
-        <Navbar isMobile={isMobile} />
-        <Sidebar isMobile={isMobile} />
+        <Navbar />
+        <Sidebar />
         <Hero />
         <Terminal />
         <GitHubChart username="samuelbonifacio015" />

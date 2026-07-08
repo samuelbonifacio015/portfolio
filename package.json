@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-    "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-aspect-ratio": "^1.1.0",
@@ -43,12 +42,10 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
-    "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.3.0",
     "framer-motion": "^12.40.0",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.462.0",
-    "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",
@@ -59,11 +56,9 @@
     "recharts": "^2.12.7",
     "remark-gfm": "^4.0.1",
     "sonner": "^1.5.0",
-    "styled-components": "^6.3.8",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
-    "vaul": "^0.9.3",
-    "zod": "^3.23.8"
+    "vaul": "^0.9.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",

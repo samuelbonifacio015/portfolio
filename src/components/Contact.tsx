@@ -46,9 +46,6 @@ const Contact = () => {
     >
       <div className="container mx-auto max-w-6xl">
         <div className={`space-y-4 text-center mb-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>
-          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary">
-            Contacto
-          </span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">¿Hablamos?</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Contacta conmigo para colaboraciones o si tienes alguna pregunta sobre mi trabajo.

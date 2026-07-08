@@ -33,9 +33,6 @@ const Technologies = () => {
     >
       <div className="container mx-auto max-w-6xl">
         <div className={`space-y-4 text-center mb-8 sm:mb-10 md:mb-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>
-          <span className="inline-block px-3 py-1 text-xs sm:text-sm font-medium rounded-full bg-primary/20 text-primary">
-            Stack Tecnológico
-          </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">Tecnologías</h2>
           <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">
             Herramientas y tecnologías con las que trabajo a diario para desarrollar soluciones modernas y escalables.

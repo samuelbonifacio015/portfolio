@@ -28,7 +28,8 @@ const BLUR: Record<'light' | 'strong' | 'card', { light: number; dark: number }>
 
 const BG: Record<'light' | 'strong' | 'card', { light: string; dark: string }> = {
   light:  { light: 'rgba(255,255,255,0.55)', dark: 'rgba(255,255,255,0.05)' },
-  strong: { light: 'rgba(255,255,255,0.55)', dark: 'rgba(255,255,255,0.04)' },
+  // light 0.75: con 0.55 el blur arrastraba manchas oscuras al pasar sobre secciones negras (navbar)
+  strong: { light: 'rgba(255,255,255,0.75)', dark: 'rgba(255,255,255,0.04)' },
   card:   { light: 'rgba(255,255,255,0.55)', dark: 'rgba(255,255,255,0.07)' },
 };
 

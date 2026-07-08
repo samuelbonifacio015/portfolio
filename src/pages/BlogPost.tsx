@@ -13,17 +13,7 @@ const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [post, setPost] = useState<BlogPost | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   useEffect(() => {
     const loadPost = async () => {
@@ -64,7 +54,7 @@ const BlogPostPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto transition-all duration-300 max-w-[75%] px-4 py-20 md:px-6 md:max-w-[100%] md:py-20 lg:px-8 lg:py-24">
-        <Navbar isMobile={isMobile} />
+        <Navbar />
 
         <article className="mt-12 sm:mt-16 md:mt-20">
           <button

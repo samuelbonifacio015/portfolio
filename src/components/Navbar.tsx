@@ -11,9 +11,6 @@ interface NavLink {
   href?: string;
 }
 
-interface NavbarProps {
-  isMobile: boolean;
-}
 
 const sectionNavLinks: NavLink[] = [
   { name: 'Blog', href: '/blog' },
@@ -29,12 +26,11 @@ const mobileSectionLinks: NavLink[] = [
   { name: 'Contacto', sectionId: 'contact' },
 ];
 
-const Navbar = ({ isMobile }: NavbarProps) => {
+const Navbar = () => {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isHomeRoute = location.pathname === '/';
-  void isMobile;
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);

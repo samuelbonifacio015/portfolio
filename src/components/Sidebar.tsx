@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils';
 import { House, Layers3, Briefcase, GraduationCap, MessageCircle } from 'lucide-react';
 import { LiquidGlass } from '@/components/ui/LiquidGlass';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const navItems = [
   { name: 'Inicio', href: '#home', id: 'home', icon: House },
@@ -12,11 +13,8 @@ const navItems = [
   { name: 'Contacto', href: '#contact', id: 'contact', icon: MessageCircle },
 ];
 
-interface SidebarProps {
-  isMobile: boolean;
-}
-
-const Sidebar = ({ isMobile }: SidebarProps) => {
+const Sidebar = () => {
+  const isMobile = useIsMobile();
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {

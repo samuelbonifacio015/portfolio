@@ -13,18 +13,8 @@ const Blog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
   const [currentFilter, setCurrentFilter] = useState<string>('Todos');
-  const [isMobile, setIsMobile] = useState(false);
   const { ref: sectionRef, isVisible } = useSectionReveal<HTMLDivElement>();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -61,7 +51,7 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
       <div className="mx-auto transition-all duration-300 max-w-7xl px-4 py-20 md:px-6 md:py-24 lg:px-8 lg:py-28">
-        <Navbar isMobile={isMobile} />
+        <Navbar />
 
         <div
           ref={sectionRef}

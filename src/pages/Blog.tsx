@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import BlogCard from '@/components/BlogCard';
@@ -13,7 +13,6 @@ const Blog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
   const [currentFilter, setCurrentFilter] = useState<string>('Todos');
-  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLDivElement>();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -53,10 +52,7 @@ const Blog = () => {
       <div className="mx-auto transition-all duration-300 max-w-7xl px-4 py-20 md:px-6 md:py-24 lg:px-8 lg:py-28">
         <Navbar />
 
-        <div
-          ref={sectionRef}
-          className="mt-16 sm:mt-20 md:mt-24 space-y-12"
-        >
+        <div className="mt-16 sm:mt-20 md:mt-24 space-y-12">
           <BlogHeader
             currentFilter={currentFilter}
             onFilterChange={handleFilterChange}

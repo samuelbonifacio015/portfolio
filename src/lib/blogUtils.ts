@@ -2,7 +2,11 @@ import { BlogPost } from './blogTypes';
 
 // Import all markdown files from the blog directory
 
-const postsModules = import.meta.glob('/blog/*.md', { as: 'raw', eager: true });
+const postsModules = import.meta.glob('/blog/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
 
 export async function getAllPosts(): Promise<BlogPost[]> {
   const posts: BlogPost[] = [];

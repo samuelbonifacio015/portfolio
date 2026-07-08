@@ -91,7 +91,7 @@ const Projects = () => {
       description: "Plataforma web para alquilar vehículos. Desarrollado con Angular y REST API con Java SpringBoot.",
       logo: "/projects/WeRide/WeRide.webp",
       image: "/projects/WeRide/WeRide.webp",
-      date: "Setiembre - En desarrollo",
+      date: "Setiembre 2025 - En desarrollo",
       technologies: ["Angular", "TypeScript", "Java", "Spring Boot"],
       githubUrl: "https://github.com/samuelbonifacio015/Frontend-WeRide",
       liveUrl: "https://frontend-we-ride.vercel.app",

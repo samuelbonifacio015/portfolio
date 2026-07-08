@@ -3,7 +3,7 @@ title: "Bienvenida a mi Blog"
 date: "2025-01-02"
 category: "Reflexiones"
 excerpt: "Hola y bienvenido a mi espacio personal donde compartiré mis pensamientos, experiencias y aprendizajes sobre el mundo del desarrollo de software."
-image: "/projects/WeRide/WeRide.png"
+image: "/projects/WeRide/WeRide.webp"
 tags: ["intro", "personal"]
 ---
 

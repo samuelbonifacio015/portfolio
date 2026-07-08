@@ -47,7 +47,7 @@ const AboutMe = () => {
         <div className="flex flex-col items-center justify-center gap-4 w-full md:w-auto max-w-xs mx-auto">
           <div className="overflow-hidden rounded-xl sm:rounded-2xl shadow-lg border-2 sm:border-4 border-primary/60 dark:bg-black/30 w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 flex items-center justify-center mb-2">
             <img
-              src="/utils/SamuelUPC.jpg"
+              src="/utils/SamuelUPC.webp"
               alt="Samuel Bonifacio"
               className="object-cover w-full h-full"
             />

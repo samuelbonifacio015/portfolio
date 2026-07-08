@@ -53,8 +53,8 @@ const Projects = () => {
       title: "LlamIA",
       subtitle: "Microcursos de IA para Medicina",
       description: "Plataforma educativa de microcursos de IA para medicina. Generación de casos clínicos, quizzes y flashcards con IA.",
-      logo: "/projects/LlamIA/LlamIA.png",
-      image: "/projects/LlamIA/LlamIA.png",
+      logo: "/projects/LlamIA/LlamIA.webp",
+      image: "/projects/LlamIA/LlamIA.webp",
       date: "2026 - En desarrollo (V0.5)",
       technologies: ["Next.js", "TypeScript", "Supabase", "Mercado Pago"],
       liveUrl: "https://llamia.vercel.app/",
@@ -63,9 +63,9 @@ const Projects = () => {
       technicalApproach: "Aplicación full-stack con Next.js y TypeScript, base de datos y autenticación en Supabase, y pasarela de pagos con Mercado Pago para suscripciones. La generación de contenido clínico (casos, quizzes, flashcards) se apoya en modelos de IA.",
       extendedDescription: "LlamIA es una plataforma educativa de microcursos de IA enfocada en medicina. Permite generar casos clínicos interactivos, quizzes y flashcards con IA, con onboarding, dashboard de progreso y suscripciones de pago. Actualmente en desarrollo activo (V0.5).",
       images: [
-        "/projects/LlamIA/LlamIA.png",
-        "/projects/LlamIA/LlamIA2.png",
-        "/projects/LlamIA/LlamIA3.png"
+        "/projects/LlamIA/LlamIA.webp",
+        "/projects/LlamIA/LlamIA2.webp",
+        "/projects/LlamIA/LlamIA3.webp"
       ]
     },
     {
@@ -73,8 +73,8 @@ const Projects = () => {
       title: "Klippr",
       subtitle: "App Móvil Android",
       description: "Aplicación móvil Android desarrollada con Kotlin y Jetpack Compose, con persistencia local mediante ROOM.",
-      logo: "/projects/Klippr/Klippr.png",
-      image: "/projects/Klippr/Klippr.png",
+      logo: "/projects/Klippr/Klippr.webp",
+      image: "/projects/Klippr/Klippr.webp",
       date: "2026 - En desarrollo",
       technologies: ["Kotlin", "Jetpack Compose", "ROOM"],
       githubUrl: "https://github.com/QRustOrg/Klippr-LandingPage",
@@ -84,9 +84,9 @@ const Projects = () => {
       technicalApproach: "Desarrollo nativo en Kotlin con UI declarativa en Jetpack Compose y persistencia local mediante la librería ROOM. El producto cuenta con una landing page desplegada en Vercel.",
       extendedDescription: "Klippr es una aplicación móvil Android desarrollada en el curso de Aplicaciones Móviles usando Kotlin, Jetpack Compose y ROOM. Incluye una landing page de presentación del producto.",
       images: [
-        "/projects/Klippr/Klippr.png",
-        "/projects/Klippr/Klippr2.png",
-        "/projects/Klippr/Klippr3.png"
+        "/projects/Klippr/Klippr.webp",
+        "/projects/Klippr/Klippr2.webp",
+        "/projects/Klippr/Klippr3.webp"
       ]
     },
     {
@@ -94,8 +94,8 @@ const Projects = () => {
       title: "MaquinariasJyS",
       subtitle: "Catálogo y Admin de Maquinarias",
       description: "Plataforma de catálogo y administración para empresa de maquinarias. Panel admin con autenticación y gestión de productos.",
-      logo: "/projects/MJYS/MJYS.png",
-      image: "/projects/MJYS/MJYS.png",
+      logo: "/projects/MJYS/MJYS.webp",
+      image: "/projects/MJYS/MJYS.webp",
       date: "Mayo 2026",
       technologies: ["Next.js", "Django", "Supabase", "Render"],
       liveUrl: "https://mjys-frontend.vercel.app/home",
@@ -104,9 +104,9 @@ const Projects = () => {
       technicalApproach: "Frontend en Next.js desplegado en Vercel, backend en Django con base de datos en Supabase desplegado en Render. Incluye autenticación para el panel administrativo y gestión CRUD de productos.",
       extendedDescription: "MaquinariasJyS es una plataforma de catálogo y administración para una empresa de maquinarias. Ofrece un catálogo público de productos y un panel admin con autenticación para gestionarlos. Deploy completado en mayo de 2026.",
       images: [
-        "/projects/MJYS/MJYS.png",
-        "/projects/MJYS/MJYS2.png",
-        "/projects/MJYS/MJYS3.png"
+        "/projects/MJYS/MJYS.webp",
+        "/projects/MJYS/MJYS2.webp",
+        "/projects/MJYS/MJYS3.webp"
       ]
     },
     {
@@ -114,8 +114,8 @@ const Projects = () => {
       title: "WeRide",
       subtitle: "Alquiler de Vehículos",
       description: "Plataforma web para alquilar vehículos. Desarrollado con Angular y REST API con Java SpringBoot.",
-      logo: "/projects/WeRide/WeRide.png",
-      image: "/projects/WeRide/WeRide.png",
+      logo: "/projects/WeRide/WeRide.webp",
+      image: "/projects/WeRide/WeRide.webp",
       date: "Setiembre - En desarrollo",
       technologies: ["Angular", "TypeScript", "Java", "Spring Boot"],
       githubUrl: "https://github.com/samuelbonifacio015/Frontend-WeRide",
@@ -125,10 +125,10 @@ const Projects = () => {
       technicalApproach: "Arquitectura frontend con Angular para una experiencia de usuario reactiva y moderna, combinada con una API REST robusta desarrollada en Java SpringBoot que garantiza seguridad, escalabilidad y manejo eficiente de transacciones y reservas.",
       extendedDescription: "WeRide es una solución integral que incluye sistema de autenticación, gestión de reservas, pagos integrados, y un panel de administración completo. La aplicación prioriza la seguridad de los datos y la experiencia del usuario en cada interacción.",
       images: [
-        "/projects/WeRide/WeRide.png",
-        "/projects/WeRide/WeRide1.png",
-        "/projects/WeRide/WeRide2.png",
-        "/projects/WeRide/WeRide3.png"
+        "/projects/WeRide/WeRide.webp",
+        "/projects/WeRide/WeRide1.webp",
+        "/projects/WeRide/WeRide2.webp",
+        "/projects/WeRide/WeRide3.webp"
       ]
     },
     {
@@ -136,8 +136,8 @@ const Projects = () => {
       title: "CultivApp",
       subtitle: "Gestión de Cultivos",
       description: "Plataforma web para gestión de cultivos agrícolas. Desarrollado con Vue y REST API con C# .NET.",
-      logo: "/utils/CultivApp.png",
-      image: "/utils/CultivApp.png",
+      logo: "/utils/CultivApp.webp",
+      image: "/utils/CultivApp.webp",
       date: "Setiembre - Diciembre 2025",
       technologies: ["Vue", "JavaScript", "C#", ".NET"],
       githubUrl: "https://github.com/Apps-Web-Grupo-4-FruTech/Frontend-FruTech",
@@ -146,7 +146,7 @@ const Projects = () => {
       technicalApproach: "Frontend desarrollado con Vue.js para una interfaz intuitiva y reactiva, mientras que el backend utiliza C# .NET para proporcionar una API robusta con capacidades de procesamiento de datos agrícolas, generación de reportes y análisis predictivo.",
       extendedDescription: "CultivApp ofrece funcionalidades como registro de siembras, seguimiento de crecimiento, gestión de recursos (agua, fertilizantes), alertas de mantenimiento, y generación de reportes que ayudan a los agricultores a tomar decisiones informadas.",
       images: [
-        "/utils/CultivApp.png"
+        "/utils/CultivApp.webp"
       ]
     },
     {
@@ -154,8 +154,8 @@ const Projects = () => {
       title: "Translator",
       subtitle: "Traducción de Textos",
       description: "Aplicación web para traducción de textos utilizando la API de TAS (Open Source).",
-      logo: "/projects/Translator/Translator.png",
-      image: "/projects/Translator/Translator.png",
+      logo: "/projects/Translator/Translator.webp",
+      image: "/projects/Translator/Translator.webp",
       date: "Enero 2026 - En desarrollo",
       technologies: ["Electron", "React", "TypeScript", "JavaScript", "Tailwind", "Vite"],
       liveUrl: "https://translator-phi.vercel.app/",
@@ -165,10 +165,10 @@ const Projects = () => {
       extendedDescription: "Translator es una solución gratuita a los traductores de navegador, aplicaciones de pago, etc. Ya que cuenta con múltiples funciones que ayudan a simplificar la experiencia del usuario priorizando la rapidez y facilidad de uso."
       ,
       images: [
-        "/projects/Translator/Translator.png",
-        "/projects/Translator/Translator2.png",
-        "/projects/Translator/Translator3.png",
-        "/projects/Translator/Translator4.png"
+        "/projects/Translator/Translator.webp",
+        "/projects/Translator/Translator2.webp",
+        "/projects/Translator/Translator3.webp",
+        "/projects/Translator/Translator4.webp"
       ]
     },
     {
@@ -176,8 +176,8 @@ const Projects = () => {
       title: "WePages",
       subtitle: "Servicio de Web Apps",
       description: "Servicio de creación de Landing Pages y Web Apps personalizadas para pequeñas empresas y emprendedores.",
-      logo: "/projects/WePages/WePages.png",
-      image: "/projects/WePages/WePages.png",
+      logo: "/projects/WePages/WePages.webp",
+      image: "/projects/WePages/WePages.webp",
       date: "En desarrollo",
       technologies: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
       objective: "Ofrecer un servicio accesible y personalizado de creación de Landing Pages y Web Apps para pequeñas empresas y emprendedores, ayudándoles a establecer una presencia en línea.",
@@ -186,8 +186,8 @@ const Projects = () => {
       extendedDescription: "WePages ofrece servicios personalizados que incluyen diseño de Landing Pages atractivas, desarrollo de Web Apps funcionales, optimización SEO, y soporte continuo. El enfoque se centra en entender las necesidades del cliente y entregar soluciones que impulsen su éxito en línea."
       ,
       images: [
-        "/projects/WePages/WePages.png",
-        "/projects/WePages/WePages2.png",
+        "/projects/WePages/WePages.webp",
+        "/projects/WePages/WePages2.webp",
       ]
     },
     {
@@ -195,8 +195,8 @@ const Projects = () => {
       title: "Libreria JSR",
       subtitle: "Plataforma E-commerce",
       description: "Una plataforma de e-commerce con carrito de compras y sistema de gestión de inventario.",
-      logo: "/utils/LibreriaJSR.png",
-      image: "/utils/LibreriaJSR.png",
+      logo: "/utils/LibreriaJSR.webp",
+      image: "/utils/LibreriaJSR.webp",
       date: "Diciembre 2024 - Agosto 2025",
       technologies: ["HTML", "CSS", "JavaScript", "Node.js"],
       githubUrl: "https://github.com/samuelbonifacio015/Libreria-JSR",
@@ -206,9 +206,9 @@ const Projects = () => {
       technicalApproach: "Desarrollo utilizando HTML5 semántico, CSS3 moderno con flexbox y grid para layouts responsivos, y JavaScript vanilla para la lógica de negocio, gestión de estado del carrito y manipulación del DOM, priorizando la simplicidad y el rendimiento.",
       extendedDescription: "La plataforma incluye catálogo de productos con búsqueda y filtrado, carrito de compras persistente en localStorage, gestión de inventario, y una interfaz de usuario intuitiva diseñada para facilitar la experiencia de compra.",
       images: [
-        "/projects/LibreriaJSR/LibreriaJSR.png",
-        "/projects/LibreriaJSR/LibreriaJSR2.png",
-        "/projects/LibreriaJSR/LibreriaJSR3.png"
+        "/projects/LibreriaJSR/LibreriaJSR.webp",
+        "/projects/LibreriaJSR/LibreriaJSR2.webp",
+        "/projects/LibreriaJSR/LibreriaJSR3.webp"
       ]
     },
     {
@@ -216,8 +216,8 @@ const Projects = () => {
       title: "Finovate",
       subtitle: "Gestión de Finanzas",
       description: "Aplicación web diseñada para gestión de finanzas personales con herramientas de seguimiento y análisis financiero.",
-      logo: "/utils/Finovate.png",
-      image: "/utils/Finovate.png",
+      logo: "/utils/Finovate.webp",
+      image: "/utils/Finovate.webp",
       date: "Mayo 2025",
       technologies: ["React", "TypeScript", "Tailwind", "Vite"],
       githubUrl: "https://github.com/samuelbonifacio015/Finovate",
@@ -226,7 +226,7 @@ const Projects = () => {
       technicalApproach: "Stack moderno con React y TypeScript para type-safety y desarrollo escalable, Tailwind CSS para diseño rápido y consistente, y Vite como build tool para optimización de rendimiento. La aplicación utiliza estado local y componentes reutilizables para una arquitectura limpia.",
       extendedDescription: "Finovate ofrece funcionalidades como registro de transacciones, categorización de gastos, visualización de gráficos y estadísticas, establecimiento de presupuestos, y análisis de tendencias financieras para ayudar a los usuarios a tomar mejores decisiones económicas.",
       images: [
-        "/utils/Finovate.png"
+        "/utils/Finovate.webp"
       ]
     },
     {
@@ -234,8 +234,8 @@ const Projects = () => {
       title: "PasoPerfecto",
       subtitle: "Actividad Física",
       description: "Aplicación web diseñada para llevar un seguimiento eficiente de tu actividad física diaria.",
-      logo: "/utils/PasoPerfecto.png",
-      image: "/utils/PasoPerfecto.png",
+      logo: "/utils/PasoPerfecto.webp",
+      image: "/utils/PasoPerfecto.webp",
       date: "Mayo - Junio 2025",
       technologies: ["React", "TypeScript", "Tailwind", "Vite"],
       githubUrl: "https://github.com/samuelbonifacio015/PasoPerfecto",
@@ -245,9 +245,9 @@ const Projects = () => {
       technicalApproach: "Desarrollo con React y TypeScript para una base sólida y mantenible, Tailwind CSS para un diseño moderno y responsive, y Vite para un desarrollo ágil. La aplicación utiliza componentes funcionales con hooks para gestión de estado y efectos secundarios.",
       extendedDescription: "PasoPerfecto permite registrar pasos, distancia recorrida, tiempo de actividad y calorías quemadas. Incluye visualización de estadísticas diarias y semanales, establecimiento de metas personalizadas, y un sistema de logros para mantener la motivación del usuario.",
       images: [
-        "/projects/PasoPerfecto/PasoPerfecto.png",
-        "/projects/PasoPerfecto/PasoPerfecto2.png",
-        "/projects/PasoPerfecto/PasoPerfecto3.png"
+        "/projects/PasoPerfecto/PasoPerfecto.webp",
+        "/projects/PasoPerfecto/PasoPerfecto2.webp",
+        "/projects/PasoPerfecto/PasoPerfecto3.webp"
       ]
     },
     {
@@ -255,8 +255,8 @@ const Projects = () => {
       title: "Timex.js",
       subtitle: "Reloj",
       description: "Aplicación web de reloj con funcionalidades de tiempo real, cronómetro y pomodoro.",
-      logo: "/projects/TimexJS/TimexJS.png",
-      image: "/projects/TimexJS/TimexJS.png",
+      logo: "/projects/TimexJS/TimexJS.webp",
+      image: "/projects/TimexJS/TimexJS.webp",
       date: "Junio 2025 - Enero 2026",
       technologies: ["React", "TypeScript", "Tailwind", "Vite"],
       githubUrl: "https://github.com/samuelbonifacio015/Timex.js",
@@ -266,9 +266,9 @@ const Projects = () => {
       technicalApproach: "Utilización de React y TypeScript para una estructura sólida y escalable, Tailwind CSS para un diseño atractivo y responsivo, y Vite para un entorno de desarrollo rápido. La aplicación hace uso de hooks para manejar el estado del tiempo y efectos secundarios.",
       extendedDescription: "Timex.js ofrece un reloj en tiempo real con opciones personalizables, un cronómetro preciso con funciones de inicio, pausa y reinicio, y un temporizador pomodoro que ayuda a los usuarios a dividir su trabajo en intervalos manejables con descansos regulares.",
       images: [
-        "/projects/TimexJS/TimexJS.png",
-        "/projects/TimexJS/TimexJS2.png",
-        "/projects/TimexJS/TimexJS3.png",
+        "/projects/TimexJS/TimexJS.webp",
+        "/projects/TimexJS/TimexJS2.webp",
+        "/projects/TimexJS/TimexJS3.webp",
       ]
     },
     {
@@ -276,8 +276,8 @@ const Projects = () => {
       title: "AguaConnect",
       subtitle: "Landing Page",
       description: "Ejemplo de Landing Page para una empresa de servicios de agua potable.",
-      logo: "/utils/AguaConnect.png",
-      image: "/utils/AguaConnect.png",
+      logo: "/utils/AguaConnect.webp",
+      image: "/utils/AguaConnect.webp",
       date: "Marzo - Julio 2025",
       technologies: ["HTML", "CSS", "JavaScript"],
       githubUrl: "https://github.com/samuelbonifacio015/AguaConnect",
@@ -287,9 +287,9 @@ const Projects = () => {
       technicalApproach: "Landing page desarrollada con HTML5 semántico para SEO, CSS3 con animaciones suaves y diseño responsive, y JavaScript para interactividad como formularios de contacto, navegación suave y efectos visuales que mejoran la experiencia del usuario.",
       extendedDescription: "AguaConnect presenta una landing page moderna con secciones de hero, servicios, beneficios, testimonios y formulario de contacto. El diseño prioriza la claridad del mensaje, la facilidad de navegación y la conversión de visitantes en leads.",
       images: [
-        "/projects/AguaConnect/AguaConnect.png",
-        "/projects/AguaConnect/AguaConnect2.png",
-        "/projects/AguaConnect/AguaConnect3.png"
+        "/projects/AguaConnect/AguaConnect.webp",
+        "/projects/AguaConnect/AguaConnect2.webp",
+        "/projects/AguaConnect/AguaConnect3.webp"
       ]
     },
   ];

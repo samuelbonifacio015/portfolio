@@ -53,7 +53,7 @@ const Inspiration = () => {
         <div className="flex flex-col items-center justify-center gap-4 w-full md:w-auto max-w-xs mx-auto order-1 md:order-2">
           <div className="overflow-hidden rounded-2xl shadow-lg border-4 border-primary/60 dark:bg-black/30 w-full max-w-xs md:w-80 md:h-80 aspect-square flex items-center justify-center">
             <img
-              src="/utils/Familia.jpeg"
+              src="/utils/Familia.webp"
               alt="Mi familia - Mi mayor inspiración"
               className="object-cover w-full h-full"
               loading="lazy"

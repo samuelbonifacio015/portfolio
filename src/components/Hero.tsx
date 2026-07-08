@@ -77,7 +77,7 @@ const Hero = () => {
             >
               <FadingVideo
                 src="/hero/xml_version_encoding_.mp4"
-                poster="/hero/xml_version_encoding_poster.png"
+                poster="/hero/xml_version_encoding_poster.webp"
                 className="aspect-[16/10] rounded-[1.5rem] bg-black/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.45)] sm:rounded-[2rem]"
                 videoClassName="rounded-[1.5rem] sm:rounded-[2rem]"
               />

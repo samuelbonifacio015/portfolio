@@ -13,7 +13,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-24 scroll-mt-20 sm:px-6 lg:px-10"
+      className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden px-4 py-16 scroll-mt-20 sm:px-6 lg:px-10"
     >
       <div className="absolute inset-0 z-[-2] bg-[linear-gradient(180deg,hsl(var(--background))_0%,hsl(var(--muted))_52%,hsl(var(--background))_100%)] dark:bg-[linear-gradient(180deg,#050505_0%,hsl(var(--background))_54%,#050505_100%)]" />
       <div className="absolute inset-x-0 top-0 z-[-1] h-32 bg-white/80 blur-2xl dark:bg-white/[0.03]" />
@@ -74,8 +74,8 @@ const Hero = () => {
               className="w-full max-w-[760px] rounded-[2rem] p-2 shadow-[0_30px_90px_rgba(15,23,42,0.14)] sm:rounded-[2.5rem] sm:p-3 dark:shadow-black/40"
             >
               <FadingVideo
-                src="/hero/xml_version_encoding_.mp4"
-                poster="/hero/xml_version_encoding_poster.webp"
+                src="/hero/demo-proyectos.mp4"
+                poster="/hero/demo-proyectos_poster.webp"
                 className="aspect-[16/10] rounded-[1.5rem] bg-black/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.45)] sm:rounded-[2rem]"
                 videoClassName="rounded-[1.5rem] sm:rounded-[2rem]"
               />

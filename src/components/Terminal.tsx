@@ -9,7 +9,7 @@ interface TerminalProps {
 
 const Terminal: React.FC<TerminalProps> = ({ className }) => {
     const [lines] = useState<string[]>([
-        "samuel@admin:~$ neofetch",
+        "samuel@portfolio:~$ neofetch",
         "Estudiando en: Universidad Peruana de Ciencias Aplicadas",
         "Aprendiendo: Dart & React Native",
         "Usando: Arch Linux",
@@ -67,7 +67,7 @@ const Terminal: React.FC<TerminalProps> = ({ className }) => {
                 {/* Terminal Content */}
                 <div
                     ref={scrollRef}
-                    className="p-4 sm:p-6 space-y-2 h-[300px] sm:h-[400px] overflow-y-auto overflow-x-hidden bg-black/50 scroll-smooth [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-white/10 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-white/20"
+                    className="p-4 sm:p-6 space-y-2 max-h-[400px] overflow-y-auto overflow-x-hidden bg-black/50 scroll-smooth [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-white/10 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-white/20"
                 >
                     <div className="text-green-600/70 leading-relaxed font-normal">
                         {isVisible && lines.map((line, i) => (

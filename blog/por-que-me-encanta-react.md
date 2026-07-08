@@ -7,7 +7,6 @@ image: "/projects/WeRide/WeRide1.webp"
 tags: ["react", "frontend", "javascript"]
 ---
 
-# Por qué me encanta React
 
 Cuando empecé a aprender desarrollo web, probé varios frameworks: **Angular, Vue, Svelte**, entre otros. Pero hubo algo especial en **React** que me capturó por completo.
 

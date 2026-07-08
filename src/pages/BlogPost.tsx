@@ -53,7 +53,7 @@ const BlogPostPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto transition-all duration-300 max-w-[75%] px-4 py-20 md:px-6 md:max-w-[100%] md:py-20 lg:px-8 lg:py-24">
+      <div className="mx-auto max-w-4xl px-4 py-20 md:px-6 lg:px-8 lg:py-24">
         <Navbar />
 
         <article className="mt-12 sm:mt-16 md:mt-20">
@@ -66,11 +66,11 @@ const BlogPostPage = () => {
           </button>
 
           {post.image && (
-            <div className="relative w-[55%] m-auto aspect-video overflow-hidden rounded-xl sm:rounded-2xl shadow-xl sm:mb-8">
+            <div className="relative w-full aspect-video overflow-hidden rounded-xl sm:rounded-2xl shadow-xl mb-6 sm:mb-8">
               <img
                 src={post.image}
                 alt={post.title}
-                className="w-full h-full object-cover "
+                className="w-full h-full object-cover"
               />
             </div>
           )}

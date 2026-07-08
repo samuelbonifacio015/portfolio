@@ -7,7 +7,6 @@ image: "/projects/WeRide/WeRide.webp"
 tags: ["intro", "personal"]
 ---
 
-# Bienvenida a mi Blog 👋
 
 Hola y bienvenido a este espacio personal donde compartiré mis **pensamientos, experiencias y aprendizajes** sobre el mundo del desarrollo de software.
 

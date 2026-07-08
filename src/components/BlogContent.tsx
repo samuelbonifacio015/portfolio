@@ -47,10 +47,12 @@ const BlogContent = ({ content }: BlogContentProps) => {
               {children}
             </a>
           ),
+          // La página ya pinta el título como H1; el `# …` del markdown baja a H2
+          // para no duplicar ni el texto grande ni el nivel de encabezado.
           h1: ({ children }) => (
-            <h1 className="text-4xl font-bold mb-6 mt-12 leading-tight tracking-tight">
+            <h2 className="text-3xl font-bold mb-4 mt-10 leading-snug tracking-tight">
               {children}
-            </h1>
+            </h2>
           ),
           h2: ({ children }) => (
             <h2 className="text-3xl font-bold mb-4 mt-10 leading-snug tracking-tight border-b border-border pb-2">

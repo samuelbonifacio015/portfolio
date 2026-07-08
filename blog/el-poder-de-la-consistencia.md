@@ -7,7 +7,6 @@ image: "/utils/SamuelUPC.webp"
 tags: ["aprendizaje", "consistencia", "desarrollo"]
 ---
 
-# El poder de la consistencia en el aprendizaje
 
 Últimamente he estado pensando mucho sobre cómo **aprendemos mejor**. ¿Es mejor estudiar 10 horas un solo día o 1 hora cada día durante dos semanas?
 

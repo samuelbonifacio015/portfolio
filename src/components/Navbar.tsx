@@ -19,6 +19,16 @@ const sectionNavLinks: NavLink[] = [
   { name: 'Blog', href: '/blog' },
 ];
 
+// Mirror of Sidebar items: Sidebar is hidden on mobile, so section
+// navigation must live in the mobile menu.
+const mobileSectionLinks: NavLink[] = [
+  { name: 'Inicio', sectionId: 'home' },
+  { name: 'Tecnologías', sectionId: 'technologies' },
+  { name: 'Proyectos', sectionId: 'projects' },
+  { name: 'Conocimientos', sectionId: 'knowledge' },
+  { name: 'Contacto', sectionId: 'contact' },
+];
+
 const Navbar = ({ isMobile }: NavbarProps) => {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -148,7 +158,7 @@ const Navbar = ({ isMobile }: NavbarProps) => {
             aria-label="Menú móvil"
           >
             <div className="flex flex-col">
-              {sectionNavLinks.map((link) =>
+              {[...mobileSectionLinks, ...sectionNavLinks].map((link) =>
                 renderNavLink(
                   link,
                   'rounded-xl px-4 py-3 text-sm font-medium text-foreground/90 transition-all duration-200 hover:bg-muted hover:text-foreground'

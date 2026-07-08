@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { House, Layers3, Briefcase, GraduationCap, MessageCircle } from 'lucide-react';
 import { LiquidGlass } from '@/components/ui/LiquidGlass';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 const navItems = [
   { name: 'Inicio', href: '#home', id: 'home', icon: House },
@@ -36,7 +37,7 @@ const Sidebar = ({ isMobile }: SidebarProps) => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -47,26 +48,32 @@ const Sidebar = ({ isMobile }: SidebarProps) => {
   return (
     <div className="fixed left-2 sm:left-3 md:left-4 top-1/2 -translate-y-1/2 z-50 transition-all duration-500 ease-in-out">
       <LiquidGlass
-        as="article"
+        as="nav"
+        aria-label="Navegación de secciones"
         variant="strong"
         enableBreathing
         className="w-14 sm:w-16 rounded-2xl"
       >
         {navItems.map((item) => (
-          <a
-            key={item.id}
-            href={item.href}
-            title={item.name}
-            className={cn(
-              'relative w-full h-12 sm:h-14 flex items-center justify-center rounded-xl transition-all duration-300 cursor-pointer',
-              'text-muted-foreground hover:text-primary hover:bg-primary/10',
-              activeSection === item.id
-                ? 'text-primary bg-primary/15 shadow-sm'
-                : ''
-            )}
-          >
-            <item.icon size={20} strokeWidth={activeSection === item.id ? 2 : 1.5} />
-          </a>
+          <Tooltip key={item.id}>
+            <TooltipTrigger asChild>
+              <a
+                href={item.href}
+                aria-label={item.name}
+                aria-current={activeSection === item.id ? 'true' : undefined}
+                className={cn(
+                  'relative w-full h-12 sm:h-14 flex items-center justify-center rounded-xl transition-all duration-300 cursor-pointer',
+                  'text-muted-foreground hover:text-primary hover:bg-primary/10',
+                  activeSection === item.id
+                    ? 'text-primary bg-primary/15 shadow-sm'
+                    : ''
+                )}
+              >
+                <item.icon size={20} strokeWidth={activeSection === item.id ? 2 : 1.5} />
+              </a>
+            </TooltipTrigger>
+            <TooltipContent side="right">{item.name}</TooltipContent>
+          </Tooltip>
         ))}
       </LiquidGlass>
     </div>

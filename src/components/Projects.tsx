@@ -141,15 +141,12 @@ const Projects = () => {
       date: "Setiembre - Diciembre 2025",
       technologies: ["Vue", "JavaScript", "C#", ".NET"],
       githubUrl: "https://github.com/Apps-Web-Grupo-4-FruTech/Frontend-FruTech",
-      liveUrl: "https://frontend-frutech-static.onrender.com",
       objective: "Proporcionar a los agricultores una herramienta digital moderna para gestionar sus cultivos, optimizar recursos y mejorar la productividad mediante el seguimiento detallado de sus actividades agrícolas.",
       problem: "Los agricultores enfrentan dificultades para llevar un registro organizado de sus cultivos, planificar rotaciones, gestionar recursos y tomar decisiones basadas en datos históricos, lo que limita su capacidad de optimización.",
       technicalApproach: "Frontend desarrollado con Vue.js para una interfaz intuitiva y reactiva, mientras que el backend utiliza C# .NET para proporcionar una API robusta con capacidades de procesamiento de datos agrícolas, generación de reportes y análisis predictivo.",
       extendedDescription: "CultivApp ofrece funcionalidades como registro de siembras, seguimiento de crecimiento, gestión de recursos (agua, fertilizantes), alertas de mantenimiento, y generación de reportes que ayudan a los agricultores a tomar decisiones informadas.",
       images: [
-        "/projects/CultivApp/CultivApp.png",
-        "/projects/CultivApp/CultivApp2.png",
-        "/projects/CultivApp/CultivApp3.png"
+        "/utils/CultivApp.png"
       ]
     },
     {
@@ -224,15 +221,12 @@ const Projects = () => {
       date: "Mayo 2025",
       technologies: ["React", "TypeScript", "Tailwind", "Vite"],
       githubUrl: "https://github.com/samuelbonifacio015/Finovate",
-      liveUrl: "https://finovate-six.vercel.app",
       objective: "Desarrollar una aplicación web moderna que ayude a los usuarios a gestionar sus finanzas personales de manera efectiva, proporcionando herramientas de seguimiento, análisis y planificación financiera.",
       problem: "Muchas personas tienen dificultades para mantener un control adecuado de sus finanzas personales, careciendo de herramientas visuales e intuitivas que les permitan entender sus gastos, ingresos y tendencias financieras de manera clara.",
       technicalApproach: "Stack moderno con React y TypeScript para type-safety y desarrollo escalable, Tailwind CSS para diseño rápido y consistente, y Vite como build tool para optimización de rendimiento. La aplicación utiliza estado local y componentes reutilizables para una arquitectura limpia.",
       extendedDescription: "Finovate ofrece funcionalidades como registro de transacciones, categorización de gastos, visualización de gráficos y estadísticas, establecimiento de presupuestos, y análisis de tendencias financieras para ayudar a los usuarios a tomar mejores decisiones económicas.",
       images: [
-        "/projects/Finovate/Finovate.png",
-        "/projects/Finovate/Finovate2.png",
-        "/projects/Finovate/Finovate3.png"
+        "/utils/Finovate.png"
       ]
     },
     {

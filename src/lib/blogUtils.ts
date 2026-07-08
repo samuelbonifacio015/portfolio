@@ -69,26 +69,25 @@ function parseMarkdownPost(content: string, slug: string): BlogPost | null {
   const frontmatterText = frontmatterMatch[1];
   const body = content.replace(frontmatterMatch[0], '');
 
-  const frontmatter: Record<string, any> = {};
+  const frontmatter: Record<string, string> = {};
+  let tags: string[] = [];
   const lines = frontmatterText.split('\n');
 
   for (const line of lines) {
-    const cleanLine = line.trim(); 
+    const cleanLine = line.trim();
     const match = cleanLine.match(/^(\w+):\s*(.*)$/);
     if (match) {
       const [, key, value] = match;
-      let parsedValue: any = value.trim();
 
       if (key === 'tags') {
-        parsedValue = parsedValue
-          .replace(/[\[\]]/g, '')
+        tags = value
+          .trim()
+          .replace(/[[\]]/g, '')
           .split(',')
           .map((t: string) => t.trim().replace(/['"]/g, ''));
       } else {
-        parsedValue = parsedValue.replace(/^["']|["']$/g, '');
+        frontmatter[key] = value.trim().replace(/^["']|["']$/g, '');
       }
-
-      frontmatter[key] = parsedValue;
     }
   }
 
@@ -99,7 +98,7 @@ function parseMarkdownPost(content: string, slug: string): BlogPost | null {
     category: frontmatter.category || 'General',
     excerpt: frontmatter.excerpt || '',
     image: frontmatter.image || '',
-    tags: frontmatter.tags || [],
+    tags,
     content: body,
   };
 

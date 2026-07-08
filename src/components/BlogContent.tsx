@@ -87,13 +87,17 @@ const BlogContent = ({ content }: BlogContentProps) => {
               {children}
             </blockquote>
           ),
-          code: ({ inline, children, ...props }: any) => 
-            inline ? (
-              <code className="text-primary bg-muted px-1.5 py-0.5 rounded text-sm font-mono" {...props}>
+          // react-markdown v9+ removed the `inline` prop: block code carries a
+          // language-* className, inline code has none.
+          code: ({ className, children, ...props }) =>
+            className ? (
+              <code className={className} {...props}>
                 {children}
               </code>
             ) : (
-              <code {...props}>{children}</code>
+              <code className="text-primary bg-muted px-1.5 py-0.5 rounded text-sm font-mono" {...props}>
+                {children}
+              </code>
             ),
         }}
       >

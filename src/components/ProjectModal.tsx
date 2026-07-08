@@ -12,6 +12,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from '@/components/ui/carousel';
 import { Button } from '@/components/ui/button';
 import TechBadge from './TechBadge';
@@ -25,7 +26,7 @@ interface ProjectModalProps {
 }
 
 const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
-  const [api, setApi] = useState<any>(null);
+  const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
   // Función para detectar tipo de video
@@ -38,7 +39,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
 
   // Función para obtener ID de video de YouTube
   const getYouTubeId = (url: string): string => {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
     return (match && match[2].length === 11) ? match[2] : '';
   };

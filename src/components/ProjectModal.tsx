@@ -171,7 +171,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                             src={item.content}
                             alt={`${project.title} - Imagen ${index + 1}`}
                             className="w-full h-full object-contain"
-                            loading="lazy"
+                            loading={index === (project.demoVideo ? 1 : 0) ? 'eager' : 'lazy'}
                           />
                         )}
                       </div>

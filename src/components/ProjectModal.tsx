@@ -31,10 +31,11 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
   const [current, setCurrent] = useState(0);
 
   // Función para detectar tipo de video
-  const getVideoType = (url: string): 'youtube' | 'vimeo' | 'mp4' | null => {
+  const getVideoType = (url: string): 'youtube' | 'vimeo' | 'mp4' | 'webm' | null => {
     if (url.includes('youtube.com') || url.includes('youtu.be')) return 'youtube';
     if (url.includes('vimeo.com')) return 'vimeo';
-    if (url.endsWith('.mp4') || url.endsWith('.webm')) return 'mp4';
+    if (url.endsWith('.mp4')) return 'mp4';
+    if (url.endsWith('.webm')) return 'webm';
     return null;
   };
 
@@ -152,14 +153,15 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                                   allowFullScreen
                                 />
                               );
-                            } else if (videoType === 'mp4') {
+                            } else if (videoType === 'mp4' || videoType === 'webm') {
                               return (
                                 <video
                                   className="w-full h-full object-cover"
                                   controls
                                   preload="metadata"
+                                  poster={images[0]}
                                 >
-                                  <source src={item.content} type="video/mp4" />
+                                  <source src={item.content} type={`video/${videoType}`} />
                                   Tu navegador no soporta el elemento de video.
                                 </video>
                               );

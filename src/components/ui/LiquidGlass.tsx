@@ -160,8 +160,8 @@ export function LiquidGlass({
           style={{
             padding: '1.4px',
             background: isDark
-              ? 'linear-gradient(180deg, hsl(var(--primary) / 0.7) 0%, hsl(var(--primary) / 0.1) 50%, hsl(var(--primary) / 0.5) 100%)'
-              : 'linear-gradient(180deg, hsl(var(--primary) / 0.5) 0%, rgba(255,255,255,0) 50%, hsl(var(--primary) / 0.3) 100%)',
+              ? 'linear-gradient(180deg, color-mix(in srgb, var(--primary) 70%, transparent) 0%, color-mix(in srgb, var(--primary) 10%, transparent) 50%, color-mix(in srgb, var(--primary) 50%, transparent) 100%)'
+              : 'linear-gradient(180deg, color-mix(in srgb, var(--primary) 50%, transparent) 0%, rgba(255,255,255,0) 50%, color-mix(in srgb, var(--primary) 30%, transparent) 100%)',
             WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
             WebkitMaskComposite: 'xor',
             maskComposite: 'exclude',

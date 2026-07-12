@@ -1,5 +1,6 @@
 
 import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
 
 interface TechBadgeProps {
   name: string;
@@ -8,16 +9,15 @@ interface TechBadgeProps {
 
 const TechBadge = ({ name, className }: TechBadgeProps) => {
   return (
-    <span
+    <Badge
+      variant="secondary"
       className={cn(
-        "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border",
-        "border-border bg-secondary/50 text-foreground/80 transition-colors",
-        "hover:border-primary/40 hover:bg-primary/10 hover:text-primary",
+        "text-xs text-foreground",
         className
       )}
     >
       {name}
-    </span>
+    </Badge>
   );
 };
 

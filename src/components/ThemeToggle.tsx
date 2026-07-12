@@ -84,7 +84,7 @@ export default function ThemeToggle() {
   if (!mounted) {
     return (
       <div 
-        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background"
         aria-hidden="true"
       >
         <Monitor size={18} className="text-neutral-400" />
@@ -101,11 +101,11 @@ export default function ThemeToggle() {
         type="button"
         onClick={toggleMenu}
         aria-expanded={isOpen}
-        aria-haspopup="menu"
+        aria-controls={isOpen ? 'theme-selector' : undefined}
         aria-label={`Cambiar tema (actual: ${getThemeLabel(theme)})`}
         title={getThemeLabel(theme)}
         className={cn(
-          "group relative inline-flex h-10 w-10 items-center justify-center rounded-full",
+          "group relative inline-flex h-11 w-11 items-center justify-center rounded-full",
           "border border-border bg-background",
           "text-foreground transition-colors duration-200",
           "hover:border-primary hover:bg-secondary",
@@ -123,10 +123,10 @@ export default function ThemeToggle() {
 
       {isOpen && (
         <div
+          id="theme-selector"
           ref={menuRef}
-          role="menu"
+          role="group"
           aria-label="Selector de tema"
-          aria-orientation="vertical"
           className="absolute right-0 top-full mt-2 w-40 rounded-[var(--radius-card)] border border-border bg-background dark:border-neutral-700/50 dark:bg-neutral-900/95"
           onKeyDown={handleKeyDown}
         >
@@ -137,7 +137,6 @@ export default function ThemeToggle() {
                 <button
                   key={t}
                   type="button"
-                  role="menuitem"
                   onClick={() => handleSelectTheme(t)}
                   className={cn(
                     "flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2.5",

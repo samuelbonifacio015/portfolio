@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 
 interface ProjectGridCardProps extends ProjectProps {
   onClick: () => void;
+  featured?: boolean;
 }
 
 const ProjectGridCard = ({
@@ -13,10 +14,14 @@ const ProjectGridCard = ({
   image,
   technologies,
   onClick,
+  featured = false,
 }: ProjectGridCardProps) => {
   return (
     <Card
-      className="group h-full cursor-pointer overflow-hidden transition-[border-color,transform] duration-200 hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-safe:hover:-translate-y-px"
+      className={cn(
+        'group h-full cursor-pointer overflow-hidden transition-[border-color,transform] duration-200 hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-safe:hover:-translate-y-px',
+        featured && 'sm:col-span-2 lg:col-span-2'
+      )}
       onClick={onClick}
       role="button"
       tabIndex={0}
@@ -29,7 +34,7 @@ const ProjectGridCard = ({
       aria-label={`Ver detalles de ${title}`}
     >
       {image && (
-        <div className="relative mx-3 mt-3 aspect-video overflow-hidden rounded-lg bg-muted">
+        <div className={cn('relative mx-3 mt-3 overflow-hidden rounded-lg bg-muted', featured ? 'aspect-[3/1]' : 'aspect-video')}>
           <img
             src={image}
             alt={`${title} - ${subtitle}`}

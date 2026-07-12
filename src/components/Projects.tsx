@@ -285,6 +285,7 @@ const Projects = () => {
             <ProjectGridCard
               key={project.id || index}
               {...project}
+              featured={index === 0}
               onClick={() => handleOpenModal(project)}
             />
           ))}

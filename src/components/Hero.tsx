@@ -1,5 +1,4 @@
 import { ArrowDownRight } from 'lucide-react';
-import FadingVideo from '@/components/FadingVideo';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
@@ -44,11 +43,12 @@ const Hero = () => {
             <div className="mb-2 flex items-center justify-center">
               <span className="h-1.5 w-12 rounded-full bg-secondary" aria-hidden="true" />
             </div>
-            <FadingVideo
-              src="/hero/demo-proyectos.mp4"
-              poster="/hero/demo-proyectos_poster.webp"
-              className="aspect-[16/10] rounded-lg bg-muted"
-              videoClassName="rounded-lg"
+            <img
+              src="/utils/FamiliaCasa.webp"
+              alt="Samuel Bonifacio junto a sus padres"
+              className="aspect-[16/10] w-full rounded-lg bg-muted object-cover"
+              loading="eager"
+              fetchPriority="high"
             />
           </div>
           <div className="mx-auto h-2 w-[92%] rounded-b-lg border-x border-b border-border bg-secondary" aria-hidden="true" />

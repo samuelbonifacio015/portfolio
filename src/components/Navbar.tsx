@@ -71,7 +71,7 @@ const Navbar = () => {
                   className={cn(
                     'rounded-[var(--radius-pill)] px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-4 sm:text-sm',
                     isActive
-                      ? 'bg-primary text-foreground'
+                      ? 'bg-primary text-primary-foreground'
                       : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
                   )}
                 >

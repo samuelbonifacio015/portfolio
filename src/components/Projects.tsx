@@ -2,10 +2,8 @@ import { useState } from 'react';
 import { ProjectProps } from './ProjectCard';
 import ProjectGridCard from './ProjectGridCard';
 import ProjectModal from './ProjectModal';
-import { useSectionReveal } from '@/hooks/use-section-reveal';
 
 const Projects = () => {
-  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLElement>();
   const [selectedProject, setSelectedProject] = useState<ProjectProps | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -272,26 +270,21 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      ref={sectionRef}
-      className="section-padding px-4 relative scroll-mt-20"
+      className="section-padding scroll-mt-28 px-5 md:px-6"
     >
-      <div className="container mx-auto max-w-6xl">
-        <div className={`space-y-4 text-center mb-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>
-          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary">
-            Portfolio
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Mis Proyectos</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+      <div className="mx-auto max-w-[var(--container-max)]">
+        <div className="mb-10">
+          <h2 className="text-3xl font-bold text-foreground">Mis Proyectos</h2>
+          <p className="mt-3 max-w-2xl text-muted-foreground">
             Mi colección personal de proyectos que he desarrollado a través del tiempo.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <div
               key={project.id || index}
-              className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
-              style={{ transitionDelay: `${200 + index * 100}ms` }}
+              className="h-full"
             >
               <ProjectGridCard
                 {...project}

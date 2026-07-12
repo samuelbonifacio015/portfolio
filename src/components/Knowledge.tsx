@@ -1,9 +1,7 @@
 
 import KnowledgeItem from './KnowledgeItem';
-import { useSectionReveal } from '@/hooks/use-section-reveal';
 
 const Knowledge = () => {
-  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLElement>();
 
   const knowledgeItems = [
     {
@@ -41,24 +39,19 @@ const Knowledge = () => {
   return (
     <section
       id="knowledge"
-      ref={sectionRef}
-      className="section-padding px-4 relative scroll-mt-20"
+      className="section-padding scroll-mt-28 px-5 md:px-6"
     >
-      <div className="container mx-auto max-w-6xl">
-        <div className={`space-y-4 text-center mb-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Conocimientos</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+      <div className="mx-auto max-w-[var(--container-max)]">
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold text-foreground">Conocimientos</h2>
+          <p className="mt-3 max-w-2xl text-muted-foreground">
             Áreas en las que he trabajado a lo largo de mi carrera como desarrollador.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="border-y border-border">
           {knowledgeItems.map((item, index) => (
-            <div
-              key={index}
-              className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
-              style={{ transitionDelay: `${200 + index * 100}ms` }}
-            >
+            <div key={index}>
               <KnowledgeItem
                 icon={item.icon}
                 title={item.title}

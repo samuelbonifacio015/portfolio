@@ -1,12 +1,14 @@
-import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Send } from 'lucide-react';
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'sonner';
-import { LiquidGlass } from '@/components/ui/LiquidGlass';
-import { useSectionReveal } from '@/hooks/use-section-reveal';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+
+const fieldClassName =
+  'mt-1.5 w-full rounded-lg border border-input bg-background px-4 py-2.5 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/30';
 
 const Contact = () => {
-  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLElement>();
   const formRef = useRef<HTMLFormElement>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -39,155 +41,104 @@ const Contact = () => {
   };
 
   return (
-    <section
-      id="contact"
-      ref={sectionRef}
-      className="section-padding px-4 relative bg-background scroll-mt-20"
-    >
-      <div className="container mx-auto max-w-6xl">
-        <div className={`space-y-4 text-center mb-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">¿Hablamos?</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+    <section id="contact" className="section-padding scroll-mt-28 px-5 md:px-6">
+      <div className="mx-auto max-w-[var(--container-max)]">
+        <div className="mb-10">
+          <h2 className="text-balance text-3xl font-bold text-foreground sm:text-4xl">¿Hablamos?</h2>
+          <p className="mt-3 max-w-2xl text-pretty text-muted-foreground">
             Contacta conmigo para colaboraciones o si tienes alguna pregunta sobre mi trabajo.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          <LiquidGlass
-            variant="card"
-            enableBreathing
-            className={`rounded-xl p-6 md:col-span-2 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
-            style={{ transitionDelay: '200ms' }}
-          >
-            <h3 className="text-xl font-semibold text-foreground mb-6">Envíame un mensaje</h3>
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-1">
-                    Nombre
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="user_name"
-                    required
-                    className="w-full px-4 py-2 bg-background dark:bg-white/5 border border-input dark:border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-foreground dark:text-white"
-                    placeholder="Tu nombre"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-1">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="user_email"
-                    required
-                    className="w-full px-4 py-2 bg-background dark:bg-white/5 border border-input dark:border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-foreground dark:text-white"
-                    placeholder="tu@email.com"
-                  />
-                </div>
-              </div>
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-muted-foreground mb-1">
-                  Asunto
+        <div className="grid gap-6 md:grid-cols-[1.45fr_0.75fr]">
+          <Card className="p-6 sm:p-8">
+            <h3 className="text-xl font-semibold text-foreground">Envíame un mensaje</h3>
+            <form ref={formRef} onSubmit={handleSubmit} className="mt-6 space-y-4">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <label htmlFor="name" className="text-sm font-medium text-foreground">
+                  Nombre
+                  <input id="name" name="user_name" type="text" required className={fieldClassName} placeholder="Tu nombre" />
                 </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  required
-                  className="w-full px-4 py-2 bg-background dark:bg-white/5 border border-input dark:border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-foreground dark:text-white"
-                  placeholder="Asunto de tu mensaje"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-1">
-                  Mensaje
+                <label htmlFor="email" className="text-sm font-medium text-foreground">
+                  Email
+                  <input id="email" name="user_email" type="email" required className={fieldClassName} placeholder="tu@email.com" />
                 </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  required
-                  className="w-full px-4 py-2 bg-background dark:bg-white/5 border border-input dark:border-white/10 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:outline-none text-foreground dark:text-white resize-none"
-                  placeholder="Tu mensaje..."
-                />
               </div>
-              {error && (
-                <p className="text-red-400 text-sm">{error}</p>
-              )}
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full md:w-auto px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-all duration-300 transform hover:translate-y-[-2px] shadow-md shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isLoading ? 'Enviando...' : 'Enviar mensaje'}
-              </button>
-            </form>
-          </LiquidGlass>
 
-          <LiquidGlass
-            variant="card"
-            enableBreathing
-            className={`rounded-xl p-6 flex flex-col items-center text-center transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
-            style={{ transitionDelay: '300ms' }}
-          >
-            <h3 className="text-xl font-semibold text-foreground mb-6">Información de contacto</h3>
-            <div className="space-y-5 w-full">
-              <div className="flex items-center gap-4">
-                <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Mail className="h-5 w-5 text-primary" />
+              <label htmlFor="subject" className="block text-sm font-medium text-foreground">
+                Asunto
+                <input id="subject" name="subject" type="text" required className={fieldClassName} placeholder="Asunto de tu mensaje" />
+              </label>
+
+              <label htmlFor="message" className="block text-sm font-medium text-foreground">
+                Mensaje
+                <textarea id="message" name="message" rows={4} required className={`${fieldClassName} resize-none`} placeholder="Tu mensaje..." />
+              </label>
+
+              {error && <p className="text-sm font-medium text-destructive">{error}</p>}
+
+              <Button type="submit" size="lg" disabled={isLoading}>
+                <Send aria-hidden="true" />
+                {isLoading ? 'Enviando...' : 'Enviar mensaje'}
+              </Button>
+            </form>
+          </Card>
+
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">Información de contacto</h3>
+              <div className="mt-4 space-y-4">
+                <div className="flex items-start gap-3">
+                  <Mail className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                  <div>
+                    <p className="text-xs font-medium text-muted-foreground">Email</p>
+                    <a href="mailto:samuelbonifacio015@gmail.com" className="mt-1 block break-all text-sm font-medium text-foreground hover:underline">
+                      samuelbonifacio015@gmail.com
+                    </a>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-muted-foreground mb-1">Email</p>
-                  <a 
-                    href="mailto:samuelbonifacio015@gmail.com" 
-                    className="text-foreground hover:text-primary transition-colors break-all font-medium"
-                  >
-                    samuelbonifacio015@gmail.com
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <MapPin className="h-5 w-5 text-primary" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm font-medium text-muted-foreground mb-1">Ubicación</p>
-                  <p className="text-foreground font-medium">Lima, Perú</p>
-                </div>
-              </div>
-              
-              <div className="pt-5 mt-6 border-t border-border w-full">
-                <p className="text-sm font-medium text-muted-foreground mb-4">Sígueme en</p>
-                <div className="flex justify-center space-x-4">
-                  <a
-                    href="https://github.com/samuelbonifacio015"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="h-12 w-12 rounded-xl bg-slate-100 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 border border-slate-200 dark:border-white/10"
-                    aria-label="GitHub"
-                  >
-                    <Github className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/samuelbonifacio015"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="h-12 w-12 rounded-xl bg-slate-100 dark:bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 border border-slate-200 dark:border-white/10"
-                    aria-label="LinkedIn"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                  </a>
+                <div className="flex items-start gap-3">
+                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                  <div>
+                    <p className="text-xs font-medium text-muted-foreground">Ubicación</p>
+                    <p className="mt-1 text-sm font-medium text-foreground">Lima, Perú</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </LiquidGlass>
+
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">Sígueme en</h3>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 md:grid-cols-1">
+                <a
+                  href="https://github.com/samuelbonifacio015"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 rounded-[var(--radius-card)] border border-border p-4 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <Github className="h-5 w-5" aria-hidden="true" />
+                  <span>
+                    <strong className="block text-sm text-foreground">GitHub</strong>
+                    <span className="text-xs text-muted-foreground">Ver perfil</span>
+                  </span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/samuelbonifacio015"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 rounded-[var(--radius-card)] border border-border p-4 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <Linkedin className="h-5 w-5" aria-hidden="true" />
+                  <span>
+                    <strong className="block text-sm text-foreground">LinkedIn</strong>
+                    <span className="text-xs text-muted-foreground">Ver perfil</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
     </section>
   );
 };

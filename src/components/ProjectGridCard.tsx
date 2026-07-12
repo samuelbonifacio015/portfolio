@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 import TechBadge from './TechBadge';
 import { ProjectProps } from './ProjectCard';
-import { LiquidGlass } from '@/components/ui/LiquidGlass';
+import { Card } from '@/components/ui/card';
 
 interface ProjectGridCardProps extends ProjectProps {
   onClick: () => void;
@@ -10,24 +10,13 @@ interface ProjectGridCardProps extends ProjectProps {
 const ProjectGridCard = ({
   title,
   subtitle,
-  description,
   image,
   technologies,
   onClick,
 }: ProjectGridCardProps) => {
-  const truncatedDescription =
-    description.length > 100 ? `${description.substring(0, 100)}...` : description;
-
   return (
-    <LiquidGlass
-      variant="card"
-      enableTilt
-      enableReflection
-      enableBreathing
-      enableMorphing
-      className="group cursor-pointer rounded-xl border border-border/50"
-      whileHover={{ scale: 1.02, y: -4 }}
-      whileTap={{ scale: 0.98 }}
+    <Card
+      className="group h-full cursor-pointer overflow-hidden transition-[border-color,transform] duration-200 hover:border-primary motion-safe:hover:-translate-y-px"
       onClick={onClick}
       role="button"
       tabIndex={0}
@@ -40,33 +29,27 @@ const ProjectGridCard = ({
       aria-label={`Ver detalles de ${title}`}
     >
       {image && (
-        <div className="relative w-full aspect-video overflow-hidden bg-primary/5">
+        <div className="relative mx-3 mt-3 aspect-video overflow-hidden rounded-lg bg-muted">
           <img
             src={image}
             alt={`${title} - ${subtitle}`}
             className={cn(
-              "w-full h-full object-cover transition-transform duration-500 ease-out",
-              "group-hover:scale-110"
+              "h-full w-full object-cover"
             )}
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
       )}
 
-      <div className="p-3 sm:p-4 space-y-2 sm:space-y-3">
+      <div className="space-y-3 p-4">
         <div className="space-y-0.5 sm:space-y-1">
-          <h3 className="text-base sm:text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-1">
+          <h3 className="line-clamp-1 text-base font-semibold text-foreground group-hover:underline sm:text-lg">
             {title}
           </h3>
-          <p className="text-xs sm:text-sm font-medium text-primary/80 line-clamp-1">
+          <p className="line-clamp-1 text-xs font-medium text-muted-foreground sm:text-sm">
             {subtitle}
           </p>
         </div>
-
-        <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
-          {truncatedDescription}
-        </p>
 
         {technologies && technologies.length > 0 && (
           <div className="flex flex-wrap gap-1.5 pt-1">
@@ -77,15 +60,10 @@ const ProjectGridCard = ({
                 className="text-xs"
               />
             ))}
-            {technologies.length > 3 && (
-              <span className="text-xs text-muted-foreground px-2 py-0.5">
-                +{technologies.length - 3}
-              </span>
-            )}
           </div>
         )}
 
-        <div className="flex items-center gap-2 text-xs text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 pt-1">
+        <div className="flex items-center gap-2 pt-1 text-xs font-medium text-muted-foreground group-hover:text-foreground">
           <span>Ver detalles</span>
           <svg 
             className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" 
@@ -97,7 +75,7 @@ const ProjectGridCard = ({
           </svg>
         </div>
       </div>
-    </LiquidGlass>
+    </Card>
   );
 };
 

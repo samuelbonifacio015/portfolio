@@ -1,5 +1,4 @@
 import Navbar from '@/components/Navbar';
-import Sidebar from '@/components/Sidebar';
 import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
 import Technologies from '@/components/Technologies';
@@ -17,7 +16,6 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       <div className="w-full transition-all duration-300">
         <Navbar />
-        <Sidebar />
         <Hero />
         <Terminal />
         <GitHubChart username="samuelbonifacio015" />

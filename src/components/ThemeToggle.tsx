@@ -84,7 +84,7 @@ export default function ThemeToggle() {
   if (!mounted) {
     return (
       <div 
-        className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/60 border border-neutral-200/50 backdrop-blur-sm"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background"
         aria-hidden="true"
       >
         <Monitor size={18} className="text-neutral-400" />
@@ -105,12 +105,12 @@ export default function ThemeToggle() {
         aria-label={`Cambiar tema (actual: ${getThemeLabel(theme)})`}
         title={getThemeLabel(theme)}
         className={cn(
-          "group relative inline-flex h-10 w-10 items-center justify-center rounded-xl",
-          "border border-neutral-200/80 bg-white/90 backdrop-blur-md",
-          "text-neutral-900 shadow-sm transition-all duration-300 ease-out",
-          "hover:border-neutral-900/20 hover:bg-white hover:shadow-md",
-          "active:scale-95 active:shadow-sm",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white",
+          "group relative inline-flex h-10 w-10 items-center justify-center rounded-full",
+          "border border-border bg-background",
+          "text-foreground transition-colors duration-200",
+          "hover:border-primary hover:bg-secondary",
+          "active:scale-95",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
           "dark:bg-neutral-900/80 dark:border-neutral-700/50 dark:text-neutral-100",
           "dark:hover:bg-neutral-900/90 dark:hover:border-neutral-600/50",
           "dark:focus-visible:ring-neutral-100/20 dark:focus-visible:ring-offset-neutral-900"
@@ -128,7 +128,7 @@ export default function ThemeToggle() {
         aria-orientation="vertical"
         className={cn(
           "absolute top-full mt-2 right-0 w-40",
-          "rounded-xl border border-neutral-200/80 bg-white/95 backdrop-blur-xl shadow-xl",
+          "rounded-[var(--radius-card)] border border-border bg-background",
           "opacity-0 transform scale-95 pointer-events-none transition-all duration-200 ease-out",
           "dark:bg-neutral-900/95 dark:border-neutral-700/50 dark:shadow-neutral-900/20",
           isOpen && "opacity-100 scale-100 pointer-events-auto"
@@ -170,5 +170,4 @@ export default function ThemeToggle() {
     </div>
   );
 }
-
 

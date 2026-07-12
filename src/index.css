@@ -4,71 +4,74 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 10% 4%;
+    --bg-base: oklch(1 0 0);
+    --bg-subtle: oklch(0.98 0 0);
+    --accent: #3F3F46;
+    --accent-hover: #27272A;
+    --accent-foreground: #FFFFFF;
+    --chip-bg: oklch(0.98 0 0);
+    --text-primary: oklch(0.2 0 0);
+    --text-secondary: color-mix(in oklch, var(--text-primary) 68%, var(--bg-base));
+    --border-subtle: oklch(0.85 0 0);
+    --container-max: 880px;
+    --radius-card: 12px;
+    --radius-pill: 9999px;
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.04);
+    --font-sans: "Inter", "General Sans", system-ui, sans-serif;
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 10% 4%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 10% 4%;
-
-    --primary: 221 83% 53%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 215 16% 88%;
-    --secondary-foreground: 220 10% 4%;
-
-    --muted: 0 0% 100%;
-    --muted-foreground: 215 16% 45%;
-
-    --accent: 221 83% 53%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 221 83% 53%;
-
-    --radius: 0.75rem;
+    --background: var(--bg-base);
+    --foreground: var(--text-primary);
+    --card: var(--bg-subtle);
+    --card-foreground: var(--text-primary);
+    --popover: var(--bg-subtle);
+    --popover-foreground: var(--text-primary);
+    --primary: var(--accent);
+    --primary-foreground: var(--accent-foreground);
+    --secondary: var(--chip-bg);
+    --secondary-foreground: var(--text-primary);
+    --muted: var(--bg-subtle);
+    --muted-foreground: var(--text-secondary);
+    --destructive: #DC2626;
+    --destructive-foreground: #FFFFFF;
+    --border: var(--border-subtle);
+    --input: var(--text-secondary);
+    --ring: var(--accent);
+    --radius: var(--radius-card);
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 220 10% 98%;
-
-    --card: 0 0% 5%;
-    --card-foreground: 220 10% 98%;
-
-    --popover: 0 0% 5%;
-    --popover-foreground: 220 10% 98%;
-
-    --primary: 221 83% 53%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 220 10% 98%;
-
-    --muted: 0 0% 10%;
-    --muted-foreground: 215 16% 65%;
-
-    --accent: 221 83% 53%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 221 83% 53%;
+    --bg-base: rgba(33, 33, 33, 0.9);
+    --bg-subtle: oklch(0.15 0 0);
+    --accent: #D4D4D8;
+    --accent-hover: #A1A1AA;
+    --accent-foreground: #18181B;
+    --chip-bg: oklch(0.15 0 0);
+    --text-primary: oklch(0.95 0 0);
+    --text-secondary: color-mix(in oklch, var(--text-primary) 72%, var(--bg-subtle));
+    --border-subtle: oklch(0.25 0 0);
+    --background: var(--bg-base);
+    --foreground: var(--text-primary);
+    --card: var(--bg-subtle);
+    --card-foreground: var(--text-primary);
+    --popover: var(--bg-subtle);
+    --popover-foreground: var(--text-primary);
+    --primary: var(--accent);
+    --primary-foreground: var(--accent-foreground);
+    --secondary: var(--chip-bg);
+    --secondary-foreground: var(--text-primary);
+    --muted: var(--bg-subtle);
+    --muted-foreground: var(--text-secondary);
+    --destructive: #EF4444;
+    --destructive-foreground: #F8FAFC;
+    --border: var(--border-subtle);
+    --input: var(--text-secondary);
+    --ring: var(--accent);
   }
 }
 
 @layer base {
   * {
-    @apply border-border selection:bg-primary/20 selection:text-primary;
+    @apply border-border selection:bg-primary/20 selection:text-foreground;
   }
 
   html {
@@ -78,6 +81,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
@@ -114,12 +118,12 @@
     position: absolute;
     border-radius: 50%;
     filter: blur(24px);
-    background: hsl(var(--primary) / 0.12);
+    background: color-mix(in srgb, var(--primary) 12%, transparent);
     will-change: transform;
   }
 
   .dark .lg-blob {
-    background: hsl(var(--primary) / 0.22);
+    background: color-mix(in srgb, var(--primary) 22%, transparent);
   }
 
   .lg-blob-1 {
@@ -225,7 +229,7 @@
   }
 
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-14 md:py-20;
   }
 
   .appear-done > * {
@@ -273,5 +277,16 @@
     );
     animation: shimmer 3s infinite;
     content: "";
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

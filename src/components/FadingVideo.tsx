@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
 interface FadingVideoProps {
@@ -8,41 +8,8 @@ interface FadingVideoProps {
   videoClassName?: string;
 }
 
-const FADE_DURATION_MS = 520;
-
 const FadingVideo = ({ src, poster, className, videoClassName }: FadingVideoProps) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const animationFrameRef = useRef<number>();
-
-  useEffect(() => {
-    return () => {
-      if (animationFrameRef.current) {
-        window.cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, []);
-
-  const fadeInVideo = useCallback(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (Number(video.style.opacity) >= 1 || animationFrameRef.current) return;
-
-    const startedAt = performance.now();
-
-    const tick = (now: number) => {
-      const progress = Math.min((now - startedAt) / FADE_DURATION_MS, 1);
-      video.style.opacity = progress.toString();
-
-      if (progress < 1) {
-        animationFrameRef.current = window.requestAnimationFrame(tick);
-      } else {
-        animationFrameRef.current = undefined;
-      }
-    };
-
-    animationFrameRef.current = window.requestAnimationFrame(tick);
-  }, []);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   return (
     <div className={cn('relative overflow-hidden', className)}>
@@ -55,20 +22,20 @@ const FadingVideo = ({ src, poster, className, videoClassName }: FadingVideoProp
         />
       )}
       <video
-        ref={videoRef}
         src={src}
         poster={poster}
-        className={cn('relative h-full w-full object-cover', videoClassName)}
-        style={{ opacity: 0 }}
+        className={cn(
+          'relative h-full w-full object-cover transition-opacity duration-500 motion-reduce:transition-none',
+          isLoaded ? 'opacity-100' : 'opacity-0',
+          videoClassName
+        )}
         muted
         autoPlay
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         aria-hidden="true"
-        onLoadedData={fadeInVideo}
-        onCanPlay={fadeInVideo}
-        onPlaying={fadeInVideo}
+        onLoadedData={() => setIsLoaded(true)}
       />
     </div>
   );

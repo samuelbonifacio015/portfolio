@@ -1,7 +1,5 @@
-
 import { Code2, Palette, Boxes, Database, Rocket, Users, type LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { LiquidGlass } from '@/components/ui/LiquidGlass';
 
 const icons: Record<string, LucideIcon> = {
   code: Code2,
@@ -23,20 +21,15 @@ const KnowledgeItem = ({ icon = 'code', title, description, className }: Knowled
   const Icon = icons[icon] ?? Code2;
 
   return (
-    <LiquidGlass
-      variant="light"
-      enableBreathing
-      className={cn(
-        'flex items-start gap-3 p-5 rounded-xl transition-all duration-300 hover:bg-card/80',
-        className
-      )}
-    >
-      <Icon className="text-primary h-5 w-5 mt-1 shrink-0" />
+    <div className={cn('flex items-start gap-4 border-b border-border py-5 last:border-b-0', className)}>
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary">
+        <Icon className="h-5 w-5 text-primary" aria-hidden="true" />
+      </span>
       <div>
-        <h3 className="font-medium text-foreground mb-1">{title}</h3>
-        <p className="text-sm text-muted-foreground">{description}</p>
+        <h3 className="font-semibold text-foreground">{title}</h3>
+        <p className="mt-1 text-sm leading-6 text-muted-foreground">{description}</p>
       </div>
-    </LiquidGlass>
+    </div>
   );
 };
 

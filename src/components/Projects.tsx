@@ -2,10 +2,8 @@ import { useState } from 'react';
 import { ProjectProps } from './ProjectCard';
 import ProjectGridCard from './ProjectGridCard';
 import ProjectModal from './ProjectModal';
-import { useSectionReveal } from '@/hooks/use-section-reveal';
 
 const Projects = () => {
-  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLElement>();
   const [selectedProject, setSelectedProject] = useState<ProjectProps | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,6 +31,7 @@ const Projects = () => {
       date: "2026 - En desarrollo (V0.5)",
       technologies: ["Next.js", "TypeScript", "Supabase", "Mercado Pago"],
       liveUrl: "https://llamia.vercel.app/",
+      demoVideo: "/projects/LlamIA/LlamIA-demo.mp4",
       objective: "Hacer accesible la educación médica mediante microcursos de IA que generan casos clínicos, quizzes y flashcards personalizados para estudiantes y profesionales de la salud.",
       problem: "El estudio de la medicina exige practicar con casos clínicos variados y material de repaso, pero generarlos manualmente es lento y costoso, y no existe una herramienta que produzca contenido clínico de calidad bajo demanda.",
       technicalApproach: "Aplicación full-stack con Next.js y TypeScript, base de datos y autenticación en Supabase, y pasarela de pagos con Mercado Pago para suscripciones. La generación de contenido clínico (casos, quizzes, flashcards) se apoya en modelos de IA.",
@@ -74,6 +73,7 @@ const Projects = () => {
       date: "Mayo 2026",
       technologies: ["Next.js", "Django", "Supabase", "Render"],
       liveUrl: "https://mjys-frontend.vercel.app/home",
+      demoVideo: "/projects/MJYS/MJYS-demo.mp4",
       objective: "Proveer a una empresa de maquinarias un catálogo web público y un panel de administración para gestionar sus productos de forma autónoma.",
       problem: "Las empresas de maquinarias suelen carecer de un catálogo digital actualizable y de un panel propio para administrar productos sin depender de terceros.",
       technicalApproach: "Frontend en Next.js desplegado en Vercel, backend en Django con base de datos en Supabase desplegado en Render. Incluye autenticación para el panel administrativo y gestión CRUD de productos.",
@@ -272,32 +272,24 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      ref={sectionRef}
-      className="section-padding px-4 relative scroll-mt-20"
+      className="scroll-mt-28 px-5 py-20 md:px-6 md:py-28"
     >
-      <div className="container mx-auto max-w-6xl">
-        <div className={`space-y-4 text-center mb-12 transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}>
-          <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/20 text-primary">
-            Portfolio
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Mis Proyectos</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+      <div className="mx-auto max-w-[var(--container-max)]">
+        <div className="mb-10">
+          <h2 className="text-3xl font-bold text-foreground">Mis Proyectos</h2>
+          <p className="mt-3 max-w-2xl text-muted-foreground">
             Mi colección personal de proyectos que he desarrollado a través del tiempo.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <div
+            <ProjectGridCard
               key={project.id || index}
-              className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-8'}`}
-              style={{ transitionDelay: `${200 + index * 100}ms` }}
-            >
-              <ProjectGridCard
-                {...project}
-                onClick={() => handleOpenModal(project)}
-              />
-            </div>
+              {...project}
+              featured={index === 0}
+              onClick={() => handleOpenModal(project)}
+            />
           ))}
         </div>
       </div>

@@ -1,10 +1,6 @@
-import React from "react";
-import { useSectionReveal } from '@/hooks/use-section-reveal';
-
-/**
- * Github Contributions Chart Component
- * To show my Github contributions
- */
+import React from 'react';
+import { Github } from 'lucide-react';
+import { useTheme } from '@/hooks/use-theme';
 
 interface GithubChartProps {
   username?: string;
@@ -14,72 +10,38 @@ interface GithubChartProps {
 }
 
 const GithubChart: React.FC<GithubChartProps> = ({
-  username = "samuelbonifacio015",
-  color = "2563eb",
-  className = "github-chart",
-  alt = "GitHub Contributions Chart",
+  username = 'samuelbonifacio015',
+  color,
+  className = 'github-chart',
+  alt = 'Contribuciones de GitHub de Samuel Bonifacio',
 }) => {
-  const { ref: sectionRef, isVisible } = useSectionReveal<HTMLElement>();
-
-  const baseUrl = 'https://ghchart.rshah.org';
-  const chartUrl = color ? `${baseUrl}/${color}/${username}` : `${baseUrl}/${username}`;
+  const { isDark } = useTheme();
+  const chartColor = color ?? (isDark ? 'A1A1AA' : '3F3F46');
+  const chartUrl = `https://ghchart.rshah.org/${chartColor}/${username}`;
 
   return (
-    <section
-      ref={sectionRef}
-      className={`w-full flex justify-center mt-12 px-4 sm:px-6 md:px-8 transition-all duration-1000 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
-    >
-      <div className="github-chart-container max-w-5xl w-full mx-auto">
-        {/*Header*/}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-3 sm:gap-4">
-          <div className="flex items-center gap-3">
-            <a
-              href={`https://github.com/${username}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors relative group flex items-center gap-2 text-sm sm:text-base"
-              title="GitHub"
-            >
-              <span className="sr-only">GitHub</span>
-              <svg
-                className="w-5 h-5 sm:w-6 sm:h-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-              </svg>
-              <span className="font-medium">{username}</span>
-              <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-            </a>
-          </div>
-
-          {/*Color Legend*/}
-          <div className="hidden sm:flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-muted-foreground">
-            <span>Menos</span>
-            <div className="flex gap-1">
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-muted border border-border rounded-sm"></div>
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-primary/25 rounded-sm"></div>
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-primary/50 rounded-sm"></div>
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-primary/75 rounded-sm"></div>
-              <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-primary rounded-sm"></div>
-            </div>
-            <span>Más</span>
-          </div>
+    <div className="p-5 sm:p-6">
+        <div className="mb-4 flex items-center justify-between gap-4">
+          <a
+            href={`https://github.com/${username}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <Github className="h-5 w-5" aria-hidden="true" />
+            {username}
+          </a>
+          <span className="hidden text-xs text-muted-foreground sm:block">Actividad en GitHub</span>
         </div>
-
-        {/*Contribution Chart*/}
-        <div className="flex justify-center items-center cursor-pointer w-full mt-2 sm:mt-4" onClick={() => window.open(`https://github.com/${username}`, '_blank')}>
-          <img 
-            src={chartUrl}
-            alt={alt}
-            className={`${className} w-full rounded-lg`}
-            style={{ maxWidth: '100%', height: 'auto' }}
-          />
-        </div>
-      </div>
-    </section>
+        <a
+          href={`https://github.com/${username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          <img src={chartUrl} alt={alt} className={`${className} h-auto w-full`} loading="lazy" />
+        </a>
+    </div>
   );
 };
 

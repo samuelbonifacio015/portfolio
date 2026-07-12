@@ -45,15 +45,58 @@ export default function ThemeToggle() {
     setIsOpen(false);
   }, []);
 
-  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+  const focusMenuItem = useCallback((index: number) => {
+    const items = menuRef.current?.querySelectorAll<HTMLButtonElement>('[role="menuitemradio"]');
+    if (!items?.length) return;
+    items[(index + items.length) % items.length].focus();
+  }, []);
+
+  const handleMenuKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "Escape") {
       closeMenu();
       buttonRef.current?.focus();
+      return;
     }
-  }, [closeMenu]);
+
+    if (e.key === "Tab") {
+      closeMenu();
+      return;
+    }
+
+    const items = Array.from(
+      menuRef.current?.querySelectorAll<HTMLButtonElement>('[role="menuitemradio"]') ?? []
+    );
+    const currentIndex = items.indexOf(document.activeElement as HTMLButtonElement);
+
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+      e.preventDefault();
+      focusMenuItem(currentIndex + 1);
+    } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      focusMenuItem(currentIndex - 1);
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      focusMenuItem(0);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      focusMenuItem(items.length - 1);
+    }
+  }, [closeMenu, focusMenuItem]);
+
+  const handleTriggerKeyDown = useCallback((e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      setIsOpen(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
+
+    const focusFrame = requestAnimationFrame(() => {
+      const selectedItem = menuRef.current?.querySelector<HTMLButtonElement>('[aria-checked="true"]');
+      selectedItem?.focus();
+    });
 
     const handleClickOutside = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node) && 
@@ -62,29 +105,18 @@ export default function ThemeToggle() {
       }
     };
 
-    const handleTab = (e: KeyboardEvent) => {
-      if (e.key === "Tab") {
-        const menu = menuRef.current;
-        const button = buttonRef.current;
-        if (menu && button && !menu.contains(document.activeElement) && !button.contains(document.activeElement)) {
-          closeMenu();
-        }
-      }
-    };
-
     document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleTab);
 
     return () => {
+      cancelAnimationFrame(focusFrame);
       document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleTab);
     };
   }, [isOpen, closeMenu]);
 
   if (!mounted) {
     return (
       <div 
-        className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/60 border border-neutral-200/50 backdrop-blur-sm"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background"
         aria-hidden="true"
       >
         <Monitor size={18} className="text-neutral-400" />
@@ -100,20 +132,19 @@ export default function ThemeToggle() {
         ref={buttonRef}
         type="button"
         onClick={toggleMenu}
+        onKeyDown={handleTriggerKeyDown}
         aria-expanded={isOpen}
         aria-haspopup="menu"
+        aria-controls={isOpen ? 'theme-selector' : undefined}
         aria-label={`Cambiar tema (actual: ${getThemeLabel(theme)})`}
         title={getThemeLabel(theme)}
         className={cn(
-          "group relative inline-flex h-10 w-10 items-center justify-center rounded-xl",
-          "border border-neutral-200/80 bg-white/90 backdrop-blur-md",
-          "text-neutral-900 shadow-sm transition-all duration-300 ease-out",
-          "hover:border-neutral-900/20 hover:bg-white hover:shadow-md",
-          "active:scale-95 active:shadow-sm",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/20 focus-visible:ring-offset-2 focus-visible:ring-offset-white",
-          "dark:bg-neutral-900/80 dark:border-neutral-700/50 dark:text-neutral-100",
-          "dark:hover:bg-neutral-900/90 dark:hover:border-neutral-600/50",
-          "dark:focus-visible:ring-neutral-100/20 dark:focus-visible:ring-offset-neutral-900"
+          "group relative inline-flex h-11 w-11 items-center justify-center rounded-full",
+          "border border-border bg-background",
+          "text-foreground transition-colors duration-200",
+          "hover:border-primary hover:bg-secondary",
+          "active:scale-95",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         )}
       >
         <div className="relative transition-transform duration-200 group-hover:scale-110 group-active:scale-95">
@@ -121,54 +152,49 @@ export default function ThemeToggle() {
         </div>
       </button>
 
-      <div
-        ref={menuRef}
-        role="menu"
-        aria-label="Selector de tema"
-        aria-orientation="vertical"
-        className={cn(
-          "absolute top-full mt-2 right-0 w-40",
-          "rounded-xl border border-neutral-200/80 bg-white/95 backdrop-blur-xl shadow-xl",
-          "opacity-0 transform scale-95 pointer-events-none transition-all duration-200 ease-out",
-          "dark:bg-neutral-900/95 dark:border-neutral-700/50 dark:shadow-neutral-900/20",
-          isOpen && "opacity-100 scale-100 pointer-events-auto"
-        )}
-        onKeyDown={handleKeyDown}
-      >
-        <div className="p-1 space-y-0.5">
-          {themes.map((t) => {
-            const isActive = theme === t;
-            return (
-              <button
-                key={t}
-                type="button"
-                role="menuitem"
-                onClick={() => handleSelectTheme(t)}
-                className={cn(
-                  "w-full flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg",
-                  "text-sm font-medium transition-all duration-150",
-                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/10",
-                  isActive
-                    ? "bg-neutral-900/5 text-neutral-900 dark:bg-neutral-100/10 dark:text-neutral-100"
-                    : "text-neutral-600 hover:bg-neutral-100/50 dark:text-neutral-400 dark:hover:bg-neutral-800/50"
-                )}
-              >
-                <div className="flex items-center gap-2">
-                  <span className="flex-shrink-0">
-                    {t === "light" && <Sun size={15} />}
-                    {t === "dark" && <Moon size={15} />}
-                    {t === "system" && <Monitor size={15} />}
-                  </span>
-                  <span className="truncate">{getThemeLabel(t)}</span>
-                </div>
-                {isActive && <Check size={14} className="flex-shrink-0" />}
-              </button>
-            );
-          })}
+      {isOpen && (
+        <div
+          id="theme-selector"
+          ref={menuRef}
+          role="menu"
+          aria-label="Selector de tema"
+          className="absolute right-0 top-full mt-2 w-40 rounded-[var(--radius-card)] border border-border bg-popover"
+          onKeyDown={handleMenuKeyDown}
+        >
+          <div className="space-y-0.5 p-1">
+            {themes.map((t) => {
+              const isActive = theme === t;
+              return (
+                <button
+                  key={t}
+                  type="button"
+                  role="menuitemradio"
+                  aria-checked={isActive}
+                  onClick={() => handleSelectTheme(t)}
+                  className={cn(
+                    "flex min-h-11 w-full items-center justify-between gap-2 rounded-lg px-3 py-2.5",
+                    "text-sm font-medium transition-colors duration-150",
+                    "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                    isActive
+                      ? "bg-secondary text-foreground"
+                      : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                  )}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="flex-shrink-0">
+                      {t === "light" && <Sun size={15} />}
+                      {t === "dark" && <Moon size={15} />}
+                      {t === "system" && <Monitor size={15} />}
+                    </span>
+                    <span className="truncate">{getThemeLabel(t)}</span>
+                  </div>
+                  {isActive && <Check size={14} className="flex-shrink-0" />}
+                </button>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
-
-

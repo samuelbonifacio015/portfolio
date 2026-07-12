@@ -3,6 +3,7 @@ import { Github, ExternalLink, X } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
@@ -30,10 +31,11 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
   const [current, setCurrent] = useState(0);
 
   // Función para detectar tipo de video
-  const getVideoType = (url: string): 'youtube' | 'vimeo' | 'mp4' | null => {
+  const getVideoType = (url: string): 'youtube' | 'vimeo' | 'mp4' | 'webm' | null => {
     if (url.includes('youtube.com') || url.includes('youtu.be')) return 'youtube';
     if (url.includes('vimeo.com')) return 'vimeo';
-    if (url.endsWith('.mp4') || url.endsWith('.webm')) return 'mp4';
+    if (url.endsWith('.mp4')) return 'mp4';
+    if (url.endsWith('.webm')) return 'webm';
     return null;
   };
 
@@ -74,31 +76,36 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
 
     setCurrent(api.selectedScrollSnap() + 1);
 
-    api.on('select', () => {
+    const handleSelect = () => {
       setCurrent(api.selectedScrollSnap() + 1);
-    });
+    };
+
+    api.on('select', handleSelect);
+    return () => {
+      api.off('select', handleSelect);
+    };
   }, [api]);
 
   if (!project) return null;
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden p-0 gap-0 w-[95vw] sm:w-full">
+      <DialogContent className="max-h-[90vh] w-[95vw] max-w-[var(--container-max)] gap-0 overflow-hidden p-0">
         <DialogHeader className="px-4 sm:px-6 pt-4 sm:pt-6 pb-3 sm:pb-4 border-b border-border">
           <div className="flex items-start justify-between gap-3 sm:gap-4">
             <div className="flex-1 space-y-1 min-w-0">
               <DialogTitle className="text-2xl sm:text-2xl font-bold text-foreground truncate text-center">
                 {project.title}
               </DialogTitle>
-              <p className="text-lg sm:text-base font-semibold text-primary text-center">
+              <DialogDescription className="text-center text-base font-medium text-muted-foreground">
                 {project.subtitle}
-              </p>
+              </DialogDescription>
             </div>
             <Button
               variant="ghost"
               size="icon"
               onClick={onClose}
-              className="h-8 w-8 sm:h-9 sm:w-9 rounded-full flex-shrink-0"
+              className="h-11 w-11 flex-shrink-0 rounded-full"
               aria-label="Cerrar modal"
             >
               <X className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -146,14 +153,15 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                                   allowFullScreen
                                 />
                               );
-                            } else if (videoType === 'mp4') {
+                            } else if (videoType === 'mp4' || videoType === 'webm') {
                               return (
                                 <video
                                   className="w-full h-full object-cover"
                                   controls
                                   preload="metadata"
+                                  poster={images[0]}
                                 >
-                                  <source src={item.content} type="video/mp4" />
+                                  <source src={item.content} type={`video/${videoType}`} />
                                   Tu navegador no soporta el elemento de video.
                                 </video>
                               );
@@ -165,7 +173,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                             src={item.content}
                             alt={`${project.title} - Imagen ${index + 1}`}
                             className="w-full h-full object-contain"
-                            loading="lazy"
+                            loading={index === (project.demoVideo ? 1 : 0) ? 'eager' : 'lazy'}
                           />
                         )}
                       </div>
@@ -174,8 +182,8 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                 </CarouselContent>
                 {carouselItems.length > 1 && (
                   <>
-                    <CarouselPrevious className="left-1 sm:left-2 md:left-4 h-8 w-8 sm:h-10 sm:w-10" />
-                    <CarouselNext className="right-1 sm:right-2 md:right-4 h-8 w-8 sm:h-10 sm:w-10" />
+                    <CarouselPrevious className="left-1 h-11 w-11 sm:left-2 md:left-4" />
+                    <CarouselNext className="right-1 h-11 w-11 sm:right-2 md:right-4" />
                   </>
                 )}
               </Carousel>
@@ -186,14 +194,19 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                     <button
                       key={index}
                       onClick={() => api?.scrollTo(index)}
-                      className={cn(
-                        "h-2 rounded-full transition-all duration-300",
-                        current === index + 1
-                          ? "w-8 bg-primary"
-                          : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                      )}
+                      className="flex h-8 w-8 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       aria-label={item.type === 'video' ? 'Ir al video' : `Ir a imagen ${index + 1}`}
-                    />
+                    >
+                      <span
+                        className={cn(
+                          'h-2 rounded-full transition-[width,background-color] duration-200',
+                          current === index + 1
+                            ? 'w-6 bg-primary'
+                            : 'w-2 bg-muted-foreground/30'
+                        )}
+                        aria-hidden="true"
+                      />
+                    </button>
                   ))}
                 </div>
               )}
@@ -345,4 +358,3 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
 };
 
 export default ProjectModal;
-

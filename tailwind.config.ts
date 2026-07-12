@@ -2,6 +2,12 @@
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 
+const cssColor = (variable: string) =>
+  ({ opacityValue }: { opacityValue?: string }) =>
+    opacityValue === undefined
+      ? `var(${variable})`
+      : `color-mix(in srgb, var(${variable}) calc(${opacityValue} * 100%), transparent)`;
+
 export default {
   darkMode: ["class"],
   content: [
@@ -14,54 +20,57 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1.25rem",
+        md: "1.5rem",
+      },
       screens: {
-        sm: "640px",
-        md: "768px",
-        lg: "1024px",
-        xl: "1280px",
-        "2xl": "1400px",
+        sm: "880px",
+        md: "880px",
+        lg: "880px",
+        xl: "880px",
+        "2xl": "880px",
       },
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        border: cssColor("--border"),
+        input: cssColor("--input"),
+        ring: cssColor("--ring"),
+        background: cssColor("--background"),
+        foreground: cssColor("--foreground"),
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: cssColor("--primary"),
+          foreground: cssColor("--primary-foreground"),
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: cssColor("--secondary"),
+          foreground: cssColor("--secondary-foreground"),
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: cssColor("--destructive"),
+          foreground: cssColor("--destructive-foreground"),
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: cssColor("--muted"),
+          foreground: cssColor("--muted-foreground"),
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: cssColor("--accent"),
+          foreground: cssColor("--accent-foreground"),
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: cssColor("--popover"),
+          foreground: cssColor("--popover-foreground"),
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: cssColor("--card"),
+          foreground: cssColor("--card-foreground"),
         },
       },
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        display: ["SF Pro Display", "Inter", "sans-serif"],
+        sans: ["Inter", "General Sans", "system-ui", "sans-serif"],
+        display: ["Inter", "General Sans", "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

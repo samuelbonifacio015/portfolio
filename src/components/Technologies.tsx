@@ -1,6 +1,5 @@
 import { Braces, Database, Settings2, Workflow } from 'lucide-react';
 import TechBadge from './TechBadge';
-import { Card } from '@/components/ui/card';
 
 const techCategories = [
   {
@@ -27,7 +26,7 @@ const techCategories = [
 
 const Technologies = () => {
   return (
-    <section id="technologies" className="section-padding scroll-mt-28 px-5 md:px-6">
+    <section id="technologies" className="scroll-mt-28 px-5 py-16 md:px-6 md:py-24">
       <div className="mx-auto max-w-[var(--container-max)]">
         <div className="mb-10">
           <h2 className="text-3xl font-bold text-foreground">Tecnologías</h2>
@@ -36,17 +35,19 @@ const Technologies = () => {
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="divide-y divide-border border-y border-border">
           {techCategories.map((category) => (
-            <Card key={category.name} className="p-6">
-              <category.icon className="mb-5 h-6 w-6 text-primary" aria-hidden="true" />
-              <h3 className="text-lg font-bold text-foreground">{category.name}</h3>
-              <div className="mt-4 flex flex-wrap gap-2">
+            <div key={category.name} className="grid gap-4 py-6 sm:grid-cols-[180px_1fr] sm:items-start">
+              <div className="flex items-center gap-3">
+                <category.icon className="h-5 w-5 text-primary" aria-hidden="true" />
+                <h3 className="text-base font-bold text-foreground">{category.name}</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
                 {category.technologies.map((tech) => (
                   <TechBadge key={tech} name={tech} />
                 ))}
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </div>

@@ -39,7 +39,7 @@ const Knowledge = () => {
   return (
     <section
       id="knowledge"
-      className="section-padding scroll-mt-28 px-5 md:px-6"
+      className="scroll-mt-28 px-5 py-16 md:px-6 md:py-24"
     >
       <div className="mx-auto max-w-[var(--container-max)]">
         <div className="mb-8">

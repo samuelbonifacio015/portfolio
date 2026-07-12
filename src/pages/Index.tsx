@@ -16,15 +16,21 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       <div className="w-full transition-all duration-300">
         <Navbar />
-        <Hero />
-        <Terminal />
-        <GitHubChart username="samuelbonifacio015" />
-        <AboutMe />
-        <Technologies />
-        <Projects />
-        <Knowledge />
-        <Inspiration />
-        <Contact />
+        <main>
+          <Hero />
+          <section aria-label="Actividad y perfil técnico" className="px-5 pb-12 md:px-6 md:pb-16">
+            <div className="mx-auto max-w-[var(--container-max)] divide-y divide-border border-y border-border bg-muted">
+              <Terminal />
+              <GitHubChart username="samuelbonifacio015" />
+            </div>
+          </section>
+          <AboutMe />
+          <Technologies />
+          <Projects />
+          <Knowledge />
+          <Inspiration />
+          <Contact />
+        </main>
         <Footer />
       </div>
     </div>

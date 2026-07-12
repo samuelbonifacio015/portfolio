@@ -1,7 +1,7 @@
 
 const Inspiration = () => {
   return (
-    <section id="inspiration" className="section-padding px-5 md:px-6">
+    <section id="inspiration" className="px-5 py-12 md:px-6 md:py-16">
       <div
         className="mx-auto max-w-[var(--container-max)] rounded-[var(--radius-card)] bg-muted p-6 sm:p-8 md:p-10"
       >

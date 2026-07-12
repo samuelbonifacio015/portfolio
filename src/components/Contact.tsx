@@ -41,7 +41,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding scroll-mt-28 px-5 md:px-6">
+    <section id="contact" className="scroll-mt-28 px-5 py-20 md:px-6 md:py-24">
       <div className="mx-auto max-w-[var(--container-max)]">
         <div className="mb-10">
           <h2 className="text-balance text-3xl font-bold text-foreground sm:text-4xl">¿Hablamos?</h2>
@@ -50,18 +50,18 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-[1.45fr_0.75fr]">
-          <Card className="p-6 sm:p-8">
+        <Card className="grid overflow-hidden md:grid-cols-[1.45fr_0.75fr]">
+          <div className="p-6 sm:p-8">
             <h3 className="text-xl font-semibold text-foreground">Envíame un mensaje</h3>
-            <form ref={formRef} onSubmit={handleSubmit} className="mt-6 space-y-4">
+            <form ref={formRef} onSubmit={handleSubmit} className="mt-6 space-y-4" aria-describedby={error ? 'contact-error' : undefined}>
               <div className="grid gap-4 sm:grid-cols-2">
                 <label htmlFor="name" className="text-sm font-medium text-foreground">
                   Nombre
-                  <input id="name" name="user_name" type="text" required className={fieldClassName} placeholder="Tu nombre" />
+                  <input id="name" name="user_name" type="text" autoComplete="name" required className={fieldClassName} placeholder="Tu nombre" />
                 </label>
                 <label htmlFor="email" className="text-sm font-medium text-foreground">
                   Email
-                  <input id="email" name="user_email" type="email" required className={fieldClassName} placeholder="tu@email.com" />
+                  <input id="email" name="user_email" type="email" autoComplete="email" required className={fieldClassName} placeholder="tu@email.com" />
                 </label>
               </div>
 
@@ -75,16 +75,16 @@ const Contact = () => {
                 <textarea id="message" name="message" rows={4} required className={`${fieldClassName} resize-none`} placeholder="Tu mensaje..." />
               </label>
 
-              {error && <p className="text-sm font-medium text-destructive">{error}</p>}
+              {error && <p id="contact-error" role="alert" aria-live="polite" className="text-sm font-medium text-destructive">{error}</p>}
 
               <Button type="submit" size="lg" disabled={isLoading}>
                 <Send aria-hidden="true" />
                 {isLoading ? 'Enviando...' : 'Enviar mensaje'}
               </Button>
             </form>
-          </Card>
+          </div>
 
-          <div className="space-y-6">
+          <div className="space-y-6 border-t border-border bg-muted p-6 sm:p-8 md:border-l md:border-t-0">
             <div>
               <h3 className="text-lg font-semibold text-foreground">Información de contacto</h3>
               <div className="mt-4 space-y-4">
@@ -109,12 +109,12 @@ const Contact = () => {
 
             <div>
               <h3 className="text-lg font-semibold text-foreground">Sígueme en</h3>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 md:grid-cols-1">
+              <div className="mt-3">
                 <a
                   href="https://github.com/samuelbonifacio015"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 rounded-[var(--radius-card)] border border-border p-4 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="flex items-center gap-3 border-b border-border py-3 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <Github className="h-5 w-5" aria-hidden="true" />
                   <span>
@@ -126,7 +126,7 @@ const Contact = () => {
                   href="https://www.linkedin.com/in/samuelbonifacio015"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 rounded-[var(--radius-card)] border border-border p-4 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="flex items-center gap-3 py-3 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   <Linkedin className="h-5 w-5" aria-hidden="true" />
                   <span>
@@ -137,7 +137,7 @@ const Contact = () => {
               </div>
             </div>
           </div>
-        </div>
+        </Card>
       </div>
     </section>
   );

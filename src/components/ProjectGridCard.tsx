@@ -16,7 +16,7 @@ const ProjectGridCard = ({
 }: ProjectGridCardProps) => {
   return (
     <Card
-      className="group h-full cursor-pointer overflow-hidden transition-[border-color,transform] duration-200 hover:border-primary motion-safe:hover:-translate-y-px"
+      className="group h-full cursor-pointer overflow-hidden transition-[border-color,transform] duration-200 hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-safe:hover:-translate-y-px"
       onClick={onClick}
       role="button"
       tabIndex={0}

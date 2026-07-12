@@ -1,5 +1,6 @@
 import React from 'react';
 import { Github } from 'lucide-react';
+import { useTheme } from '@/hooks/use-theme';
 
 interface GithubChartProps {
   username?: string;
@@ -10,15 +11,16 @@ interface GithubChartProps {
 
 const GithubChart: React.FC<GithubChartProps> = ({
   username = 'samuelbonifacio015',
-  color = 'FF5F05',
+  color,
   className = 'github-chart',
   alt = 'Contribuciones de GitHub de Samuel Bonifacio',
 }) => {
-  const chartUrl = `https://ghchart.rshah.org/${color}/${username}`;
+  const { isDark } = useTheme();
+  const chartColor = color ?? (isDark ? 'A1A1AA' : '3F3F46');
+  const chartUrl = `https://ghchart.rshah.org/${chartColor}/${username}`;
 
   return (
-    <section className="px-5 py-8 md:px-6">
-      <div className="mx-auto max-w-[var(--container-max)]">
+    <div className="p-5 sm:p-6">
         <div className="mb-4 flex items-center justify-between gap-4">
           <a
             href={`https://github.com/${username}`}
@@ -35,12 +37,11 @@ const GithubChart: React.FC<GithubChartProps> = ({
           href={`https://github.com/${username}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="block overflow-x-auto rounded-[var(--radius-card)] border border-border bg-card p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
-          <img src={chartUrl} alt={alt} className={`${className} min-w-[680px]`} loading="lazy" />
+          <img src={chartUrl} alt={alt} className={`${className} h-auto w-full`} loading="lazy" />
         </a>
-      </div>
-    </section>
+    </div>
   );
 };
 

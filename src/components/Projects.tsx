@@ -270,7 +270,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="section-padding scroll-mt-28 px-5 md:px-6"
+      className="scroll-mt-28 px-5 py-20 md:px-6 md:py-28"
     >
       <div className="mx-auto max-w-[var(--container-max)]">
         <div className="mb-10">
@@ -282,15 +282,11 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <div
+            <ProjectGridCard
               key={project.id || index}
-              className="h-full"
-            >
-              <ProjectGridCard
-                {...project}
-                onClick={() => handleOpenModal(project)}
-              />
-            </div>
+              {...project}
+              onClick={() => handleOpenModal(project)}
+            />
           ))}
         </div>
       </div>

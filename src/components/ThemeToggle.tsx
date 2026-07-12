@@ -121,53 +121,48 @@ export default function ThemeToggle() {
         </div>
       </button>
 
-      <div
-        ref={menuRef}
-        role="menu"
-        aria-label="Selector de tema"
-        aria-orientation="vertical"
-        className={cn(
-          "absolute top-full mt-2 right-0 w-40",
-          "rounded-[var(--radius-card)] border border-border bg-background",
-          "opacity-0 transform scale-95 pointer-events-none transition-all duration-200 ease-out",
-          "dark:bg-neutral-900/95 dark:border-neutral-700/50 dark:shadow-neutral-900/20",
-          isOpen && "opacity-100 scale-100 pointer-events-auto"
-        )}
-        onKeyDown={handleKeyDown}
-      >
-        <div className="p-1 space-y-0.5">
-          {themes.map((t) => {
-            const isActive = theme === t;
-            return (
-              <button
-                key={t}
-                type="button"
-                role="menuitem"
-                onClick={() => handleSelectTheme(t)}
-                className={cn(
-                  "w-full flex items-center justify-between gap-2 px-3 py-2.5 rounded-lg",
-                  "text-sm font-medium transition-all duration-150",
-                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900/10",
-                  isActive
-                    ? "bg-neutral-900/5 text-neutral-900 dark:bg-neutral-100/10 dark:text-neutral-100"
-                    : "text-neutral-600 hover:bg-neutral-100/50 dark:text-neutral-400 dark:hover:bg-neutral-800/50"
-                )}
-              >
-                <div className="flex items-center gap-2">
-                  <span className="flex-shrink-0">
-                    {t === "light" && <Sun size={15} />}
-                    {t === "dark" && <Moon size={15} />}
-                    {t === "system" && <Monitor size={15} />}
-                  </span>
-                  <span className="truncate">{getThemeLabel(t)}</span>
-                </div>
-                {isActive && <Check size={14} className="flex-shrink-0" />}
-              </button>
-            );
-          })}
+      {isOpen && (
+        <div
+          ref={menuRef}
+          role="menu"
+          aria-label="Selector de tema"
+          aria-orientation="vertical"
+          className="absolute right-0 top-full mt-2 w-40 rounded-[var(--radius-card)] border border-border bg-background dark:border-neutral-700/50 dark:bg-neutral-900/95"
+          onKeyDown={handleKeyDown}
+        >
+          <div className="space-y-0.5 p-1">
+            {themes.map((t) => {
+              const isActive = theme === t;
+              return (
+                <button
+                  key={t}
+                  type="button"
+                  role="menuitem"
+                  onClick={() => handleSelectTheme(t)}
+                  className={cn(
+                    "flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2.5",
+                    "text-sm font-medium transition-colors duration-150",
+                    "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                    isActive
+                      ? "bg-secondary text-foreground"
+                      : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                  )}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="flex-shrink-0">
+                      {t === "light" && <Sun size={15} />}
+                      {t === "dark" && <Moon size={15} />}
+                      {t === "system" && <Monitor size={15} />}
+                    </span>
+                    <span className="truncate">{getThemeLabel(t)}</span>
+                  </div>
+                  {isActive && <Check size={14} className="flex-shrink-0" />}
+                </button>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
-

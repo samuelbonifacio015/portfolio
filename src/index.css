@@ -6,9 +6,9 @@
   :root {
     --bg-base: oklch(1 0 0);
     --bg-subtle: oklch(0.98 0 0);
-    --accent: oklch(0.55 0.18 250);
-    --accent-hover: oklch(0.45 0.15 250);
-    --accent-foreground: oklch(1 0 0);
+    --accent: #3F3F46;
+    --accent-hover: #27272A;
+    --accent-foreground: #FFFFFF;
     --chip-bg: oklch(0.98 0 0);
     --text-primary: oklch(0.2 0 0);
     --text-secondary: color-mix(in oklch, var(--text-primary) 68%, var(--bg-base));
@@ -42,9 +42,9 @@
   .dark {
     --bg-base: rgba(33, 33, 33, 0.9);
     --bg-subtle: oklch(0.15 0 0);
-    --accent: oklch(0.55 0.18 250);
-    --accent-hover: oklch(0.45 0.15 250);
-    --accent-foreground: oklch(1 0 0);
+    --accent: #D4D4D8;
+    --accent-hover: #A1A1AA;
+    --accent-foreground: #18181B;
     --chip-bg: oklch(0.15 0 0);
     --text-primary: oklch(0.95 0 0);
     --text-secondary: color-mix(in oklch, var(--text-primary) 72%, var(--bg-subtle));

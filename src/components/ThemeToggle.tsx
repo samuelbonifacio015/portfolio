@@ -45,15 +45,58 @@ export default function ThemeToggle() {
     setIsOpen(false);
   }, []);
 
-  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+  const focusMenuItem = useCallback((index: number) => {
+    const items = menuRef.current?.querySelectorAll<HTMLButtonElement>('[role="menuitemradio"]');
+    if (!items?.length) return;
+    items[(index + items.length) % items.length].focus();
+  }, []);
+
+  const handleMenuKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "Escape") {
       closeMenu();
       buttonRef.current?.focus();
+      return;
     }
-  }, [closeMenu]);
+
+    if (e.key === "Tab") {
+      closeMenu();
+      return;
+    }
+
+    const items = Array.from(
+      menuRef.current?.querySelectorAll<HTMLButtonElement>('[role="menuitemradio"]') ?? []
+    );
+    const currentIndex = items.indexOf(document.activeElement as HTMLButtonElement);
+
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+      e.preventDefault();
+      focusMenuItem(currentIndex + 1);
+    } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      focusMenuItem(currentIndex - 1);
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      focusMenuItem(0);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      focusMenuItem(items.length - 1);
+    }
+  }, [closeMenu, focusMenuItem]);
+
+  const handleTriggerKeyDown = useCallback((e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      setIsOpen(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
+
+    const focusFrame = requestAnimationFrame(() => {
+      const selectedItem = menuRef.current?.querySelector<HTMLButtonElement>('[aria-checked="true"]');
+      selectedItem?.focus();
+    });
 
     const handleClickOutside = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node) && 
@@ -62,22 +105,11 @@ export default function ThemeToggle() {
       }
     };
 
-    const handleTab = (e: KeyboardEvent) => {
-      if (e.key === "Tab") {
-        const menu = menuRef.current;
-        const button = buttonRef.current;
-        if (menu && button && !menu.contains(document.activeElement) && !button.contains(document.activeElement)) {
-          closeMenu();
-        }
-      }
-    };
-
     document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleTab);
 
     return () => {
+      cancelAnimationFrame(focusFrame);
       document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleTab);
     };
   }, [isOpen, closeMenu]);
 
@@ -100,7 +132,9 @@ export default function ThemeToggle() {
         ref={buttonRef}
         type="button"
         onClick={toggleMenu}
+        onKeyDown={handleTriggerKeyDown}
         aria-expanded={isOpen}
+        aria-haspopup="menu"
         aria-controls={isOpen ? 'theme-selector' : undefined}
         aria-label={`Cambiar tema (actual: ${getThemeLabel(theme)})`}
         title={getThemeLabel(theme)}
@@ -110,10 +144,7 @@ export default function ThemeToggle() {
           "text-foreground transition-colors duration-200",
           "hover:border-primary hover:bg-secondary",
           "active:scale-95",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-          "dark:bg-neutral-900/80 dark:border-neutral-700/50 dark:text-neutral-100",
-          "dark:hover:bg-neutral-900/90 dark:hover:border-neutral-600/50",
-          "dark:focus-visible:ring-neutral-100/20 dark:focus-visible:ring-offset-neutral-900"
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         )}
       >
         <div className="relative transition-transform duration-200 group-hover:scale-110 group-active:scale-95">
@@ -125,10 +156,10 @@ export default function ThemeToggle() {
         <div
           id="theme-selector"
           ref={menuRef}
-          role="group"
+          role="menu"
           aria-label="Selector de tema"
-          className="absolute right-0 top-full mt-2 w-40 rounded-[var(--radius-card)] border border-border bg-background dark:border-neutral-700/50 dark:bg-neutral-900/95"
-          onKeyDown={handleKeyDown}
+          className="absolute right-0 top-full mt-2 w-40 rounded-[var(--radius-card)] border border-border bg-popover"
+          onKeyDown={handleMenuKeyDown}
         >
           <div className="space-y-0.5 p-1">
             {themes.map((t) => {
@@ -137,9 +168,11 @@ export default function ThemeToggle() {
                 <button
                   key={t}
                   type="button"
+                  role="menuitemradio"
+                  aria-checked={isActive}
                   onClick={() => handleSelectTheme(t)}
                   className={cn(
-                    "flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2.5",
+                    "flex min-h-11 w-full items-center justify-between gap-2 rounded-lg px-3 py-2.5",
                     "text-sm font-medium transition-colors duration-150",
                     "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                     isActive

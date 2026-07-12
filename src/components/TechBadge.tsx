@@ -49,7 +49,7 @@ const TechBadge = ({ name, className }: TechBadgeProps) => {
       variant="secondary"
       style={style}
       className={cn(
-        "border border-transparent text-xs text-foreground transition-[background-color,border-color] duration-200 hover:[background-color:color-mix(in_oklch,var(--tech-color)_14%,var(--secondary))] hover:[border-color:color-mix(in_oklch,var(--tech-color)_70%,var(--border))]",
+        "border border-transparent text-xs text-foreground transition-[background-color,border-color] duration-200",
         className
       )}
     >

@@ -44,7 +44,11 @@ const Technologies = () => {
               </div>
               <div className="flex flex-wrap gap-2">
                 {category.technologies.map((tech) => (
-                  <TechBadge key={tech} name={tech} />
+                  <TechBadge
+                    key={tech}
+                    name={tech}
+                    className="hover:[background-color:color-mix(in_oklch,var(--tech-color)_14%,var(--secondary))] hover:[border-color:color-mix(in_oklch,var(--tech-color)_70%,var(--border))]"
+                  />
                 ))}
               </div>
             </div>

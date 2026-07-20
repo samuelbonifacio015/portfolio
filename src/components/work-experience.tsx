@@ -15,6 +15,10 @@ export type ExperiencePositionItemType = {
   description?: string;
   icon?: ReactNode;
   skills?: string[];
+  projectImage?: {
+    src: string;
+    alt: string;
+  };
   isExpanded?: boolean;
 };
 
@@ -92,7 +96,7 @@ const ExperienceItem = ({ experience }: { experience: ExperienceItemType }) => {
 
         {experience.isCurrentEmployer && (
           <span className="relative flex h-3 w-3 items-center justify-center" aria-label="Experiencia actual">
-            <span className="absolute h-3 w-3 animate-ping rounded-full bg-sky-500/50" />
+            <span className="absolute h-3 w-3 motion-safe:animate-ping rounded-full bg-sky-500/50" />
             <span className="relative h-2 w-2 rounded-full bg-sky-500" />
           </span>
         )}
@@ -108,7 +112,7 @@ const ExperienceItem = ({ experience }: { experience: ExperienceItemType }) => {
 };
 
 const ExperiencePositionItem = ({ position }: { position: ExperiencePositionItemType }) => {
-  const hasDetails = Boolean(position.description || position.skills?.length);
+  const hasDetails = Boolean(position.description || position.projectImage || position.skills?.length);
   const { start, end } = position.employmentPeriod;
   const duration = formatDuration(start, end);
 
@@ -117,7 +121,8 @@ const ExperiencePositionItem = ({ position }: { position: ExperiencePositionItem
       <summary
         className={cn(
           'relative z-10 flex list-none items-start gap-3 text-left [&::-webkit-details-marker]:hidden',
-          hasDetails && 'cursor-pointer'
+          hasDetails && 'cursor-pointer',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
         )}
       >
         <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-border bg-muted text-muted-foreground ring-1 ring-background">
@@ -156,6 +161,20 @@ const ExperiencePositionItem = ({ position }: { position: ExperiencePositionItem
             .filter(Boolean)
             .map((item) => <li key={item}>{item}</li>)}
         </ul>
+      )}
+
+      {position.projectImage && (
+        <figure className="relative z-10 ml-9 mt-4 max-w-3xl overflow-hidden rounded-xl border border-border bg-muted">
+          <div className="aspect-[1280/871] w-full">
+            <img
+              src={position.projectImage.src}
+              alt={position.projectImage.alt}
+              className="h-full w-full object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </figure>
       )}
 
       {position.skills && position.skills.length > 0 && (

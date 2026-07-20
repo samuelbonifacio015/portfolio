@@ -8,8 +8,8 @@ interface TerminalProps {
 const lines = [
   'samuel@portfolio:~$ neofetch',
   'Estudiando en: Universidad Peruana de Ciencias Aplicadas',
-  'Aprendiendo: Dart & React Native',
-  'Usando: Arch Linux',
+  'Aprendiendo: RAG & Deep Learning',
+  'Trabajando en: Maquinarias JYS',
 ];
 
 const Terminal = ({ className }: TerminalProps) => {

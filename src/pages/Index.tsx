@@ -2,7 +2,6 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
 import Technologies from '@/components/Technologies';
-import Knowledge from '@/components/Knowledge';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import AboutMe from '@/components/AboutMe';

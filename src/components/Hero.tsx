@@ -1,5 +1,6 @@
 import { ArrowDownRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import TextFlipDemo from '@/components/text-flip';
 
 const Hero = () => {
   return (
@@ -13,9 +14,7 @@ const Hero = () => {
                 alt="Samuel Bonifacio"
                 className="h-20 w-20 rounded-full object-cover ring-1 ring-border sm:h-24 sm:w-24"
               />
-              <p className="max-w-40 text-sm font-medium leading-6 text-muted-foreground">
-                Desarrollador Full-Stack
-              </p>
+              <TextFlipDemo />
             </div>
 
             <h1 className="max-w-xl text-balance text-4xl font-bold leading-[1.02] tracking-[-0.035em] text-foreground sm:text-5xl">
@@ -23,7 +22,7 @@ const Hero = () => {
             </h1>
 
             <p className="mt-5 max-w-[48ch] text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
-              Ingeniero de software especializado en desarrollo Full-Stack e Inteligencia Artificial.
+              Ingeniero de software especializado en crear productos web y soluciones con Inteligencia Artificial.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">

@@ -6,8 +6,8 @@ import ThemeToggle from '@/components/ThemeToggle';
 
 const navItems = [
   { name: 'Inicio', href: '#home', id: 'home' },
-  { name: 'Experiencia', href: '#experience', id: 'experience' },
   { name: 'Tecnologías', href: '#technologies', id: 'technologies' },
+  { name: 'Experiencia', href: '#experience', id: 'experience' },
   { name: 'Proyectos', href: '#projects', id: 'projects' },
   { name: 'Contacto', href: '#contact', id: 'contact' },
 ];
@@ -17,7 +17,7 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
-  const navRef = useRef<HTMLElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
   const isBlog = pathname.startsWith('/blog');
 
   const updateOverflowIndicators = useCallback(() => {
@@ -91,69 +91,72 @@ const Navbar = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
-      <div className="mx-auto flex max-w-[var(--container-max)] items-center gap-3">
-        <Link
-          to="/"
-          className="hidden shrink-0 text-base font-bold tracking-tight text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:block"
-          aria-label="Ir al inicio"
-        >
-          samuel<span className="text-primary">.</span>dev
-        </Link>
+      <div className="mx-auto max-w-[var(--container-max)]">
+        <div className="flex items-center rounded-[var(--radius-pill)] border border-border bg-background/95 p-1 shadow-[0_1px_3px_rgba(0,0,0,0.06)] backdrop-blur-lg supports-[backdrop-filter]:bg-background/80">
+          <nav aria-label="Navegación principal" className="flex min-w-0 flex-1 items-center gap-2">
+            <Link
+              to="/"
+              className="shrink-0 rounded-[var(--radius-pill)] px-2.5 py-2 text-sm font-bold tracking-tight text-foreground transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-3 sm:text-base"
+              aria-label="Ir al inicio"
+            >
+              samuel<span className="text-primary">.</span>dev
+            </Link>
 
-        <div className="relative min-w-0 flex-1">
-          <nav
-            ref={navRef}
-            aria-label="Navegación principal"
-            className="w-full overflow-x-auto rounded-[var(--radius-pill)] border border-border bg-background/80 p-1 shadow-[0_1px_3px_rgba(0,0,0,0.06)] backdrop-blur-md [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          >
-            <div className="flex min-w-max items-center justify-center gap-0.5">
-              {navItems.map((item) => {
-                const isActive = activeSection === item.id;
-                return (
-                  <a
-                    key={item.id}
-                    href={pathname === '/' ? item.href : `/${item.href}`}
-                    aria-current={isActive ? 'true' : undefined}
+            <div className="relative min-w-0 flex-1">
+              <div
+                ref={navRef}
+                className="w-full overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              >
+                <div className="flex min-w-max items-center justify-start gap-0.5 pr-1 sm:justify-center">
+                  {navItems.map((item) => {
+                    const isActive = activeSection === item.id;
+                    return (
+                      <a
+                        key={item.id}
+                        href={pathname === '/' ? item.href : `/${item.href}`}
+                        aria-current={isActive ? 'true' : undefined}
+                        className={cn(
+                          'inline-flex min-h-11 items-center rounded-[var(--radius-pill)] px-3 py-2.5 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-4 sm:text-sm',
+                          isActive
+                            ? 'bg-primary text-primary-foreground'
+                            : 'text-foreground/75 hover:bg-secondary hover:text-foreground'
+                        )}
+                      >
+                        {item.name}
+                      </a>
+                    );
+                  })}
+                  <Link
+                    to="/blog"
+                    aria-current={isBlog ? 'page' : undefined}
                     className={cn(
                       'inline-flex min-h-11 items-center rounded-[var(--radius-pill)] px-3 py-2.5 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-4 sm:text-sm',
-                      isActive
+                      isBlog
                         ? 'bg-primary text-primary-foreground'
-                        : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
+                        : 'text-foreground/75 hover:bg-secondary hover:text-foreground'
                     )}
                   >
-                    {item.name}
-                  </a>
-                );
-              })}
-              <Link
-                to="/blog"
-                aria-current={isBlog ? 'page' : undefined}
-                className={cn(
-                  'inline-flex min-h-11 items-center rounded-[var(--radius-pill)] px-3 py-2.5 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-4 sm:text-sm',
-                  isBlog
-                    ? 'bg-primary text-primary-foreground'
-                    : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
-                )}
-              >
-                Blog
-              </Link>
+                    Blog
+                  </Link>
+                </div>
+              </div>
+
+              {canScrollLeft && (
+                <span className="pointer-events-none absolute inset-y-2 left-0 flex w-5 items-center justify-center rounded-full bg-background text-muted-foreground sm:hidden" aria-hidden="true">
+                  <ChevronLeft className="h-3.5 w-3.5" />
+                </span>
+              )}
+              {canScrollRight && (
+                <span className="pointer-events-none absolute inset-y-2 right-0 flex w-5 items-center justify-center rounded-full bg-background text-muted-foreground sm:hidden" aria-hidden="true">
+                  <ChevronRight className="h-3.5 w-3.5" />
+                </span>
+              )}
             </div>
           </nav>
 
-          {canScrollLeft && (
-            <span className="pointer-events-none absolute inset-y-2 left-1 flex w-5 items-center justify-center rounded-full bg-background text-muted-foreground sm:hidden" aria-hidden="true">
-              <ChevronLeft className="h-3.5 w-3.5" />
-            </span>
-          )}
-          {canScrollRight && (
-            <span className="pointer-events-none absolute inset-y-2 right-1 flex w-5 items-center justify-center rounded-full bg-background text-muted-foreground sm:hidden" aria-hidden="true">
-              <ChevronRight className="h-3.5 w-3.5" />
-            </span>
-          )}
-        </div>
-
-        <div className="shrink-0">
-          <ThemeToggle />
+          <div className="ml-1 shrink-0">
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </header>

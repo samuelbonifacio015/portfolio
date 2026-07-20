@@ -5,30 +5,6 @@ import { WorkExperience as WorkExperienceList } from './work-experience';
 
 const experiences: ExperienceItemType[] = [
   {
-    id: 'maquinarias-jys',
-    companyName: 'MaquinariasJyS',
-    companyLogo: '/projects/MJYS/MJYS.webp',
-    companyWebsite: 'https://mjys-frontend.vercel.app/home',
-    positions: [
-      {
-        id: 'full-stack-developer',
-        title: 'Desarrollador Full-Stack',
-        employmentPeriod: {
-          start: '05.2026',
-          end: '05.2026',
-        },
-        employmentType: 'Proyecto profesional',
-        icon: <CodeXmlIcon />,
-        description: `- Diseñé y desarrollé el catálogo público de productos para la empresa.
-- Construí un panel administrativo con autenticación y gestión CRUD de productos.
-- Conecté un frontend en Next.js con un backend en Django y una base de datos en Supabase.
-- Coordiné el despliegue del frontend en Vercel y del backend en Render.`,
-        skills: ['Next.js', 'Django', 'Supabase', 'Render'],
-        isExpanded: true,
-      },
-    ],
-  },
-  {
     id: 'libreria-jsr',
     companyName: 'Librería JSR',
     companyLogo: '/utils/LibreriaJSR.webp',
@@ -36,19 +12,79 @@ const experiences: ExperienceItemType[] = [
     companyRepository: 'https://github.com/samuelbonifacio015/Libreria-JSR',
     positions: [
       {
-        id: 'web-developer',
-        title: 'Desarrollador Web',
+        id: 'frontend-developer',
+        title: 'Frontend Developer',
         employmentPeriod: {
           start: '12.2024',
-          end: '08.2025',
+          end: '09.2025',
         },
-        employmentType: 'Proyecto personal',
+        employmentType: 'Proyecto profesional',
         icon: <CodeXmlIcon />,
-        description: `- Diseñé y desarrollé una plataforma de e-commerce para la venta de libros.
-- Implementé catálogo con búsqueda y filtrado, carrito persistente en localStorage y gestión de inventario.
-- Construí la interfaz responsive con HTML5 semántico, CSS3 y JavaScript vanilla.
-- Organicé la lógica del proyecto con Node.js, priorizando simplicidad y rendimiento.`,
+        description: `- Plataforma E-commerce para 10+ clientes concurrentes que ordenan sus productos de manera virtual.
+- Reducción de tiempo de procesamiento de pedidos a través de un panel de administrador / tracking de inventario en tiempo real y confirmaciones automatizadas.
+- Soporte operativo a través de servicios de impresión, fotocopiado, productos escolares y trabajos personalizados.
+- Desarrollé un carrito de compras persistente con cálculo automático de totales y actualización dinámica de productos durante la navegación.`,
         skills: ['HTML', 'CSS', 'JavaScript', 'Node.js'],
+        projectImage: {
+          src: '/projects/LibreriaJSR/LibreriaJSR.webp',
+          alt: 'Página principal de la plataforma de e-commerce de Librería JSR',
+        },
+        isExpanded: true,
+      },
+    ],
+  },
+  {
+    id: 'maquinarias-jys',
+    companyName: 'Maquinarias JYS',
+    companyLogo: '/projects/MJYS/MJYS.webp',
+    companyWebsite: 'https://mjys-frontend.vercel.app/home',
+    positions: [
+      {
+        id: 'full-stack-developer',
+        title: 'FullStack Developer',
+        employmentPeriod: {
+          start: '04.2026',
+        },
+        employmentType: 'Proyecto profesional',
+        icon: <CodeXmlIcon />,
+        description: `- Plataforma E-Commerce FullStack B2C/B2B para la comercialización de maquinarias NERA Japan & JAM TOOLS Germany.
+- Frontend Next.js enfocada en la conversión con productos junto a un backend de Django REST con autenticación JWT.
+- Flujo de búsqueda/compra simplificada para los clientes a través de pedidos en web/recibo en tienda.
+- Impulsé ciclos de validación semanal con más de 25 clientes, recopilando pedidos, cotizaciones y feedback continuo.`,
+        skills: ['Next.js', 'Django', 'Supabase', 'Render'],
+        projectImage: {
+          src: '/projects/MJYS/MJYS2.webp',
+          alt: 'Catálogo de productos de la plataforma e-commerce de Maquinarias JYS',
+        },
+        isExpanded: true,
+      },
+    ],
+    isCurrentEmployer: true,
+  },
+  {
+    id: 'braymar',
+    companyName: 'Braymar',
+    companyLogo: '/projects/Braymar/braymar-logo.webp',
+    companyRepository: 'https://github.com/samuelbonifacio015/Braymar-frontend',
+    positions: [
+      {
+        id: 'full-stack-developer',
+        title: 'FullStack Developer',
+        employmentPeriod: {
+          start: '01.2026',
+          end: '04.2026',
+        },
+        employmentType: 'Proyecto profesional',
+        icon: <CodeXmlIcon />,
+        description: `- Construí un sistema de inventario, migrando gradualmente su control de stock desde procesos manuales en papel hacia un sistema digital.
+- Diseñé flujos de gestión de inventario orientados a reducir errores operativos, mejorar la trazabilidad y acelerar la toma de decisiones del negocio.
+- El sistema apoyó una operación más eficiente y acompañó una mejora progresiva en los ingresos de la empresa.
+- Implementé un dashboard en tiempo real para monitorear métricas clave del negocio, incluyendo accesos, productos más vendidos y alertas de bajo stock.`,
+        skills: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Supabase'],
+        projectImage: {
+          src: '/projects/Braymar/braymar-dashboard.webp',
+          alt: 'Dashboard de gestión de inventario de Braymar con métricas, filtros y tabla de productos',
+        },
         isExpanded: true,
       },
     ],
@@ -61,6 +97,9 @@ const WorkExperienceSection = () => {
       <div className="mx-auto max-w-[var(--container-max)]">
         <header className="mb-10 max-w-2xl">
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Experiencia</h2>
+          <p className="mt-3 max-w-2xl text-pretty text-muted-foreground">
+            Proyectos profesionales en los que he convertido ideas y necesidades reales en productos web funcionales.
+          </p>
         </header>
 
         <div className="border-y border-border py-6 sm:px-6">

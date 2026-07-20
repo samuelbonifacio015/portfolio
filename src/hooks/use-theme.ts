@@ -1,42 +1,34 @@
-import { useEffect, useState, useCallback } from "react";
+import { useCallback, useEffect, useState } from 'react';
 
-export type Theme = "light" | "dark" | "system";
+export type Theme = 'light' | 'dark';
 
-const THEME_KEY = "theme";
+const THEME_KEY = 'theme';
 
 const getInitialTheme = (): Theme => {
-  if (typeof window === "undefined") return "system";
-  
-  try {
-    const stored = localStorage.getItem(THEME_KEY) as Theme;
-    if (stored && ["light", "dark", "system"].includes(stored)) {
-      return stored;
-    }
-  } catch (error) {
-    console.warn("Error accessing localStorage:", error);
-  }
-  
-  return "system";
-};
+  if (typeof window === 'undefined') return 'light';
 
-const getSystemTheme = (): "light" | "dark" => {
-  if (typeof window === "undefined") return "light";
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  try {
+    const stored = localStorage.getItem(THEME_KEY);
+    if (stored === 'light' || stored === 'dark') return stored;
+  } catch (error) {
+    console.warn('Error accessing localStorage:', error);
+  }
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 };
 
 const applyTheme = (theme: Theme) => {
   try {
-    const root = document.documentElement;
-    const actualTheme = theme === "system" ? getSystemTheme() : theme;
-    
-    root.classList.toggle("dark", actualTheme === "dark");
+    document.documentElement.classList.toggle('dark', theme === 'dark');
     localStorage.setItem(THEME_KEY, theme);
-    
-    document.dispatchEvent(new CustomEvent("theme-changed", { 
-      detail: { theme, actualTheme } 
-    }));
+
+    document.dispatchEvent(
+      new CustomEvent('theme-changed', {
+        detail: { theme, actualTheme: theme },
+      })
+    );
   } catch (error) {
-    console.warn("Error applying theme:", error);
+    console.warn('Error applying theme:', error);
   }
 };
 
@@ -44,48 +36,27 @@ export const useTheme = () => {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const [mounted, setMounted] = useState(false);
 
-  const handleSystemThemeChange = useCallback((e: MediaQueryListEvent) => {
-    if (theme === "system") {
-      applyTheme("system");
-    }
-  }, [theme]);
-
   const updateTheme = useCallback((newTheme: Theme) => {
     setTheme(newTheme);
     applyTheme(newTheme);
   }, []);
 
-  const cycleTheme = useCallback(() => {
-    const themeOrder: Theme[] = ["light", "dark", "system"];
-    const currentIndex = themeOrder.indexOf(theme);
-    const nextTheme = themeOrder[(currentIndex + 1) % themeOrder.length];
-    updateTheme(nextTheme);
+  const toggleTheme = useCallback(() => {
+    updateTheme(theme === 'dark' ? 'light' : 'dark');
   }, [theme, updateTheme]);
-
-  const getActualTheme = useCallback((): "light" | "dark" => {
-    return theme === "system" ? getSystemTheme() : theme;
-  }, [theme]);
 
   useEffect(() => {
     setMounted(true);
     applyTheme(theme);
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    mediaQuery.addEventListener("change", handleSystemThemeChange);
-
-    return () => {
-      mediaQuery.removeEventListener("change", handleSystemThemeChange);
-    };
-  }, [theme, handleSystemThemeChange]);
+  }, [theme]);
 
   return {
     theme,
-    actualTheme: getActualTheme(),
+    actualTheme: theme,
     setTheme: updateTheme,
-    cycleTheme,
+    toggleTheme,
     mounted,
-    isLight: getActualTheme() === "light",
-    isDark: getActualTheme() === "dark",
-    isSystem: theme === "system"
+    isLight: theme === 'light',
+    isDark: theme === 'dark',
   };
 };

@@ -54,6 +54,7 @@ const techCategories = [
       'Arch Linux',
       'Bash',
       'Postman',
+      'Render',
       'Hermes Agent',
     ],
   },
@@ -67,11 +68,7 @@ const Technologies = () => {
           <h2 id="technologies-title" className="text-3xl font-bold text-foreground sm:text-4xl">
             Tecnologías
           </h2>
-          <p className="mt-3 max-w-2xl text-pretty text-muted-foreground">
-            Herramientas y tecnologías con las que trabajo a diario para desarrollar soluciones modernas y escalables.
-          </p>
         </header>
-
         <div className="divide-y divide-border border-y border-border">
           {techCategories.map((category, index) => (
             <div key={category.name} className="grid gap-4 py-5 sm:grid-cols-[180px_minmax(0,1fr)] sm:gap-0 sm:py-6">

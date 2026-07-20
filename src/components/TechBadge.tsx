@@ -39,6 +39,9 @@ import archLinuxIcon from '@/assets/tech-icons/archlinux.svg';
 import bashIcon from '@/assets/tech-icons/bash.svg';
 import postmanIcon from '@/assets/tech-icons/postman.svg';
 import hermesIcon from '@/assets/tech-icons/hermes.svg';
+import renderIcon from '@/assets/tech-icons/render.svg';
+import rechartsIcon from '@/assets/tech-icons/recharts.svg';
+import supabaseIcon from '@/assets/tech-icons/supabase.svg';
 
 interface TechBadgeProps {
   name: string;
@@ -83,6 +86,9 @@ const technologyColors: Record<string, string> = {
   Bash: '#4EAA25',
   Postman: '#FF6C37',
   'Hermes Agent': '#18181B',
+  Render: '#46E3B7',
+  Recharts: '#FF7300',
+  Supabase: '#3FCF8E',
 };
 
 const technologyIcons: Record<string, string> = {
@@ -122,6 +128,9 @@ const technologyIcons: Record<string, string> = {
   Bash: bashIcon,
   Postman: postmanIcon,
   'Hermes Agent': hermesIcon,
+  Render: renderIcon,
+  Recharts: rechartsIcon,
+  Supabase: supabaseIcon,
 };
 
 type TechBadgeStyle = CSSProperties & {

@@ -1,4 +1,4 @@
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Github } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -15,6 +15,10 @@ export type ExperiencePositionItemType = {
   description?: string;
   icon?: ReactNode;
   skills?: string[];
+  projectImage?: {
+    src: string;
+    alt: string;
+  };
   isExpanded?: boolean;
 };
 
@@ -23,6 +27,7 @@ export type ExperienceItemType = {
   companyName: string;
   companyLogo?: string;
   companyWebsite?: string;
+  companyRepository?: string;
   positions: ExperiencePositionItemType[];
   isCurrentEmployer?: boolean;
 };
@@ -59,24 +64,39 @@ const ExperienceItem = ({ experience }: { experience: ExperienceItemType }) => {
           )}
         </div>
 
-        <h3 className="text-lg font-semibold leading-snug">
-          {experience.companyWebsite ? (
+        <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1">
+          <h3 className="text-lg font-semibold leading-snug">
+            {experience.companyWebsite ? (
+              <a
+                href={experience.companyWebsite}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {experience.companyName}
+              </a>
+            ) : (
+              experience.companyName
+            )}
+          </h3>
+
+          {experience.companyRepository && (
             <a
-              href={experience.companyWebsite}
+              href={experience.companyRepository}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              {experience.companyName}
+              Código fuente
+              <Github className="h-3.5 w-3.5" aria-hidden="true" />
+              <span className="sr-only"> de {experience.companyName}</span>
             </a>
-          ) : (
-            experience.companyName
           )}
-        </h3>
+        </div>
 
         {experience.isCurrentEmployer && (
           <span className="relative flex h-3 w-3 items-center justify-center" aria-label="Experiencia actual">
-            <span className="absolute h-3 w-3 animate-ping rounded-full bg-sky-500/50" />
+            <span className="absolute h-3 w-3 motion-safe:animate-ping rounded-full bg-sky-500/50" />
             <span className="relative h-2 w-2 rounded-full bg-sky-500" />
           </span>
         )}
@@ -92,7 +112,7 @@ const ExperienceItem = ({ experience }: { experience: ExperienceItemType }) => {
 };
 
 const ExperiencePositionItem = ({ position }: { position: ExperiencePositionItemType }) => {
-  const hasDetails = Boolean(position.description || position.skills?.length);
+  const hasDetails = Boolean(position.description || position.projectImage || position.skills?.length);
   const { start, end } = position.employmentPeriod;
   const duration = formatDuration(start, end);
 
@@ -101,7 +121,8 @@ const ExperiencePositionItem = ({ position }: { position: ExperiencePositionItem
       <summary
         className={cn(
           'relative z-10 flex list-none items-start gap-3 text-left [&::-webkit-details-marker]:hidden',
-          hasDetails && 'cursor-pointer'
+          hasDetails && 'cursor-pointer',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
         )}
       >
         <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-border bg-muted text-muted-foreground ring-1 ring-background">
@@ -142,10 +163,24 @@ const ExperiencePositionItem = ({ position }: { position: ExperiencePositionItem
         </ul>
       )}
 
+      {position.projectImage && (
+        <figure className="relative z-10 ml-9 mt-4 max-w-3xl overflow-hidden rounded-xl border border-border bg-muted">
+          <div className="aspect-[1280/871] w-full">
+            <img
+              src={position.projectImage.src}
+              alt={position.projectImage.alt}
+              className="h-full w-full object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </figure>
+      )}
+
       {position.skills && position.skills.length > 0 && (
         <div className="relative z-10 ml-9 mt-3 flex flex-wrap gap-1.5">
           {position.skills.map((skill) => (
-            <TechBadge key={skill} name={skill} className="font-mono text-xs" />
+            <TechBadge key={skill} name={skill} showIcon className="font-mono text-xs" />
           ))}
         </div>
       )}

@@ -145,27 +145,6 @@ const Projects = () => {
       ]
     },
     {
-      id: "libreria-jsr",
-      title: "Libreria JSR",
-      subtitle: "Plataforma E-commerce",
-      description: "Una plataforma de e-commerce con carrito de compras y sistema de gestión de inventario.",
-      logo: "/utils/LibreriaJSR.webp",
-      image: "/utils/LibreriaJSR.webp",
-      date: "Diciembre 2024 - Agosto 2025",
-      technologies: ["HTML", "CSS", "JavaScript", "Node.js"],
-      githubUrl: "https://github.com/samuelbonifacio015/Libreria-JSR",
-      liveUrl: "https://libreria-jsr.vercel.app",
-      objective: "Crear una plataforma de e-commerce funcional y accesible para la venta de libros, demostrando habilidades en desarrollo web frontend con tecnologías fundamentales.",
-      problem: "La necesidad de una solución de e-commerce simple pero completa que permita gestionar productos, carrito de compras e inventario sin depender de frameworks complejos, ideal para proyectos educativos o pequeñas empresas.",
-      technicalApproach: "Desarrollo utilizando HTML5 semántico, CSS3 moderno con flexbox y grid para layouts responsivos, y JavaScript vanilla para la lógica de negocio, gestión de estado del carrito y manipulación del DOM, priorizando la simplicidad y el rendimiento.",
-      extendedDescription: "La plataforma incluye catálogo de productos con búsqueda y filtrado, carrito de compras persistente en localStorage, gestión de inventario, y una interfaz de usuario intuitiva diseñada para facilitar la experiencia de compra.",
-      images: [
-        "/projects/LibreriaJSR/LibreriaJSR.webp",
-        "/projects/LibreriaJSR/LibreriaJSR2.webp",
-        "/projects/LibreriaJSR/LibreriaJSR3.webp"
-      ]
-    },
-    {
       id: "finovate",
       title: "Finovate",
       subtitle: "Gestión de Finanzas",
@@ -256,9 +235,6 @@ const Projects = () => {
       <div className="mx-auto max-w-[var(--container-max)]">
         <div className="mb-10">
           <h2 className="text-3xl font-bold text-foreground">Mis Proyectos</h2>
-          <p className="mt-3 max-w-2xl text-muted-foreground">
-            Mi colección personal de proyectos que he desarrollado a través del tiempo.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

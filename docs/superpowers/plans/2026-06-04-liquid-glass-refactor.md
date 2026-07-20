@@ -1242,7 +1242,7 @@ Expected: clean build, no errors, no warnings about unused CSS (Tailwind purges 
 npm run dev
 ```
 
-Open `http://localhost:8080` and verify:
+Open `http://localhost:3000` and verify:
 
 - [ ] Project cards show 3D tilt on hover (desktop)
 - [ ] Project cards show cursor-following sheen on hover (desktop)

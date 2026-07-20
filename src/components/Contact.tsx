@@ -90,9 +90,9 @@ const Contact = () => {
               <div className="mt-4 space-y-4">
                 <div className="flex items-start gap-3">
                   <Mail className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <p className="text-xs font-medium text-muted-foreground">Email</p>
-                    <a href="mailto:samuelbonifacio015@gmail.com" className="mt-1 block break-all text-sm font-medium text-foreground hover:underline">
+                    <a href="mailto:samuelbonifacio015@gmail.com" className="mt-1 block max-w-full break-words text-xs font-medium leading-4 text-foreground hover:underline">
                       samuelbonifacio015@gmail.com
                     </a>
                   </div>

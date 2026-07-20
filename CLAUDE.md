@@ -9,7 +9,7 @@ Personal portfolio. Single-page React site (Spanish-language UI) with a Markdown
 ## Commands
 
 ```bash
-npm run dev        # Vite dev server on http://localhost:8080 (host "::")
+npm run dev        # Vite dev server on http://localhost:3000 (host "::")
 npm run build      # production build
 npm run build:dev  # build with development mode
 npm run lint       # ESLint over the repo

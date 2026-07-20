@@ -1,4 +1,4 @@
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Github } from 'lucide-react';
 import type { ReactNode } from 'react';
 
 import { cn } from '@/lib/utils';
@@ -23,6 +23,7 @@ export type ExperienceItemType = {
   companyName: string;
   companyLogo?: string;
   companyWebsite?: string;
+  companyRepository?: string;
   positions: ExperiencePositionItemType[];
   isCurrentEmployer?: boolean;
 };
@@ -59,20 +60,35 @@ const ExperienceItem = ({ experience }: { experience: ExperienceItemType }) => {
           )}
         </div>
 
-        <h3 className="text-lg font-semibold leading-snug">
-          {experience.companyWebsite ? (
+        <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1">
+          <h3 className="text-lg font-semibold leading-snug">
+            {experience.companyWebsite ? (
+              <a
+                href={experience.companyWebsite}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {experience.companyName}
+              </a>
+            ) : (
+              experience.companyName
+            )}
+          </h3>
+
+          {experience.companyRepository && (
             <a
-              href={experience.companyWebsite}
+              href={experience.companyRepository}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              {experience.companyName}
+              Código fuente
+              <Github className="h-3.5 w-3.5" aria-hidden="true" />
+              <span className="sr-only"> de {experience.companyName}</span>
             </a>
-          ) : (
-            experience.companyName
           )}
-        </h3>
+        </div>
 
         {experience.isCurrentEmployer && (
           <span className="relative flex h-3 w-3 items-center justify-center" aria-label="Experiencia actual">
@@ -145,7 +161,7 @@ const ExperiencePositionItem = ({ position }: { position: ExperiencePositionItem
       {position.skills && position.skills.length > 0 && (
         <div className="relative z-10 ml-9 mt-3 flex flex-wrap gap-1.5">
           {position.skills.map((skill) => (
-            <TechBadge key={skill} name={skill} className="font-mono text-xs" />
+            <TechBadge key={skill} name={skill} showIcon className="font-mono text-xs" />
           ))}
         </div>
       )}

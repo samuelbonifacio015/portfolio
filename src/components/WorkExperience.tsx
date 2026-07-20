@@ -28,6 +28,31 @@ const experiences: ExperienceItemType[] = [
       },
     ],
   },
+  {
+    id: 'libreria-jsr',
+    companyName: 'Librería JSR',
+    companyLogo: '/utils/LibreriaJSR.webp',
+    companyWebsite: 'https://libreria-jsr.vercel.app',
+    companyRepository: 'https://github.com/samuelbonifacio015/Libreria-JSR',
+    positions: [
+      {
+        id: 'web-developer',
+        title: 'Desarrollador Web',
+        employmentPeriod: {
+          start: '12.2024',
+          end: '08.2025',
+        },
+        employmentType: 'Proyecto personal',
+        icon: <CodeXmlIcon />,
+        description: `- Diseñé y desarrollé una plataforma de e-commerce para la venta de libros.
+- Implementé catálogo con búsqueda y filtrado, carrito persistente en localStorage y gestión de inventario.
+- Construí la interfaz responsive con HTML5 semántico, CSS3 y JavaScript vanilla.
+- Organicé la lógica del proyecto con Node.js, priorizando simplicidad y rendimiento.`,
+        skills: ['HTML', 'CSS', 'JavaScript', 'Node.js'],
+        isExpanded: true,
+      },
+    ],
+  },
 ];
 
 const WorkExperienceSection = () => {
@@ -36,9 +61,6 @@ const WorkExperienceSection = () => {
       <div className="mx-auto max-w-[var(--container-max)]">
         <header className="mb-10 max-w-2xl">
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Experiencia</h2>
-          <p className="mt-3 max-w-2xl text-pretty text-muted-foreground">
-            Proyectos profesionales en los que he convertido necesidades reales en productos web funcionales.
-          </p>
         </header>
 
         <div className="border-y border-border py-6 sm:px-6">

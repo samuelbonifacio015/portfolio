@@ -5,23 +5,26 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="scroll-mt-28 px-5 pb-16 pt-24 md:px-6 md:pb-24 md:pt-32 lg:pt-36"
+      className="scroll-mt-28 px-5 pb-0 pt-24 md:px-6 md:pt-32 lg:pt-36"
     >
-      <div className="mx-auto max-w-[1100px]">
-        <div className="relative flex flex-col md:block md:min-h-[clamp(24rem,34vw,30rem)]">
-          <div className="hero-portrait pointer-events-none relative z-10 order-last mx-auto mt-10 w-[min(78%,20rem)] select-none md:absolute md:-right-[5%] md:bottom-0 md:top-[-16%] md:mx-0 md:mt-0 md:w-[42%] md:overflow-hidden">
+      <div className="mx-auto max-w-[var(--container-max)]">
+        <div className="relative flex flex-col md:block md:min-h-[clamp(22rem,32vw,28rem)]">
+          <div className="hero-portrait pointer-events-none relative z-10 order-last ml-auto mt-8 w-[min(72%,17rem)] select-none md:absolute md:bottom-0 md:right-0 md:top-[-18%] md:mx-0 md:mt-0 md:w-[40%] md:overflow-hidden">
             <img
               src="/hero/samuel-hero.webp"
               alt="Retrato de Samuel Bonifacio"
               width={1122}
               height={1293}
               loading="eager"
-              className="w-full md:absolute md:right-0 md:top-0 md:h-full md:w-auto md:max-w-none"
+              className="w-full md:absolute md:left-0 md:top-0 md:h-full md:w-auto md:max-w-none"
             />
           </div>
 
           <div className="hero-enter relative z-0">
-            <h1 className="font-display text-[clamp(4rem,10.5vw,9.5rem)] font-extrabold leading-[0.9] tracking-[-0.03em]">
+            <h1
+              className="font-display text-[clamp(3.5rem,10.5vw,8rem)] font-extrabold leading-[0.9] tracking-[0.012em]"
+              style={{ fontVariantLigatures: 'none', fontFeatureSettings: '"liga" 0, "clig" 0, "calt" 0' }}
+            >
               <span className="block text-foreground">Samuel</span>
               <span
                 className="block text-transparent"

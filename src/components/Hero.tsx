@@ -22,13 +22,19 @@ const Hero = () => {
 
           <div className="hero-enter relative z-0">
             <h1
-              className="font-display text-[clamp(3.5rem,10.5vw,8rem)] font-extrabold leading-[0.9] tracking-[0.012em]"
+              className="font-display text-[clamp(3.5rem,10.5vw,8rem)] font-extrabold leading-[0.9] tracking-[-0.02em]"
               style={{ fontVariantLigatures: 'none', fontFeatureSettings: '"liga" 0, "clig" 0, "calt" 0' }}
             >
               <span className="block text-foreground">Samuel</span>
+              {/* Relleno opaco + paint-order: el trazo se pinta antes que el relleno, así
+                  los contornos internos del glifo (la barra de la "f") quedan tapados. */}
               <span
-                className="block text-transparent"
-                style={{ WebkitTextStroke: 'max(1px, 0.011em) var(--foreground)' }}
+                className="block"
+                style={{
+                  color: 'var(--bg-solid)',
+                  paintOrder: 'stroke fill',
+                  WebkitTextStroke: 'max(2px, 0.022em) var(--foreground)',
+                }}
               >
                 Bonifacio
               </span>

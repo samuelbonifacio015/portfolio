@@ -13,6 +13,8 @@
     --text-primary: oklch(0.2 0 0);
     --text-secondary: color-mix(in oklch, var(--text-primary) 68%, var(--bg-base));
     --border-subtle: oklch(0.85 0 0);
+    /* Color de fondo ya compuesto (sin alfa). Lo usa el titular contorneado del hero. */
+    --bg-solid: oklch(1 0 0);
     --container-max: 880px;
     --radius-card: 12px;
     --radius-pill: 9999px;
@@ -49,6 +51,8 @@
     --text-primary: oklch(0.95 0 0);
     --text-secondary: color-mix(in oklch, var(--text-primary) 72%, var(--bg-subtle));
     --border-subtle: oklch(0.25 0 0);
+    /* --bg-base es semitransparente; este es el resultado ya compuesto sobre la página. */
+    --bg-solid: #232323;
     --background: var(--bg-base);
     --foreground: var(--text-primary);
     --card: var(--bg-subtle);
@@ -96,6 +100,32 @@
 }
 
 @layer components {
+  /* ─── Hero entrada ────────────────────────────────────────────────── */
+  @keyframes hero-enter {
+    from { opacity: 0; transform: translateY(1.25rem); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  @keyframes hero-portrait-enter {
+    from { opacity: 0; transform: translateY(2rem); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .hero-enter {
+    animation: hero-enter 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-portrait {
+    animation: hero-portrait-enter 900ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-enter,
+    .hero-portrait {
+      animation: none;
+    }
+  }
+
   /* ─── LiquidGlass component ───────────────────────────────────────── */
   @keyframes lg-blob-drift-1 {
     0%, 100% { transform: translate(0, 0) scale(1); }

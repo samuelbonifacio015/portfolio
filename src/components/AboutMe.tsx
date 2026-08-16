@@ -1,4 +1,4 @@
-import { Download, GraduationCap } from 'lucide-react';
+import { Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 
@@ -8,15 +8,7 @@ const AboutMe = () => {
       <Card className="mx-auto max-w-[var(--container-max)] overflow-hidden">
         <div className="grid gap-0 md:grid-cols-[1fr_220px]">
           <div className="p-6 sm:p-8 md:p-10">
-            <div className="mb-6 flex items-center gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                <GraduationCap aria-hidden="true" />
-              </span>
-              <div>
-                <h2 className="text-2xl font-bold text-foreground sm:text-3xl">Sobre mí</h2>
-                <p className="mt-1 text-sm text-muted-foreground">Ingeniería de Software</p>
-              </div>
-            </div>
+            <h2 className="mb-6 text-3xl font-bold text-foreground sm:text-4xl">Sobre mí</h2>
 
             <div className="max-w-[68ch] space-y-4 text-sm leading-7 text-muted-foreground sm:text-base">
               <p>

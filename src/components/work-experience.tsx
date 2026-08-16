@@ -1,5 +1,6 @@
-import { ChevronDown, Github } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, Globe, Github } from 'lucide-react';
 import type { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 
 import { cn } from '@/lib/utils';
 import TechBadge from './TechBadge';
@@ -28,6 +29,7 @@ export type ExperienceItemType = {
   companyLogo?: string;
   companyWebsite?: string;
   companyRepository?: string;
+  caseStudyUrl?: string;
   positions: ExperiencePositionItemType[];
   isCurrentEmployer?: boolean;
 };
@@ -91,6 +93,29 @@ const ExperienceItem = ({ experience }: { experience: ExperienceItemType }) => {
               <Github className="h-3.5 w-3.5" aria-hidden="true" />
               <span className="sr-only"> de {experience.companyName}</span>
             </a>
+          )}
+
+          {experience.companyWebsite && (
+            <a
+              href={experience.companyWebsite}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visitar sitio web de ${experience.companyName}`}
+              title="Visitar sitio web"
+              className="inline-flex items-center text-sky-500 transition-colors hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <Globe className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
+          )}
+
+          {experience.caseStudyUrl && (
+            <Link
+              to={experience.caseStudyUrl}
+              className="inline-flex items-center gap-1 text-xs font-semibold text-foreground underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              Ver caso
+              <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </Link>
           )}
         </div>
 

@@ -34,8 +34,8 @@ const MaquinariasJys = () => {
     const previousDescription = description?.content;
     const previousCanonical = canonical?.href;
 
-    document.title = 'Maquinarias JYS — Caso técnico de Samuel Bonifacio';
-    if (description) description.content = 'Caso técnico de Maquinarias JYS: plataforma e-commerce B2C/B2B desarrollada por Samuel Bonifacio con Next.js, Django REST y PostgreSQL.';
+    document.title = 'Maquinarias JYS';
+    if (description) description.content = 'Caso técnico de Maquinarias JYS: plataforma e-commerce B2C/B2B desarrollada con Next.js, Django REST y PostgreSQL.';
     if (canonical) canonical.href = 'https://samuelbonifacio.vercel.app/projects/maquinarias-jys';
 
     return () => {
@@ -52,14 +52,14 @@ const MaquinariasJys = () => {
         <article className="mx-auto max-w-[var(--container-max)]">
           <Link to="/#experience" className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-            Volver a Experiencia
+            Volver
           </Link>
 
           <header className="mt-10 border-b border-border pb-12">
             <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">Caso técnico · Proyecto profesional</p>
             <h1 className="mt-4 text-balance text-[clamp(2.8rem,8vw,5.8rem)] font-extrabold leading-[0.92] tracking-[-0.04em]">Maquinarias JYS</h1>
             <p className="mt-6 max-w-2xl text-pretty text-lg leading-8 text-muted-foreground">
-              Plataforma e-commerce B2C/B2B para comercializar maquinaria y conectar el catálogo público con una operación interna de inventario.
+              Plataforma e-commerce B2C/B2B para venta de maquinarias y conectar el catálogo público con una operación interna de inventario.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-2">
@@ -72,55 +72,28 @@ const MaquinariasJys = () => {
                   Visitar aplicación <ArrowUpRight aria-hidden="true" />
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href="https://maquinariasjys.com/shop" target="_blank" rel="noopener noreferrer">Ver catálogo</a>
-              </Button>
             </div>
           </header>
 
           <section className="grid gap-10 border-b border-border py-12 md:grid-cols-[0.75fr_1.25fr]">
             <div>
               <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">01 · Contexto</p>
-              <h2 className="mt-3 text-3xl font-bold">Del catálogo a la operación</h2>
+              <h2 className="mt-3 text-3xl font-bold">De la idea a la realidad</h2>
             </div>
             <div className="space-y-5 text-base leading-7 text-muted-foreground">
               <p>
-                El negocio necesitaba presentar maquinaria a compradores finales y empresas sin convertir la web pública en una réplica de sus procesos internos. El reto fue construir una experiencia de consulta y compra clara, conectada con una fuente operativa más amplia.
+                El negocio necesitaba un catálogo virtual para la venta de maquinarias a compradores. El reto fue construir una experiencia de consulta y compra clara, conectar un panel de administración efectivo que brinde una experiencia de usuario simple al dueño del negocio.
               </p>
               <p>
-                Trabajo como desarrollador full-stack principal: implemento la experiencia en Next.js y TypeScript, la API en Django REST y la integración con Supabase/PostgreSQL, además de los despliegues en Vercel y Render.
+                Actualmente me desempeño como desarrollador full-stack principal:  Next.js & TypeScript, API en Django REST integrado con Supabase/PostgreSQL.
               </p>
             </div>
-          </section>
-
-          <section className="border-b border-border py-12">
-            <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">02 · Evidencia</p>
-            <div className="mt-6 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-3">
-              <div className="bg-background p-6">
-                <Store className="h-5 w-5 text-primary" aria-hidden="true" />
-                <p className="mt-8 text-4xl font-bold tabular-nums">3</p>
-                <p className="mt-1 text-sm text-muted-foreground">almacenes integrados en la operación</p>
-              </div>
-              <div className="bg-background p-6">
-                <Database className="h-5 w-5 text-primary" aria-hidden="true" />
-                <p className="mt-8 text-4xl font-bold tabular-nums">577</p>
-                <p className="mt-1 text-sm text-muted-foreground">registros internos de inventario</p>
-              </div>
-              <div className="bg-background p-6">
-                <Server className="h-5 w-5 text-primary" aria-hidden="true" />
-                <p className="mt-8 text-2xl font-bold">Full-stack</p>
-                <p className="mt-2 text-sm text-muted-foreground">responsabilidad principal de producto</p>
-              </div>
-            </div>
-            <p className="mt-4 max-w-3xl text-sm leading-6 text-muted-foreground">
-              Los 577 registros pertenecen al inventario interno. El catálogo público es una selección curada y, por privacidad, no expone stock exacto, pedidos, endpoints internos ni información administrativa.
-            </p>
           </section>
 
           <section className="border-b border-border py-12">
             <div className="grid gap-10 md:grid-cols-[0.75fr_1.25fr]">
               <div>
-                <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">03 · Arquitectura</p>
+                <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">02 · Arquitectura</p>
                 <h2 className="mt-3 text-3xl font-bold">Separación por responsabilidades</h2>
               </div>
               <div>
@@ -147,8 +120,8 @@ const MaquinariasJys = () => {
           </section>
 
           <section className="py-12">
-            <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">04 · Producto en producción</p>
-            <h2 className="mt-3 text-3xl font-bold">Recorrido público</h2>
+            <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">03 · Despliegue final</p>
+            <h2 className="mt-3 text-3xl font-bold">Recorrido por la app</h2>
             <div className="mt-8 space-y-10">
               {screenshots.map((screenshot) => (
                 <figure key={screenshot.src}>
@@ -161,14 +134,6 @@ const MaquinariasJys = () => {
             </div>
           </section>
 
-          <section className="border-t border-border pt-12">
-            <h2 className="text-3xl font-bold">Explora el producto</h2>
-            <p className="mt-3 max-w-2xl text-muted-foreground">La aplicación pública permite revisar la propuesta comercial, navegar el catálogo y consultar el detalle de cada producto.</p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild><a href="https://maquinariasjys.com/" target="_blank" rel="noopener noreferrer">Abrir Maquinarias JYS <ArrowUpRight aria-hidden="true" /></a></Button>
-              <Button asChild variant="outline"><Link to="/#contact">Contactar a Samuel</Link></Button>
-            </div>
-          </section>
         </article>
       </main>
       <Footer />

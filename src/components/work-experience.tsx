@@ -89,9 +89,6 @@ const ExperienceItem = ({ experience }: { experience: ExperienceItemType }) => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              Código fuente
-              <Github className="h-3.5 w-3.5" aria-hidden="true" />
-              <span className="sr-only"> de {experience.companyName}</span>
             </a>
           )}
 

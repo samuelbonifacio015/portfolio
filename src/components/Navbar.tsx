@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { RiGithubFill } from '@remixicon/react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import ThemeToggle from '@/components/ThemeToggle';
 
 const navItems = [
-  { name: 'Inicio', href: '#home', id: 'home' },
   { name: 'Tecnologías', href: '#technologies', id: 'technologies' },
   { name: 'Experiencia', href: '#experience', id: 'experience' },
   { name: 'Proyectos', href: '#projects', id: 'projects' },
@@ -94,13 +94,13 @@ const Navbar = () => {
       <div className="mx-auto max-w-[var(--container-max)]">
         <div className="flex items-center rounded-[var(--radius-pill)] border border-border bg-background/95 p-1 shadow-[0_1px_3px_rgba(0,0,0,0.06)] backdrop-blur-lg supports-[backdrop-filter]:bg-background/80">
           <nav aria-label="Navegación principal" className="flex min-w-0 flex-1 items-center gap-2">
-            <Link
-              to="/"
+            <a
+              href={pathname === '/' ? '#home' : '/#home'}
               className="shrink-0 rounded-[var(--radius-pill)] px-2.5 py-2 text-sm font-bold tracking-tight text-foreground transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-3 sm:text-base"
               aria-label="Ir al inicio"
             >
               samuel<span className="text-primary">.</span>dev
-            </Link>
+            </a>
 
             <div className="relative min-w-0 flex-1">
               <div
@@ -154,7 +154,20 @@ const Navbar = () => {
             </div>
           </nav>
 
-          <div className="ml-1 shrink-0">
+          <div className="ml-1 flex shrink-0 items-center gap-1">
+            <a
+              href="https://github.com/samuelbonifacio015"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir el perfil de GitHub de Samuel Bonifacio"
+              title="GitHub"
+              className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors duration-200 hover:border-primary hover:bg-secondary active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              <RiGithubFill
+                aria-hidden="true"
+                className="h-8 w-8 transition-transform duration-200 group-hover:scale-105 group-active:scale-95"
+              />
+            </a>
             <ThemeToggle />
           </div>
         </div>

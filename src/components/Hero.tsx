@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import SocialLinks from '@/components/SocialLinks';
 
 const Hero = () => {
   return (
@@ -55,6 +56,8 @@ const Hero = () => {
                 <a href="#contact">Contacto</a>
               </Button>
             </div>
+
+            <SocialLinks />
           </div>
         </div>
       </div>

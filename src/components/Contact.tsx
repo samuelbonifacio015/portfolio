@@ -55,7 +55,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="scroll-mt-28 px-5 py-20 md:px-6 md:py-24">
+    <section id="contact" className="scroll-mt-28 px-5 pb-8 pt-20 md:px-6 md:pb-10 md:pt-24">
       <div className="mx-auto max-w-[var(--container-max)]">
         <div className="mb-10">
           <h2 className="text-balance text-3xl font-bold text-foreground sm:text-4xl">¿Hablamos?</h2>

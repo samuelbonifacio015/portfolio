@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPostPage = lazy(() => import("./pages/BlogPost"));
+const MaquinariasJys = lazy(() => import("./pages/MaquinariasJys"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const App = () => (
@@ -19,6 +20,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/projects/maquinarias-jys" element={<MaquinariasJys />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

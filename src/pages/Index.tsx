@@ -8,6 +8,7 @@ import AboutMe from '@/components/AboutMe';
 import Inspiration from '@/components/Inspiration';
 import WorkExperience from '@/components/WorkExperience';
 import AppleHelloIntro from '@/components/AppleHelloIntro';
+import FluidGradientTextDemo from '@/components/FluidGradientTextDemo';
 
 import GitHubChart from "../components/Git";
 import Terminal from '@/components/Terminal';
@@ -33,6 +34,7 @@ const Index = () => {
             <Projects />
             <Inspiration />
             <Contact />
+            <FluidGradientTextDemo />
           </main>
           <Footer />
         </div>

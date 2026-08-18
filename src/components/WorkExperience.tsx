@@ -37,7 +37,8 @@ const experiences: ExperienceItemType[] = [
     id: 'maquinarias-jys',
     companyName: 'Maquinarias JYS',
     companyLogo: '/projects/MJYS/MJYS.webp',
-    companyWebsite: 'https://mjys-frontend.vercel.app/home',
+    companyWebsite: 'https://maquinariasjys.com/',
+    caseStudyUrl: '/projects/maquinarias-jys',
     positions: [
       {
         id: 'full-stack-developer',

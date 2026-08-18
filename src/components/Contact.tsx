@@ -8,6 +8,14 @@ import { Card } from '@/components/ui/card';
 const fieldClassName =
   'mt-1.5 w-full rounded-lg border border-input bg-background px-4 py-2.5 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/30';
 
+const emailJsConfig = {
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+};
+
+const hasEmailJsConfig = Object.values(emailJsConfig).every(Boolean);
+
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -15,15 +23,21 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
     setError(null);
+
+    if (!hasEmailJsConfig) {
+      setError('El formulario no está disponible en este entorno. Puedes escribirme directamente por email.');
+      return;
+    }
+
+    setIsLoading(true);
 
     try {
       const result = await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        emailJsConfig.serviceId,
+        emailJsConfig.templateId,
         formRef.current!,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        emailJsConfig.publicKey
       );
 
       if (result.text === 'OK') {
@@ -34,14 +48,14 @@ const Contact = () => {
       }
     } catch (err) {
       console.error('Error:', err);
-      setError('Error al enviar el mensaje. Intenta nuevamente.');
+      setError('No pude enviar el mensaje. Puedes intentarlo nuevamente o escribirme directamente por email.');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <section id="contact" className="scroll-mt-28 px-5 py-20 md:px-6 md:py-24">
+    <section id="contact" className="scroll-mt-28 px-5 pb-8 pt-20 md:px-6 md:pb-10 md:pt-24">
       <div className="mx-auto max-w-[var(--container-max)]">
         <div className="mb-10">
           <h2 className="text-balance text-3xl font-bold text-foreground sm:text-4xl">¿Hablamos?</h2>
@@ -75,7 +89,12 @@ const Contact = () => {
                 <textarea id="message" name="message" rows={4} required className={`${fieldClassName} resize-none`} placeholder="Tu mensaje..." />
               </label>
 
-              {error && <p id="contact-error" role="alert" aria-live="polite" className="text-sm font-medium text-destructive">{error}</p>}
+              {error && (
+                <p id="contact-error" role="alert" aria-live="polite" className="text-sm font-medium text-destructive">
+                  {error}{' '}
+                  <a href="mailto:samuelbonifacio015@gmail.com" className="underline underline-offset-2">Abrir correo</a>
+                </p>
+              )}
 
               <Button type="submit" size="lg" disabled={isLoading}>
                 <Send aria-hidden="true" />

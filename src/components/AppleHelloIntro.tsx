@@ -3,11 +3,19 @@ import { useEffect, useState } from 'react';
 
 import { AppleHelloEffectEnglish } from './apple-hello-effect/apple-hello-effect-english';
 
+// Module-level flag: it survives client-side navigation (e.g. / -> /blog -> /)
+// but resets on a real page load, so the intro plays only once per site entry.
+let hasPlayed = false;
+
 const AppleHelloIntro = () => {
   const prefersReducedMotion = useReducedMotion();
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(!hasPlayed);
 
   useEffect(() => {
+    if (!isVisible) return;
+
+    hasPlayed = true;
+
     // The English drawing completes after 3.5s. Keep it on screen briefly,
     // then let AnimatePresence perform the presentation fade-out.
     const timer = window.setTimeout(() => {
@@ -15,7 +23,7 @@ const AppleHelloIntro = () => {
     }, prefersReducedMotion ? 450 : 4100);
 
     return () => window.clearTimeout(timer);
-  }, [prefersReducedMotion]);
+  }, [prefersReducedMotion, isVisible]);
 
   return (
     <AnimatePresence>

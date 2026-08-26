@@ -1,12 +1,22 @@
 import { Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { MagicCard } from '@/components/magicui/magic-card';
+import { useTheme } from '@/hooks/use-theme';
 
 const AboutMe = () => {
+  const { isDark } = useTheme();
+
   return (
     <section className="px-5 py-12 md:px-6 md:py-16">
-      <Card className="mx-auto max-w-[var(--container-max)] overflow-hidden">
-        <div className="grid gap-0 md:grid-cols-[1fr_220px]">
+      <Card className="mx-auto max-w-[var(--container-max)] overflow-hidden border-none bg-transparent p-0 shadow-none">
+        <MagicCard
+          gradientColor={isDark ? '#262626' : '#D9D9D955'}
+          gradientFrom={isDark ? '#52525B' : '#D4D4D8'}
+          gradientTo={isDark ? '#A1A1AA' : '#52525B'}
+          className="p-0"
+        >
+          <div className="grid gap-0 md:grid-cols-[1fr_220px]">
           <div className="p-6 sm:p-8 md:p-10">
             <h2 className="mb-6 text-3xl font-bold text-foreground sm:text-4xl">Sobre mí</h2>
 
@@ -36,7 +46,8 @@ const AboutMe = () => {
             className="h-64 w-full object-cover md:h-full"
             loading="lazy"
           />
-        </div>
+          </div>
+        </MagicCard>
       </Card>
     </section>
   );

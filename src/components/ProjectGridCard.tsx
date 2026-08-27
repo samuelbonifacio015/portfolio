@@ -1,5 +1,5 @@
 import type { KeyboardEvent } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Flame } from 'lucide-react';
 
 import { MagicCard } from '@/components/magicui/magic-card';
 import TechBadge from './TechBadge';
@@ -60,8 +60,16 @@ const ProjectGridCard = ({
           </div>
 
           <div className="min-w-0 self-center">
-            <div className="flex flex-col gap-1">
-              <h3 className="text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl">{title}</h3>
+            <div className="flex flex-col items-start gap-1">
+              <div className="flex flex-wrap items-center gap-2">
+                <h3 className="text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl">{title}</h3>
+                {id === 'futeate' && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-red-500/10 px-2 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.08em] text-red-600 dark:bg-red-500/15 dark:text-red-400">
+                    <Flame className="h-3.5 w-3.5" aria-hidden="true" />
+                    En desarrollo
+                  </span>
+                )}
+              </div>
               <p className="text-sm font-medium text-primary sm:text-base">{subtitle}</p>
             </div>
 

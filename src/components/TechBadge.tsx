@@ -3,8 +3,6 @@ import type { CSSProperties } from 'react';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 
-import html5Icon from '@/assets/tech-icons/html5.svg';
-import css3Icon from '@/assets/tech-icons/css3.svg';
 import javascriptIcon from '@/assets/tech-icons/javascript.svg';
 import typescriptIcon from '@/assets/tech-icons/typescript.svg';
 import nodejsIcon from '@/assets/tech-icons/nodejs.svg';
@@ -22,20 +20,16 @@ import nextIcon from '@/assets/tech-icons/next.svg';
 import dartIcon from '@/assets/tech-icons/dart.svg';
 import flutterIcon from '@/assets/tech-icons/flutter.svg';
 import kotlinIcon from '@/assets/tech-icons/kotlin.svg';
-import androidStudioIcon from '@/assets/tech-icons/android-studio.svg';
 import mongodbIcon from '@/assets/tech-icons/mongodb.svg';
 import mysqlIcon from '@/assets/tech-icons/mysql.svg';
 import postgresqlIcon from '@/assets/tech-icons/sql.svg';
 import pythonIcon from '@/assets/tech-icons/python.svg';
-import firebaseIcon from '@/assets/tech-icons/firebase.svg';
 import gitIcon from '@/assets/tech-icons/git.svg';
 import githubIcon from '@/assets/tech-icons/github.svg';
 import dockerIcon from '@/assets/tech-icons/docker.svg';
 import figmaIcon from '@/assets/tech-icons/figma.svg';
 import obsidianIcon from '@/assets/tech-icons/obsidian.svg';
-import vscodeIcon from '@/assets/tech-icons/vscode.svg';
 import linuxIcon from '@/assets/tech-icons/linux.svg';
-import archLinuxIcon from '@/assets/tech-icons/archlinux.svg';
 import bashIcon from '@/assets/tech-icons/bash.svg';
 import postmanIcon from '@/assets/tech-icons/postman.svg';
 import hermesIcon from '@/assets/tech-icons/hermes.svg';
@@ -50,8 +44,6 @@ interface TechBadgeProps {
 }
 
 const technologyColors: Record<string, string> = {
-  HTML: '#E34F26',
-  CSS: '#1572B6',
   JavaScript: '#F7DF1E',
   TypeScript: '#3178C6',
   'Node.js': '#68A063',
@@ -69,20 +61,16 @@ const technologyColors: Record<string, string> = {
   Dart: '#0175C2',
   Flutter: '#02569B',
   Kotlin: '#7F52FF',
-  Android: '#A4C639',
   MongoDB: '#47A248',
   MySQL: '#4479A1',
   PostgreSQL: '#4169E1',
   Python: '#3776AB',
-  Firebase: '#FFCA28',
   Git: '#F05032',
   GitHub: '#181717',
   Docker: '#2496ED',
   Figma: '#A259FF',
   Obsidian: '#7C3AED',
-  'VS Code': '#007ACC',
   Linux: '#FCC624',
-  'Arch Linux': '#1793D1',
   Bash: '#4EAA25',
   Postman: '#FF6C37',
   'Hermes Agent': '#18181B',
@@ -92,8 +80,6 @@ const technologyColors: Record<string, string> = {
 };
 
 const technologyIcons: Record<string, string> = {
-  HTML: html5Icon,
-  CSS: css3Icon,
   JavaScript: javascriptIcon,
   TypeScript: typescriptIcon,
   'Node.js': nodejsIcon,
@@ -111,20 +97,16 @@ const technologyIcons: Record<string, string> = {
   Dart: dartIcon,
   Flutter: flutterIcon,
   Kotlin: kotlinIcon,
-  Android: androidStudioIcon,
   MongoDB: mongodbIcon,
   MySQL: mysqlIcon,
   PostgreSQL: postgresqlIcon,
   Python: pythonIcon,
-  Firebase: firebaseIcon,
   Git: gitIcon,
   GitHub: githubIcon,
   Docker: dockerIcon,
   Figma: figmaIcon,
   Obsidian: obsidianIcon,
-  'VS Code': vscodeIcon,
   Linux: linuxIcon,
-  'Arch Linux': archLinuxIcon,
   Bash: bashIcon,
   Postman: postmanIcon,
   'Hermes Agent': hermesIcon,

@@ -4,8 +4,6 @@ const techCategories = [
   {
     name: 'Lenguajes',
     technologies: [
-      'HTML',
-      'CSS',
       'JavaScript',
       'TypeScript',
       'Python',
@@ -29,7 +27,6 @@ const techCategories = [
       'Tailwind',
       'Next.js',
       'Flutter',
-      'Android',
     ],
   },
   {
@@ -38,7 +35,6 @@ const techCategories = [
       'MongoDB',
       'MySQL',
       'PostgreSQL',
-      'Firebase',
     ],
   },
   {
@@ -49,9 +45,7 @@ const techCategories = [
       'Docker',
       'Figma',
       'Obsidian',
-      'VS Code',
       'Linux',
-      'Arch Linux',
       'Bash',
       'Postman',
       'Render',

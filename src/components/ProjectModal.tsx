@@ -281,7 +281,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                   <h3 className="text-base sm:text-lg font-semibold text-foreground">Tecnologías</h3>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2 justify-center">
                     {project.technologies.map((tech, index) => (
-                      <TechBadge key={index} name={tech} />
+                      <TechBadge key={index} name={tech} showIcon />
                     ))}
                   </div>
                 </div>

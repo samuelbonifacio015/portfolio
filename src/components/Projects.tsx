@@ -3,6 +3,8 @@ import { ProjectProps } from './ProjectCard';
 import ProjectGridCard from './ProjectGridCard';
 import ProjectModal from './ProjectModal';
 
+const HIDDEN_PROJECT_IDS = new Set(['finovate', 'paso-perfecto', 'agua-connect']);
+
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectProps | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,13 +24,34 @@ const Projects = () => {
 
   const projects: ProjectProps[] = [
     {
+      id: "futeate",
+      title: "FUTeate",
+      subtitle: "Análisis de rendimiento futbolístico",
+      description: "Aplicación para analizar videos de partidos, detectar toques y revisar el rendimiento individual con correcciones interactivas.",
+      logo: "/projects/FUTeate/FUTeate-home-desktop.png",
+      image: "/projects/FUTeate/FUTeate-home-desktop.png",
+      date: "2026 - En desarrollo",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind"],
+      githubUrl: "https://github.com/samuelbonifacio015/FUTeate",
+      demoVideo: "/projects/FUTeate/FUTeate-hero.mp4",
+      objective: "Convertir un video de partido en información accionable sobre el rendimiento del jugador.",
+      problem: "Revisar manualmente cada toque y movimiento de un partido consume tiempo y dificulta identificar patrones de mejora.",
+      technicalApproach: "Aplicación construida con Next.js 16, React 19, TypeScript, Tailwind CSS v4 y componentes de shadcn/ui, con route handlers mock para el análisis y las correcciones.",
+      extendedDescription: "FUTeate permite analizar un video de fútbol, revisar los toques detectados sobre una línea de tiempo y corregir el resultado por fragmentos.",
+      images: [
+        "/projects/FUTeate/FUTeate-home-desktop.png",
+        "/projects/FUTeate/FUTeate-review-desktop.png",
+        "/projects/FUTeate/FUTeate-review-mobile.png"
+      ]
+    },
+    {
       id: "llamia",
       title: "LlamIA",
       subtitle: "Microcursos de IA para Medicina",
       description: "Plataforma educativa de microcursos de IA para medicina. Generación de casos clínicos, quizzes y flashcards con IA.",
       logo: "/projects/LlamIA/LlamIA.webp",
       image: "/projects/LlamIA/LlamIA.webp",
-      date: "2026 - En desarrollo (V0.5)",
+      date: "2026 - En pausa",
       technologies: ["Next.js", "TypeScript", "Supabase", "Mercado Pago"],
       liveUrl: "https://llamia.vercel.app/",
       demoVideo: "/projects/LlamIA/LlamIA-demo.mp4",
@@ -49,7 +72,7 @@ const Projects = () => {
       description: "Aplicación móvil Android desarrollada con Kotlin y Jetpack Compose, con persistencia local mediante ROOM.",
       logo: "/projects/Klippr/Klippr.webp",
       image: "/projects/Klippr/Klippr.webp",
-      date: "2026 - En desarrollo",
+      date: "Mar - Jul 2026",
       technologies: ["Kotlin", "Jetpack Compose", "ROOM"],
       githubUrl: "https://github.com/QRustOrg/Klippr-LandingPage",
       liveUrl: "https://klippr-landing-page.vercel.app/",
@@ -70,7 +93,7 @@ const Projects = () => {
       description: "Plataforma web para alquilar vehículos. Desarrollado con Angular y REST API con Java SpringBoot.",
       logo: "/projects/WeRide/WeRide.webp",
       image: "/projects/WeRide/WeRide.webp",
-      date: "Setiembre 2025 - En desarrollo",
+      date: "Set - Dic 2025",
       technologies: ["Angular", "TypeScript", "Java", "Spring Boot"],
       githubUrl: "https://github.com/samuelbonifacio015/Frontend-WeRide",
       liveUrl: "https://frontend-we-ride.vercel.app",
@@ -92,7 +115,7 @@ const Projects = () => {
       description: "Plataforma web para gestión de cultivos agrícolas. Desarrollado con Vue y REST API con C# .NET.",
       logo: "/utils/CultivApp.webp",
       image: "/utils/CultivApp.webp",
-      date: "Setiembre - Diciembre 2025",
+      date: "Set - Dic 2025",
       technologies: ["Vue", "JavaScript", "C#", ".NET"],
       githubUrl: "https://github.com/Apps-Web-Grupo-4-FruTech/Frontend-FruTech",
       objective: "Proporcionar a los agricultores una herramienta digital moderna para gestionar sus cultivos, optimizar recursos y mejorar la productividad mediante el seguimiento detallado de sus actividades agrícolas.",
@@ -110,7 +133,7 @@ const Projects = () => {
       description: "Aplicación web para traducción de textos utilizando la API de TAS (Open Source).",
       logo: "/projects/Translator/Translator.webp",
       image: "/projects/Translator/Translator.webp",
-      date: "Enero 2026 - En desarrollo",
+      date: "Ene - Feb 2026",
       technologies: ["Electron", "React", "TypeScript", "JavaScript", "Tailwind", "Vite"],
       liveUrl: "https://translator-phi.vercel.app/",
       objective: "Desarrollar una aplicación de escritorio que facilite la traducción de textos entre múltiples idiomas utilizando la API de TAS (Open Source).",
@@ -132,7 +155,7 @@ const Projects = () => {
       description: "Servicio de creación de Landing Pages y Web Apps personalizadas para pequeñas empresas y emprendedores.",
       logo: "/projects/WePages/WePages.webp",
       image: "/projects/WePages/WePages.webp",
-      date: "En desarrollo",
+      date: "Ene 2026",
       technologies: ["Next.js", "TypeScript", "Tailwind", "Vercel"],
       objective: "Ofrecer un servicio accesible y personalizado de creación de Landing Pages y Web Apps para pequeñas empresas y emprendedores, ayudándoles a establecer una presencia en línea.",
       problem: "Muchas pequeñas empresas y emprendedores carecen de los recursos o conocimientos técnicos para desarrollar una presencia web profesional, lo que limita su capacidad para atraer clientes y crecer en el mercado digital.",
@@ -190,7 +213,7 @@ const Projects = () => {
       description: "Aplicación web de reloj con funcionalidades de tiempo real, cronómetro y pomodoro.",
       logo: "/projects/TimexJS/TimexJS.webp",
       image: "/projects/TimexJS/TimexJS.webp",
-      date: "Junio 2025 - Enero 2026",
+      date: "Jun 2025 - Ene 2026",
       technologies: ["React", "TypeScript", "Tailwind", "Vite"],
       githubUrl: "https://github.com/samuelbonifacio015/Timex.js",
       liveUrl: "https://timex-js.vercel.app/",
@@ -234,15 +257,14 @@ const Projects = () => {
     >
       <div className="mx-auto max-w-[var(--container-max)]">
         <div className="mb-10">
-          <h2 className="text-3xl font-bold text-foreground">Mis Proyectos</h2>
+          <h2 className="text-3xl font-bold text-foreground">Proyectos</h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, index) => (
+        <div className="flex flex-col gap-1">
+          {projects.filter((project) => !HIDDEN_PROJECT_IDS.has(project.id ?? '')).map((project, index) => (
             <ProjectGridCard
               key={project.id || index}
               {...project}
-              featured={index === 0}
               onClick={() => handleOpenModal(project)}
             />
           ))}

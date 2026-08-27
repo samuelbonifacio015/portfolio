@@ -1,86 +1,88 @@
-import { cn } from '@/lib/utils';
+import type { KeyboardEvent } from 'react';
+import { ArrowUpRight } from 'lucide-react';
+
+import { MagicCard } from '@/components/magicui/magic-card';
 import TechBadge from './TechBadge';
 import { ProjectProps } from './ProjectCard';
-import { Card } from '@/components/ui/card';
 
 interface ProjectGridCardProps extends ProjectProps {
   onClick: () => void;
-  featured?: boolean;
 }
 
 const ProjectGridCard = ({
+  id,
   title,
   subtitle,
+  description,
   image,
+  date,
   technologies,
   onClick,
-  featured = false,
 }: ProjectGridCardProps) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      onClick();
+    }
+  };
+
   return (
-    <Card
-      className={cn(
-        'group h-full cursor-pointer overflow-hidden transition-[border-color,transform] duration-200 hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-safe:hover:-translate-y-px',
-        featured && 'sm:col-span-2 lg:col-span-2'
-      )}
-      onClick={onClick}
+    <article
+      id={id}
       role="button"
       tabIndex={0}
-      onKeyDown={(e: React.KeyboardEvent) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onClick();
-        }
-      }}
       aria-label={`Ver detalles de ${title}`}
+      onClick={onClick}
+      onKeyDown={handleKeyDown}
+      className="project-row group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
     >
-      {image && (
-        <div className={cn('relative mx-3 mt-3 overflow-hidden rounded-lg bg-muted', featured ? 'aspect-[3/1]' : 'aspect-video')}>
-          <img
-            src={image}
-            alt={`${title} - ${subtitle}`}
-            className={cn(
-              "h-full w-full object-cover"
+      <MagicCard
+        showBase={false}
+        gradientColor="#D9D9D955"
+        gradientFrom="#D4D4D8"
+        gradientTo="#52525B"
+        className="rounded-[var(--radius-card)] px-0 py-8 sm:py-10"
+      >
+        <div className="grid gap-6 sm:grid-cols-[180px_minmax(0,1fr)] sm:gap-8">
+          <div className="flex min-w-0 flex-col gap-3">
+            {image && (
+              <div className="aspect-[4/3] w-full overflow-hidden rounded-lg bg-white">
+                <img
+                  src={image}
+                  alt={`${title} — ${subtitle}`}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
             )}
-            loading="lazy"
-          />
-        </div>
-      )}
-
-      <div className="space-y-3 p-4">
-        <div className="space-y-0.5 sm:space-y-1">
-          <h3 className="line-clamp-1 text-base font-semibold text-foreground group-hover:underline sm:text-lg">
-            {title}
-          </h3>
-          <p className="line-clamp-1 text-xs font-medium text-muted-foreground sm:text-sm">
-            {subtitle}
-          </p>
-        </div>
-
-        {technologies && technologies.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 pt-1">
-            {technologies.slice(0, 3).map((tech, index) => (
-              <TechBadge 
-                key={index} 
-                name={tech}
-                className="text-xs"
-              />
-            ))}
+            <p className="text-xs leading-5 text-muted-foreground sm:text-sm">{date}</p>
           </div>
-        )}
 
-        <div className="flex items-center gap-2 pt-1 text-xs font-medium text-muted-foreground group-hover:text-foreground">
-          <span>Ver detalles</span>
-          <svg 
-            className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          <div className="min-w-0 self-center">
+            <div className="flex flex-col gap-1">
+              <h3 className="text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl">{title}</h3>
+              <p className="text-sm font-medium text-primary sm:text-base">{subtitle}</p>
+            </div>
+
+            <p className="mt-4 max-w-[65ch] text-sm leading-7 text-muted-foreground sm:text-base">{description}</p>
+
+            {technologies && technologies.length > 0 && (
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {technologies.map((technology) => (
+                  <TechBadge key={technology} name={technology} showIcon className="text-xs" />
+                ))}
+              </div>
+            )}
+
+            <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors group-hover:text-foreground">
+              Ver detalles
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+            </span>
+          </div>
         </div>
-      </div>
-    </Card>
+      </MagicCard>
+    </article>
   );
 };
 

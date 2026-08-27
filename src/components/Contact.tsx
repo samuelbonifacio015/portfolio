@@ -92,7 +92,7 @@ const Contact = () => {
               {error && (
                 <p id="contact-error" role="alert" aria-live="polite" className="text-sm font-medium text-destructive">
                   {error}{' '}
-                  <a href="mailto:samuelbonifacio015@gmail.com" className="underline underline-offset-2">Abrir correo</a>
+                  <a href="mailto:samuelbonifacio019@gmail.com" className="underline underline-offset-2">Abrir correo</a>
                 </p>
               )}
 
@@ -111,8 +111,8 @@ const Contact = () => {
                   <Mail className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
                   <div className="min-w-0 flex-1">
                     <p className="text-xs font-medium text-muted-foreground">Email</p>
-                    <a href="mailto:samuelbonifacio015@gmail.com" className="mt-1 block max-w-full break-words text-xs font-medium leading-4 text-foreground hover:underline">
-                      samuelbonifacio015@gmail.com
+                    <a href="mailto:samuelbonifacio019@gmail.com" className="mt-1 block max-w-full break-words text-xs font-medium leading-4 text-foreground hover:underline">
+                      samuelbonifacio019@gmail.com
                     </a>
                   </div>
                 </div>

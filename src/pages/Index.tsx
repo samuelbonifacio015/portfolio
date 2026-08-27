@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import AboutMe from '@/components/AboutMe';
 import Inspiration from '@/components/Inspiration';
 import WorkExperience from '@/components/WorkExperience';
+import Education from '@/components/education';
 import AppleHelloIntro from '@/components/AppleHelloIntro';
 import FluidGradientTextDemo from '@/components/FluidGradientTextDemo';
 
@@ -30,6 +31,7 @@ const Index = () => {
             </section>
             <AboutMe />
             <Technologies />
+            <Education />
             <WorkExperience />
             <Projects />
             <Inspiration />

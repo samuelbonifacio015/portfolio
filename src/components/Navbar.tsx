@@ -7,9 +7,9 @@ import ThemeToggle from '@/components/ThemeToggle';
 
 const navItems = [
   { name: 'Tecnologías', href: '#technologies', id: 'technologies' },
+  { name: 'Educación', href: '#education', id: 'education' },
   { name: 'Experiencia', href: '#experience', id: 'experience' },
   { name: 'Proyectos', href: '#projects', id: 'projects' },
-  { name: 'Contacto', href: '#contact', id: 'contact' },
 ];
 
 const Navbar = () => {

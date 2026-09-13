@@ -163,7 +163,7 @@ const BlogPostPage = () => {
 
         <article className="min-w-0 max-w-2xl flex-1">
           {post.image && (
-            <img src={post.image} alt={post.title} className="h-60 w-full rounded-3xl object-cover md:h-[30rem]" />
+            <img src={post.image} alt={post.title} className="aspect-video w-full rounded-3xl object-cover" />
           )}
 
           <h1 className="mt-6 text-2xl font-semibold leading-tight tracking-tight text-foreground [text-wrap:balance]">{post.title}</h1>

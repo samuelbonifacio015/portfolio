@@ -119,6 +119,7 @@ const Navbar = () => {
                         aria-current={isActive ? 'true' : undefined}
                         className={cn(
                           'inline-flex min-h-11 items-center rounded-[var(--radius-pill)] px-3 py-2.5 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-4 sm:text-sm',
+                          isBlog && 'sm:inline-flex max-sm:hidden',
                           isActive
                             ? 'bg-primary text-primary-foreground'
                             : 'text-foreground/75 hover:bg-secondary hover:text-foreground'
@@ -172,7 +173,7 @@ const Navbar = () => {
               rel="noopener noreferrer"
               aria-label={t('Abrir el perfil de GitHub de Samuel Bonifacio')}
               title="GitHub"
-              className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors duration-200 hover:border-primary hover:bg-secondary active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="group hidden h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors duration-200 hover:border-primary hover:bg-secondary active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:inline-flex"
             >
               <RiGithubFill
                 aria-hidden="true"

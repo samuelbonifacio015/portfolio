@@ -1,5 +1,6 @@
 import { BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useI18n } from '@/lib/i18n';
 
 interface BlogHeaderProps {
   currentFilter?: string;
@@ -7,7 +8,8 @@ interface BlogHeaderProps {
 }
 
 const BlogHeader = ({ currentFilter = 'Todos', onFilterChange }: BlogHeaderProps) => {
-  const filters = ['Todos', 'Reflexiones'];
+  const { t } = useI18n();
+  const filters = [t('Todos'), t('Reflexiones')];
 
   return (
     <section className="py-12 sm:py-16 px-4">
@@ -18,10 +20,10 @@ const BlogHeader = ({ currentFilter = 'Todos', onFilterChange }: BlogHeaderProps
 
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
-            Bienvenidos a mi blog
+            {t('Bienvenidos a mi blog')}
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Espacio donde comparto mis experiencias, aprendizajes y reflexiones sobre tecnología y desarrollo de software.
+            {t('Espacio donde comparto mis experiencias, aprendizajes y reflexiones sobre tecnología y desarrollo de software.')}
           </p>
         </div>
 

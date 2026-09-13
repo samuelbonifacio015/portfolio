@@ -1,12 +1,14 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { getMarkdownHeadings } from '@/lib/markdownHeadings';
+import { useI18n } from '@/lib/i18n';
 
 interface BlogContentProps {
   content: string;
 }
 
 const BlogContent = ({ content }: BlogContentProps) => {
+  const { t } = useI18n();
   const headings = getMarkdownHeadings(content);
   let headingIndex = 0;
   const nextHeading = () => headings[headingIndex++];
@@ -29,7 +31,7 @@ const BlogContent = ({ content }: BlogContentProps) => {
             return <h3 id={heading?.id}>{children}</h3>;
           },
           img: ({ src, alt, ...props }) => (
-            <img src={src} alt={alt || 'Imagen del artículo'} loading="lazy" {...props} />
+            <img src={src} alt={alt || t('Imagen del artículo')} loading="lazy" {...props} />
           ),
           a: ({ href, children, ...props }) => {
             const isExternal = Boolean(href && /^https?:\/\//i.test(href));

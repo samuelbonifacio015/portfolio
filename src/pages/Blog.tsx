@@ -6,41 +6,43 @@ import BlogHeader from '@/components/BlogHeader';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import { BlogPost } from '@/lib/blogTypes';
-import { getAllPosts, getPostsByCategory, getPostsByTag } from '@/lib/blogUtils';
+import { getAllPosts } from '@/lib/blogUtils';
 import ThemeToggle from '@/components/ThemeToggle';
+import { useI18n } from '@/lib/i18n';
 
 const Blog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
   const [currentFilter, setCurrentFilter] = useState<string>('Todos');
   const navigate = useNavigate();
+  const { language, t, translatePost } = useI18n();
 
   useEffect(() => {
     const loadPosts = async () => {
       const allPosts = await getAllPosts();
-      setPosts(allPosts);
-      setFilteredPosts(allPosts);
+      const localizedPosts = allPosts.map(translatePost);
+      setPosts(localizedPosts);
+      setFilteredPosts(localizedPosts);
+      setCurrentFilter(t('Todos'));
     };
     loadPosts();
-  }, []);
+  }, [language, t, translatePost]);
 
   const handleFilterChange = async (filter: string) => {
     setCurrentFilter(filter);
 
-    if (filter === 'Todos') {
+    if (filter === t('Todos')) {
       setFilteredPosts(posts);
-    } else if (['Reflexiones'].includes(filter)) {
-      const categoryPosts = await getPostsByCategory(filter);
-      setFilteredPosts(categoryPosts);
+    } else if (filter === t('Reflexiones')) {
+      setFilteredPosts(posts.filter((post) => post.category === filter));
     } else {
-      const tagPosts = await getPostsByTag(filter);
-      setFilteredPosts(tagPosts);
+      setFilteredPosts(posts.filter((post) => post.tags.includes(filter)));
     }
   };
 
   const handleTagClick = (tag: string) => {
     setCurrentFilter(tag);
-    handleFilterChange(tag);
+    void handleFilterChange(tag);
   };
 
   const handlePostClick = (slug: string) => {
@@ -65,13 +67,13 @@ const Blog = () => {
                   <span className="text-4xl">📝</span>
                 </div>
                 <p className="text-muted-foreground text-lg font-medium">
-                  No se encontraron posts con este filtro.
+                  {t('No se encontraron posts con este filtro.')}
                 </p>
                 <button
                   onClick={() => handleFilterChange('Todos')}
                   className="mt-4 px-8 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:scale-105"
                 >
-                  Ver todos los posts
+                  {t('Ver todos los posts')}
                 </button>
               </div>
             </div>

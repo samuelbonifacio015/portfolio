@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils';
 import TechBadge from './TechBadge';
 import { BlogPost } from '@/lib/blogTypes';
 import { LiquidGlass } from '@/components/ui/LiquidGlass';
+import { useI18n } from '@/lib/i18n';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -11,6 +12,7 @@ interface BlogCardProps {
 }
 
 const BlogCard = ({ post, onTagClick, delay = 0 }: BlogCardProps) => {
+  const { formatDate } = useI18n();
   return (
     <LiquidGlass
       as="article"
@@ -44,11 +46,7 @@ const BlogCard = ({ post, onTagClick, delay = 0 }: BlogCardProps) => {
           <div className="flex items-center gap-1 text-xs text-muted-foreground">
             <Calendar className="h-3.5 w-3.5" />
             <time dateTime={post.date}>
-              {new Date(post.date).toLocaleDateString('es-ES', {
-                day: 'numeric',
-                month: 'short',
-                year: 'numeric',
-              })}
+              {formatDate(post.date, { day: 'numeric', month: 'short', year: 'numeric' })}
             </time>
           </div>
         </div>

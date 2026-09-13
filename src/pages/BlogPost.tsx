@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar';
 import { BlogPost } from '@/lib/blogTypes';
 import { getPostBySlug } from '@/lib/blogUtils';
 import { getMarkdownHeadings } from '@/lib/markdownHeadings';
+import { useI18n } from '@/lib/i18n';
 
 const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -17,6 +18,7 @@ const BlogPostPage = () => {
   const [activeHeading, setActiveHeading] = useState('');
   const tocRef = useRef<HTMLDivElement>(null);
   const tocButtonRef = useRef<HTMLButtonElement>(null);
+  const { language, t, translatePost, formatDate } = useI18n();
 
   const headings = useMemo(() => getMarkdownHeadings(post?.content ?? ''), [post?.content]);
 
@@ -26,13 +28,13 @@ const BlogPostPage = () => {
       setLoading(true);
       const loadedPost = await getPostBySlug(slug || '');
       if (!cancelled) {
-        setPost(loadedPost);
+        setPost(loadedPost ? translatePost(loadedPost) : null);
         setLoading(false);
       }
     };
     loadPost();
     return () => { cancelled = true; };
-  }, [slug]);
+  }, [language, slug, translatePost]);
 
   useEffect(() => {
     if (!headings.length) return;
@@ -101,7 +103,7 @@ const BlogPostPage = () => {
     return (
       <div className="min-h-screen bg-background text-foreground">
         <Navbar />
-        <div className="flex min-h-screen items-center justify-center text-sm text-muted-foreground">Cargando…</div>
+        <div className="flex min-h-screen items-center justify-center text-sm text-muted-foreground">{t('Cargando…')}</div>
       </div>
     );
   }
@@ -110,10 +112,10 @@ const BlogPostPage = () => {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 text-center text-foreground">
         <Navbar />
-        <h1 className="text-3xl font-semibold tracking-tight">Post no encontrado</h1>
-        <p className="mt-3 text-muted-foreground">El post que buscas no existe.</p>
+        <h1 className="text-3xl font-semibold tracking-tight">{t('Post no encontrado')}</h1>
+        <p className="mt-3 text-muted-foreground">{t('El post que buscas no existe.')}</p>
         <button onClick={() => navigate('/blog')} className="mt-8 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
-          Volver al blog
+          {t('Volver al blog')}
         </button>
       </div>
     );
@@ -129,7 +131,7 @@ const BlogPostPage = () => {
           className="inline-flex items-center gap-2 rounded-lg px-2 py-1 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-          Volver al blog
+          {t('Volver al blog')}
         </button>
       </div>
 
@@ -138,7 +140,7 @@ const BlogPostPage = () => {
           <button
             ref={tocButtonRef}
             type="button"
-            aria-label={tocOpen ? 'Cerrar índice del artículo' : 'Abrir índice del artículo'}
+            aria-label={tocOpen ? t('Cerrar índice del artículo') : t('Abrir índice del artículo')}
             aria-expanded={tocOpen}
             aria-controls="mobile-article-toc"
             onClick={() => setTocOpen((open) => !open)}
@@ -154,7 +156,7 @@ const BlogPostPage = () => {
 
       <main className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 pb-20 pt-8 md:flex-row md:gap-4 md:px-8 md:pt-12">
         {headings.length > 0 && (
-          <aside className="sticky top-20 left-0 hidden max-w-xs shrink-0 self-start pr-10 md:flex" aria-label="Índice del artículo">
+          <aside className="sticky top-20 left-0 hidden max-w-xs shrink-0 self-start pr-10 md:flex" aria-label={t('Índice del artículo')}>
             <TocLinks headings={headings} activeHeading={activeHeading} onSelect={scrollToHeading} />
           </aside>
         )}
@@ -176,7 +178,7 @@ const BlogPostPage = () => {
             <span className="font-medium text-foreground">Samuel Bonifacio</span>
             <span aria-hidden="true" className="h-1 w-1 rounded-full bg-muted-foreground/60" />
             <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
-            <time dateTime={post.date}>{formatPostDate(post.date)}</time>
+            <time dateTime={post.date}>{formatDate(post.date)}</time>
           </footer>
         </article>
       </main>
@@ -192,8 +194,9 @@ interface TocLinksProps {
   onSelect: (id: string) => void;
 }
 
-const TocLinks = ({ headings, activeHeading, onSelect }: TocLinksProps) => (
-  <nav aria-label="Secciones del artículo" className="space-y-1">
+const TocLinks = ({ headings, activeHeading, onSelect }: TocLinksProps) => {
+  const { t } = useI18n();
+  return <nav aria-label={t('Secciones del artículo')} className="space-y-1">
     {headings.map((heading) => (
       <a
         key={heading.id}
@@ -209,13 +212,7 @@ const TocLinks = ({ headings, activeHeading, onSelect }: TocLinksProps) => (
         {heading.text}
       </a>
     ))}
-  </nav>
-);
-
-const formatPostDate = (value: string) => {
-  const [year, month, day] = value.split('-').map(Number);
-  const date = year && month && day ? new Date(year, month - 1, day) : new Date(value);
-  return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+  </nav>;
 };
 
 export default BlogPostPage;

@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import TechBadge from '@/components/TechBadge';
 import { Button } from '@/components/ui/button';
+import { useI18n } from '@/lib/i18n';
 
 const screenshots = [
   {
@@ -27,6 +28,7 @@ const screenshots = [
 const stack = ['Next.js', 'TypeScript', 'Django REST', 'Supabase', 'PostgreSQL', 'Vercel', 'Render'];
 
 const MaquinariasJys = () => {
+  const { language, t } = useI18n();
   useEffect(() => {
     const previousTitle = document.title;
     const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
@@ -43,7 +45,7 @@ const MaquinariasJys = () => {
       if (description && previousDescription) description.content = previousDescription;
       if (canonical && previousCanonical) canonical.href = previousCanonical;
     };
-  }, []);
+  }, [language, t]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -52,14 +54,14 @@ const MaquinariasJys = () => {
         <article className="mx-auto max-w-[var(--container-max)]">
           <Link to="/#experience" className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-            Volver
+            {t('Volver')}
           </Link>
 
           <header className="mt-10 border-b border-border pb-12">
-            <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">Caso técnico · Proyecto profesional</p>
+            <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">{t('Caso técnico · Proyecto profesional')}</p>
             <h1 className="mt-4 text-balance text-[clamp(2.8rem,8vw,5.8rem)] font-extrabold leading-[0.92] tracking-[-0.04em]">Maquinarias JYS</h1>
             <p className="mt-6 max-w-2xl text-pretty text-lg leading-8 text-muted-foreground">
-              Plataforma e-commerce B2C/B2B para venta de maquinarias y conectar el catálogo público con una operación interna de inventario.
+              {t('Plataforma e-commerce B2C/B2B para venta de maquinarias y conectar el catálogo público con una operación interna de inventario.')}
             </p>
 
             <div className="mt-7 flex flex-wrap gap-2">
@@ -69,7 +71,7 @@ const MaquinariasJys = () => {
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg">
                 <a href="https://maquinariasjys.com/" target="_blank" rel="noopener noreferrer">
-                  Visitar aplicación <ArrowUpRight aria-hidden="true" />
+                  {t('Visitar aplicación')} <ArrowUpRight aria-hidden="true" />
                 </a>
               </Button>
             </div>
@@ -77,15 +79,15 @@ const MaquinariasJys = () => {
 
           <section className="grid gap-10 border-b border-border py-12 md:grid-cols-[0.75fr_1.25fr]">
             <div>
-              <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">01 · Contexto</p>
-              <h2 className="mt-3 text-3xl font-bold">De la idea a la realidad</h2>
+              <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">{t('01 · Contexto')}</p>
+              <h2 className="mt-3 text-3xl font-bold">{t('De la idea a la realidad')}</h2>
             </div>
             <div className="space-y-5 text-base leading-7 text-muted-foreground">
               <p>
-                El negocio necesitaba un catálogo virtual para la venta de maquinarias a compradores. El reto fue construir una experiencia de consulta y compra clara, conectar un panel de administración efectivo que brinde una experiencia de usuario simple al dueño del negocio.
+                {t('El negocio necesitaba un catálogo virtual para la venta de maquinarias a compradores. El reto fue construir una experiencia de consulta y compra clara, conectar un panel de administración efectivo que brinde una experiencia de usuario simple al dueño del negocio.')}
               </p>
               <p>
-                Actualmente me desempeño como desarrollador full-stack principal:  Next.js & TypeScript, API en Django REST integrado con Supabase/PostgreSQL.
+                {t('Actualmente me desempeño como desarrollador full-stack principal:  Next.js & TypeScript, API en Django REST integrado con Supabase/PostgreSQL.')}
               </p>
             </div>
           </section>
@@ -93,26 +95,26 @@ const MaquinariasJys = () => {
           <section className="border-b border-border py-12">
             <div className="grid gap-10 md:grid-cols-[0.75fr_1.25fr]">
               <div>
-                <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">02 · Arquitectura</p>
-                <h2 className="mt-3 text-3xl font-bold">Separación por responsabilidades</h2>
+                <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">{t('02 · Arquitectura')}</p>
+                <h2 className="mt-3 text-3xl font-bold">{t('Separación por responsabilidades')}</h2>
               </div>
               <div>
                 <ol className="divide-y divide-border border-y border-border">
                   <li className="grid gap-2 py-5 sm:grid-cols-[120px_1fr]">
-                    <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground">Interfaz</span>
-                    <span className="text-sm leading-6 text-muted-foreground">Next.js y TypeScript entregan el catálogo público y los flujos de interacción.</span>
+                    <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground">{t('Interfaz')}</span>
+                    <span className="text-sm leading-6 text-muted-foreground">{t('Next.js y TypeScript entregan el catálogo público y los flujos de interacción.')}</span>
                   </li>
                   <li className="grid gap-2 py-5 sm:grid-cols-[120px_1fr]">
                     <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground">API</span>
-                    <span className="text-sm leading-6 text-muted-foreground">Django REST concentra autenticación, reglas de negocio y acceso controlado a los datos.</span>
+                    <span className="text-sm leading-6 text-muted-foreground">{t('Django REST concentra autenticación, reglas de negocio y acceso controlado a los datos.')}</span>
                   </li>
                   <li className="grid gap-2 py-5 sm:grid-cols-[120px_1fr]">
-                    <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground">Datos</span>
-                    <span className="text-sm leading-6 text-muted-foreground">Supabase/PostgreSQL mantiene el catálogo y el inventario operativo como fuentes diferenciadas.</span>
+                    <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground">{t('Datos')}</span>
+                    <span className="text-sm leading-6 text-muted-foreground">{t('Supabase/PostgreSQL mantiene el catálogo y el inventario operativo como fuentes diferenciadas.')}</span>
                   </li>
                   <li className="grid gap-2 py-5 sm:grid-cols-[120px_1fr]">
-                    <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground">Entrega</span>
-                    <span className="text-sm leading-6 text-muted-foreground">Vercel sirve el frontend y Render ejecuta el backend, con contratos públicos limitados a la información necesaria.</span>
+                    <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground">{t('Entrega')}</span>
+                    <span className="text-sm leading-6 text-muted-foreground">{t('Vercel sirve el frontend y Render ejecuta el backend, con contratos públicos limitados a la información necesaria.')}</span>
                   </li>
                 </ol>
               </div>
@@ -120,15 +122,15 @@ const MaquinariasJys = () => {
           </section>
 
           <section className="py-12">
-            <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">03 · Despliegue final</p>
-            <h2 className="mt-3 text-3xl font-bold">Recorrido por la app</h2>
+            <p className="font-mono text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">{t('03 · Despliegue final')}</p>
+            <h2 className="mt-3 text-3xl font-bold">{t('Recorrido por la app')}</h2>
             <div className="mt-8 space-y-10">
               {screenshots.map((screenshot) => (
                 <figure key={screenshot.src}>
                   <div className="overflow-hidden rounded-xl border border-border bg-muted">
-                    <img src={screenshot.src} alt={screenshot.alt} width={1440} height={900} className="h-auto w-full" loading="lazy" decoding="async" />
+                    <img src={screenshot.src} alt={t(screenshot.alt)} width={1440} height={900} className="h-auto w-full" loading="lazy" decoding="async" />
                   </div>
-                  <figcaption className="mt-3 text-sm text-muted-foreground">{screenshot.caption}</figcaption>
+                  <figcaption className="mt-3 text-sm text-muted-foreground">{t(screenshot.caption)}</figcaption>
                 </figure>
               ))}
             </div>

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { cn } from '@/lib/utils';
 import TechBadge from './TechBadge';
+import { useI18n } from '@/lib/i18n';
 
 export type ExperiencePositionItemType = {
   id: string;
@@ -50,6 +51,7 @@ const WorkExperience = ({ className, experiences }: WorkExperienceProps) => {
 };
 
 const ExperienceItem = ({ experience }: { experience: ExperienceItemType }) => {
+  const { t } = useI18n();
   return (
     <article className="space-y-4 py-6 first:pt-0 last:pb-0">
       <div className="flex items-center gap-3">
@@ -97,8 +99,8 @@ const ExperienceItem = ({ experience }: { experience: ExperienceItemType }) => {
               href={experience.companyWebsite}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Visitar sitio web de ${experience.companyName}`}
-              title="Visitar sitio web"
+              aria-label={`${t('Visitar sitio web de Maquinarias JYS').replace('Maquinarias JYS', experience.companyName)}`}
+              title={t('Visitar sitio web')}
               className="inline-flex items-center text-sky-500 transition-colors hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <Globe className="h-3.5 w-3.5" aria-hidden="true" />
@@ -110,14 +112,14 @@ const ExperienceItem = ({ experience }: { experience: ExperienceItemType }) => {
               to={experience.caseStudyUrl}
               className="inline-flex items-center gap-1 text-xs font-semibold text-foreground underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              Ver caso
+              {t('Ver caso')}
               <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
             </Link>
           )}
         </div>
 
         {experience.isCurrentEmployer && (
-          <span className="relative flex h-3 w-3 items-center justify-center" aria-label="Experiencia actual">
+          <span className="relative flex h-3 w-3 items-center justify-center" aria-label={t('Experiencia actual')}>
             <span className="absolute h-3 w-3 motion-safe:animate-ping rounded-full bg-sky-500/50" />
             <span className="relative h-2 w-2 rounded-full bg-sky-500" />
           </span>
@@ -134,6 +136,7 @@ const ExperienceItem = ({ experience }: { experience: ExperienceItemType }) => {
 };
 
 const ExperiencePositionItem = ({ position }: { position: ExperiencePositionItemType }) => {
+  const { t } = useI18n();
   const hasDetails = Boolean(position.description || position.projectImage || position.skills?.length);
   const { start, end } = position.employmentPeriod;
   const duration = formatDuration(start, end);
@@ -160,10 +163,10 @@ const ExperiencePositionItem = ({ position }: { position: ExperiencePositionItem
           </div>
 
           <dl className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
-            {position.employmentType && <dd>{position.employmentType}</dd>}
+            {position.employmentType && <dd>{t(position.employmentType)}</dd>}
             {position.employmentType && <span aria-hidden="true">·</span>}
             <dd className="tabular-nums">
-              {start} <span aria-hidden="true">—</span> {end ?? 'Actualidad'}
+              {start} <span aria-hidden="true">—</span> {end ?? t('Actualidad')}
             </dd>
             {duration && (
               <>
@@ -177,7 +180,7 @@ const ExperiencePositionItem = ({ position }: { position: ExperiencePositionItem
 
       {position.description && (
         <ul className="relative z-10 ml-9 mt-3 list-disc space-y-2 pl-4 text-sm leading-6 text-muted-foreground marker:text-border">
-          {position.description
+          {t(position.description)
             .split('\n')
             .map((item) => item.replace(/^-\s*/, '').trim())
             .filter(Boolean)
@@ -190,7 +193,7 @@ const ExperiencePositionItem = ({ position }: { position: ExperiencePositionItem
           <div className="aspect-[1280/871] w-full">
             <img
               src={position.projectImage.src}
-              alt={position.projectImage.alt}
+              alt={t(position.projectImage.alt)}
               className="h-full w-full object-contain"
               loading="lazy"
               decoding="async"

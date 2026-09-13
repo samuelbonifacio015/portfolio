@@ -19,6 +19,7 @@ import { Button } from '@/components/ui/button';
 import TechBadge from './TechBadge';
 import { ProjectProps } from './ProjectCard';
 import { cn } from '@/lib/utils';
+import { useI18n } from '@/lib/i18n';
 
 interface ProjectModalProps {
   project: ProjectProps | null;
@@ -27,6 +28,7 @@ interface ProjectModalProps {
 }
 
 const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
+  const { t } = useI18n();
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
@@ -106,7 +108,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
               size="icon"
               onClick={onClose}
               className="h-11 w-11 flex-shrink-0 rounded-full"
-              aria-label="Cerrar modal"
+              aria-label={t('Cerrar modal')}
             >
               <X className="h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
@@ -137,7 +139,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                                 <iframe
                                   className="w-full h-full"
                                   src={`https://www.youtube.com/embed/${videoId}`}
-                                  title={`${project.title} - Video de demostración`}
+                                  title={`${project.title} - ${t('Video de demostración')}`}
                                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                   allowFullScreen
                                 />
@@ -148,7 +150,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                                 <iframe
                                   className="w-full h-full"
                                   src={`https://player.vimeo.com/video/${videoId}`}
-                                  title={`${project.title} - Video de demostración`}
+                                  title={`${project.title} - ${t('Video de demostración')}`}
                                   allow="autoplay; fullscreen; picture-in-picture"
                                   allowFullScreen
                                 />
@@ -162,7 +164,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                                   poster={images[0]}
                                 >
                                   <source src={item.content} type={`video/${videoType}`} />
-                                  Tu navegador no soporta el elemento de video.
+                                  {t('No soporta el elemento de video.')}
                                 </video>
                               );
                             }
@@ -171,7 +173,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                         ) : (
                           <img
                             src={item.content}
-                            alt={`${project.title} - Imagen ${index + 1}`}
+                            alt={`${project.title} - ${t('Imagen del artículo')} ${index + 1}`}
                             className="w-full h-full object-contain"
                             loading={index === (project.demoVideo ? 1 : 0) ? 'eager' : 'lazy'}
                           />
@@ -195,7 +197,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                       key={index}
                       onClick={() => api?.scrollTo(index)}
                       className="flex h-8 w-8 items-center justify-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                      aria-label={item.type === 'video' ? 'Ir al video' : `Ir a imagen ${index + 1}`}
+                      aria-label={item.type === 'video' ? t('Ir al video') : `${t('Imagen del artículo')} ${index + 1}`}
                     >
                       <span
                         className={cn(
@@ -230,7 +232,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                 <div className="space-y-2">
                   <h3 className="text-base sm:text-lg font-semibold text-foreground flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                    Objetivo
+                    {t('Objetivo')}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed pl-3.5">
                     {project.objective}
@@ -242,7 +244,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                 <div className="space-y-2">
                   <h3 className="text-base sm:text-lg font-semibold text-foreground flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                    Problema que Resuelve
+                    {t('Problema que Resuelve')}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed pl-3.5">
                     {project.problem}
@@ -254,7 +256,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                 <div className="space-y-2">
                   <h3 className="text-base sm:text-lg font-semibold text-foreground flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                    Enfoque Técnico
+                    {t('Enfoque Técnico')}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed pl-3.5">
                     {project.technicalApproach}
@@ -266,7 +268,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                 <div className="space-y-2">
                   <h3 className="text-base sm:text-lg font-semibold text-foreground flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                    Descripción
+                    {t('Descripción')}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed pl-3.5">
                     {project.extendedDescription || project.description}
@@ -278,7 +280,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
             <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 pt-2 border-t border-border justify-center items-center">
               {project.technologies && project.technologies.length > 0 && (
                 <div className="space-y-2 sm:space-y-3 flex-1 flex flex-col items-center">
-                  <h3 className="text-base sm:text-lg font-semibold text-foreground">Tecnologías</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-foreground">{t('Tecnologías')}</h3>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2 justify-center">
                     {project.technologies.map((tech, index) => (
                       <TechBadge key={index} name={tech} showIcon />
@@ -289,7 +291,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
 
               {(project.githubUrl || project.liveUrl || project.links) && (
                 <div className="space-y-2 sm:space-y-3 flex-1 flex flex-col items-center">
-                  <h3 className="text-base sm:text-lg font-semibold text-foreground">Enlaces</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-foreground">{t('Enlaces')}</h3>
                   <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
                     {project.githubUrl && (
                       <Button
@@ -305,7 +307,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                           className="flex items-center"
                         >
                           <Github className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                          <span>Repositorio</span>
+                          <span>{t('Repositorio')}</span>
                         </a>
                       </Button>
                     )}
@@ -323,7 +325,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                           className="flex items-center"
                         >
                           <ExternalLink className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                          <span>Demo en Vivo</span>
+                          <span>{t('Demo en Vivo')}</span>
                         </a>
                       </Button>
                     )}

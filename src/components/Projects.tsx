@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { ProjectProps } from './ProjectCard';
 import ProjectGridCard from './ProjectGridCard';
 import ProjectModal from './ProjectModal';
+import { useI18n } from '@/lib/i18n';
 
 const HIDDEN_PROJECT_IDS = new Set(['finovate', 'paso-perfecto', 'agua-connect']);
 
 const Projects = () => {
+  const { t } = useI18n();
   const [selectedProject, setSelectedProject] = useState<ProjectProps | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -250,6 +252,18 @@ const Projects = () => {
     },
   ];
 
+  const localizedProjects = projects.map((project) => ({
+    ...project,
+    subtitle: t(project.subtitle),
+    description: t(project.description),
+    date: t(project.date),
+    objective: project.objective ? t(project.objective) : project.objective,
+    problem: project.problem ? t(project.problem) : project.problem,
+    technicalApproach: project.technicalApproach ? t(project.technicalApproach) : project.technicalApproach,
+    extendedDescription: project.extendedDescription ? t(project.extendedDescription) : project.extendedDescription,
+  }));
+  const activeProject = localizedProjects.find((project) => project.id === selectedProject?.id) ?? null;
+
   return (
     <section
       id="projects"
@@ -257,11 +271,11 @@ const Projects = () => {
     >
       <div className="mx-auto max-w-[var(--container-max)]">
         <div className="mb-10">
-          <h2 className="text-3xl font-bold text-foreground">Proyectos</h2>
+          <h2 className="text-3xl font-bold text-foreground">{t('Proyectos')}</h2>
         </div>
 
         <div className="flex flex-col gap-1">
-          {projects.filter((project) => !HIDDEN_PROJECT_IDS.has(project.id ?? '')).map((project, index) => (
+          {localizedProjects.filter((project) => !HIDDEN_PROJECT_IDS.has(project.id ?? '')).map((project, index) => (
             <ProjectGridCard
               key={project.id || index}
               {...project}
@@ -272,7 +286,7 @@ const Projects = () => {
       </div>
 
       <ProjectModal
-        project={selectedProject}
+        project={activeProject}
         isOpen={isModalOpen}
         onClose={handleCloseModal}
       />

@@ -2,6 +2,7 @@ import { CodeXmlIcon } from 'lucide-react';
 
 import type { ExperienceItemType } from './work-experience';
 import { WorkExperience as WorkExperienceList } from './work-experience';
+import { useI18n } from '@/lib/i18n';
 
 const experiences: ExperienceItemType[] = [
   {
@@ -93,13 +94,14 @@ const experiences: ExperienceItemType[] = [
 ];
 
 const WorkExperienceSection = () => {
+  const { t } = useI18n();
   return (
     <section id="experience" className="scroll-mt-28 px-5 py-16 md:px-6 md:py-24">
       <div className="mx-auto max-w-[var(--container-max)]">
         <header className="mb-10 max-w-2xl">
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Experiencia</h2>
+          <h2 className="text-3xl font-bold text-foreground sm:text-4xl">{t('Experiencia')}</h2>
           <p className="mt-3 max-w-2xl text-pretty text-muted-foreground">
-            Proyectos profesionales en los que he convertido ideas y necesidades reales en productos web funcionales.
+            {t('Proyectos profesionales en los que he convertido ideas y necesidades reales en productos web funcionales.')}
           </p>
         </header>
 

@@ -1,8 +1,10 @@
 import { ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SocialLinks from '@/components/SocialLinks';
+import { useI18n } from '@/lib/i18n';
 
 const Hero = () => {
+  const { t } = useI18n();
   return (
     <section
       id="home"
@@ -13,7 +15,7 @@ const Hero = () => {
           <div className="hero-portrait pointer-events-none relative z-10 order-last ml-auto mt-8 w-[min(72%,17rem)] select-none md:absolute md:bottom-0 md:right-0 md:top-[-18%] md:mx-0 md:mt-0 md:w-[40%] md:overflow-hidden">
             <img
               src="/hero/samuel-hero.webp"
-              alt="Retrato de Samuel Bonifacio"
+              alt={t('Retrato de Samuel Bonifacio')}
               width={1122}
               height={1293}
               loading="eager"
@@ -47,13 +49,13 @@ const Hero = () => {
 
             <div className="relative z-20 mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className="rounded-xl">
-                <a href="#projects">
-                  Ver Proyectos
+              <a href="#projects">
+                  {t('Ver Proyectos')}
                   <ArrowUpRight aria-hidden="true" />
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-xl">
-                <a href="#contact">Contacto</a>
+                <a href="#contact">{t('Contacto')}</a>
               </Button>
             </div>
 

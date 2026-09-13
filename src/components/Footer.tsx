@@ -1,8 +1,10 @@
 
 import { Heart } from 'lucide-react';
+import { useI18n } from '@/lib/i18n';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useI18n();
   
   return (
     <footer className="border-t border-border px-5 py-8 md:px-6">
@@ -16,7 +18,7 @@ const Footer = () => {
           
           <div className="mt-4 md:mt-0">
             <p className="flex items-center text-sm text-muted-foreground">
-              Hecho con <Heart className="h-4 w-4 text-primary mx-1" /> y mucho código
+              {t('Hecho con')} <Heart className="h-4 w-4 text-primary mx-1" /> {t('y mucho código')}
             </p>
           </div>
         </div>

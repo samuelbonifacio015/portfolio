@@ -1,9 +1,11 @@
 import { Moon, Sun } from 'lucide-react';
 
 import { useTheme } from '@/hooks/use-theme';
+import { useI18n } from '@/lib/i18n';
 
 export default function ThemeToggle() {
   const { isDark, toggleTheme, mounted } = useTheme();
+  const { t } = useI18n();
 
   if (!mounted) {
     return (
@@ -14,7 +16,7 @@ export default function ThemeToggle() {
     );
   }
 
-  const label = isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro';
+  const label = isDark ? t('Cambiar a modo claro') : t('Cambiar a modo oscuro');
   const Icon = isDark ? Sun : Moon;
 
   return (

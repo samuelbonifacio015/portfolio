@@ -5,6 +5,7 @@ import {
   GitHubContributionsFallback,
 } from '@/components/github-contributions';
 import { getContributions } from '@/lib/get-cached-contributions';
+import { useI18n } from '@/lib/i18n';
 
 interface GithubChartProps {
   username?: string;
@@ -15,6 +16,7 @@ const GithubChart = ({
   username = 'samuelbonifacio015',
   className,
 }: GithubChartProps) => {
+  const { t } = useI18n();
   const [contributions, setContributions] = useState<Activity[] | null>(null);
   const [hasError, setHasError] = useState(false);
   const profileUrl = `https://github.com/${username}`;
@@ -40,14 +42,14 @@ const GithubChart = ({
 
       {(hasError || contributions?.length === 0) && (
         <p role="status" className="py-10 text-center text-sm text-muted-foreground">
-          No pude cargar las contribuciones.{' '}
+          {t('No pude cargar las contribuciones.')} {' '}
           <a
             href={profileUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-foreground underline underline-offset-4"
           >
-            Ver GitHub
+            {t('Ver GitHub')}
           </a>
         </p>
       )}

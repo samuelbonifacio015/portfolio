@@ -4,15 +4,17 @@ import { RiGithubFill } from '@remixicon/react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import ThemeToggle from '@/components/ThemeToggle';
+import { useI18n } from '@/lib/i18n';
 
 const navItems = [
-  { name: 'Tecnologías', href: '#technologies', id: 'technologies' },
-  { name: 'Educación', href: '#education', id: 'education' },
-  { name: 'Experiencia', href: '#experience', id: 'experience' },
-  { name: 'Proyectos', href: '#projects', id: 'projects' },
+  { key: 'Tecnologías', href: '#technologies', id: 'technologies' },
+  { key: 'Educación', href: '#education', id: 'education' },
+  { key: 'Experiencia', href: '#experience', id: 'experience' },
+  { key: 'Proyectos', href: '#projects', id: 'projects' },
 ];
 
 const Navbar = () => {
+  const { language, t, toggleLanguage } = useI18n();
   const { pathname, hash } = useLocation();
   const [activeSection, setActiveSection] = useState('home');
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -93,11 +95,11 @@ const Navbar = () => {
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
       <div className="mx-auto max-w-[var(--container-max)]">
         <div className="flex items-center rounded-[var(--radius-pill)] border border-border bg-background/95 p-1 shadow-[0_1px_3px_rgba(0,0,0,0.06)] backdrop-blur-lg supports-[backdrop-filter]:bg-background/80">
-          <nav aria-label="Navegación principal" className="flex min-w-0 flex-1 items-center gap-2">
+          <nav aria-label={t('Navegación principal')} className="flex min-w-0 flex-1 items-center gap-2">
             <a
               href={pathname === '/' ? '#home' : '/#home'}
               className="shrink-0 rounded-[var(--radius-pill)] px-2.5 py-2 text-sm font-bold tracking-tight text-foreground transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-3 sm:text-base"
-              aria-label="Ir al inicio"
+              aria-label={t('Ir al inicio')}
             >
               samuel<span className="text-primary">.</span>dev
             </a>
@@ -122,7 +124,7 @@ const Navbar = () => {
                             : 'text-foreground/75 hover:bg-secondary hover:text-foreground'
                         )}
                       >
-                        {item.name}
+                        {t(item.key)}
                       </a>
                     );
                   })}
@@ -155,11 +157,20 @@ const Navbar = () => {
           </nav>
 
           <div className="ml-1 flex shrink-0 items-center gap-1">
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              aria-label={language === 'es' ? 'Switch to English' : 'Cambiar a español'}
+              title={language === 'es' ? 'Switch to English' : 'Cambiar a español'}
+              className="inline-flex h-11 min-w-11 items-center justify-center rounded-full border border-border bg-background px-2 text-xs font-bold tracking-wide text-foreground transition-colors hover:border-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              {language === 'es' ? 'EN' : 'ES'}
+            </button>
             <a
               href="https://github.com/samuelbonifacio015"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Abrir el perfil de GitHub de Samuel Bonifacio"
+              aria-label={t('Abrir el perfil de GitHub de Samuel Bonifacio')}
               title="GitHub"
               className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors duration-200 hover:border-primary hover:bg-secondary active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >

@@ -12,6 +12,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
+import { useI18n } from '@/lib/i18n';
 
 type SocialLink = {
   name: string;
@@ -57,8 +58,9 @@ const socialButtonClassName =
   'inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-background text-foreground transition-[transform,background-color,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transform-none';
 
 const SocialLinks = () => {
+  const { t } = useI18n();
   return (
-    <ul aria-label="Redes sociales" className="mt-4 flex flex-wrap gap-2">
+    <ul aria-label={t('Redes sociales')} className="mt-4 flex flex-wrap gap-2">
       {socialLinks.map(({ name, username, href, icon: Icon }) => (
         <li key={name}>
           <Tooltip>
@@ -77,7 +79,7 @@ const SocialLinks = () => {
                 <span
                   role="link"
                   aria-disabled="true"
-                  aria-label={`${name}: enlace pendiente`}
+                  aria-label={`${name}: ${t('enlace pendiente')}`}
                   tabIndex={0}
                   className={cn(
                     socialButtonClassName,

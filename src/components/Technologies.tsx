@@ -1,4 +1,5 @@
 import TechBadge from './TechBadge';
+import { useI18n } from '@/lib/i18n';
 
 const techCategories = [
   {
@@ -55,12 +56,13 @@ const techCategories = [
 ];
 
 const Technologies = () => {
+  const { t } = useI18n();
   return (
     <section id="technologies" className="scroll-mt-28 px-5 py-16 md:px-6 md:py-24">
       <div className="mx-auto max-w-[var(--container-max)]">
         <header className="mb-10 max-w-2xl">
           <h2 id="technologies-title" className="text-3xl font-bold text-foreground sm:text-4xl">
-            Tecnologías
+            {t('Tecnologías')}
           </h2>
         </header>
         <div className="divide-y divide-border border-y border-border">
@@ -70,7 +72,7 @@ const Technologies = () => {
                 <span className="font-mono text-[11px] tabular-nums text-muted-foreground" aria-hidden="true">
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <h3 className="text-sm font-semibold text-foreground sm:text-base">{category.name}</h3>
+                <h3 className="text-sm font-semibold text-foreground sm:text-base">{t(category.name)}</h3>
               </div>
               <div className="flex min-w-0 flex-wrap gap-2 sm:border-l sm:border-dashed sm:border-border sm:pl-6">
                 {category.technologies.map((tech) => (

@@ -2,6 +2,7 @@ import { AnimatePresence, motion, useInView, useReducedMotion } from 'framer-mot
 import { Children, useEffect, useRef, useState, type ReactNode } from 'react';
 
 import { cn } from '@/lib/utils';
+import { useI18n } from '@/lib/i18n';
 
 const WORDS = ['Ingeniero', 'Full-Stack', 'Frontend', 'Backend', 'Mobile'];
 
@@ -44,22 +45,24 @@ export const TextFlip = ({ children, className, play = true }: TextFlipProps) =>
 };
 
 const TextFlipDemo = () => {
+  const { t } = useI18n();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { amount: 0.5 });
-  const tallestWord = WORDS.reduce((longest, word) => (longest.length >= word.length ? longest : word));
+  const words = WORDS.map(t);
+  const tallestWord = words.reduce((longest, word) => (longest.length >= word.length ? longest : word));
 
   return (
     <div
       ref={ref}
       className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground sm:text-base"
     >
-      <span>Soy</span>
+      <span>{t('Soy')}</span>
       <span className="inline-grid">
         <span className="invisible col-start-1 row-start-1" aria-hidden="true">
           {tallestWord}
         </span>
         <TextFlip className="col-start-1 row-start-1 text-foreground" play={isInView}>
-          {WORDS.map((word) => (
+          {words.map((word) => (
             <span key={word}>{word}</span>
           ))}
         </TextFlip>

@@ -13,8 +13,10 @@ import FluidGradientTextDemo from '@/components/FluidGradientTextDemo';
 
 import GitHubChart from "../components/Git";
 import Terminal from '@/components/Terminal';
+import { useI18n } from '@/lib/i18n';
 
 const Index = () => {
+  const { t } = useI18n();
   return (
     <>
       <AppleHelloIntro />
@@ -23,7 +25,7 @@ const Index = () => {
           <Navbar />
           <main>
             <Hero />
-            <section aria-label="Actividad y perfil técnico" className="px-5 pb-12 md:px-6 md:pb-16">
+            <section aria-label={t('Actividad y perfil técnico')} className="px-5 pb-12 md:px-6 md:pb-16">
               <div className="mx-auto max-w-[var(--container-max)] divide-y divide-border overflow-hidden rounded-[var(--radius-card)] border border-border bg-muted">
                 <Terminal />
                 <GitHubChart username="samuelbonifacio015" />

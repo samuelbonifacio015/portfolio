@@ -7,7 +7,8 @@ import { useI18n } from '@/lib/i18n';
 
 const AboutMe = () => {
   const { isDark } = useTheme();
-  const { t } = useI18n();
+  const { language, t } = useI18n();
+  const cvFile = `/utils/SamuelBonifacioCV-${language.toUpperCase()}.pdf`;
 
   return (
     <section className="px-5 py-12 md:px-6 md:py-16">
@@ -35,11 +36,14 @@ const AboutMe = () => {
             </div>
 
             <Button asChild className="mt-7" variant="outline">
-              <a href="/utils/SamuelBonifacioCV.pdf" download>
+              <a href={cvFile} download aria-describedby="cv-download-note">
                 <Download aria-hidden="true" />
                 {t('Descargar CV')}
               </a>
             </Button>
+            <p id="cv-download-note" className="mt-2 text-xs text-muted-foreground">
+              {t('El CV está disponible para descargar en español e inglés según el idioma seleccionado.')}
+            </p>
           </div>
 
           <img

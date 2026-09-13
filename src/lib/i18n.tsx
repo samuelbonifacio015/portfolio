@@ -9,7 +9,7 @@ const translations: Record<string, string> = {
   'Abrir el perfil de GitHub de Samuel Bonifacio': "Open Samuel Bonifacio's GitHub profile", 'Ver caso': 'View case study',
   'Visitar sitio web': 'Visit website', 'Visitar sitio web de Maquinarias JYS': 'Visit Maquinarias JYS website',
   'Experiencia actual': 'Current experience', 'Full Stack Developer': 'Full Stack Developer', 'Ver Proyectos': 'View Projects',
-  'Sobre mí': 'About me', 'Descargar CV': 'Download CV', 'Lenguajes': 'Languages', 'Frameworks': 'Frameworks',
+  'Sobre mí': 'About me', 'Descargar CV': 'Download CV', 'El CV está disponible para descargar en español e inglés según el idioma seleccionado.': 'The CV is available to download in Spanish and English based on the selected language.', 'Lenguajes': 'Languages', 'Frameworks': 'Frameworks',
   'Bases de datos': 'Databases', 'Herramientas': 'Tools', 'No pude cargar las contribuciones.': 'I could not load contributions.',
   'Ver GitHub': 'View GitHub', '¿Hablamos?': 'Let’s talk?', 'Contacta conmigo para colaboraciones o si tienes alguna pregunta sobre mi trabajo.': 'Contact me for collaborations or if you have any questions about my work.',
   'Envíame un mensaje': 'Send me a message', 'Nombre': 'Name', 'Tu nombre': 'Your name', 'Asunto': 'Subject',
